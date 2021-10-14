@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#424B5A</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#333333</color>
+    <color name="chipBackGroundColor">#E5E9ED</color>
+    <color name="hintColor">#979797</color>
+    <color name="transparentWhite">#b3ffffff</color>
+    <color name="transpWhite">#f2ffffff</color>
+    <color name="transpBlack">#b3000000</color>
+    <color name="transpBlue">#66c1ccf4</color>
+    <color name="transparentGrey">#f2ededed</color>
+    <color name="transparentGrey2">#80dbdbdb</color>
+
+    <color name="Black">#000000</color>
+    <color name="Black2">#121212</color>
+    <color name="Black3">#242424</color>
+    <color name="Gray2">#DBDBDB</color>
+    <color name="Gray3">#949494</color>
+    <color name="CoolGray">#EDEDED</color>
+
+    <color name="Cyan">#3AD3B7</color>
+    <color name="SoftCyan">#84DCC6</color>
+    <color name="LightCyan">#66DFBB</color>
+    <color name="ExtraLightCyan">#AEE3D6</color>
+    <color name="ExtraLighterCyan">#B3EFDD</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="transparent">#0000</color>
+
 </resources>
