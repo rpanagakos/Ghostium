@@ -3,4 +3,6 @@
     <string name="don_t_have_an_account_choose_one_of_these_three_option_to_sign_up">Don\'t have an account? Choose one of these three options to sign up</string>
     <string name="have_you_forgotten_your_passow_rd_click_here">Have you forgotten your passwοrd? Click here!</string>
     <string name="log_in">Log in</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

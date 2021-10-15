@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeFragment"
+        android:title=""
+        android:icon="@drawable/home_selector"/>
+
+    <item android:id="@+id/trendsFragment"
+        android:title=""
+        android:icon="@drawable/trends_selector"/>
+
+    <item android:id="@+id/walletFragment"
+        android:title=""
+        android:icon="@drawable/wallet_selector"/>
+
+    <item android:id="@+id/profileFragment"
+        android:title=""
+        android:icon="@drawable/profile_selector"/>
+
+</menu>

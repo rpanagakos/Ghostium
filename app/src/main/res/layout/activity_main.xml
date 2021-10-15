@@ -3,118 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/iconApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@mipmap/ic_launcher"
+    <fragment
+        android:id="@+id/nav_host_fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/basic_nav" />
 
-    <include
-        android:id="@+id/emailInput"
-        layout="@layout/text_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iconApp" />
 
-    <include
-        android:id="@+id/passwordInput"
-        layout="@layout/text_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@id/emailInput"
-        app:layout_constraintStart_toStartOf="@id/emailInput"
-        app:layout_constraintTop_toBottomOf="@id/emailInput" />
-
-    <Button
-        android:id="@+id/loginButton"
-        style="@style/big_buttons"
-        android:layout_marginTop="24dp"
-        android:text="@string/log_in"
-        android:textAppearance="@style/caption_bold"
-        app:layout_constraintEnd_toEndOf="@id/emailInput"
-        app:layout_constraintStart_toStartOf="@id/emailInput"
-        app:layout_constraintTop_toBottomOf="@id/passwordInput" />
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/have_you_forgotten_your_passow_rd_click_here"
-        android:textAlignment="center"
-        android:textAppearance="@style/small_regular"
-        android:textColor="@color/Gray3"
-        android:textColorLink="@color/Black"
-        app:layout_constraintEnd_toEndOf="@id/emailInput"
-        app:layout_constraintStart_toStartOf="@id/emailInput"
-        app:layout_constraintTop_toBottomOf="@id/loginButton" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/Gray3"
-        app:layout_constraintBottom_toTopOf="@id/gmailButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forgotPassword"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageButton
-        android:id="@+id/gmailButton"
-        android:layout_width="56dp"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerDescription"
-        app:layout_constraintEnd_toStartOf="@id/facebookButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/facebookButton"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="@id/gmailButton"
-        app:layout_constraintEnd_toEndOf="@id/iconApp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/gmailButton"
-        app:layout_constraintStart_toStartOf="@id/iconApp" />
-
-    <ImageButton
-        android:id="@+id/emailButton"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="@id/gmailButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/facebookButton" />
-
-    <TextView
-        android:id="@+id/registerDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/don_t_have_an_account_choose_one_of_these_three_option_to_sign_up"
-        android:textAlignment="center"
-        android:textAppearance="@style/caption_bold"
-        android:textColor="@color/Black"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/emailInput"
-        app:layout_constraintStart_toStartOf="@id/emailInput" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
