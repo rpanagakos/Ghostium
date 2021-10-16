@@ -3,7 +3,7 @@ package com.example.ghostzilla.network
 class ConstantApi {
 
     companion object {
-        const val BASE_URL = ""
+        const val BASE_URL = "https://api.covalenthq.com/"
         const val API_KEY = ""
 
         //Room database

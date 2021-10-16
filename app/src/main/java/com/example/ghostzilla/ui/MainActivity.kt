@@ -9,8 +9,10 @@ import com.example.ghostzilla.ui.tabs.HomeFragment
 import com.example.ghostzilla.ui.tabs.ProfileFragment
 import com.example.ghostzilla.ui.tabs.TrendsFragment
 import com.example.ghostzilla.ui.tabs.WalletFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AbstractActivity(R.layout.activity_main) {
 
     private lateinit var navController: NavController
