@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui
+package com.example.ghostzilla.ui.intro
 
 import android.os.Bundle
 import android.view.LayoutInflater
