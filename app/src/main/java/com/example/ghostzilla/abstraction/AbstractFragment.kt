@@ -2,11 +2,17 @@ package com.example.ghostzilla.abstraction
 
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class AbstractFragment : Fragment() {
+abstract class AbstractFragment<T : ViewDataBinding>(contentLayoutId: Int) :
+    Fragment(contentLayoutId) {
+
+    lateinit var binding: T
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding = DataBindingUtil.bind(view)!!
         super.onViewCreated(view, savedInstanceState)
         initLayout()
         observeViewModel()
@@ -17,8 +23,13 @@ abstract class AbstractFragment : Fragment() {
     abstract fun observeViewModel()
 
     override fun onPause() {
-        super.onPause()
         stopOperations()
+        super.onPause()
+    }
+
+    override fun onDestroyView() {
+        binding.unbind()
+        super.onDestroyView()
     }
 
     abstract fun stopOperations()

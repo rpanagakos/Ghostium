@@ -1,22 +1,10 @@
 package com.example.ghostzilla.ui.tabs
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
+import com.example.ghostzilla.databinding.FragmentWalletBinding
 
-
-class WalletFragment : AbstractFragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wallet, container, false)
-    }
+class WalletFragment : AbstractFragment<FragmentWalletBinding>(R.layout.fragment_wallet) {
 
     override fun initLayout() {
     }

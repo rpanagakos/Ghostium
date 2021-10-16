@@ -20,7 +20,7 @@
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.43020833333333336" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
