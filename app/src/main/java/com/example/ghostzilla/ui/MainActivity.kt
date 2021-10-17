@@ -5,10 +5,10 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
-import com.example.ghostzilla.ui.tabs.HomeFragment
-import com.example.ghostzilla.ui.tabs.ProfileFragment
+import com.example.ghostzilla.ui.tabs.home.HomeFragment
+import com.example.ghostzilla.ui.tabs.profile.ProfileFragment
 import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
-import com.example.ghostzilla.ui.tabs.WalletFragment
+import com.example.ghostzilla.ui.tabs.wallet.WalletFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 

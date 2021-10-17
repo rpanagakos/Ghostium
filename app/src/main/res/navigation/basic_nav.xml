@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.ghostzilla.ui.tabs.ProfileFragment"
+        android:name="com.example.ghostzilla.ui.tabs.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/walletFragment"
-        android:name="com.example.ghostzilla.ui.tabs.WalletFragment"
+        android:name="com.example.ghostzilla.ui.tabs.wallet.WalletFragment"
         android:label="fragment_wallet"
         tools:layout="@layout/fragment_wallet" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.ghostzilla.ui.tabs.HomeFragment"
+        android:name="com.example.ghostzilla.ui.tabs.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment

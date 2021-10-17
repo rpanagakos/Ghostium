@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs
+package com.example.ghostzilla.ui.tabs.home
 
 import androidx.lifecycle.ViewModelProvider
 import com.example.ghostzilla.R

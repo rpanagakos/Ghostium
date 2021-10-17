@@ -10,7 +10,7 @@ import java.text.DecimalFormat
 
 class TrendsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun present(data: LocalModel, onClickElement: (selected: LocalModel) -> Unit) {
+    fun present(data: LocalModel) {
         when(data){
             is Crypto -> {
                 val dec = DecimalFormat("##.###")

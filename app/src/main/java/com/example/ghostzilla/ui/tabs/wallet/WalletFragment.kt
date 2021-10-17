@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs
+package com.example.ghostzilla.ui.tabs.wallet
 
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment

@@ -11,7 +11,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.models.pricing.Crypto
 import com.example.ghostzilla.ui.tabs.trends.TrendsViewHolder
 
-class TabsAdapter(private val onClickElement: (selected: LocalModel) -> Unit) :
+class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) :
     ListAdapter<LocalModel, RecyclerView.ViewHolder>(DiffUtilClass<LocalModel>()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
@@ -25,7 +25,10 @@ class TabsAdapter(private val onClickElement: (selected: LocalModel) -> Unit) :
         }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when (holder) {
-        is TrendsViewHolder -> holder.present(getItem(position), onClickElement)
+        is TrendsViewHolder ->{
+            onClickElement.invoke(position)
+            holder.present(getItem(position))
+        }
         else -> Unit
     }
 

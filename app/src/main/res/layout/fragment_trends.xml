@@ -11,6 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/backToTop"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/contract_image_trends"
+            android:elevation="24dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back_to_top"
+            android:tint="@color/Black"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.todkars.shimmer.ShimmerRecyclerView
             android:id="@+id/contractsTrendsRecycler"
             android:layout_width="match_parent"
