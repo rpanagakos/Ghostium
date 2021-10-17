@@ -11,6 +11,8 @@
     <color name="transpWhite">#f2ffffff</color>
     <color name="transpBlack">#b3000000</color>
     <color name="transpBlue">#66c1ccf4</color>
+    <color name="Blue">#6377DD</color>
+    <color name="ExtraLightBlue">#E6EAFA</color>
     <color name="transparentGrey">#f2ededed</color>
     <color name="transparentGrey2">#80dbdbdb</color>
 

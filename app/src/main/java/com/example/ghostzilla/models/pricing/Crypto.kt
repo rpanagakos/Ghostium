@@ -1,6 +1,7 @@
 package com.example.ghostzilla.models.pricing
 
 
+import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class Crypto(
@@ -32,4 +33,6 @@ data class Crypto(
     val supportsErc: Any,
     @SerializedName("rank")
     val rank: Int? = null
-)
+): LocalModel {
+    override fun equalsContent(obj: LocalModel): Boolean = false
+}

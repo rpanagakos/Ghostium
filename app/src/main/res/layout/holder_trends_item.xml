@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/contractImg"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:elevation="2dp"
+        android:scaleType="centerCrop"
+        app:civ_circle_background_color="@color/CoolGray"
+        app:layout_constraintBottom_toTopOf="@id/contractCard"
+        app:layout_constraintStart_toStartOf="@id/contractCard"
+        app:layout_constraintTop_toTopOf="@id/contractCard" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contractCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/card_trends_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/contractName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/medium_bold"
+            app:layout_constraintEnd_toStartOf="@id/contractRate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/contractTickerSumbol"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/small_regular"
+            android:textColor="@color/Blue"
+            app:layout_constraintEnd_toEndOf="@id/contractName"
+            app:layout_constraintStart_toStartOf="@id/contractName"
+            app:layout_constraintTop_toBottomOf="@id/contractName"
+            tools:text="BTC" />
+
+        <TextView
+            android:id="@+id/contractRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/medium_bold"
+            app:layout_constraintBottom_toBottomOf="@id/contractTickerSumbol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/contractName"
+            tools:text="3895.07$" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

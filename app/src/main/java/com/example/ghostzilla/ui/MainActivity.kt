@@ -7,7 +7,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.ui.tabs.HomeFragment
 import com.example.ghostzilla.ui.tabs.ProfileFragment
-import com.example.ghostzilla.ui.tabs.TrendsFragment
+import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
 import com.example.ghostzilla.ui.tabs.WalletFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*

@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context=".ui.tabs.TrendsFragment">
+        android:layout_height="match_parent">
 
-        <TextView
+        <com.todkars.shimmer.ShimmerRecyclerView
+            android:id="@+id/contractsTrendsRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="trends fragment" />
-
-    </ScrollView>
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shimmer_recycler_layout="@layout/placeholder_trends_item"
+            tools:itemCount="8"
+            tools:listitem="@layout/holder_trends_item" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

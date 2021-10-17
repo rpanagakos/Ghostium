@@ -1,7 +1,9 @@
-package com.example.ghostzilla.ui.tabs
+package com.example.ghostzilla.ui.tabs.trends
 
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.models.pricing.PriceVolatility
 import com.example.ghostzilla.network.covalent.CovalentRemoteRepository
 import com.example.ghostzilla.utils.SingleLiveEvent
@@ -17,15 +19,13 @@ class TrendsViewModel @Inject constructor(
     private val covalentRemoteRepository: CovalentRemoteRepository,
 ) : ViewModel() {
 
-    //mapping the response
     val internetConnection = SingleLiveEvent<Boolean>()
     val cryptosPricing = SingleLiveEvent<PriceVolatility>()
 
-    //Api calls
-    fun getCurrentWeather() {
+    fun getCryptoPricing() {
         viewModelScope.launch(Dispatchers.Default) {
             kotlin.runCatching {
-                covalentRemoteRepository.getPriceVolatility()
+                covalentRemoteRepository.getSpotPrices()
             }.onFailure {
                 //Show error handling message
                 handleFailures(it)
