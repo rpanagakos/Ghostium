@@ -9,9 +9,16 @@
             name="crypto"
             type="com.example.ghostzilla.models.pricing.Crypto" />
 
+        <import type="android.view.View" />
+
+        <variable
+            name="wrongContract"
+            type="java.lang.Boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/elementContract"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

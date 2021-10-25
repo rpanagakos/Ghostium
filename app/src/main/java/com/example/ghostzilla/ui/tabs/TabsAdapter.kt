@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -31,8 +32,22 @@ class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when (holder) {
         is TabsViewHolder -> {
-            onClickElement.invoke(position)
-            holder.present(getItem(position))
+            val data = getItem(position)
+            when(data){
+                is Crypto-> {
+                    if (data.contractName == null) {
+                        holder.itemView.layoutParams.width = 0
+                        holder.itemView.layoutParams.height = 0
+                    }
+                    else
+                    {
+                        onClickElement.invoke(position)
+                        holder.present(getItem(position))
+                    }
+                }
+                else -> {}
+            }
+
         }
         else -> Unit
     }

@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Crypto(
     @SerializedName("contract_address")
-    val contractAddress: String,
+    val contractAddress: String?,
     @SerializedName("contract_decimals")
     val contractDecimals: Int,
     @SerializedName("contract_name")
-    val contractName: String,
+    val contractName: String?,
     @SerializedName("contract_ticker_symbol")
     val contractTickerSymbol: String,
     @SerializedName("logo_url")

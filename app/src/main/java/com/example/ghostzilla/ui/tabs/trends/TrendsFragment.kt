@@ -19,7 +19,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
     private var currentItemPosition : Int = 0
     private val tabAdapter: TabsAdapter = TabsAdapter {
         currentItemPosition = it
-        if (it > 10)
+        if (it > 20)
             binding.backToTop.visibility = View.VISIBLE
         else
             binding.backToTop.visibility = View.GONE

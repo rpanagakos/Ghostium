@@ -11,7 +11,9 @@ class TabsViewHolder(val binding: ViewDataBinding) : AbstractBindingViewHolder(b
 
     override fun present(data: LocalModel) {
         when(data){
-            is Crypto -> binding.setVariable(BR.crypto, data)
+            is Crypto -> {
+                    binding.setVariable(BR.crypto, data)
+            }
         }
     }
 }
