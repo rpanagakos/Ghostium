@@ -1,14 +1,13 @@
 package com.example.ghostzilla.ui.tabs
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.DiffUtilClass
-import com.example.ghostzilla.abstraction.EmptyHolder
 import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
 import com.example.ghostzilla.models.pricing.Crypto
 
@@ -25,27 +24,25 @@ class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) :
                 )
                 TabsViewHolder(view)
             }
-            else -> EmptyHolder(
-                LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-            )
+            else -> {
+                val view = HolderEmptyBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                TabsViewHolder(view)
+            }
         }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when (holder) {
         is TabsViewHolder -> {
             val data = getItem(position)
-            when(data){
-                is Crypto-> {
-                    if (data.contractName == null) {
-                        holder.itemView.layoutParams.width = 0
-                        holder.itemView.layoutParams.height = 0
-                    }
-                    else
-                    {
-                        onClickElement.invoke(position)
-                        holder.present(getItem(position))
-                    }
+            when (data) {
+                is Crypto -> {
+                    checkFalseCrypto(data, holder, position)
                 }
-                else -> {}
+                else -> {
+                }
             }
 
         }
@@ -56,4 +53,16 @@ class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) :
         is Crypto -> R.layout.holder_trends_item
         else -> R.layout.holder_empty
     }
+
+
+    private fun checkFalseCrypto(crypto: Crypto, holder: TabsViewHolder, position: Int) {
+        if (crypto.contractName == null) {
+            holder.itemView.layoutParams.width = 0
+            holder.itemView.layoutParams.height = 0
+        } else {
+            onClickElement.invoke(position)
+            holder.present(getItem(position))
+        }
+    }
+
 }

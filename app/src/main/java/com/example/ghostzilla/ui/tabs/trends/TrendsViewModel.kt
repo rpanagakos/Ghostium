@@ -15,12 +15,13 @@ import javax.inject.Inject
 @HiltViewModel
 class TrendsViewModel @Inject constructor(
     private val covalentRemoteRepository: CovalentRemoteRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : AbstractViewModel() {
 
     val cryptosPricing = SingleLiveEvent<PriceVolatility>()
 
     fun getCryptoPricing() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
             kotlin.runCatching {
                 covalentRemoteRepository.getSpotPrices()
             }.onFailure {
