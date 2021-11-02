@@ -8,7 +8,6 @@ import com.example.ghostzilla.network.covalent.CovalentRemoteRepository
 import com.example.ghostzilla.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +20,7 @@ class TrendsViewModel @Inject constructor(
     val cryptosPricing = SingleLiveEvent<PriceVolatility>()
 
     fun getCryptoPricing() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(ioDispatcher) {
             kotlin.runCatching {
                 covalentRemoteRepository.getSpotPrices()
             }.onFailure {

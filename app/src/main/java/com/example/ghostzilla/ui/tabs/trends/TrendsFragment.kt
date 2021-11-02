@@ -1,10 +1,8 @@
 package com.example.ghostzilla.ui.tabs.trends
 
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
@@ -16,7 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment_trends) {
 
     private val viewModel: TrendsViewModel by viewModels()
-    private var currentItemPosition : Int = 0
+    private var listofSomething = mutableListOf<Crypto>()
+    private var currentItemPosition: Int = 0
     private val tabAdapter: TabsAdapter = TabsAdapter {
         currentItemPosition = it
         if (it > 20)
@@ -36,7 +35,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
             if (currentItemPosition > 25) {
                 binding.contractsTrendsRecycler.scrollToPosition(15)
                 binding.contractsTrendsRecycler.smoothScrollToPosition(0)
-            }else
+            } else
                 binding.contractsTrendsRecycler.smoothScrollToPosition(0)
         }
         viewModel.getCryptoPricing()
@@ -46,6 +45,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         viewModel.cryptosPricing.observe(viewLifecycleOwner, Observer {
             when {
                 it.items.isNotEmpty() -> {
+                    listofSomething = it.items as MutableList<Crypto>
                     tabAdapter.submitList(it.items)
                 }
                 else -> {
