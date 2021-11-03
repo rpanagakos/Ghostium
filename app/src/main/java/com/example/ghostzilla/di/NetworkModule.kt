@@ -1,7 +1,7 @@
 package com.example.ghostzilla.di
 
-import com.example.ghostzilla.network.ConstantApi.Companion.API_KEY
 import com.example.ghostzilla.network.ConstantApi.Companion.BASE_URL
+import com.example.ghostzilla.network.coingecko.CoinGeckoApi
 import com.example.ghostzilla.network.covalent.CovalentApi
 import dagger.Module
 import dagger.Provides
@@ -35,7 +35,7 @@ object NetworkModule {
                 val originalHttpUrl = original.url
 
                 val url = originalHttpUrl.newBuilder()
-                    .addQueryParameter("key", API_KEY)
+                //    .addQueryParameter("key", API_KEY)
                     .build()
 
                 val requestBuilder = original.newBuilder().url(url)
@@ -69,8 +69,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): CovalentApi {
-        return retrofit.create(CovalentApi::class.java)
+    fun provideApiService(retrofit: Retrofit): CoinGeckoApi {
+        return retrofit.create(CoinGeckoApi::class.java)
     }
 
 }
