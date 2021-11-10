@@ -17,29 +17,4 @@ class TrendsViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : AbstractViewModel() {
 
-    val cryptosPricing = SingleLiveEvent<PriceVolatility>()
-
-    fun getCryptoPricing() {
-        viewModelScope.launch(ioDispatcher) {
-            kotlin.runCatching {
-                covalentRemoteRepository.getSpotPrices()
-            }.onFailure {
-                handleFailures(it)
-            }.onSuccess { it ->
-                when {
-                    it.isSuccessful -> {
-                        it.body()?.let {
-                            it.data?.let {
-                                cryptosPricing.postValue(it)
-                            }
-                        }
-                    }
-                    else -> {
-                        handleFailures(null)
-                    }
-                }
-            }
-        }
-    }
-
 }

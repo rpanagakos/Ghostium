@@ -2,7 +2,6 @@ package com.example.ghostzilla.models.pricing
 
 
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.models.generic.Pagination
 import com.google.gson.annotations.SerializedName
 
 data class PriceVolatility(
