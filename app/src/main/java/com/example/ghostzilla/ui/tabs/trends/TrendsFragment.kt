@@ -1,6 +1,8 @@
 package com.example.ghostzilla.ui.tabs.trends
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
@@ -16,6 +18,9 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
     }
 
     override fun observeViewModel() {
+        viewModel.showToast.observe(this, Observer {
+            Toast.makeText(requireContext(), it as String, Toast.LENGTH_SHORT).show()
+        })
     }
 
     override fun stopOperations() {

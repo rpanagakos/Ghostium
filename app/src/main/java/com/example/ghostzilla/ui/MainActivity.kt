@@ -1,14 +1,21 @@
 package com.example.ghostzilla.ui
 
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
+import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.ui.tabs.home.HomeFragment
 import com.example.ghostzilla.ui.tabs.profile.ProfileFragment
 import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
+import com.example.ghostzilla.ui.tabs.trends.TrendsViewModel
 import com.example.ghostzilla.ui.tabs.wallet.WalletFragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 

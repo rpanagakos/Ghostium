@@ -10,6 +10,7 @@ import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +24,10 @@ class TrendsViewModel @Inject constructor(
     fun getMarkets(){
         viewModelScope.launch {
             dataRepository.requestData().collect {
-                marketsLiveData.value = it
+                when(it){
+                    is GenericResponse.Success -> marketsLiveData.value = it
+                    is GenericResponse.DataError -> it.errorCode?.let {error -> showToastMessage(error)  }
+                }
             }
         }
     }
