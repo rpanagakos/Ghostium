@@ -1,10 +1,14 @@
 package com.example.ghostzilla.di
 
+import android.content.Context
 import com.example.ghostzilla.utils.ConstantApi.Companion.BASE_URL
 import com.example.ghostzilla.network.covalent.CovalentApi
+import com.example.ghostzilla.utils.Network
+import com.example.ghostzilla.utils.NetworkConnectivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -70,6 +74,12 @@ object NetworkModule {
     @Provides
     fun provideApiService(retrofit: Retrofit): CovalentApi {
         return retrofit.create(CovalentApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkConnectivity(@ApplicationContext context: Context): NetworkConnectivity {
+        return Network(context)
     }
 
 }

@@ -21,9 +21,4 @@ abstract class RepositoryModule {
     @Binds
     abstract fun provideCovalentRemoteRepository(covalentRemoteRepositoryImpl: CovalentRemoteRepositoryImpl) : CovalentRemoteRepository
 
-    @Provides
-    @Singleton
-    fun provideNetworkConnectivity(@ApplicationContext context: Context): NetworkConnectivity {
-        return Network(context)
-    }
 }
