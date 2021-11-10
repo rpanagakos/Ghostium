@@ -1,6 +1,7 @@
 package com.example.ghostzilla.di
 
 import com.example.ghostzilla.network.ConstantApi.Companion.BASE_URL
+import com.example.ghostzilla.network.covalent.CovalentApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -67,8 +68,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): CoinGeckoApi {
-        return retrofit.create(CoinGeckoApi::class.java)
+    fun provideApiService(retrofit: Retrofit): CovalentApi {
+        return retrofit.create(CovalentApi::class.java)
     }
 
 }

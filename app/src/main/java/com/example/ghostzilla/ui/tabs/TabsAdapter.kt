@@ -9,8 +9,8 @@ import com.example.ghostzilla.abstraction.DiffUtilClass
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
-import com.example.ghostzilla.models.pricing.Crypto
 
+/*
 class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) :
     ListAdapter<LocalModel, RecyclerView.ViewHolder>(DiffUtilClass<LocalModel>()) {
 
@@ -65,4 +65,4 @@ class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) :
         }
     }
 
-}
+}*/
