@@ -1,4 +1,4 @@
-package com.example.ghostzilla.network
+package com.example.ghostzilla.utils
 
 class ConstantApi {
 

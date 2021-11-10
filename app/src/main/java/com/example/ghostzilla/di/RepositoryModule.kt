@@ -1,6 +1,7 @@
 package com.example.ghostzilla.di
 
 import android.content.Context
+import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.covalent.CovalentRemoteRepository
 import com.example.ghostzilla.network.covalent.CovalentRemoteRepositoryImpl
 import com.example.ghostzilla.utils.Network

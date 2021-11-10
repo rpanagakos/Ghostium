@@ -1,6 +1,6 @@
 package com.example.ghostzilla.di
 
-import com.example.ghostzilla.network.ConstantApi.Companion.BASE_URL
+import com.example.ghostzilla.utils.ConstantApi.Companion.BASE_URL
 import com.example.ghostzilla.network.covalent.CovalentApi
 import dagger.Module
 import dagger.Provides
