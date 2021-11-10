@@ -12,6 +12,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
     private val viewModel: TrendsViewModel by viewModels()
 
     override fun initLayout() {
+        viewModel.getMarkets()
     }
 
     override fun observeViewModel() {
