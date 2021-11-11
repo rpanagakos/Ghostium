@@ -9,7 +9,7 @@ import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
 
-class TabsAdapter : AbstractAdapter() {
+class TabsAdapter(private val onClickElement: (selected: Int) -> Unit) : AbstractAdapter() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
@@ -32,7 +32,10 @@ class TabsAdapter : AbstractAdapter() {
         }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when (holder) {
-        is TabsViewHolder -> holder.present(getItem(position))
+        is TabsViewHolder -> {
+            holder.present(getItem(position))
+            onClickElement.invoke(position)
+        }
         else -> Unit
     }
 
