@@ -20,7 +20,7 @@ data class MarketsItem(
     @SerializedName("circulating_supply")
     val circulatingSupply: Double,
     @SerializedName("current_price")
-    val currentPrice: Double,
+    val currentPrice: Float,
     @SerializedName("fully_diluted_valuation")
     val fullyDilutedValuation: Long,
     @SerializedName("high_24h")

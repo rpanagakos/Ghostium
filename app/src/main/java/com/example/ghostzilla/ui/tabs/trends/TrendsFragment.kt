@@ -3,21 +3,23 @@ package com.example.ghostzilla.ui.tabs.trends
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.ui.tabs.TabsAdapter
-import com.example.ghostzilla.utils.observeAndSubmit
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment_trends) {
 
     private val viewModel: TrendsViewModel by viewModels()
-    private var currentPosition : Int = 0
-    private val tabAdapter = TabsAdapter{ it ->
+    private var currentPosition: Int = 0
+    private val tabAdapter = TabsAdapter { it ->
         currentPosition = it
         if (currentPosition > 18)
             binding.backToTop.visibility = View.VISIBLE
@@ -40,6 +42,13 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
                 binding.contractsTrendsRecycler.smoothScrollToPosition(0)
         }
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            lifecycleScope.launch(Dispatchers.Main) {
+                delay(500)
+                viewModel.getMarkets()
+            }
+        }
+
         viewModel.getMarkets()
     }
 
@@ -48,6 +57,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         viewModel.marketsLiveData.observe(viewLifecycleOwner, {
             tabAdapter.submitList(it.marketsList as List<LocalModel>?)
             binding.contractsTrendsRecycler.hideShimmer()
+            binding.swipeRefreshLayout.isRefreshing = false
         })
 
         viewModel.showToast.observe(viewLifecycleOwner, {
