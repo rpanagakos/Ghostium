@@ -1,4 +1,7 @@
 package com.example.ghostzilla.models.coingecko
 
-data class Markets(val marketsList: ArrayList<MarketsItem>) {
+import com.example.ghostzilla.abstraction.LocalModel
+
+data class Markets(val marketsList: ArrayList<MarketsItem>): LocalModel {
+    override fun equalsContent(obj: LocalModel): Boolean = false
 }

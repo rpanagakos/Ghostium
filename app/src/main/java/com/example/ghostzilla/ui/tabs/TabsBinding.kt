@@ -24,7 +24,7 @@ object TabsBinding {
 
     @BindingAdapter("cryptoPrice")
     @JvmStatic
-    fun TextView.convertPrice(cryptoPrice: Float) {
+    fun TextView.convertPrice(cryptoPrice: Double) {
         val dec = DecimalFormat("#,###.####")
         val roundedPrice = dec.format(cryptoPrice)
         text = "$roundedPrice$"

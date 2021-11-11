@@ -1,6 +1,7 @@
 package com.example.ghostzilla.models.coingecko
 
 
+import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class MarketsItem(
@@ -56,4 +57,6 @@ data class MarketsItem(
     val totalSupply: Double,
     @SerializedName("total_volume")
     val totalVolume: Long
-)
+): LocalModel {
+    override fun equalsContent(obj: LocalModel): Boolean = false
+}
