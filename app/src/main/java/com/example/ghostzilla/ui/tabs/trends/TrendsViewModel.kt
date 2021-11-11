@@ -19,13 +19,13 @@ class TrendsViewModel @Inject constructor(
     private val dataRepository: DataRepository
 ) : AbstractViewModel() {
 
-    val marketsLiveData  = SingleLiveEvent<GenericResponse<Markets>>()
+    val marketsLiveData  = SingleLiveEvent<Markets>()
 
     fun getMarkets(){
         viewModelScope.launch {
             dataRepository.requestData().collect {
                 when(it){
-                    is GenericResponse.Success -> marketsLiveData.value = it
+                    is GenericResponse.Success -> it.data?.let {  marketsLiveData.value = it } ?: run { showToastMessage(0)  }
                     is GenericResponse.DataError -> it.errorCode?.let {error -> showToastMessage(error)  }
                 }
             }

@@ -2,19 +2,17 @@ package com.example.ghostzilla.ui.tabs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
-import com.example.ghostzilla.abstraction.DiffUtilClass
-import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
 
-class TabsAdapter(): ListAdapter<LocalModel, RecyclerView.ViewHolder>(DiffUtilClass<LocalModel>()) {
+class TabsAdapter : AbstractAdapter() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        when(viewType){
+        when (viewType) {
             R.layout.holder_trends_item -> {
                 val view = HolderTrendsItemBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -33,7 +31,7 @@ class TabsAdapter(): ListAdapter<LocalModel, RecyclerView.ViewHolder>(DiffUtilCl
             }
         }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when(holder){
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when (holder) {
         is TabsViewHolder -> holder.present(getItem(position))
         else -> Unit
     }
