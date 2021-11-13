@@ -5,6 +5,12 @@
 
     <data>
 
+        <variable
+            name="backToTop"
+            type="java.lang.Boolean" />
+
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,13 +35,14 @@
                 android:background="@color/transparent"
                 android:gravity="start|top"
                 android:hint="@string/enter_your_crypto"
+                android:includeFontPadding="false"
                 android:singleLine="true"
                 android:textAppearance="@style/caption_bold"
                 app:layout_constraintBottom_toTopOf="@id/bottomLine"
                 app:layout_constraintEnd_toStartOf="@id/searchButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Text" />
+                tools:text="@string/enter_your_crypto" />
 
             <View
                 android:id="@+id/bottomLine"
@@ -61,16 +68,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/backToTop"
+            android:id="@+id/backToTopImg"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/contract_image_trends"
             android:elevation="24dp"
-            android:padding="8dp"
+            android:padding="6dp"
             android:src="@drawable/ic_back_to_top"
             android:tint="@color/Black"
-            android:visibility="gone"
+            android:visibility="@{backToTop ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/swipeRefreshLayout" />

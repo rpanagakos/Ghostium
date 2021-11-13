@@ -12,8 +12,8 @@
             type="com.example.ghostzilla.models.coingecko.MarketsItem" />
 
         <variable
-            name="wrongContract"
-            type="java.lang.Boolean" />
+            name="clickHandler"
+            type="com.example.ghostzilla.abstraction.ItemOnClickListener" />
 
     </data>
 
@@ -45,7 +45,8 @@
             android:background="@drawable/card_trends_item"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
+            android:foreground="@drawable/market_ripple"
+            android:onClick="@{()-> clickHandler.onClick(market)}"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:paddingBottom="12dp"
