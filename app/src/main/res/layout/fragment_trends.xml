@@ -92,7 +92,6 @@
                 android:paddingBottom="24dp"
                 android:scrollbars="none"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:shimmer_recycler_layout="@layout/placeholder_trends_item"
                 tools:itemCount="8"
                 tools:listitem="@layout/holder_trends_item"
                 app:layout_constraintBottom_toBottomOf="parent"

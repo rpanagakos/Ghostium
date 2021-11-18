@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
+import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.abstraction.DiffUtilClass
 import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
@@ -12,10 +13,7 @@ import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
 
-class TabsAdapter(private val listener: ItemOnClickListener) :
-    ListAdapter<LocalModel, RecyclerView.ViewHolder>(
-        DiffUtilClass<LocalModel>()
-    ) {
+class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
