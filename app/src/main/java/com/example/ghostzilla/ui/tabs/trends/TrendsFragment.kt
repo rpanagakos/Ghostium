@@ -15,25 +15,20 @@ import com.example.ghostzilla.utils.clearTextAndFocus
 import com.example.ghostzilla.utils.searchQuery
 import com.example.ghostzilla.utils.showKeyboard
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import androidx.recyclerview.widget.OrientationHelper
-
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 
 @AndroidEntryPoint
-class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment_trends), ItemOnClickListener {
+class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment_trends),
+    ItemOnClickListener {
 
     private val viewModel: TrendsViewModel by viewModels()
     private var currentPosition: Int = 0
-    private val tabAdapter = TabsAdapter(this) { it ->
-        currentPosition = it
-        binding.backToTop = currentPosition > 18
-    }
+    private val tabAdapter = TabsAdapter(this)
 
     @ExperimentalCoroutinesApi
     @FlowPreview
@@ -41,7 +36,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         binding.contractsTrendsRecycler.apply {
             this.adapter = tabAdapter
             setHasFixedSize(true)
-            showShimmer()
         }
 
         binding.backToTopImg.setOnClickListener {
@@ -50,13 +44,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
                 binding.contractsTrendsRecycler.smoothScrollToPosition(0)
             } else
                 binding.contractsTrendsRecycler.smoothScrollToPosition(0)
-        }
-
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            lifecycleScope.launch(Dispatchers.Main) {
-                delay(500)
-                viewModel.getMarkets()
-            }
         }
 
         binding.searchButton.setOnClickListener {
@@ -89,9 +76,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
 
     override fun observeViewModel() {
         viewModel.marketsLiveData.observe(viewLifecycleOwner, {
-            tabAdapter.submitList(it.marketsList as List<LocalModel>?)
-            binding.contractsTrendsRecycler.hideShimmer()
-            binding.swipeRefreshLayout.isRefreshing = false
+            tabAdapter.submitList(it.marketsList as List<LocalModel>)
         })
 
         viewModel.showToast.observe(viewLifecycleOwner, {
