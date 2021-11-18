@@ -8,8 +8,9 @@ import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,15 +19,18 @@ class TrendsViewModel @Inject constructor(
 ) : AbstractViewModel() {
 
     val marketsLiveData = SingleLiveEvent<Markets>()
+    private lateinit var markets: Deferred<Unit>
 
     fun getMarkets() {
-        viewModelScope.launch {
+        markets = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
             wrapEspressoIdlingResource {
-                dataRepository.requestData().collect {
-                    when (it) {
-                        is GenericResponse.Success -> it.data?.let { marketsLiveData.value = it }
+                dataRepository.requestData().collect { response ->
+                    when (response) {
+                        is GenericResponse.Success -> response.data?.let {
+                            marketsLiveData.value = it
+                        }
                             ?: run { showToastMessage(0) }
-                        is GenericResponse.DataError -> it.errorCode?.let { error ->
+                        is GenericResponse.DataError -> response.errorCode?.let { error ->
                             showToastMessage(
                                 error
                             )
@@ -34,9 +38,7 @@ class TrendsViewModel @Inject constructor(
                     }
                 }
             }
-
         }
     }
-
 
 }

@@ -19,6 +19,11 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import androidx.recyclerview.widget.OrientationHelper
+
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
 
 @AndroidEntryPoint
 class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment_trends), ItemOnClickListener {
@@ -34,8 +39,8 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
     @FlowPreview
     override fun initLayout() {
         binding.contractsTrendsRecycler.apply {
-            setHasFixedSize(true)
             this.adapter = tabAdapter
+            setHasFixedSize(true)
             showShimmer()
         }
 
