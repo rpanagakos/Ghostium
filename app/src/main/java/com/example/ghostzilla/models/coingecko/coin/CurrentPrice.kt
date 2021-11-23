@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class CurrentPrice(
     @SerializedName("aed")
-    val aed: Int,
+    val aed: Float,
     @SerializedName("eur")
-    val eur: Int,
+    val eur: Float,
     @SerializedName("gbp")
-    val gbp: Int,
+    val gbp: Float,
     @SerializedName("usd")
-    val usd: Int
+    val usd: Float
 )

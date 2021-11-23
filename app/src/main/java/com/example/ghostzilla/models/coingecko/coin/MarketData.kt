@@ -29,7 +29,7 @@ data class MarketData(
     @SerializedName("market_cap_rank")
     val marketCapRank: Int,
     @SerializedName("max_supply")
-    val maxSupply: Long,
+    val maxSupply: Float,
     @SerializedName("mcap_to_tvl_ratio")
     val mcapToTvlRatio: Any,
     @SerializedName("price_change_24h")
@@ -59,7 +59,7 @@ data class MarketData(
     @SerializedName("sparkline_7d")
     val sparkline7d: Sparkline7d,
     @SerializedName("total_supply")
-    val totalSupply: Int,
+    val totalSupply: Float,
     @SerializedName("total_value_locked")
     val totalValueLocked: Any
 )

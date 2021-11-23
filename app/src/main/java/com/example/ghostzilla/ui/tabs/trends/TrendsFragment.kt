@@ -57,6 +57,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         }
 
         binding.searchButton.setOnClickListener {
+            //i dont like it
             if (binding.searchEditText.text?.isEmpty() == true)
                 binding.searchEditText.apply {
                     requestFocus()
@@ -65,10 +66,12 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
             else {
                 binding.searchEditText.clearTextAndFocus(this)
                 binding.searchButton.setImageResource(R.drawable.ic_search)
+                updateListWithData()
             }
         }
 
         binding.searchEditText.apply {
+            //i dont like it
             searchQuery()
                 .debounce(600)
                 .onEach {
@@ -77,7 +80,11 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
                         R.drawable.ic_search,
                         R.drawable.ic_outline_clear
                     )
-                    viewModel.searchCoin(this.text.toString())
+                    if (viewModel.markets.isActive) viewModel.markets.cancel()
+                    if (!this.text.isNullOrEmpty())
+                        viewModel.searchCoin(this.text.toString())
+                    else
+                        updateListWithData()
                 }
                 .launchIn(lifecycleScope)
         }
@@ -94,6 +101,10 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
             Toast.makeText(requireContext(), it as String, Toast.LENGTH_SHORT).show()
         })
 
+        viewModel.coinUI.observe(viewLifecycleOwner, {
+            tabAdapter.submitList(listOf(it) as List<LocalModel>)
+        })
+
     }
 
     override fun stopOperations() {
@@ -103,5 +114,10 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         when (data) {
             is MarketsItem -> Toast.makeText(requireContext(), data.id, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun updateListWithData() {
+        tabAdapter.submitList(viewModel.marketsLiveData.value?.marketsList as List<LocalModel>)
+        viewModel.markets.start()
     }
 }

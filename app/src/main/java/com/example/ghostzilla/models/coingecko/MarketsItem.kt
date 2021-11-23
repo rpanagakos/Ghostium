@@ -5,28 +5,22 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class MarketsItem(
-    @SerializedName("ath_change_percentage")
-    val athChangePercentage: Double,
-    @SerializedName("atl_change_percentage")
-    val atlChangePercentage: Double,
     @SerializedName("current_price")
     val currentPrice: Float,
-    @SerializedName("high_24h")
-    val high24h: Double,
     @SerializedName("id")
     val id: String,
     @SerializedName("image")
     val image: String,
     @SerializedName("low_24h")
-    val low24h: Double,
+    val low24h: Double? = null,
     @SerializedName("market_cap")
-    val marketCap: Long,
+    val marketCap: Long? = null,
     @SerializedName("max_supply")
-    val maxSupply: Double,
+    val maxSupply: Double? = null,
     @SerializedName("name")
     val name: String,
     @SerializedName("price_change_24h")
-    val priceChange24h: Float,
+    val priceChange24h: Float? = null,
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h: Float,
     @SerializedName("symbol")

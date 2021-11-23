@@ -3,6 +3,7 @@ package com.example.ghostzilla.ui.tabs.trends
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.models.coingecko.Markets
+import com.example.ghostzilla.models.coingecko.MarketsItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
@@ -21,8 +22,9 @@ class TrendsViewModel @Inject constructor(
 ) : AbstractViewModel() {
 
     val marketsLiveData = SingleLiveEvent<Markets>()
-    val coinLiveData = SingleLiveEvent<Coin>()
-    private lateinit var markets: Deferred<Unit>
+    private val coinLiveData = SingleLiveEvent<Coin>()
+    val coinUI = SingleLiveEvent<MarketsItem>()
+    lateinit var markets: Deferred<Unit>
 
     fun getMarkets() {
         markets = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
@@ -52,6 +54,14 @@ class TrendsViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             coinLiveData.value = it
+                            coinUI.value = MarketsItem(
+                                currentPrice = it.marketData.currentPrice.eur,
+                                id = it.id,
+                                image = it.image.thumb,
+                                name = it.name,
+                                priceChangePercentage24h = it.marketData.priceChangePercentage24h,
+                                symbol = it.symbol
+                            )
                         }
                             ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->

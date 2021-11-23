@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class PriceChangePercentage1yInCurrency(
     @SerializedName("aed")
-    val aed: Double,
+    val aed: Float,
     @SerializedName("eur")
-    val eur: Double,
+    val eur: Float,
     @SerializedName("gbp")
-    val gbp: Double,
+    val gbp: Float,
     @SerializedName("usd")
-    val usd: Double
+    val usd: Float
 )
