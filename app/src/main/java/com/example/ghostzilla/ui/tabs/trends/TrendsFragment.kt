@@ -72,7 +72,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
                     )
                     if (viewModel.markets.isActive) viewModel.markets.cancel()
                     if (!this.text.isNullOrEmpty())
-                        viewModel.searchCoin(this.text.toString())
+                        viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
                     else
                         updateListWithData()
                 }
