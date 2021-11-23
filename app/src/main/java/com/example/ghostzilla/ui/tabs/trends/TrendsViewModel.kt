@@ -27,6 +27,7 @@ class TrendsViewModel @Inject constructor(
     lateinit var markets: Deferred<Unit>
 
     fun getMarkets() {
+
         markets = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
             wrapEspressoIdlingResource {
                 dataRepository.requestData().collect { response ->
@@ -47,7 +48,7 @@ class TrendsViewModel @Inject constructor(
     }
 
     fun searchCoin(coinID: String) {
-        markets.cancel()
+        if (markets.isActive) markets.cancel()
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.searchCoin(coinID).collect { response ->

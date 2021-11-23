@@ -71,7 +71,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
                         R.drawable.ic_search,
                         R.drawable.ic_outline_clear
                     )
-                    if (viewModel.markets.isActive) viewModel.markets.cancel()
                     if (!this.text.isNullOrEmpty())
                         viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
                     else
@@ -109,6 +108,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
 
     private fun updateListWithData() {
         tabAdapter.submitList(viewModel.marketsLiveData.value?.marketsList as List<LocalModel>)
-        viewModel.markets.start()
+        viewModel.getMarkets()
     }
 }
