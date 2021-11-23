@@ -9,7 +9,7 @@ data class MarketData(
     @SerializedName("ath_change_percentage")
     val athChangePercentage: AthChangePercentage,
     @SerializedName("circulating_supply")
-    val circulatingSupply: Long,
+    val circulatingSupply: Float,
     @SerializedName("current_price")
     val currentPrice: CurrentPrice,
     @SerializedName("fdv_to_tvl_ratio")

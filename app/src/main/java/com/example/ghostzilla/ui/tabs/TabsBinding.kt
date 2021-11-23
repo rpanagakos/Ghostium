@@ -2,11 +2,9 @@ package com.example.ghostzilla.ui.tabs
 
 import android.annotation.SuppressLint
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.RelativeSizeSpan
 import android.widget.TextView
-import androidx.core.text.set
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.ghostzilla.R
@@ -32,29 +30,31 @@ object TabsBinding {
     fun TextView.convertPrice(cryptoPrice: Float) {
         var dec = DecimalFormat("#,###.####")
         var roundedPrice = dec.format(cryptoPrice)
-        if (roundedPrice.equals("0"))
-        {
+        if (roundedPrice.equals("0")) {
             dec = DecimalFormat("#,###.######")
             roundedPrice = dec.format(cryptoPrice)
         }
         val spannableInt = SpannableString(roundedPrice + " €")
-        if (roundedPrice.contains(".")){
-            val index = roundedPrice.indexOf(".")
-            spannableInt.setSpan(
-                RelativeSizeSpan(1.1f),
-                0,
-                index,
-                Spanned.SPAN_EXCLUSIVE_INCLUSIVE
-            )
-        }else {
-            spannableInt.setSpan(
-                RelativeSizeSpan(1.1f),
-                0,
-                roundedPrice.length,
-                Spanned.SPAN_EXCLUSIVE_INCLUSIVE
-            )
-        }
 
+        when{
+            roundedPrice.contains(".") -> {
+                val index = roundedPrice.indexOf(".")
+                spannableInt.setSpan(
+                    RelativeSizeSpan(1.1f),
+                    0,
+                    index,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+            }
+            !roundedPrice.isNullOrEmpty() -> {
+                spannableInt.setSpan(
+                    RelativeSizeSpan(1.1f),
+                    0,
+                    roundedPrice.length,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+            }
+        }
         text = spannableInt
     }
 }

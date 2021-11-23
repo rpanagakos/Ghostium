@@ -3,8 +3,6 @@ package com.example.ghostzilla.ui.tabs.trends
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.ItemOnClickListener
@@ -35,7 +33,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         binding.contractsTrendsRecycler.apply {
             this.adapter = tabAdapter
             setHasFixedSize(true)
-            addOnScrollListener(object : BackToTopScrollListener(binding){})
+            addOnScrollListener(object : BackToTopScrollListener(binding) {})
         }
 
         binding.backToTopImg.setOnClickListener {
@@ -48,15 +46,18 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
 
         binding.searchButton.setOnClickListener {
             //i dont like it
-            if (binding.searchEditText.text?.isEmpty() == true)
-                binding.searchEditText.apply {
-                    requestFocus()
-                    showKeyboard()
+            when (binding.searchEditText.text?.isEmpty()) {
+                true -> {
+                    binding.searchEditText.apply {
+                        requestFocus()
+                        showKeyboard()
+                    }
                 }
-            else {
-                binding.searchEditText.clearTextAndFocus(this)
-                binding.searchButton.setImageResource(R.drawable.ic_search)
-                updateListWithData()
+                else -> {
+                    binding.searchEditText.clearTextAndFocus(this)
+                    binding.searchButton.setImageResource(R.drawable.ic_search)
+                    updateListWithData()
+                }
             }
         }
 

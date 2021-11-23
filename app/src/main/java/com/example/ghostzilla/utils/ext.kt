@@ -50,6 +50,10 @@ fun ImageView.changeImageOnEdittext(editText: EditText, emptyImage : Int, nonEmp
         this.setImageResource(nonEmpty)
 }
 
+fun String.removeWhiteSpaces() : String{
+    return this.replace("\\s".toRegex(), "")
+}
+
 @ExperimentalCoroutinesApi
 fun EditText.searchQuery() = callbackFlow<Unit> {
     doAfterTextChanged { offer(Unit) }
