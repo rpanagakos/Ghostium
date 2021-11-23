@@ -83,21 +83,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/contractsTrendsRecycler" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/contractsTrendsRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingBottom="24dp"
-                android:scrollbars="none"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="8"
-                tools:listitem="@layout/holder_trends_item"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchConstraint"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contractsTrendsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingBottom="24dp"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchConstraint"
+            tools:itemCount="8"
+            tools:listitem="@layout/holder_trends_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

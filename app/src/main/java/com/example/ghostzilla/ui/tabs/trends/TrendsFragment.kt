@@ -3,6 +3,8 @@ package com.example.ghostzilla.ui.tabs.trends
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.ItemOnClickListener
@@ -36,6 +38,14 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         binding.contractsTrendsRecycler.apply {
             this.adapter = tabAdapter
             setHasFixedSize(true)
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    val position =
+                        (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition() + 1
+                    binding.backToTop = position >= 12
+                }
+            })
         }
 
         binding.backToTopImg.setOnClickListener {
@@ -67,6 +77,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
                         R.drawable.ic_search,
                         R.drawable.ic_outline_clear
                     )
+                    viewModel.searchCoin(this.text.toString())
                 }
                 .launchIn(lifecycleScope)
         }

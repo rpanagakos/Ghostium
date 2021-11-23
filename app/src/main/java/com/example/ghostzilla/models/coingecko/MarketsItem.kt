@@ -26,9 +26,9 @@ data class MarketsItem(
     @SerializedName("name")
     val name: String,
     @SerializedName("price_change_24h")
-    val priceChange24h: Double,
+    val priceChange24h: Float,
     @SerializedName("price_change_percentage_24h")
-    val priceChangePercentage24h: Double,
+    val priceChangePercentage24h: Float,
     @SerializedName("symbol")
     val symbol: String
 ) : LocalModel {
