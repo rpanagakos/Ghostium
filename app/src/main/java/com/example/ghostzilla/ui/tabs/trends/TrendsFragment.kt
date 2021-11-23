@@ -12,10 +12,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
 import com.example.ghostzilla.ui.tabs.TabsAdapter
-import com.example.ghostzilla.utils.changeImageOnEdittext
-import com.example.ghostzilla.utils.clearTextAndFocus
-import com.example.ghostzilla.utils.searchQuery
-import com.example.ghostzilla.utils.showKeyboard
+import com.example.ghostzilla.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -38,14 +35,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         binding.contractsTrendsRecycler.apply {
             this.adapter = tabAdapter
             setHasFixedSize(true)
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    val position =
-                        (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition() + 1
-                    binding.backToTop = position >= 12
-                }
-            })
+            addOnScrollListener(object : BackToTopScrollListener(binding){})
         }
 
         binding.backToTopImg.setOnClickListener {
