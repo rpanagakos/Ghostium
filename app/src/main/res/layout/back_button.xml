@@ -4,10 +4,10 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="@dimen/large_container"
-        android:layout_height="@dimen/large_container"
+        android:layout_width="@dimen/medium_container"
+        android:layout_height="@dimen/medium_container"
         android:background="@drawable/back_button_background"
         android:elevation="4dp"
-        android:padding="@dimen/ml_spacing"
+        android:padding="@dimen/medium_spacing"
         android:src="@drawable/ic_left_arrow" />
 </FrameLayout>

@@ -57,11 +57,11 @@
 
             <ImageView
                 android:id="@+id/searchButton"
-                android:layout_width="@dimen/large_container"
-                android:layout_height="@dimen/large_container"
+                android:layout_width="@dimen/medium_container"
+                android:layout_height="@dimen/medium_container"
                 android:layout_marginEnd="@dimen/xlarge_spacing"
                 android:contentDescription="@string/searchbutton"
-                android:padding="@dimen/ml_spacing"
+                android:padding="@dimen/small_spacing"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="@id/bottomLine"
                 app:layout_constraintEnd_toEndOf="parent"
