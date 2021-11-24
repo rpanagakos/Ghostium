@@ -5,10 +5,6 @@
 
     <data>
 
-        <variable
-            name="backToTop"
-            type="java.lang.Boolean" />
-
         <import type="android.view.View" />
 
     </data>
@@ -78,7 +74,7 @@
             android:padding="6dp"
             android:src="@drawable/ic_back_to_top"
             android:tint="@color/Black"
-            android:visibility="@{backToTop ? View.VISIBLE : View.GONE}"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/contractsTrendsRecycler" />

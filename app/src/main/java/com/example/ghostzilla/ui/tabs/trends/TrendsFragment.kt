@@ -33,7 +33,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         binding.contractsTrendsRecycler.apply {
             this.adapter = tabAdapter
             setHasFixedSize(true)
-            addOnScrollListener(object : BackToTopScrollListener(binding) {})
+            addOnScrollListener(object : BackToTopScrollListener(binding.backToTopImg, requireContext()) {})
         }
 
         binding.backToTopImg.setOnClickListener {

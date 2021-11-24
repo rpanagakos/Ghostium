@@ -24,7 +24,7 @@ class TrendsViewModel @Inject constructor(
     val marketsLiveData = SingleLiveEvent<Markets>()
     private val coinLiveData = SingleLiveEvent<Coin>()
     val coinUI = SingleLiveEvent<MarketsItem>()
-    lateinit var markets: Deferred<Unit>
+    private lateinit var markets: Deferred<Unit>
 
     fun getMarkets() {
 
