@@ -23,16 +23,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/search_background"
-            android:paddingBottom="16dp"
+            android:paddingBottom="@dimen/large_spacing"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/xlarge_spacing"
+                android:layout_marginTop="@dimen/large_spacing"
+                android:layout_marginEnd="@dimen/medium_spacing"
                 android:background="@color/transparent"
                 android:gravity="start|top"
                 android:hint="@string/enter_your_crypto"
@@ -49,7 +49,7 @@
                 android:id="@+id/bottomLine"
                 android:layout_width="0dp"
                 android:layout_height="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/medium_spacing"
                 android:background="@drawable/underline_text_input"
                 app:layout_constraintEnd_toEndOf="@id/searchEditText"
                 app:layout_constraintStart_toStartOf="@id/searchEditText"
@@ -57,10 +57,11 @@
 
             <ImageView
                 android:id="@+id/searchButton"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="@dimen/large_container"
+                android:layout_height="@dimen/large_container"
+                android:layout_marginEnd="@dimen/xlarge_spacing"
                 android:contentDescription="@string/searchbutton"
+                android:padding="@dimen/ml_spacing"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="@id/bottomLine"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,9 +71,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/backToTopImg"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginTop="@dimen/xxlarge_spacing"
             android:background="@drawable/contract_image_trends"
             android:elevation="24dp"
             android:padding="6dp"
@@ -89,7 +90,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingBottom="24dp"
+            android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             android:visibility="@{displayError ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -106,26 +107,26 @@
             android:layout_height="200dp"
             android:layout_marginTop="64dp"
             android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
-            app:lottie_autoPlay="true"
-            app:lottie_repeatCount="2"
-            app:lottie_fileName="nothing_found.json"
-            app:layout_constraintTop_toBottomOf="@id/searchConstraint"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/searchConstraint"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="nothing_found.json"
+            app:lottie_repeatCount="2" />
 
         <TextView
             android:id="@+id/errorText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/xxlarge_spacing"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/xxlarge_spacing"
             android:gravity="center"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toStartOf="parent"
             android:textAppearance="@style/large_text"
+            android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lottieImage"
-            android:layout_marginTop="16dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottieImage" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

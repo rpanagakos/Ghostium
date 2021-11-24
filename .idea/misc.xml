@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/back_button_background.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/card_trends_item.xml" value="0.5707692307692308" />
         <entry key="app/src/main/res/drawable/contract_image_trends.xml" value="0.5707692307692308" />
@@ -10,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_back_to_top.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/ic_home_filled.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_home_outline.xml" value="0.5703703703703704" />
+        <entry key="app/src/main/res/drawable/ic_left_arrow.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_profile_filled.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_profile_outline.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.33958333333333335" />
@@ -26,13 +28,14 @@
         <entry key="app/src/main/res/drawable/underline_text_input.xml" value="0.44635416666666666" />
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3816650411348873" />
+        <entry key="app/src/main/res/layout/back_button.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
-        <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.4797202797202797" />
         <entry key="app/src/main/res/layout/placeholder_trends_item.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/text_input_layout.xml" value="0.43020833333333336" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.5635416666666667" />

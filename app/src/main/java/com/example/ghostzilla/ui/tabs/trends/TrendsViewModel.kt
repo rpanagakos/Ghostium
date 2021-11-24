@@ -11,6 +11,7 @@ import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
@@ -46,7 +47,8 @@ class TrendsViewModel @Inject constructor(
     }
 
     fun searchCoin(coinID: String) {
-        if (marketsDeferred.isActive) marketsDeferred.cancel()
+        if (marketsDeferred.isActive)
+            marketsDeferred.cancel()
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.searchCoin(coinID).collect { response ->
