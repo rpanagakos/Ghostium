@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing values -->
+    <dimen name="small_spacing">4dp</dimen>
+    <dimen name="medium_spacing">8dp</dimen>
+    <dimen name="ml_spacing">12dp</dimen>
+    <dimen name="large_spacing">16dp</dimen>
+    <dimen name="xlarge_spacing">24dp</dimen>
+    <dimen name="xxlarge_spacing">32dp</dimen>
+
+    <!-- Width and height values -->
+    <dimen name="small_container">24dp</dimen>
+    <dimen name="medium_container">32dp</dimen>
+    <dimen name="large_container">48dp</dimen>
+</resources>

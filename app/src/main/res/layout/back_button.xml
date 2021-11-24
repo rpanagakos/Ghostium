@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="@dimen/large_container"
+        android:layout_height="@dimen/large_container"
+        android:background="@drawable/back_button_background"
+        android:elevation="4dp"
+        android:padding="@dimen/ml_spacing"
+        android:src="@drawable/ic_left_arrow" />
+</FrameLayout>
