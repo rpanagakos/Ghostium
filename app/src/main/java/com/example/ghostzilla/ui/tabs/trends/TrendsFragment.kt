@@ -9,6 +9,7 @@ import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
+import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.utils.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -84,6 +85,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
 
     override fun observeViewModel() {
         viewModel.marketsLiveData.observe(viewLifecycleOwner, {
+            binding.displayError = false
             tabAdapter.submitList(it.marketsList as List<LocalModel>)
         })
 
@@ -92,7 +94,21 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         })
 
         viewModel.coinUI.observe(viewLifecycleOwner, {
+            binding.displayError = false
             tabAdapter.submitList(listOf(it) as List<LocalModel>)
+        })
+
+        viewModel.resultNotFound.observe(viewLifecycleOwner, {
+            //i dont like that
+            if (it == NOT_FOUND){
+                binding.lottieImage.setAnimation("nothing_found.json")
+                binding.errorText.text = getString(R.string.nothing_found)
+            }else{
+                binding.lottieImage.setAnimation("internet_connection.json")
+                binding.errorText.text = getString(R.string.no_internet_connection)
+            }
+            binding.displayError = true
+            binding.lottieImage.playAnimation()
         })
 
     }
@@ -107,7 +123,9 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
     }
 
     private fun updateListWithData() {
-        tabAdapter.submitList(viewModel.marketsLiveData.value?.marketsList as List<LocalModel>)
+        viewModel.marketsLiveData.value?.let {
+            tabAdapter.submitList(viewModel.marketsLiveData.value!!.marketsList as List<LocalModel>)
+        }
         viewModel.getMarkets()
     }
 }

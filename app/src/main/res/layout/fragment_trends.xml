@@ -7,6 +7,10 @@
 
         <import type="android.view.View" />
 
+        <variable
+            name="displayError"
+            type="java.lang.Boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,6 +91,7 @@
             android:overScrollMode="never"
             android:paddingBottom="24dp"
             android:scrollbars="none"
+            android:visibility="@{displayError ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +99,34 @@
             app:layout_constraintTop_toBottomOf="@+id/searchConstraint"
             tools:itemCount="8"
             tools:listitem="@layout/holder_trends_item" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="64dp"
+            android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
+            app:lottie_autoPlay="true"
+            app:lottie_repeatCount="2"
+            app:lottie_fileName="nothing_found.json"
+            app:layout_constraintTop_toBottomOf="@id/searchConstraint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="@style/large_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottieImage"
+            android:layout_marginTop="16dp"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

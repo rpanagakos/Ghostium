@@ -22,24 +22,22 @@ class TrendsViewModel @Inject constructor(
 ) : AbstractViewModel() {
 
     val marketsLiveData = SingleLiveEvent<Markets>()
-    private val coinLiveData = SingleLiveEvent<Coin>()
     val coinUI = SingleLiveEvent<MarketsItem>()
-    private lateinit var markets: Deferred<Unit>
+
+    private lateinit var marketsDeferred: Deferred<Unit>
+    private val coinLiveData = SingleLiveEvent<Coin>()
 
     fun getMarkets() {
 
-        markets = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
+        marketsDeferred = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
             wrapEspressoIdlingResource {
                 dataRepository.requestData().collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             marketsLiveData.value = it
-                        }
-                            ?: run { showToastMessage(0) }
+                        } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
-                            showToastMessage(
-                                error
-                            )
+                            checkErrorCode(error)
                         }
                     }
                 }
@@ -48,7 +46,7 @@ class TrendsViewModel @Inject constructor(
     }
 
     fun searchCoin(coinID: String) {
-        if (markets.isActive) markets.cancel()
+        if (marketsDeferred.isActive) marketsDeferred.cancel()
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.searchCoin(coinID).collect { response ->
@@ -63,12 +61,9 @@ class TrendsViewModel @Inject constructor(
                                 priceChangePercentage24h = it.marketData.priceChangePercentage24h,
                                 symbol = it.symbol
                             )
-                        }
-                            ?: run { showToastMessage(0) }
+                        } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
-                            showToastMessage(
-                                error
-                            )
+                            checkErrorCode(error)
                         }
                     }
                 }
@@ -79,7 +74,7 @@ class TrendsViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        markets.cancel()
+        marketsDeferred.cancel()
     }
 
 }
