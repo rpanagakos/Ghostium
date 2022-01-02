@@ -46,7 +46,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="@drawable/market_ripple"
-            android:onClick="@{()-> clickHandler.onClick(market)}"
+            android:onClick="@{()-> clickHandler.onClick(market, contractName, contractTickerSumbol, contractImg)}"
             android:paddingStart="@dimen/large_spacing"
             android:paddingEnd="@dimen/large_spacing"
             android:paddingBottom="@dimen/ml_spacing"

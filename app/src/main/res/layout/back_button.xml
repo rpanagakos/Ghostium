@@ -3,11 +3,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/medium_container"
         android:layout_height="@dimen/medium_container"
         android:background="@drawable/back_button_background"
+        android:contentDescription="@string/back_button"
         android:elevation="4dp"
+        android:foreground="@drawable/back_button_ripple"
         android:padding="@dimen/medium_spacing"
         android:src="@drawable/ic_left_arrow" />
 </FrameLayout>

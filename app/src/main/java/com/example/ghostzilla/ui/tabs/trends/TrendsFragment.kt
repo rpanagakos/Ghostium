@@ -1,7 +1,10 @@
 package com.example.ghostzilla.ui.tabs.trends
 
 import android.content.Intent
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ghostzilla.R
@@ -15,6 +18,7 @@ import com.example.ghostzilla.ui.DetailsActivity
 import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.utils.*
 import dagger.hilt.android.AndroidEntryPoint
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -121,16 +125,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         viewModel.marketsDeferred.cancel()
     }
 
-    override fun onClick(data: LocalModel) {
-        when (data) {
-            is MarketsItem -> {
-                startActivity(Intent(context, DetailsActivity::class.java).apply {
-                    putExtra("coinID", data.id)
-                })
-            }
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         if (viewModel.marketsDeferred.isCancelled)
@@ -142,5 +136,34 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
             tabAdapter.submitList(viewModel.marketsLiveData.value!!.marketsList as List<LocalModel>)
         }
         viewModel.getMarkets()
+    }
+
+    override fun onClick(
+        data: LocalModel,
+        contractName: TextView,
+        contractTickerSumbol: TextView,
+        circleImageView: CircleImageView
+    ) {
+        when (data) {
+            is MarketsItem -> {
+                val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
+                    putExtra("coin", data)
+                }
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    requireActivity(),
+                    Pair.create(contractName, resources.getString(R.string.transition_coin_name)),
+                    Pair.create(
+                        contractTickerSumbol,
+                        resources.getString(R.string.transition_coin_symbol)
+                    ),
+                    Pair.create(
+                        circleImageView,
+                        resources.getString(R.string.transition_coin_image)
+                    )
+                )
+                startActivity(intent, options.toBundle())
+                requireActivity().window.exitTransition = null
+            }
+        }
     }
 }

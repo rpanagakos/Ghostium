@@ -5,6 +5,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
+import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.tabs.home.HomeFragment
 import com.example.ghostzilla.ui.tabs.profile.ProfileFragment
 import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
@@ -13,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
-class MainActivity : AbstractActivity(R.layout.activity_main) {
+class MainActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
 

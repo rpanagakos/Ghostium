@@ -1,9 +1,12 @@
 package com.example.ghostzilla.models.coingecko
 
 
+import android.os.Parcelable
 import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class MarketsItem(
     @SerializedName("current_price")
     val currentPrice: Float,
@@ -25,7 +28,7 @@ data class MarketsItem(
     val priceChangePercentage24h: Float,
     @SerializedName("symbol")
     val symbol: String
-) : LocalModel {
+) : LocalModel, Parcelable {
     override fun equalsContent(obj: LocalModel): Boolean = when (obj) {
         is MarketsItem -> name == obj.name && currentPrice == obj.currentPrice && symbol == obj.symbol
         else -> false

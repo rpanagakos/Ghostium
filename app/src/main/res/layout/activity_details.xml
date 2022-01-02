@@ -1,19 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.DetailsActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include
-        android:id="@+id/backButton"
-        layout="@layout/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <import type="android.view.View" />
+
+        <variable
+            name="market"
+            type="com.example.ghostzilla.models.coingecko.MarketsItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.DetailsActivity">
+
+        <include
+            android:id="@+id/backButton"
+            layout="@layout/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/coinImageDetails"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:elevation="2dp"
+            android:scaleType="centerCrop"
+            android:transitionName="@string/transition_coin_image"
+            app:civ_circle_background_color="@color/CoolGray"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="@id/backButton"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/coinNameDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/small_text_bold"
+            android:transitionName="@string/transition_coin_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/coinImageDetails"
+            app:layout_constraintTop_toTopOf="@id/coinImageDetails"
+            tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/coinTickerSumbolDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textAllCaps="true"
+            android:textAppearance="@style/tiny_regular"
+            android:textColor="@color/Blue"
+            android:transitionName="@string/transition_coin_symbol"
+            app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
+            app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
+            app:layout_constraintStart_toStartOf="@id/coinNameDetail"
+            app:layout_constraintTop_toBottomOf="@id/coinNameDetail"
+            tools:text="BTC" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

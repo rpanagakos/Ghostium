@@ -2,8 +2,12 @@ package com.example.ghostzilla.abstraction
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ViewDataBinding
 
-abstract class AbstractActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) {
+abstract class AbstractActivity<T : ViewDataBinding>(contentLayoutId: Int) :
+    AppCompatActivity(contentLayoutId) {
+
+    lateinit var binding: T
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
