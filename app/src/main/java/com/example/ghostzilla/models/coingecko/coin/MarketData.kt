@@ -23,9 +23,9 @@ data class MarketData(
     @SerializedName("market_cap")
     val marketCap: MarketCap,
     @SerializedName("market_cap_change_24h")
-    val marketCapChange24h: Long,
+    val marketCapChange24h: Any,
     @SerializedName("market_cap_change_percentage_24h")
-    val marketCapChangePercentage24h: Double,
+    val marketCapChangePercentage24h: Any,
     @SerializedName("market_cap_rank")
     val marketCapRank: Int,
     @SerializedName("max_supply")

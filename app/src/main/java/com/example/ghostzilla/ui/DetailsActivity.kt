@@ -6,6 +6,7 @@ import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
 import com.example.ghostzilla.ui.tabs.TabsBinding.loadImageFromUrl
+import com.example.ghostzilla.ui.tabs.TabsBinding.removeHtmlText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
 
@@ -26,7 +27,8 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
     override fun runOperation() {
         coinImageDetails.loadImageFromUrl(marketItem?.image)
         coinNameDetail.text = marketItem?.name
-        coinTickerSumbolDetail.text = marketItem?.symbol
+        coinTickerSymbolDetail.text = marketItem?.symbol
+        descriptionText.removeHtmlText("")
         backButton.setOnClickListener {
             onBackPressed()
         }

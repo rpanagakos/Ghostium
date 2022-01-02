@@ -12,7 +12,7 @@ interface CoinGeckoApi {
     @GET("/api/v3/coins/markets/")
     suspend fun getPriceVolatility(
         @Query("vs_currency") currency: String = "eur",
-        @Query("per_page") cryptos: Int = 30
+        @Query("per_page") cryptos: Int = 40
     ): Response<List<MarketsItem>>
 
     @GET("/api/v3/coins/{id}")

@@ -23,8 +23,8 @@
             layout="@layout/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,8 +45,8 @@
             android:id="@+id/coinNameDetail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
-            android:layout_marginEnd="@dimen/medium_spacing"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
             android:includeFontPadding="false"
             android:textAppearance="@style/small_text_bold"
             android:transitionName="@string/transition_coin_name"
@@ -56,19 +56,79 @@
             tools:text="Bitcoin" />
 
         <TextView
-            android:id="@+id/coinTickerSumbolDetail"
+            android:id="@+id/coinTickerSymbolDetail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:textAllCaps="true"
             android:textAppearance="@style/tiny_regular"
-            android:textColor="@color/Blue"
+            android:textColor="@color/Gray3"
             android:transitionName="@string/transition_coin_symbol"
             app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
             app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
             app:layout_constraintStart_toStartOf="@id/coinNameDetail"
             app:layout_constraintTop_toBottomOf="@id/coinNameDetail"
             tools:text="BTC" />
+
+        <View
+            android:id="@+id/seperator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:background="@color/CoolGray"
+            android:elevation="1dp"
+            app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
+            app:layout_constraintStart_toStartOf="@id/backButton"
+            app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seperator">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/xlarge_spacing"
+                android:paddingBottom="@dimen/xlarge_spacing">
+
+                <include
+                    android:id="@+id/tripleValue"
+                    layout="@layout/triple_labels_and_values" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/statsBoard"
+                    android:layout_width="match_parent"
+                    android:layout_height="364dp"
+                    android:layout_marginTop="@dimen/large_spacing"
+                    app:cardBackgroundColor="@color/Black"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/tripleValue" />
+
+                <TextView
+                    android:id="@+id/titleDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_spacing"
+                    android:text="Description"
+                    android:textAppearance="@style/caption_bold"
+                    app:layout_constraintTop_toBottomOf="@id/statsBoard" />
+
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_spacing"
+                    android:textAppearance="@style/medium_gray"
+                    app:layout_constraintTop_toBottomOf="@id/titleDescription" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
