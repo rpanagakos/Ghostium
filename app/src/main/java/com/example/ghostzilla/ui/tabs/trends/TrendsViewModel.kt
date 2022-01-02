@@ -11,6 +11,7 @@ import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
@@ -24,7 +25,7 @@ class TrendsViewModel @Inject constructor(
     val marketsLiveData = SingleLiveEvent<Markets>()
     val coinUI = SingleLiveEvent<MarketsItem>()
 
-    lateinit var marketsDeferred: Deferred<Unit>
+    lateinit var marketsDeferred: Job
     private val coinLiveData = SingleLiveEvent<Coin>()
 
     fun getMarkets() {
