@@ -18,57 +18,48 @@
         android:layout_height="match_parent"
         android:focusableInTouchMode="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/searchConstraint"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/search_background"
-            android:paddingBottom="@dimen/large_spacing"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="@dimen/xlarge_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            android:background="@color/transparent"
+            android:gravity="start|top"
+            android:hint="@string/enter_your_crypto"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textAppearance="@style/caption_bold"
+            app:layout_constraintBottom_toTopOf="@id/bottomLine"
+            app:layout_constraintEnd_toStartOf="@id/searchButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/enter_your_crypto" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/searchEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/xlarge_spacing"
-                android:layout_marginTop="@dimen/large_spacing"
-                android:layout_marginEnd="@dimen/medium_spacing"
-                android:background="@color/transparent"
-                android:gravity="start|top"
-                android:hint="@string/enter_your_crypto"
-                android:includeFontPadding="false"
-                android:singleLine="true"
-                android:textAppearance="@style/caption_bold"
-                app:layout_constraintBottom_toTopOf="@id/bottomLine"
-                app:layout_constraintEnd_toStartOf="@id/searchButton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/enter_your_crypto" />
+        <View
+            android:id="@+id/bottomLine"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/medium_spacing"
+            android:background="@drawable/underline_text_input"
+            app:layout_constraintEnd_toEndOf="@id/searchEditText"
+            app:layout_constraintStart_toStartOf="@id/searchEditText"
+            app:layout_constraintTop_toBottomOf="@id/searchEditText" />
 
-            <View
-                android:id="@+id/bottomLine"
-                android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_marginTop="@dimen/medium_spacing"
-                android:background="@drawable/underline_text_input"
-                app:layout_constraintEnd_toEndOf="@id/searchEditText"
-                app:layout_constraintStart_toStartOf="@id/searchEditText"
-                app:layout_constraintTop_toBottomOf="@id/searchEditText" />
-
-            <ImageView
-                android:id="@+id/searchButton"
-                android:layout_width="@dimen/medium_container"
-                android:layout_height="@dimen/medium_container"
-                android:layout_marginEnd="@dimen/xlarge_spacing"
-                android:contentDescription="@string/searchbutton"
-                android:onClick="@{() -> viewModel.searchButton(searchButton, searchEditText)}"
-                android:padding="@dimen/small_spacing"
-                android:src="@drawable/ic_search"
-                app:layout_constraintBottom_toBottomOf="@id/bottomLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/searchEditText"
-                app:tint="@color/Black" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/searchButton"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginEnd="@dimen/xlarge_spacing"
+            android:contentDescription="@string/searchbutton"
+            android:onClick="@{() -> viewModel.searchButton(searchButton, searchEditText)}"
+            android:padding="@dimen/small_spacing"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@id/bottomLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchEditText"
+            app:tint="@color/Black" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/backToTopImg"
@@ -77,7 +68,7 @@
             android:layout_marginTop="@dimen/xxlarge_spacing"
             android:background="@drawable/contract_image_trends"
             android:contentDescription="@string/back_to_top"
-            android:elevation="24dp"
+            android:elevation="@dimen/xlarge_spacing"
             android:onClick="@{()-> viewModel.scrollToTopRecycler(contractsTrendsRecycler)}"
             android:padding="6dp"
             android:src="@drawable/ic_back_to_top"
@@ -85,12 +76,14 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/contractsTrendsRecycler" />
+            app:layout_constraintTop_toTopOf="@id/contractsTrendsRecycler"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contractsTrendsRecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/large_spacing"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
@@ -100,21 +93,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchConstraint"
+            app:layout_constraintTop_toBottomOf="@+id/bottomLine"
             tools:itemCount="8"
             tools:listitem="@layout/holder_trends_item" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieImage"
+            lottieStatus="@{viewModel.resultNotFound}"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="64dp"
             android:contentDescription="@string/something_went_wrong"
             android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
-            lottieStatus="@{viewModel.resultNotFound}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchConstraint"
+            app:layout_constraintTop_toBottomOf="@id/bottomLine"
             app:lottie_autoPlay="true"
             app:lottie_fileName="nothing_found.json"
             app:lottie_repeatCount="2"
@@ -122,11 +115,11 @@
 
         <TextView
             android:id="@+id/errorText"
+            errorMessageStatus="@{viewModel.resultNotFound}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            errorMessageStatus="@{viewModel.resultNotFound}"
             android:layout_marginStart="@dimen/xxlarge_spacing"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/large_spacing"
             android:layout_marginEnd="@dimen/xxlarge_spacing"
             android:gravity="center"
             android:textAppearance="@style/large_text"
