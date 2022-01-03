@@ -12,14 +12,12 @@ import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.models.coingecko.Markets
 import com.example.ghostzilla.models.coingecko.MarketsItem
+import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.ui.tabs.listeners.ActionTrendsListener
-import com.example.ghostzilla.utils.SingleLiveEvent
-import com.example.ghostzilla.utils.clearTextAndFocus
-import com.example.ghostzilla.utils.showKeyboard
-import com.example.ghostzilla.utils.wrapEspressoIdlingResource
+import com.example.ghostzilla.utils.*
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.hdodenhof.circleimageview.CircleImageView
@@ -35,6 +33,9 @@ class TrendsViewModel @Inject constructor(
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
+    @Inject
+    lateinit var networkConnectivity: NetworkConnectivity
+
     private var callbacks: ActionTrendsListener? = null
     val trendsAdapter: TabsAdapter = TabsAdapter(this)
 
@@ -42,29 +43,33 @@ class TrendsViewModel @Inject constructor(
     val coinUI = SingleLiveEvent<MarketsItem>()
     val displayMessage = MutableLiveData<Boolean>(false)
 
-    lateinit var marketsDeferred: Job
+    var marketsJob: Job? = null
 
     fun runOperation(listener: ActionTrendsListener) {
         this.callbacks = listener
-        getMarkets()
-    }
-
-    fun finishOperations() {
-        this.callbacks = null
+        if (networkConnectivity.isConnected())
+            getMarkets()
+        else {
+            checkErrorCode(NO_INTERNET_CONNECTION)
+            displayMessage.value = true
+        }
     }
 
     fun getMarkets() {
-        marketsDeferred = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
-            wrapEspressoIdlingResource {
-                dataRepository.requestData().collect { response ->
-                    when (response) {
-                        is GenericResponse.Success -> response.data?.let {
-                            displayMessage.value = false
-                            marketsLiveData.value = it
-                            trendsAdapter.submitList(it.marketsList as List<LocalModel>)
-                        } ?: run { showToastMessage(0) }
-                        is GenericResponse.DataError -> response.errorCode?.let { error ->
-                            checkErrorCode(error)
+        if (marketsJob?.isActive == false || marketsJob == null) {
+            marketsJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
+                wrapEspressoIdlingResource {
+                    dataRepository.requestData().collect { response ->
+                        when (response) {
+                            is GenericResponse.Success -> response.data?.let {
+                                displayMessage.value = false
+                                marketsLiveData.value = it
+                                trendsAdapter.submitList(it.marketsList as List<LocalModel>)
+                            } ?: run { showToastMessage(0) }
+                            is GenericResponse.DataError -> response.errorCode?.let { error ->
+                                checkErrorCode(error)
+                                displayMessage.value = true
+                            }
                         }
                     }
                 }
@@ -73,8 +78,8 @@ class TrendsViewModel @Inject constructor(
     }
 
     fun searchCoin(coinID: String) {
-        if (marketsDeferred.isActive)
-            marketsDeferred.cancel()
+        if (marketsJob?.isActive == true)
+            marketsJob?.cancel()
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.searchCoin(coinID).collect { response ->
@@ -128,7 +133,7 @@ class TrendsViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        marketsDeferred.cancel()
+        marketsJob?.cancel()
     }
 
     override fun onClick(

@@ -1,5 +1,6 @@
 package com.example.ghostzilla.abstraction
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,7 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, contentLayoutId)
         binding.lifecycleOwner = this
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

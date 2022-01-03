@@ -12,10 +12,13 @@ import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
-import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
+import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.ui.DetailsActivity
 import com.example.ghostzilla.ui.tabs.listeners.ActionTrendsListener
-import com.example.ghostzilla.utils.*
+import com.example.ghostzilla.utils.BackToTopScrollListener
+import com.example.ghostzilla.utils.changeImageOnEdittext
+import com.example.ghostzilla.utils.removeWhiteSpaces
+import com.example.ghostzilla.utils.searchQuery
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,7 +28,8 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(R.layout.fragment_trends) {
+class TrendsFragment :
+    AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(R.layout.fragment_trends) {
 
     override val viewModel: TrendsViewModel by activityViewModels()
 
@@ -90,6 +94,20 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(
             }
 
         })
+
+        viewModel.networkConnectivity.registerNetworkCallback({
+            if (binding.searchEditText.text.isNullOrEmpty() && (viewModel.marketsJob?.isCancelled == true || viewModel.marketsJob == null))
+                viewModel.getMarkets()
+            else if (!binding.searchEditText.text.isNullOrEmpty())
+                viewModel.searchCoin(
+                    binding.searchEditText.text.toString().lowercase().removeWhiteSpaces()
+                )
+        }, {
+            if (viewModel.marketsJob?.isActive == true)
+                viewModel.marketsJob?.cancel()
+            viewModel.showToastMessage(NO_INTERNET_CONNECTION)
+
+        })
     }
 
     override fun observeViewModel() {
@@ -99,13 +117,12 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(
     }
 
     override fun stopOperations() {
-        viewModel.marketsDeferred.cancel()
-        viewModel.finishOperations()
+        viewModel.marketsJob?.cancel()
     }
 
     override fun onResume() {
         super.onResume()
-        if (viewModel.marketsDeferred.isCancelled)
+        if (viewModel.marketsJob?.isCancelled == true && binding.searchEditText.text.isNullOrEmpty())
             viewModel.getMarkets()
     }
 
