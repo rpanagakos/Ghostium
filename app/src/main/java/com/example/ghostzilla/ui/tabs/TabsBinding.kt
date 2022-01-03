@@ -28,7 +28,7 @@ object TabsBinding {
 
     @BindingAdapter("cryptoPrice")
     @JvmStatic
-    fun TextView.convertPrice(cryptoPrice: Float) {
+    fun TextView.convertPrice(cryptoPrice: Double) {
         var dec = DecimalFormat("#,###.####")
         var roundedPrice = dec.format(cryptoPrice)
         if (roundedPrice.equals("0")) {
@@ -67,7 +67,7 @@ object TabsBinding {
 
         if (dummy.length > 150) {
             val link = "... <a href='showMore'><u>show more</u></a>."
-            val displayedText = dummy?.subSequence(0, 150).toString() + link
+            val displayedText = dummy.subSequence(0, 150).toString() + link
 
             val onClickCallback: ((Int, String) -> Unit) = { _, url ->
                 when (url) {

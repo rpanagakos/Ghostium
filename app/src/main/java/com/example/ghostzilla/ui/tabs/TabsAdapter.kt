@@ -12,8 +12,11 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
+import java.util.concurrent.atomic.AtomicInteger
 
 class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter(){
+
+    val currentPosition : AtomicInteger = AtomicInteger(0)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
@@ -31,11 +34,14 @@ class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter()
             }
         }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when (holder) {
-        is TabsViewHolder -> {
-            holder.present(getItem(position))
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        currentPosition.set(position)
+        return when (holder) {
+            is TabsViewHolder -> {
+                holder.present(getItem(position))
+            }
+            else -> Unit
         }
-        else -> Unit
     }
 
     override fun getItemViewType(position: Int) = when (getItem(position)) {

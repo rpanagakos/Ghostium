@@ -1,16 +1,17 @@
 package com.example.ghostzilla.ui.tabs.trends
 
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.models.coingecko.Markets
 import com.example.ghostzilla.models.coingecko.MarketsItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
+import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -71,6 +72,14 @@ class TrendsViewModel @Inject constructor(
             }
 
         }
+    }
+
+    fun scrollToTopRecycler(recyclerView: RecyclerView) {
+        when ((recyclerView.adapter as? TabsAdapter)?.currentPosition?.get()) {
+            in 0..18 -> Unit
+            else -> recyclerView.scrollToPosition(18)
+        }
+        recyclerView.smoothScrollToPosition(0)
     }
 
     override fun onCleared() {

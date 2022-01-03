@@ -27,13 +27,15 @@ import kotlinx.coroutines.flow.onEach
 
 
 @AndroidEntryPoint
-class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment_trends),
+class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(R.layout.fragment_trends),
     ItemOnClickListener {
 
-    private val viewModel: TrendsViewModel by viewModels()
-    private var currentPosition: Int = 0
+    override val viewModel: TrendsViewModel by viewModels()
     private val tabAdapter = TabsAdapter(this)
 
+    //refactor:
+    //remove all bindings from fragment
+    //
 
     @FlowPreview
     @ExperimentalCoroutinesApi
@@ -43,14 +45,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
             setHasFixedSize(true)
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg, requireContext()) {})
-        }
-
-        binding.backToTopImg.setOnClickListener {
-            if (currentPosition > 18) {
-                binding.contractsTrendsRecycler.scrollToPosition(12)
-                binding.contractsTrendsRecycler.smoothScrollToPosition(0)
-            } else
-                binding.contractsTrendsRecycler.smoothScrollToPosition(0)
         }
 
         binding.searchButton.setOnClickListener {
@@ -73,7 +67,7 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding>(R.layout.fragment
         binding.searchEditText.apply {
             //i dont like it
             searchQuery()
-                .debounce(600)
+                .debounce(350)
                 .onEach {
                     binding.searchButton.changeImageOnEdittext(
                         binding.searchEditText,

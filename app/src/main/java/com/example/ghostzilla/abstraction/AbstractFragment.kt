@@ -5,13 +5,16 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import androidx.databinding.library.baseAdapters.BR
 
-abstract class AbstractFragment<T : ViewDataBinding>(contentLayoutId: Int) :
+abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayoutId: Int) :
     Fragment(contentLayoutId) {
 
     lateinit var binding: T
+    abstract val viewModel : VM
 
     @FlowPreview
     @ExperimentalCoroutinesApi
@@ -20,6 +23,8 @@ abstract class AbstractFragment<T : ViewDataBinding>(contentLayoutId: Int) :
         super.onViewCreated(view, savedInstanceState)
         initLayout()
         observeViewModel()
+        binding.setVariable(BR.viewModel, viewModel )
+        binding.executePendingBindings()
     }
 
     abstract fun initLayout()
