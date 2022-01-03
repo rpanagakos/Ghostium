@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.profile
 
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
@@ -9,7 +10,7 @@ import com.example.ghostzilla.ui.tabs.trends.TrendsViewModel
 
 class ProfileFragment : AbstractFragment<FragmentProfileBinding, TrendsViewModel>(R.layout.fragment_profile) {
 
-    override val viewModel: TrendsViewModel by viewModels()
+    override val viewModel: TrendsViewModel by activityViewModels()
 
     override fun initLayout() {
     }

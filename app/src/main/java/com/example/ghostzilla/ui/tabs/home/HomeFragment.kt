@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.home
 
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.ghostzilla.R
@@ -11,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : AbstractFragment<FragmentHomeBinding, TrendsViewModel>(R.layout.fragment_home) {
 
-    override val viewModel: TrendsViewModel by viewModels()
+    override val viewModel: TrendsViewModel by activityViewModels()
 
     override fun initLayout() {
     }

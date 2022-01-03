@@ -8,10 +8,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="displayError"
-            type="java.lang.Boolean" />
-
-        <variable
             name="viewModel"
             type="com.example.ghostzilla.ui.tabs.trends.TrendsViewModel" />
 
@@ -73,7 +69,7 @@
                 app:tint="@color/Black" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/backToTopImg"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
@@ -81,8 +77,8 @@
             android:background="@drawable/contract_image_trends"
             android:contentDescription="@string/back_to_top"
             android:elevation="24dp"
-            android:padding="6dp"
             android:onClick="@{()-> viewModel.scrollToTopRecycler(contractsTrendsRecycler)}"
+            android:padding="6dp"
             android:src="@drawable/ic_back_to_top"
             android:tint="@color/Black"
             android:visibility="gone"
@@ -98,7 +94,7 @@
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
-            android:visibility="@{displayError ?  View.GONE : View.VISIBLE}"
+            android:visibility="@{viewModel.displayMessage ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +109,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="64dp"
             android:contentDescription="@string/something_went_wrong"
-            android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchConstraint"
@@ -131,7 +127,7 @@
             android:layout_marginEnd="@dimen/xxlarge_spacing"
             android:gravity="center"
             android:textAppearance="@style/large_text"
-            android:visibility="@{displayError ?  View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lottieImage" />

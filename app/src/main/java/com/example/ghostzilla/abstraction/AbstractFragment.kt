@@ -24,6 +24,7 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
         initLayout()
         observeViewModel()
         binding.setVariable(BR.viewModel, viewModel )
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.executePendingBindings()
     }
 
