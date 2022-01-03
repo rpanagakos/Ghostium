@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
@@ -26,8 +25,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class TrendsFragment :
-    AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(R.layout.fragment_trends) {
+class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(R.layout.fragment_trends) {
 
     override val viewModel: TrendsViewModel by activityViewModels()
 

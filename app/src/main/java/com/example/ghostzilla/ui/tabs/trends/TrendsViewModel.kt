@@ -1,11 +1,9 @@
 package com.example.ghostzilla.ui.tabs.trends
 
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
@@ -16,10 +14,7 @@ import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.ui.tabs.listeners.ActionTrendsListener
 import com.example.ghostzilla.utils.SingleLiveEvent
-import com.example.ghostzilla.utils.clearTextAndFocus
-import com.example.ghostzilla.utils.showKeyboard
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
-import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.Job
