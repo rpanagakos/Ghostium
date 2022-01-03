@@ -1,6 +1,8 @@
 package com.example.ghostzilla.abstraction
 
+import android.app.Application
 import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +17,7 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.inject.Inject
 
-abstract class AbstractViewModel : ViewModel() {
+abstract class AbstractViewModel(application: Application) : AndroidViewModel(application) {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val showToastPrivate = SingleLiveEvent<Any>()

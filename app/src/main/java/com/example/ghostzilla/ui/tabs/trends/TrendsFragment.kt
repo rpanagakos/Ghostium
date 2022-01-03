@@ -39,22 +39,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(
                 BackToTopScrollListener(binding.backToTopImg, requireContext()) {})
         }
 
-        binding.searchButton.setOnClickListener {
-            when (binding.searchEditText.text?.isEmpty()) {
-                true -> {
-                    binding.searchEditText.apply {
-                        requestFocus()
-                        showKeyboard()
-                    }
-                }
-                else -> {
-                    binding.searchEditText.clearTextAndFocus(this)
-                    binding.searchButton.setImageResource(R.drawable.ic_search)
-                    updateListWithData()
-                }
-            }
-        }
-
         binding.searchEditText.apply {
             searchQuery()
                 .debounce(350)
@@ -111,17 +95,6 @@ class TrendsFragment : AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(
     override fun observeViewModel() {
         viewModel.showToast.observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), it as String, Toast.LENGTH_SHORT).show()
-        })
-
-        viewModel.resultNotFound.observe(viewLifecycleOwner, {
-            if (it == NOT_FOUND) {
-                binding.lottieImage.setAnimation("nothing_found.json")
-                binding.errorText.text = getString(R.string.nothing_found)
-            } else {
-                binding.lottieImage.setAnimation("internet_connection.json")
-                binding.errorText.text = getString(R.string.no_internet_connection)
-            }
-            binding.lottieImage.playAnimation()
         })
     }
 

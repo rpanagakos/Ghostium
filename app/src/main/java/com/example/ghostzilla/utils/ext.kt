@@ -42,11 +42,11 @@ fun EditText.showKeyboard() {
     }
 }
 
-fun EditText.clearTextAndFocus(fragment: Fragment) {
+fun EditText.clearTextAndFocus(context: Context) {
     this.apply {
         setText("")
         clearFocus()
-        fragment.hideKeyboard()
+        context.hideKeyboard(this)
     }
 }
 

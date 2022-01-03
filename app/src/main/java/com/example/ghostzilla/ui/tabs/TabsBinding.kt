@@ -6,8 +6,10 @@ import android.text.Spanned
 import android.text.style.RelativeSizeSpan
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.ghostzilla.R
+import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.DecimalFormat
@@ -77,6 +79,27 @@ object TabsBinding {
                 }
             }
             this.setTextViewLinkHtml(displayedText, onClickCallback)
+        }
+    }
+
+    @BindingAdapter("lottieStatus")
+    @JvmStatic
+    fun LottieAnimationView.playCustomAnimation(result: Int) {
+        if (result == NOT_FOUND) {
+            this.setAnimation("nothing_found.json")
+        } else {
+            this.setAnimation("internet_connection.json")
+        }
+        this.playAnimation()
+    }
+
+    @BindingAdapter("errorMessageStatus")
+    @JvmStatic
+    fun TextView.displayErrorMessage(result: Int) {
+        if (result == NOT_FOUND) {
+            this.text = resources.getString(R.string.nothing_found)
+        } else {
+            this.text = resources.getString(R.string.no_internet_connection)
         }
     }
 }
