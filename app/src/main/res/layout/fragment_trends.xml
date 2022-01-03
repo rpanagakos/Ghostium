@@ -11,6 +11,10 @@
             name="displayError"
             type="java.lang.Boolean" />
 
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.ui.tabs.trends.TrendsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,7 +73,7 @@
                 app:tint="@color/Black" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/backToTopImg"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
@@ -78,6 +82,7 @@
             android:contentDescription="@string/back_to_top"
             android:elevation="24dp"
             android:padding="6dp"
+            android:onClick="@{()-> viewModel.scrollToTopRecycler(contractsTrendsRecycler)}"
             android:src="@drawable/ic_back_to_top"
             android:tint="@color/Black"
             android:visibility="gone"

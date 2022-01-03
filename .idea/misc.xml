@@ -34,7 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.43072916666666666" />
-        <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.4797202797202797" />
