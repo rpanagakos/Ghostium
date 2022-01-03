@@ -119,7 +119,7 @@ class TrendsViewModel @Inject constructor(
                 }
             }
             else -> {
-                searchEditText.clearTextAndFocus(this.getApplication<Application>().applicationContext)
+                searchEditText.clearTextAndFocus(context)
                 searchButton.setImageResource(R.drawable.ic_search)
                 getMarkets()
             }

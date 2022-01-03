@@ -22,10 +22,12 @@ abstract class AbstractViewModel(application: Application) : AndroidViewModel(ap
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val showToastPrivate = SingleLiveEvent<Any>()
     val showToast: SingleLiveEvent<Any> get() = showToastPrivate
+    val resultNotFound: SingleLiveEvent<Int> get() = resultNotFoundPrivate
+    protected val context
+        get() = getApplication<Application>()
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val resultNotFoundPrivate = SingleLiveEvent<Int>()
-    val resultNotFound: SingleLiveEvent<Int> get() = resultNotFoundPrivate
 
 
     @Inject
