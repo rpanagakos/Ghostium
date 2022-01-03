@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class MarketsItem(
     @SerializedName("current_price")
-    val currentPrice: Float,
+    val currentPrice: Double,
     @SerializedName("id")
     val id: String,
     @SerializedName("image")
@@ -23,9 +23,9 @@ data class MarketsItem(
     @SerializedName("name")
     val name: String,
     @SerializedName("price_change_24h")
-    val priceChange24h: Float? = null,
+    val priceChange24h: Double? = null,
     @SerializedName("price_change_percentage_24h")
-    val priceChangePercentage24h: Float,
+    val priceChangePercentage24h: Double,
     @SerializedName("symbol")
     val symbol: String
 ) : LocalModel, Parcelable {
