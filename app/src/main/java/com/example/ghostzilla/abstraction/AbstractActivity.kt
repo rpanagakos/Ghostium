@@ -2,16 +2,24 @@ package com.example.ghostzilla.abstraction
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class AbstractActivity<T : ViewDataBinding>(contentLayoutId: Int) :
-    AppCompatActivity(contentLayoutId) {
+abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId: Int) :
+    AppCompatActivity() {
 
     lateinit var binding: T
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, contentLayoutId)
+        binding.lifecycleOwner = this
+    }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         initLayout()
+        binding.executePendingBindings()
     }
 
     abstract fun initLayout()
@@ -20,7 +28,6 @@ abstract class AbstractActivity<T : ViewDataBinding>(contentLayoutId: Int) :
         super.onPostResume()
         runOperation()
     }
-
 
     abstract fun runOperation()
 
