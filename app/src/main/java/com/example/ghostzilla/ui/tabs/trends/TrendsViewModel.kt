@@ -143,12 +143,12 @@ class TrendsViewModel @Inject constructor(
         }
     }
 
-    fun makeCallWhenOnline(inputText: Editable?) {
-        if (inputText.isNullOrEmpty() && (marketsJob?.isCancelled == true || marketsJob == null))
+    fun makeCallWhenOnline(inputText: String) {
+        if (inputText.isEmpty() && (marketsJob?.isCancelled == true || marketsJob == null))
             getMarkets()
-        else if (inputText.isNullOrEmpty())
+        else if (inputText.isNotEmpty())
             searchCoin(
-                inputText.toString().lowercase().removeWhiteSpaces()
+                inputText.lowercase().removeWhiteSpaces()
             )
     }
 

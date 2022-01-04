@@ -12,9 +12,7 @@ import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.models.coingecko.MarketsItem
-import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.ui.DetailsActivity
-import com.example.ghostzilla.ui.tabs.listeners.ActionTrendsListener
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import com.example.ghostzilla.utils.changeImageOnEdittext
 import com.example.ghostzilla.utils.removeWhiteSpaces
@@ -37,7 +35,6 @@ class TrendsFragment :
     @ExperimentalCoroutinesApi
     override fun initLayout() {
         binding.contractsTrendsRecycler.apply {
-            this.adapter = viewModel.trendsAdapter
             setHasFixedSize(true)
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg, requireContext()) {})
@@ -60,56 +57,38 @@ class TrendsFragment :
                 .launchIn(lifecycleScope)
         }
 
-        viewModel.runOperation(object : ActionTrendsListener {
-            override fun onClickDetails(
-                data: LocalModel,
-                contractName: TextView,
-                contractTickerSumbol: TextView,
-                circleImageView: CircleImageView
-            ) {
-                when (data) {
-                    is MarketsItem -> {
-                        val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
-                            putExtra("coin", data)
-                        }
-                        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            requireActivity(),
-                            Pair.create(
-                                contractName,
-                                resources.getString(R.string.transition_coin_name)
-                            ),
-                            Pair.create(
-                                contractTickerSumbol,
-                                resources.getString(R.string.transition_coin_symbol)
-                            ),
-                            Pair.create(
-                                circleImageView,
-                                resources.getString(R.string.transition_coin_image)
-                            )
-                        )
-                        startActivity(intent, options.toBundle())
-                        requireActivity().window.exitTransition = null
-
-
-
+        viewModel.runOperation() { data: LocalModel,
+                                   contractName: TextView,
+                                   contractTickerSumbol: TextView,
+                                   circleImageView: CircleImageView ->
+            when (data) {
+                is MarketsItem -> {
+                    val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
+                        putExtra("coin", data)
                     }
+                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        requireActivity(),
+                        Pair.create(
+                            contractName, getString(R.string.transition_coin_name)
+                        ),
+                        Pair.create(
+                            contractTickerSumbol, getString(R.string.transition_coin_symbol)
+                        ),
+                        Pair.create(
+                            circleImageView, getString(R.string.transition_coin_image)
+                        )
+                    )
+                    startActivity(intent, options.toBundle())
+                    requireActivity().window.exitTransition = null
                 }
             }
-
-        })
+        }
 
         viewModel.networkConnectivity.registerNetworkCallback({
-            if (binding.searchEditText.text.isNullOrEmpty() && (viewModel.marketsJob?.isCancelled == true || viewModel.marketsJob == null))
-                viewModel.getMarkets()
-            else if (!binding.searchEditText.text.isNullOrEmpty())
-                viewModel.searchCoin(
-                    binding.searchEditText.text.toString().lowercase().removeWhiteSpaces()
-                )
+            //vasili se syxainomai <3
+           binding.searchEditText.text?.let { viewModel.makeCallWhenOnline(it.toString()) }
         }, {
-            if (viewModel.marketsJob?.isActive == true)
-                viewModel.marketsJob?.cancel()
-            viewModel.showToastMessage(NO_INTERNET_CONNECTION)
-
+            viewModel.displayInternetMessageWhenOffline()
         })
     }
 
