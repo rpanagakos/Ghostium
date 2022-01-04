@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:text="@string/high_24h"
             android:textAppearance="@style/medium_gray"
-            app:layout_constraintStart_toStartOf="@id/highPriceValue"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="@id/guideline"
             app:layout_constraintTop_toTopOf="@id/lowPriceLabel" />
 
         <TextView
@@ -60,7 +61,7 @@
             android:textAppearance="@style/large_text_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lowPriceLabel"
-            tools:text="32,000$" />
+            tools:text="320$" />
 
         <TextView
             android:id="@+id/highPriceValue"
@@ -68,10 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/large_text_bold"
-            app:layout_constraintEnd_toEndOf="@id/guideline"
-            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="@id/highPriceLabel"
             app:layout_constraintTop_toBottomOf="@id/highPriceLabel"
-            tools:text="48,000$" />
+            tools:text="48,0$" />
 
         <TextView
             android:id="@+id/totalVolValue"
