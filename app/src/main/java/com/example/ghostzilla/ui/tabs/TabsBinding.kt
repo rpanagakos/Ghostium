@@ -108,7 +108,8 @@ object TabsBinding {
                 }
             }
             this.setTextViewLinkHtml(displayedText, onClickCallback)
-        }
+        } else
+            this.text = htmlBody
     }
 
     @BindingAdapter("lottieStatus")
