@@ -11,7 +11,7 @@ import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
-import com.example.ghostzilla.models.coingecko.MarketsItem
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
 class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter(){
@@ -45,7 +45,7 @@ class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter()
     }
 
     override fun getItemViewType(position: Int) = when (getItem(position)) {
-        is MarketsItem -> R.layout.holder_trends_item
+        is CryptoItem -> R.layout.holder_trends_item
         else -> R.layout.holder_empty
     }
 

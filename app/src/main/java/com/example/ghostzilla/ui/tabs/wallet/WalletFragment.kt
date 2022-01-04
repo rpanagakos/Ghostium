@@ -12,6 +12,7 @@ class WalletFragment : AbstractFragment<FragmentWalletBinding, TrendsViewModel>(
     override val viewModel: TrendsViewModel by activityViewModels()
 
     override fun initLayout() {
+        println(viewModel.cryptosLiveData.value?.CryptosList?.get(1))
     }
 
     override fun observeViewModel() {

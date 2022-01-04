@@ -1,7 +1,7 @@
 package com.example.ghostzilla.network.coingecko
 
-import com.example.ghostzilla.models.coingecko.Markets
-import com.example.ghostzilla.models.coingecko.MarketsItem
+import com.example.ghostzilla.models.coingecko.Cryptos
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -12,10 +12,10 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
 ) :
     CoinGeckoRemoteRepository {
 
-    override suspend fun getAllCryptos(): GenericResponse<Markets> {
+    override suspend fun getAllCryptos(): GenericResponse<Cryptos> {
         return when (val response =
             networkConnectivity.processCall(coinGeckoApi::getPriceVolatility)) {
-            is List<*> -> GenericResponse.Success(data = Markets(response as ArrayList<MarketsItem>))
+            is List<*> -> GenericResponse.Success(data = Cryptos(response as ArrayList<CryptoItem>))
             else -> GenericResponse.DataError(errorCode = response as Int)
         }
     }

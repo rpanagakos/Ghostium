@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MarketsItem(
+data class CryptoItem(
     @SerializedName("current_price")
     val currentPrice: Double,
     @SerializedName("id")
@@ -30,7 +30,7 @@ data class MarketsItem(
     val symbol: String
 ) : LocalModel, Parcelable {
     override fun equalsContent(obj: LocalModel): Boolean = when (obj) {
-        is MarketsItem -> name == obj.name && currentPrice == obj.currentPrice && symbol == obj.symbol
+        is CryptoItem -> name == obj.name && currentPrice == obj.currentPrice && symbol == obj.symbol
         else -> false
     }
 }

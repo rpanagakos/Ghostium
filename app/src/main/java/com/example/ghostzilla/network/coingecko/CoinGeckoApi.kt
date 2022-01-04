@@ -1,6 +1,6 @@
 package com.example.ghostzilla.network.coingecko
 
-import com.example.ghostzilla.models.coingecko.MarketsItem
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,7 +13,7 @@ interface CoinGeckoApi {
     suspend fun getPriceVolatility(
         @Query("vs_currency") currency: String = "eur",
         @Query("per_page") cryptos: Int = 40
-    ): Response<List<MarketsItem>>
+    ): Response<List<CryptoItem>>
 
     @GET("/api/v3/coins/{id}")
     suspend fun getCoinSearchResult(

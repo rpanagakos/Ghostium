@@ -1,7 +1,7 @@
 package com.example.ghostzilla.network
 
 import com.example.ghostzilla.di.IoDispatcher
-import com.example.ghostzilla.models.coingecko.Markets
+import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.coingecko.CoinGeckoRemoteRepository
@@ -16,7 +16,7 @@ class DataRepository @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 
-    suspend fun requestData(): Flow<GenericResponse<Markets>> {
+    suspend fun requestData(): Flow<GenericResponse<Cryptos>> {
         return flow {
             emit(remoteRepository.getAllCryptos())
         }.flowOn(ioDispatcher)

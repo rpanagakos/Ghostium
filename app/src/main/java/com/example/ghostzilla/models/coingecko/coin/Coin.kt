@@ -2,7 +2,7 @@ package com.example.ghostzilla.models.coingecko.coin
 
 
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.models.coingecko.MarketsItem
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.google.gson.annotations.SerializedName
 
 data class Coin(
@@ -48,7 +48,7 @@ data class Coin(
     val symbol: String
 ): LocalModel {
     override fun equalsContent(obj: LocalModel): Boolean = when (obj) {
-        is MarketsItem -> false
+        is CryptoItem -> false
         else -> false
     }
 }

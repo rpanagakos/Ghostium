@@ -11,8 +11,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
-import com.example.ghostzilla.models.coingecko.MarketsItem
-import com.example.ghostzilla.ui.DetailsActivity
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import com.example.ghostzilla.utils.changeImageOnEdittext
 import com.example.ghostzilla.utils.removeWhiteSpaces
@@ -62,7 +61,7 @@ class TrendsFragment :
                                    contractTickerSumbol: TextView,
                                    circleImageView: CircleImageView ->
             when (data) {
-                is MarketsItem -> {
+                is CryptoItem -> {
                     val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
                         putExtra("coin", data)
                     }
@@ -86,7 +85,7 @@ class TrendsFragment :
 
         viewModel.networkConnectivity.registerNetworkCallback({
             //vasili se syxainomai <3
-           binding.searchLayout.searchEditText.text?.let { viewModel.makeCallWhenOnline(it.toString()) }
+            binding.searchLayout.searchEditText.text?.let { viewModel.makeCallWhenOnline(it.toString()) }
         }, {
             viewModel.displayInternetMessageWhenOffline()
         })
@@ -109,8 +108,9 @@ class TrendsFragment :
     }
 
     private fun updateListWithData() {
+        //when the user didnt type anything in the search bar, to fill the list and update it
         viewModel.cryptosLiveData.value?.let {
-            viewModel.trendsAdapter.submitList(viewModel.cryptosLiveData.value!!.marketsList as List<LocalModel>)
+            viewModel.trendsAdapter.submitList(viewModel.cryptosLiveData.value!!.CryptosList as List<LocalModel>)
         }
         viewModel.getAllCryptos()
     }

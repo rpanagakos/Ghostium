@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ghostzilla">
         <activity
-            android:name=".ui.DetailsActivity"
+            android:name=".ui.tabs.trends.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
