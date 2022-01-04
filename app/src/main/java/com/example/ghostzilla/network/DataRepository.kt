@@ -18,7 +18,7 @@ class DataRepository @Inject constructor(
 
     suspend fun requestData(): Flow<GenericResponse<Markets>> {
         return flow {
-            emit(remoteRepository.getSpotPrices())
+            emit(remoteRepository.getAllCryptos())
         }.flowOn(ioDispatcher)
     }
 

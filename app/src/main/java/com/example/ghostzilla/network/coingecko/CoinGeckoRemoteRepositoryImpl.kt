@@ -12,7 +12,7 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
 ) :
     CoinGeckoRemoteRepository {
 
-    override suspend fun getSpotPrices(): GenericResponse<Markets> {
+    override suspend fun getAllCryptos(): GenericResponse<Markets> {
         return when (val response =
             networkConnectivity.processCall(coinGeckoApi::getPriceVolatility)) {
             is List<*> -> GenericResponse.Success(data = Markets(response as ArrayList<MarketsItem>))

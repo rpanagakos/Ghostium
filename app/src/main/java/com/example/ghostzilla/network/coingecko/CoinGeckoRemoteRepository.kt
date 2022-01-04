@@ -7,6 +7,6 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 
 @ActivityRetainedScoped
 interface CoinGeckoRemoteRepository {
-    suspend fun getSpotPrices(): GenericResponse<Markets>
+    suspend fun getAllCryptos(): GenericResponse<Markets>
     suspend fun getCoinSearchResult(coinID: String): GenericResponse<Coin>
 }

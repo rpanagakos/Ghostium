@@ -40,12 +40,12 @@ class TrendsFragment :
                 BackToTopScrollListener(binding.backToTopImg, requireContext()) {})
         }
 
-        binding.searchEditText.apply {
+        binding.searchLayout.searchEditText.apply {
             searchQuery()
                 .debounce(350)
                 .onEach {
-                    binding.searchButton.changeImageOnEdittext(
-                        binding.searchEditText,
+                    binding.searchLayout.searchButton.changeImageOnEdittext(
+                        binding.searchLayout.searchEditText,
                         R.drawable.ic_search,
                         R.drawable.ic_outline_clear
                     )
@@ -86,7 +86,7 @@ class TrendsFragment :
 
         viewModel.networkConnectivity.registerNetworkCallback({
             //vasili se syxainomai <3
-           binding.searchEditText.text?.let { viewModel.makeCallWhenOnline(it.toString()) }
+           binding.searchLayout.searchEditText.text?.let { viewModel.makeCallWhenOnline(it.toString()) }
         }, {
             viewModel.displayInternetMessageWhenOffline()
         })
@@ -99,20 +99,20 @@ class TrendsFragment :
     }
 
     override fun stopOperations() {
-        viewModel.marketsJob?.cancel()
+        viewModel.cryptosJob?.cancel()
     }
 
     override fun onResume() {
         super.onResume()
-        if (viewModel.marketsJob?.isCancelled == true && binding.searchEditText.text.isNullOrEmpty())
-            viewModel.getMarkets()
+        if (viewModel.cryptosJob?.isCancelled == true && binding.searchLayout.searchEditText.text.isNullOrEmpty())
+            viewModel.getAllCryptos()
     }
 
     private fun updateListWithData() {
-        viewModel.marketsLiveData.value?.let {
-            viewModel.trendsAdapter.submitList(viewModel.marketsLiveData.value!!.marketsList as List<LocalModel>)
+        viewModel.cryptosLiveData.value?.let {
+            viewModel.trendsAdapter.submitList(viewModel.cryptosLiveData.value!!.marketsList as List<LocalModel>)
         }
-        viewModel.getMarkets()
+        viewModel.getAllCryptos()
     }
 
 }

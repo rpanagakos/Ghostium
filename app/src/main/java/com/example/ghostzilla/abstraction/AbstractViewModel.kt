@@ -1,13 +1,18 @@
 package com.example.ghostzilla.abstraction
 
 import android.app.Application
+import android.widget.ImageView
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
+import com.example.ghostzilla.R
 import com.example.ghostzilla.models.errors.ErrorManager
 import com.example.ghostzilla.models.errors.mapper.NETWORK_ERROR
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.utils.SingleLiveEvent
+import com.example.ghostzilla.utils.clearTextAndFocus
+import com.example.ghostzilla.utils.showKeyboard
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -42,6 +47,21 @@ abstract class AbstractViewModel(application: Application) : AndroidViewModel(ap
     fun showToastMessage(errorCode: Int) {
         val error = errorManager.getError(errorCode)
         showToastPrivate.postValue(error.description)
+    }
+
+    fun searchButton(searchButton: ImageView, searchEditText: TextInputEditText) {
+        when (searchEditText.text?.isEmpty()) {
+            true -> {
+                searchEditText.apply {
+                    requestFocus()
+                    showKeyboard()
+                }
+            }
+            else -> {
+                searchEditText.clearTextAndFocus(context)
+                searchButton.setImageResource(R.drawable.ic_search)
+            }
+        }
     }
 
     protected fun CoroutineScope.launchPeriodicAsync(
