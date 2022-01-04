@@ -87,6 +87,7 @@
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
+            android:adapter="@{viewModel.trendsAdapter}"
             android:scrollbars="none"
             android:visibility="@{viewModel.displayMessage ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

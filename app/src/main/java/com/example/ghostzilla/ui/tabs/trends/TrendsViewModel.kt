@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.trends
 
 import android.app.Application
+import android.text.Editable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
@@ -16,7 +17,6 @@ import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.TabsAdapter
-import com.example.ghostzilla.ui.tabs.listeners.ActionTrendsListener
 import com.example.ghostzilla.utils.*
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,7 +36,12 @@ class TrendsViewModel @Inject constructor(
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
 
-    private var callbacks: ActionTrendsListener? = null
+    private var callbacks: (
+        data: LocalModel,
+        contractName: TextView,
+        contractTickerSumbol: TextView,
+        circleImageView: CircleImageView
+    ) -> Unit = { _, _, _, _ -> }
     val trendsAdapter: TabsAdapter = TabsAdapter(this)
 
     val marketsLiveData = SingleLiveEvent<Markets>()
@@ -45,7 +50,14 @@ class TrendsViewModel @Inject constructor(
 
     var marketsJob: Job? = null
 
-    fun runOperation(listener: ActionTrendsListener) {
+    fun runOperation(
+        listener: (
+            data: LocalModel,
+            contractName: TextView,
+            contractTickerSumbol: TextView,
+            circleImageView: CircleImageView
+        ) -> Unit
+    ) {
         this.callbacks = listener
         if (networkConnectivity.isConnected())
             getMarkets()
@@ -56,7 +68,8 @@ class TrendsViewModel @Inject constructor(
     }
 
     fun getMarkets() {
-        if (marketsJob?.isActive == false || marketsJob == null) {
+        //add connectivity check
+        if ((marketsJob?.isActive == false || marketsJob == null) && networkConnectivity.isConnected()) {
             marketsJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
                 wrapEspressoIdlingResource {
                     dataRepository.requestData().collect { response ->
@@ -126,9 +139,23 @@ class TrendsViewModel @Inject constructor(
             else -> {
                 searchEditText.clearTextAndFocus(context)
                 searchButton.setImageResource(R.drawable.ic_search)
-                getMarkets()
             }
         }
+    }
+
+    fun makeCallWhenOnline(inputText: Editable?) {
+        if (inputText.isNullOrEmpty() && (marketsJob?.isCancelled == true || marketsJob == null))
+            getMarkets()
+        else if (inputText.isNullOrEmpty())
+            searchCoin(
+                inputText.toString().lowercase().removeWhiteSpaces()
+            )
+    }
+
+    fun displayInternetMessageWhenOffline() {
+        if (marketsJob?.isActive == true)
+            marketsJob?.cancel()
+        showToastMessage(NO_INTERNET_CONNECTION)
     }
 
     override fun onCleared() {
@@ -142,7 +169,7 @@ class TrendsViewModel @Inject constructor(
         contractTickerSumbol: TextView,
         circleImageView: CircleImageView
     ) {
-        callbacks?.onClickDetails(data, contractName, contractTickerSumbol, circleImageView)
+        callbacks.invoke(data, contractName, contractTickerSumbol, circleImageView)
     }
 
 }
