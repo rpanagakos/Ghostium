@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.trends.TrendsViewModel" />
+            type="com.example.ghostzilla.ui.tabs.trends.DetailsViewModel" />
 
     </data>
 
@@ -87,6 +87,7 @@
             android:layout_marginStart="@dimen/large_spacing"
             android:layout_marginEnd="@dimen/large_spacing"
             android:scrollbars="none"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/seperator">
 
@@ -98,6 +99,7 @@
 
                 <include
                     android:id="@+id/tripleValue"
+                    data="@{viewModel.cryptoDetails.marketData}"
                     layout="@layout/triple_labels_and_values" />
 
                 <androidx.cardview.widget.CardView
@@ -114,19 +116,58 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/large_spacing"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textAppearance="@style/caption_bold"
                     app:layout_constraintTop_toBottomOf="@id/statsBoard" />
 
                 <TextView
                     android:id="@+id/descriptionText"
+                    convertToHtmlString="@{viewModel.cryptoDetails.description.en}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/medium_spacing"
                     android:textAppearance="@style/medium_gray"
                     app:layout_constraintTop_toBottomOf="@id/titleDescription" />
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/website"
+                    android:layout_width="@dimen/xxlarge_spacing"
+                    android:layout_height="@dimen/xxlarge_spacing"
+                    android:layout_marginTop="@dimen/xxlarge_spacing"
+                    android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.homepage[0])}"
+                    android:src="@drawable/ic_googlechrome"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/twitter"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/descriptionText"
+                    app:layout_constraintVertical_bias="1" />
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/twitter"
+                    android:layout_width="@dimen/xxlarge_spacing"
+                    android:layout_height="@dimen/xxlarge_spacing"
+                    android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.twitter)}"
+                    android:src="@drawable/ic_twitter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/website"
+                    app:tint="@color/twitter_color" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/reddit"
+                    android:layout_width="@dimen/xxlarge_spacing"
+                    android:layout_height="@dimen/xxlarge_spacing"
+                    android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.subredditUrl)}"
+                    android:src="@drawable/ic_reddit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@+id/twitter"
+                    app:layout_constraintTop_toTopOf="@id/website"
+                    app:tint="@color/reddit_color" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

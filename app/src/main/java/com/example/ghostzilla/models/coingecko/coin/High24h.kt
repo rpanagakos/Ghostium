@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class High24h(
     @SerializedName("aed")
-    val aed: Double,
+    val aed: Double = 0.0,
     @SerializedName("eur")
-    val eur: Double,
+    val eur: Double= 0.0,
     @SerializedName("gbp")
-    val gbp: Double,
+    val gbp: Double= 0.0,
     @SerializedName("usd")
-    val usd: Double
+    val usd: Double= 0.0
 )

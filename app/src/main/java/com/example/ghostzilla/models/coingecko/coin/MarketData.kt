@@ -54,8 +54,6 @@ data class MarketData(
     val priceChangePercentage7d: Double,
     @SerializedName("price_change_percentage_7d_in_currency")
     val priceChangePercentage7dInCurrency: PriceChangePercentage7dInCurrency,
-    @SerializedName("roi")
-    val roi: Any,
     @SerializedName("sparkline_7d")
     val sparkline7d: Sparkline7d,
     @SerializedName("total_supply")

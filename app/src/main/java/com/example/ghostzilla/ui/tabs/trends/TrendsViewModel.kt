@@ -45,6 +45,7 @@ class TrendsViewModel @Inject constructor(
 
     val cryptosLiveData = SingleLiveEvent<Cryptos>()
     val displayMessage = MutableLiveData<Boolean>(false)
+    val cryptoDetails = SingleLiveEvent<CryptoItem>()
 
     var cryptosJob: Job? = null
 
@@ -96,7 +97,7 @@ class TrendsViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             displayMessage.value = false
-                            val cryptoUI = CryptoItem(
+                            cryptoDetails.value = CryptoItem(
                                 currentPrice = it.marketData.currentPrice.eur,
                                 id = it.id,
                                 image = it.image.thumb,
@@ -104,7 +105,7 @@ class TrendsViewModel @Inject constructor(
                                 priceChangePercentage24h = it.marketData.priceChangePercentage24h,
                                 symbol = it.symbol
                             )
-                            trendsAdapter.submitList(listOf(cryptoUI) as List<LocalModel>)
+                            trendsAdapter.submitList(listOf(cryptoDetails.value) as List<LocalModel>)
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)

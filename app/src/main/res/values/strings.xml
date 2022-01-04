@@ -20,5 +20,10 @@
     <string name="transition_coin_image">coinImage</string>
     <string name="transition_coin_name">coinName</string>
     <string name="transition_coin_symbol">coinSymbol</string>
+    <string name="no_description">No description has been provided.</string>
+    <string name="high_24h">High (24h)</string>
+    <string name="mark_cap">Mark. Cap</string>
+    <string name="low_24h">Low (24h)</string>
+    <string name="description">Description</string>
 
 </resources>
