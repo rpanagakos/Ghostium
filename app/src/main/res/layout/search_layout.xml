@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="parentViewModel"
+            type="com.example.ghostzilla.abstraction.AbstractViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/xlarge_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            android:background="@color/transparent"
+            android:gravity="start|top"
+            android:hint="@string/enter_your_crypto"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textAppearance="@style/caption_bold"
+            app:layout_constraintBottom_toTopOf="@id/bottomLine"
+            app:layout_constraintEnd_toStartOf="@id/searchButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/enter_your_crypto" />
+
+        <View
+            android:id="@+id/bottomLine"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/medium_spacing"
+            android:background="@drawable/underline_text_input"
+            app:layout_constraintEnd_toEndOf="@id/searchEditText"
+            app:layout_constraintStart_toStartOf="@id/searchEditText"
+            app:layout_constraintTop_toBottomOf="@id/searchEditText" />
+
+        <ImageView
+            android:id="@+id/searchButton"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginEnd="@dimen/xlarge_spacing"
+            android:contentDescription="@string/searchbutton"
+            android:onClick="@{() -> parentViewModel.searchButton(searchButton, searchEditText)}"
+            android:padding="@dimen/small_spacing"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@id/bottomLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchEditText"
+            app:tint="@color/Black" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -18,48 +18,13 @@
         android:layout_height="match_parent"
         android:focusableInTouchMode="true">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/searchEditText"
-            android:layout_width="0dp"
+        <include
+            android:id="@+id/searchLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/xlarge_spacing"
-            android:layout_marginTop="@dimen/large_spacing"
-            android:layout_marginEnd="@dimen/medium_spacing"
-            android:background="@color/transparent"
-            android:gravity="start|top"
-            android:hint="@string/enter_your_crypto"
-            android:includeFontPadding="false"
-            android:singleLine="true"
-            android:textAppearance="@style/caption_bold"
-            app:layout_constraintBottom_toTopOf="@id/bottomLine"
-            app:layout_constraintEnd_toStartOf="@id/searchButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/enter_your_crypto" />
-
-        <View
-            android:id="@+id/bottomLine"
-            android:layout_width="0dp"
-            android:layout_height="4dp"
-            android:layout_marginTop="@dimen/medium_spacing"
-            android:background="@drawable/underline_text_input"
-            app:layout_constraintEnd_toEndOf="@id/searchEditText"
-            app:layout_constraintStart_toStartOf="@id/searchEditText"
-            app:layout_constraintTop_toBottomOf="@id/searchEditText" />
-
-        <ImageView
-            android:id="@+id/searchButton"
-            android:layout_width="@dimen/medium_container"
-            android:layout_height="@dimen/medium_container"
-            android:layout_marginEnd="@dimen/xlarge_spacing"
-            android:contentDescription="@string/searchbutton"
-            android:onClick="@{() -> viewModel.searchButton(searchButton, searchEditText)}"
-            android:padding="@dimen/small_spacing"
-            android:src="@drawable/ic_search"
-            app:layout_constraintBottom_toBottomOf="@id/bottomLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/searchEditText"
-            app:tint="@color/Black" />
+            layout="@layout/search_layout"
+            parentViewModel="@{viewModel}"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/backToTopImg"
@@ -94,7 +59,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bottomLine"
+            app:layout_constraintTop_toBottomOf="@+id/searchLayout"
             tools:itemCount="8"
             tools:listitem="@layout/holder_trends_item" />
 
@@ -108,7 +73,7 @@
             android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bottomLine"
+            app:layout_constraintTop_toBottomOf="@id/searchLayout"
             app:lottie_autoPlay="true"
             app:lottie_fileName="nothing_found.json"
             app:lottie_repeatCount="2"
