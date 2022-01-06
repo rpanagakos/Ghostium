@@ -1,6 +1,7 @@
 package com.example.ghostzilla.network.coingecko
 
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import retrofit2.Response
 import retrofit2.http.GET
@@ -22,4 +23,11 @@ interface CoinGeckoApi {
         @Query("developer_data") developerData: Boolean,
         @Query("sparkline") sparkline: Boolean
     ): Response<Coin>
+
+    @GET("/api/v3/coins/{id}/market_chart/")
+    suspend fun getCoinChartDetails(
+        @Path("id") coinID: String,
+        @Query("days") days: String,
+        @Query("vs_currency") currency: String
+    ): Response<CoinPrices>
 }

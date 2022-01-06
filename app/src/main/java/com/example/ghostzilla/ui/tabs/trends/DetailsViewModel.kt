@@ -14,8 +14,10 @@ import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
+import com.example.ghostzilla.models.errors.mapper.SEARCH_ERROR
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.TabsAdapter
@@ -41,6 +43,7 @@ class DetailsViewModel @Inject constructor(
     lateinit var networkConnectivity: NetworkConnectivity
 
     val cryptoDetails = SingleLiveEvent<Coin>()
+    val chartData = SingleLiveEvent<CoinPrices>()
 
     /*fun runOperation() {
         if (networkConnectivity.isConnected())
@@ -58,11 +61,9 @@ class DetailsViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             cryptoDetails.postValue(it)
-                            //displayMessage.value = false
-                        } ?: run { showToastMessage(0) }
+                        } ?: run { showToastMessage(SEARCH_ERROR) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)
-                            //displayMessage.value = true
                         }
                     }
                 }
@@ -71,7 +72,24 @@ class DetailsViewModel @Inject constructor(
         }
     }
 
-    fun visitCryptoSite(site: String){
+    fun getChartsData(coinID: String, days: Int) {
+        viewModelScope.launch {
+            wrapEspressoIdlingResource {
+                dataRepository.getCoinChartDetails(coinID, days).collect { response ->
+                    when (response) {
+                        is GenericResponse.Success -> response.data?.let {
+                            chartData.postValue(it)
+                        } ?: kotlin.run { showToastMessage(SEARCH_ERROR) }
+                        is GenericResponse.DataError -> response.errorCode?.let { error ->
+                            checkErrorCode(error)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun visitCryptoSite(site: String) {
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(site)
         i.addFlags(FLAG_ACTIVITY_NEW_TASK)
