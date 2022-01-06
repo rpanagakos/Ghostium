@@ -6,6 +6,8 @@ import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
 import com.example.ghostzilla.di.SparkLineStyle
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.utils.customview.CustomMarker
+import com.example.ghostzilla.utils.getMyLongValue
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -36,13 +38,6 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
         observeViewModel()
     }
 
-    fun getMyLongValue(vararg any: Any): Float {
-        return when (val tmp = any.first()) {
-            is Number -> tmp.toFloat()
-            else -> throw Exception("not a number") // or do something else reasonable for your case
-        }
-    }
-
     private fun observeViewModel() {
         val entries = mutableListOf<Entry>()
         viewModel._chartData.observe(this, {
@@ -52,6 +47,7 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
                 entries.add(Entry(x, y))
             }
             val dataSet = LineDataSet(entries, "Price Range")
+            binding.chartLine.marker = CustomMarker(context = this)
             sparkLineStyle.styleLineDataSet(dataSet)
             binding.chartLine.data = LineData(dataSet)
             binding.chartLine.invalidate()

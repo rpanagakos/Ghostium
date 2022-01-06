@@ -74,6 +74,13 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
     setOnClickListener(safeClickListener)
 }
 
+fun getMyLongValue(vararg any: Any): Float {
+    return when (val tmp = any.first()) {
+        is Number -> tmp.toFloat()
+        else -> throw Exception("not a number") // or do something else reasonable for your case
+    }
+}
+
 fun TextView.setTextViewLinkHtml(html: String, linkClickCallBack: ((Int, String) -> Unit)? = null) {
     val newHtml = html.replace("\n", "<br>")
     val sequence = Html.fromHtml(newHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)

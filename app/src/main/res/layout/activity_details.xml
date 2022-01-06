@@ -112,7 +112,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/statsBoard"
                     android:layout_width="match_parent"
-                    android:layout_height="460dp"
+                    android:layout_height="400dp"
                     android:layout_marginTop="@dimen/large_spacing"
                     app:cardBackgroundColor="@color/Black"
                     app:cardCornerRadius="10dp"
@@ -123,10 +123,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:elevation="2dp"
-                    app:layout_constraintStart_toStartOf="@id/statsBoard"
+                    app:layout_constraintBottom_toBottomOf="@id/statsBoard"
                     app:layout_constraintEnd_toEndOf="@id/statsBoard"
-                    app:layout_constraintTop_toTopOf="@+id/statsBoard"
-                    app:layout_constraintBottom_toBottomOf="@id/statsBoard"/>
+                    app:layout_constraintStart_toStartOf="@id/statsBoard"
+                    app:layout_constraintTop_toTopOf="@+id/statsBoard" />
 
                 <TextView
                     android:id="@+id/titleDescription"
