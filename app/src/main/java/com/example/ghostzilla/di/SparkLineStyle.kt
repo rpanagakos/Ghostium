@@ -1,26 +1,50 @@
 package com.example.ghostzilla.di
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.view.MotionEvent
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.ghostzilla.R
+import com.example.ghostzilla.utils.customview.CustomMarker
+import com.example.ghostzilla.utils.fadeIn
+import com.example.ghostzilla.utils.fadeOut
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class SparkLineStyle @Inject constructor(@ApplicationContext val context: Context) {
+class SparkLineStyle @Inject constructor(
+    @ApplicationContext val context: Context,
+) {
 
-    fun styleChart(lineChart: LineChart) = lineChart.apply {
+    @SuppressLint("ClickableViewAccessibility")
+    fun styleChart(
+        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView) = lineChart.apply {
         axisLeft.isEnabled = false
         axisRight.isEnabled = false
         xAxis.isEnabled = false
         legend.isEnabled = false
         description.isEnabled = false
-
+        marker = CustomMarker(context = context, priceIndicator, dateIndicator)
         setTouchEnabled(true)
         isDragEnabled = true
         setScaleEnabled(false)
         setPinchZoom(false)
+
+        setOnTouchListener { _, motionEvent ->
+            when (motionEvent?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    priceIndicator.fadeIn()
+                    dateIndicator.fadeIn()
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_SCROLL -> {
+                    priceIndicator.fadeOut()
+                    dateIndicator.fadeOut()
+                }
+            }
+            false
+        }
     }
 
     fun styleLineDataSet(lineDataSet: LineDataSet) = lineDataSet.apply {

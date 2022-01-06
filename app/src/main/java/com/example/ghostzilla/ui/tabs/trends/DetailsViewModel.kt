@@ -16,6 +16,7 @@ import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
+import com.example.ghostzilla.utils.getMyLongValue
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
@@ -34,9 +35,7 @@ class DetailsViewModel @Inject constructor(
     lateinit var networkConnectivity: NetworkConnectivity
 
     val cryptoDetails = SingleLiveEvent<Coin>()
-    val _chartData = SingleLiveEvent<CoinPrices>()
     private val _priceData = mutableListOf<Entry>()
-    private val _lineDataSet = MutableLiveData(LineDataSet(_priceData, "Prices"))
     val lineDataSet = SingleLiveEvent<LineDataSet>()
 
     fun runOperation(coinID: String) {
@@ -73,12 +72,10 @@ class DetailsViewModel @Inject constructor(
                 dataRepository.getCoinChartDetails(coinID, days).collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
-                            _chartData.postValue(it)
                             it.prices.forEach { priceItem ->
-                                _priceData.add(Entry(priceItem[0].toString().toFloat(), priceItem[1].toString().toFloat()))
+                                _priceData.add(Entry(getMyLongValue(priceItem[0]), getMyLongValue(priceItem[1])))
                             }
-                            _lineDataSet.postValue(LineDataSet(_priceData, "Prices"))
-                            lineDataSet.postValue(_lineDataSet.value)
+                            lineDataSet.postValue(LineDataSet(_priceData, "Price Range"))
                         } ?: kotlin.run { showToastMessage(SEARCH_ERROR) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)

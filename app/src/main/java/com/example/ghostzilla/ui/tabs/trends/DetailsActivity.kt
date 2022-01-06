@@ -34,23 +34,14 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
                 viewModel.runOperation(cryptoItem!!.id)
             }
         }
-        sparkLineStyle.styleChart(binding.chartLine)
+        sparkLineStyle.styleChart(binding.chartLine, binding.priceIndicator, binding.dateIndicator)
         observeViewModel()
     }
 
     private fun observeViewModel() {
-        val entries = mutableListOf<Entry>()
-        viewModel._chartData.observe(this, {
-            it.prices.forEach { item ->
-                val x = getMyLongValue(item[0])
-                val y = getMyLongValue(item[1])
-                entries.add(Entry(x, y))
-            }
-            val dataSet = LineDataSet(entries, "Price Range")
-            binding.chartLine.marker =
-                CustomMarker(context = this, binding.priceIndicator, binding.dateIndicator)
-            sparkLineStyle.styleLineDataSet(dataSet)
-            binding.chartLine.data = LineData(dataSet)
+        viewModel.lineDataSet.observe(this, {
+            sparkLineStyle.styleLineDataSet(it)
+            binding.chartLine.data = LineData(it)
             binding.chartLine.invalidate()
         })
     }
