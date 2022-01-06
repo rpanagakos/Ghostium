@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="crypto"
+            type="com.example.ghostzilla.models.coingecko.CryptoItem" />
+
+        <variable
             name="viewModel"
             type="com.example.ghostzilla.ui.tabs.trends.DetailsViewModel" />
 
@@ -36,6 +40,7 @@
             android:elevation="2dp"
             android:scaleType="centerCrop"
             android:transitionName="@string/transition_coin_image"
+            imageURLContract="@{crypto.image}"
             app:civ_circle_background_color="@color/white"
             app:layout_constraintStart_toEndOf="@id/backButton"
             app:layout_constraintTop_toTopOf="@id/backButton"
@@ -50,6 +55,7 @@
             android:includeFontPadding="false"
             android:textAppearance="@style/small_text_bold"
             android:transitionName="@string/transition_coin_name"
+            android:text="@{crypto.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/coinImageDetails"
             app:layout_constraintTop_toTopOf="@id/coinImageDetails"
@@ -64,6 +70,7 @@
             android:textAppearance="@style/tiny_regular"
             android:textColor="@color/Gray3"
             android:transitionName="@string/transition_coin_symbol"
+            android:text="@{crypto.symbol}"
             app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
             app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
             app:layout_constraintStart_toStartOf="@id/coinNameDetail"

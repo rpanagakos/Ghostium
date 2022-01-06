@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CoinPrices(
     @SerializedName("prices")
-    val prices: List<List<Long>>
+    val prices: List<List<Any>>
 ): LocalModel{
     override fun equalsContent(obj: LocalModel): Boolean = false
 }
