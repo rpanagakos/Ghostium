@@ -17,11 +17,22 @@ import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.ln
 import kotlin.math.pow
 
 @SuppressLint("SetTextI18n")
 object TabsBinding {
+
+    @SuppressLint("SimpleDateFormat")
+    @BindingAdapter("timestamp")
+    @JvmStatic
+    fun TextView.convertLongToDate(timestamp: Long){
+        val date = Date(timestamp)
+        val format = SimpleDateFormat("dd MMMM, HH:mm", Locale.ENGLISH)
+        this.text = format.format(date)
+    }
 
     @BindingAdapter(value = ["imageURLContract"])
     @JvmStatic

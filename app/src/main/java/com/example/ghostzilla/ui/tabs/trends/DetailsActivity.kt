@@ -47,7 +47,8 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
                 entries.add(Entry(x, y))
             }
             val dataSet = LineDataSet(entries, "Price Range")
-            binding.chartLine.marker = CustomMarker(context = this)
+            binding.chartLine.marker =
+                CustomMarker(context = this, binding.priceIndicator, binding.dateIndicator)
             sparkLineStyle.styleLineDataSet(dataSet)
             binding.chartLine.data = LineData(dataSet)
             binding.chartLine.invalidate()

@@ -22,6 +22,12 @@
         <item name="colorControlHighlight">@color/white</item>
     </style>
 
+    <style name="tiny_text">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">22sp</item>
+        <item name="android:textColor">@color/Gray3</item>
+    </style>
 
     <style name="small_text_bold">
         <item name="fontFamily">@font/montserrat_bold</item>
@@ -49,6 +55,13 @@
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
         <item name="android:textColor">@color/Black3</item>
+    </style>
+
+    <style name="xlarge_text_bold_white">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">22sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="small_regular">
