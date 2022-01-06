@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
@@ -16,6 +17,8 @@ import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -31,7 +34,10 @@ class DetailsViewModel @Inject constructor(
     lateinit var networkConnectivity: NetworkConnectivity
 
     val cryptoDetails = SingleLiveEvent<Coin>()
-    val chartData = SingleLiveEvent<CoinPrices>()
+    val _chartData = SingleLiveEvent<CoinPrices>()
+    private val _priceData = mutableListOf<Entry>()
+    private val _lineDataSet = MutableLiveData(LineDataSet(_priceData, "Prices"))
+    val lineDataSet = SingleLiveEvent<LineDataSet>()
 
     fun runOperation(coinID: String) {
         if (networkConnectivity.isConnected()) {
@@ -67,7 +73,12 @@ class DetailsViewModel @Inject constructor(
                 dataRepository.getCoinChartDetails(coinID, days).collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
-                            chartData.postValue(it)
+                            _chartData.postValue(it)
+                            it.prices.forEach { priceItem ->
+                                _priceData.add(Entry(priceItem[0].toString().toFloat(), priceItem[1].toString().toFloat()))
+                            }
+                            _lineDataSet.postValue(LineDataSet(_priceData, "Prices"))
+                            lineDataSet.postValue(_lineDataSet.value)
                         } ?: kotlin.run { showToastMessage(SEARCH_ERROR) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)

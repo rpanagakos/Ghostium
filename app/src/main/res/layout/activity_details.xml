@@ -34,13 +34,13 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/coinImageDetails"
+            imageURLContract="@{crypto.image}"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
             android:layout_marginStart="@dimen/large_spacing"
             android:elevation="2dp"
             android:scaleType="centerCrop"
             android:transitionName="@string/transition_coin_image"
-            imageURLContract="@{crypto.image}"
             app:civ_circle_background_color="@color/white"
             app:layout_constraintStart_toEndOf="@id/backButton"
             app:layout_constraintTop_toTopOf="@id/backButton"
@@ -53,9 +53,9 @@
             android:layout_marginStart="@dimen/large_spacing"
             android:layout_marginEnd="@dimen/large_spacing"
             android:includeFontPadding="false"
+            android:text="@{crypto.name}"
             android:textAppearance="@style/small_text_bold"
             android:transitionName="@string/transition_coin_name"
-            android:text="@{crypto.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/coinImageDetails"
             app:layout_constraintTop_toTopOf="@id/coinImageDetails"
@@ -66,11 +66,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
+            android:text="@{crypto.symbol}"
             android:textAllCaps="true"
             android:textAppearance="@style/tiny_regular"
             android:textColor="@color/Gray3"
             android:transitionName="@string/transition_coin_symbol"
-            android:text="@{crypto.symbol}"
             app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
             app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
             app:layout_constraintStart_toStartOf="@id/coinNameDetail"
@@ -93,8 +93,8 @@
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/large_spacing"
             android:layout_marginEnd="@dimen/large_spacing"
-            android:scrollbars="none"
             android:fillViewport="true"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/seperator">
 
@@ -112,11 +112,21 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/statsBoard"
                     android:layout_width="match_parent"
-                    android:layout_height="364dp"
+                    android:layout_height="460dp"
                     android:layout_marginTop="@dimen/large_spacing"
                     app:cardBackgroundColor="@color/Black"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintTop_toBottomOf="@id/tripleValue" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chartLine"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:elevation="2dp"
+                    app:layout_constraintStart_toStartOf="@id/statsBoard"
+                    app:layout_constraintEnd_toEndOf="@id/statsBoard"
+                    app:layout_constraintTop_toTopOf="@+id/statsBoard"
+                    app:layout_constraintBottom_toBottomOf="@id/statsBoard"/>
 
                 <TextView
                     android:id="@+id/titleDescription"
