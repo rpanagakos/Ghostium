@@ -4,19 +4,19 @@ import android.app.Application
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
+import android.view.View
+import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewModelScope
 import com.airbnb.lottie.LottieAnimationView
 import com.example.ghostzilla.abstraction.AbstractViewModel
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.errors.mapper.SEARCH_ERROR
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
-import com.example.ghostzilla.utils.NetworkConnectivity
-import com.example.ghostzilla.utils.SingleLiveEvent
-import com.example.ghostzilla.utils.getMyLongValue
-import com.example.ghostzilla.utils.wrapEspressoIdlingResource
+import com.example.ghostzilla.utils.*
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -71,6 +71,7 @@ class DetailsViewModel @Inject constructor(
                 dataRepository.getCoinChartDetails(coinID, days).collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
+                            _priceData.clear()
                             it.prices.forEach { priceItem ->
                                 _priceData.add(
                                     Entry(
@@ -88,6 +89,14 @@ class DetailsViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun selectedTab(
+        priceIndicator: View, dateIndicator: View, tabName: String, cryptoItem: CryptoItem
+    ) {
+        priceIndicator.dummyFadeOut()
+        dateIndicator.dummyFadeOut()
+        getChartsData(cryptoItem.id, convertMonthsToDays(tabName))
     }
 
     fun visitCryptoSite(site: String) {

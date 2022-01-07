@@ -108,6 +108,13 @@ fun View.fadeOut(durationMillis: Long = 250) {
     })
 }
 
+fun View.dummyFadeOut(durationMillis: Long = 50) {
+    this.startAnimation(AlphaAnimation(0F, 0F).apply {
+        duration = durationMillis
+        fillAfter = true
+    })
+}
+
 fun LineChart.resetChart() {
     this.fitScreen()
     this.data?.clearValues()

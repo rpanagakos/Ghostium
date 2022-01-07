@@ -5,6 +5,7 @@ import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
 import com.example.ghostzilla.di.SparkLineStyle
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.utils.resetChart
 import com.github.mikephil.charting.data.LineData
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,12 +32,15 @@ class DetailsActivity :
                 viewModel.runOperation(cryptoItem!!.id)
             }
         }
+
         binding.daysTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                /* tab?.let {
-                     val days = convertMonthsToDays(tab.text.toString())
-                     viewModel.getChartsData(cryptoItem!!.id, days )
-                 }*/
+                tab?.let {
+                    viewModel.selectedTab(
+                        binding.priceIndicator, binding.dateIndicator,
+                        tab.text.toString(), cryptoItem!!
+                    )
+                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -49,7 +53,7 @@ class DetailsActivity :
 
     private fun observeViewModel() {
         viewModel.lineDataSet.observe(this, {
-            //binding.chartLine.resetChart()
+            binding.chartLine.resetChart()
             sparkLineStyle.styleLineDataSet(it)
             binding.chartLine.data = LineData(it)
             binding.chartLine.invalidate()
