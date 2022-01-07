@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.trends
 
 import androidx.activity.viewModels
+import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
 import com.example.ghostzilla.di.SparkLineStyle
@@ -62,7 +63,8 @@ class DetailsActivity :
 
     override fun runOperation() {
         backButton.setOnClickListener {
-            onBackPressed()
+            finish()
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
     }
 
