@@ -5,10 +5,9 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.airbnb.lottie.LottieAnimationView
 import com.example.ghostzilla.abstraction.AbstractViewModel
-import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.errors.mapper.SEARCH_ERROR
@@ -42,8 +41,7 @@ class DetailsViewModel @Inject constructor(
         if (networkConnectivity.isConnected()) {
             searchCoin(coinID)
             getChartsData(coinID, 7)
-        }
-        else {
+        } else {
             checkErrorCode(NO_INTERNET_CONNECTION)
         }
     }
@@ -73,7 +71,12 @@ class DetailsViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             it.prices.forEach { priceItem ->
-                                _priceData.add(Entry(getMyLongValue(priceItem[0]), getMyLongValue(priceItem[1])))
+                                _priceData.add(
+                                    Entry(
+                                        getMyLongValue(priceItem[0]),
+                                        getMyLongValue(priceItem[1])
+                                    )
+                                )
                             }
                             lineDataSet.postValue(LineDataSet(_priceData, "Price Range"))
                         } ?: kotlin.run { showToastMessage(SEARCH_ERROR) }
@@ -95,6 +98,11 @@ class DetailsViewModel @Inject constructor(
 
     fun displayInternetMessageWhenOffline() {
         showToastMessage(NO_INTERNET_CONNECTION)
+    }
+
+    fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {
+        lottieAnimationView.reverseAnimationSpeed()
+        lottieAnimationView.playAnimation()
     }
 
 }

@@ -20,7 +20,8 @@ class SparkLineStyle @Inject constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     fun styleChart(
-        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView) = lineChart.apply {
+        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView
+    ) = lineChart.apply {
         axisLeft.isEnabled = false
         axisRight.isEnabled = false
         xAxis.isEnabled = false
@@ -39,8 +40,8 @@ class SparkLineStyle @Inject constructor(
                     dateIndicator.fadeIn()
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_SCROLL -> {
-                    priceIndicator.fadeOut()
-                    dateIndicator.fadeOut()
+                    priceIndicator.fadeOut(600)
+                    dateIndicator.fadeOut(600)
                 }
             }
             false

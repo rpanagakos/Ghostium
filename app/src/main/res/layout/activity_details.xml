@@ -56,7 +56,7 @@
             android:text="@{crypto.name}"
             android:textAppearance="@style/small_text_bold"
             android:transitionName="@string/transition_coin_name"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favouritesButton"
             app:layout_constraintStart_toEndOf="@id/coinImageDetails"
             app:layout_constraintTop_toTopOf="@id/coinImageDetails"
             tools:text="Bitcoin" />
@@ -77,6 +77,19 @@
             app:layout_constraintTop_toBottomOf="@id/coinNameDetail"
             tools:text="BTC" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/favouritesButton"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginEnd="@dimen/large_spacing"
+            android:onClick="@{() -> viewModel.favouriteOnClick(favouritesButton)}"
+            app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/coinImageDetails"
+            app:lottie_fileName="favourite.json"
+            app:lottie_progress="1" />
+
+
         <View
             android:id="@+id/seperator"
             android:layout_width="0dp"
@@ -84,7 +97,7 @@
             android:layout_marginTop="@dimen/large_spacing"
             android:background="@color/CoolGray"
             android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
+            app:layout_constraintEnd_toEndOf="@id/favouritesButton"
             app:layout_constraintStart_toStartOf="@id/backButton"
             app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail" />
 
@@ -115,7 +128,7 @@
                     android:layout_height="400dp"
                     android:layout_marginTop="@dimen/large_spacing"
                     app:cardBackgroundColor="@color/Black"
-                    app:cardCornerRadius="10dp"
+                    app:cardCornerRadius="12dp"
                     app:layout_constraintTop_toBottomOf="@id/tripleValue" />
 
                 <TextView
@@ -150,10 +163,21 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:elevation="2dp"
-                    app:layout_constraintBottom_toBottomOf="@id/statsBoard"
+                    app:layout_constraintBottom_toTopOf="@id/daysTab"
                     app:layout_constraintEnd_toEndOf="@id/statsBoard"
                     app:layout_constraintStart_toStartOf="@id/statsBoard"
                     app:layout_constraintTop_toBottomOf="@+id/dateIndicator" />
+
+                <TableLayout
+                    android:id="@+id/daysTab"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="@dimen/large_spacing"
+                    android:background="@drawable/bg_days_tab"
+                    android:elevation="3dp"
+                    app:layout_constraintBottom_toBottomOf="@id/statsBoard"
+                    app:layout_constraintEnd_toEndOf="@id/chartLine"
+                    app:layout_constraintStart_toStartOf="@id/chartLine" />
 
                 <TextView
                     android:id="@+id/titleDescription"

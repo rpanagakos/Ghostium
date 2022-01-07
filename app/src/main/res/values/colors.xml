@@ -23,6 +23,7 @@
     <color name="Black2">#121212</color>
     <color name="Black3">#242424</color>
     <color name="Gray2">#DBDBDB</color>
+    <color name="Gray2_transparent">#BFDBDBDB</color>
     <color name="Gray3">#949494</color>
     <color name="CoolGray">#EDEDED</color>
 
