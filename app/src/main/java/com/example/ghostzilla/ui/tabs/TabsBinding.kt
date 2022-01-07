@@ -12,6 +12,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
+import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import com.google.android.material.tabs.TabLayout
 import de.hdodenhof.circleimageview.CircleImageView
@@ -68,27 +69,7 @@ object TabsBinding {
             roundedPrice = dec.format(cryptoPrice)
         }
         val spannableInt = SpannableString("$roundedPrice €")
-
-        when {
-            roundedPrice.contains(".") -> {
-                val index = roundedPrice.indexOf(".")
-                spannableInt.setSpan(
-                    RelativeSizeSpan(1.1f),
-                    0,
-                    index,
-                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
-                )
-            }
-            !roundedPrice.isNullOrEmpty() -> {
-                spannableInt.setSpan(
-                    RelativeSizeSpan(1.1f),
-                    0,
-                    roundedPrice.length,
-                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
-                )
-            }
-        }
-        text = spannableInt
+        text = getSpannableText(spannableInt, roundedPrice)
     }
 
     @BindingAdapter("marketCap")
@@ -99,11 +80,13 @@ object TabsBinding {
             return
         }
         val exp = (ln(marketCap.toDouble()) / ln(1000.0)).toInt()
-        this.text = String.format(
+        val capValue = String.format(
             "%.1f %c",
             marketCap / 1000.0.pow(exp.toDouble()),
             "kMBTPE"[exp - 1]
         )
+        val spannableInt = SpannableString(capValue)
+        this.text = getSpannableText(spannableInt, capValue)
     }
 
     @BindingAdapter("convertToHtmlString")

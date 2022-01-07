@@ -3,9 +3,12 @@ package com.example.ghostzilla.utils
 import android.app.Activity
 import android.content.Context
 import android.text.Html
+import android.text.SpannableString
 import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.text.style.RelativeSizeSpan
 import android.text.style.URLSpan
 import android.view.View
 import android.view.animation.AlphaAnimation
@@ -146,6 +149,29 @@ fun TextView.setTextViewLinkHtml(html: String, linkClickCallBack: ((Int, String)
     text = strBuilder
     linksClickable = true
     movementMethod = LinkMovementMethod.getInstance()
+}
+
+fun getSpannableText(span : SpannableString, originalText : String) : SpannableString {
+    when {
+        originalText.contains(".") -> {
+            val index = originalText.indexOf(".")
+            span.setSpan(
+                RelativeSizeSpan(1.1f),
+                0,
+                index,
+                Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+            )
+        }
+        !originalText.isNullOrEmpty() -> {
+            span.setSpan(
+                RelativeSizeSpan(1.1f),
+                0,
+                originalText.length,
+                Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+            )
+        }
+    }
+    return  span
 }
 
 private fun SpannableStringBuilder.makeLinkClickable(
