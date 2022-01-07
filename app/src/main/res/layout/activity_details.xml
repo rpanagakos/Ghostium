@@ -168,16 +168,23 @@
                     app:layout_constraintStart_toStartOf="@id/statsBoard"
                     app:layout_constraintTop_toBottomOf="@+id/dateIndicator" />
 
-                <TableLayout
+                <com.google.android.material.tabs.TabLayout
                     android:id="@+id/daysTab"
+                    addTabs="@{viewModel.tabs}"
                     android:layout_width="200dp"
-                    android:layout_height="40dp"
+                    android:layout_height="36dp"
                     android:layout_marginBottom="@dimen/large_spacing"
                     android:background="@drawable/bg_days_tab"
                     android:elevation="3dp"
                     app:layout_constraintBottom_toBottomOf="@id/statsBoard"
                     app:layout_constraintEnd_toEndOf="@id/chartLine"
-                    app:layout_constraintStart_toStartOf="@id/chartLine" />
+                    app:layout_constraintStart_toStartOf="@id/chartLine"
+                    app:tabIndicator="@drawable/custom_tab_indicator"
+                    app:tabIndicatorColor="@color/Gray3"
+                    app:tabIndicatorGravity="stretch"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/TabCustomAppearance"
+                    app:tabTextColor="@color/CoolGray" />
 
                 <TextView
                     android:id="@+id/titleDescription"

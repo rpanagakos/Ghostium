@@ -29,6 +29,14 @@
         <item name="android:textColor">@color/Gray3</item>
     </style>
 
+    <style name="TabCustomAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">22sp</item>
+    </style>
+
     <style name="small_text_bold">
         <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:textSize">14sp</item>

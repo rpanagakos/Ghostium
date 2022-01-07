@@ -18,6 +18,7 @@ import androidx.core.text.getSpans
 import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import com.github.mikephil.charting.charts.LineChart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
@@ -75,6 +76,24 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
     setOnClickListener(safeClickListener)
 }
 
+fun convertMonthsToDays(tabSelected: String): Int {
+    when {
+        tabSelected.contains("d") -> {
+            val num = (tabSelected.subSequence(0, tabSelected.indexOf('d'))).toString().toInt()
+            return num
+        }
+        tabSelected.contains("m") -> {
+            val months = (tabSelected.subSequence(0, tabSelected.indexOf('m'))).toString().toInt()
+            return (months * 30)
+        }
+        tabSelected.contains("y") -> {
+            val months = (tabSelected.subSequence(0, tabSelected.indexOf('m'))).toString().toInt()
+            return (months * 365)
+        }
+    }
+    return 1
+}
+
 fun View.fadeIn(durationMillis: Long = 250) {
     this.startAnimation(AlphaAnimation(0F, 1F).apply {
         duration = durationMillis
@@ -87,6 +106,15 @@ fun View.fadeOut(durationMillis: Long = 250) {
         duration = durationMillis
         fillAfter = true
     })
+}
+
+fun LineChart.resetChart() {
+    this.fitScreen()
+    this.data?.clearValues()
+    this.xAxis.valueFormatter = null
+    this.notifyDataSetChanged()
+    this.clear()
+    this.invalidate()
 }
 
 fun getMyLongValue(vararg any: Any): Float {

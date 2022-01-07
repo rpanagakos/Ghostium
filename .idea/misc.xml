@@ -7,9 +7,12 @@
         <entry key="app/src/main/res/drawable/back_button_background.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/back_button_ripple.xml" value="0.41759259259259257" />
         <entry key="app/src/main/res/drawable/bg_chart_line.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/bg_custom_tab.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/drawable/bg_days_tab.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/card_trends_item.xml" value="0.5707692307692308" />
         <entry key="app/src/main/res/drawable/contract_image_trends.xml" value="0.5707692307692308" />
+        <entry key="app/src/main/res/drawable/custom_tab_indicator.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/gray_marker.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_back_to_top.xml" value="0.5796875" />
@@ -28,6 +31,10 @@
         <entry key="app/src/main/res/drawable/placeholder_trends_item.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/profile_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/search_background.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/tab_background_selected.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/drawable/tab_background_unselected.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/drawable/tab_color_label.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/drawable/trends_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/underline_text_input.xml" value="0.44635416666666666" />
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.5703703703703704" />
@@ -35,6 +42,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3816650411348873" />
         <entry key="app/src/main/res/layout/back_button.xml" value="0.39091331317725053" />
         <entry key="app/src/main/res/layout/custom_marker.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/custom_tab.xml" value="0.9231223046657951" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.43072916666666666" />

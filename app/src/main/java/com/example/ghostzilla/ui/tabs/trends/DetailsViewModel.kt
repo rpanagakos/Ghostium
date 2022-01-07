@@ -36,11 +36,12 @@ class DetailsViewModel @Inject constructor(
     val cryptoDetails = SingleLiveEvent<Coin>()
     private val _priceData = mutableListOf<Entry>()
     val lineDataSet = SingleLiveEvent<LineDataSet>()
+    val tabs = listOf("1d", "7d", "1m", "3m")
 
     fun runOperation(coinID: String) {
         if (networkConnectivity.isConnected()) {
             searchCoin(coinID)
-            getChartsData(coinID, 7)
+            getChartsData(coinID, 1)
         } else {
             checkErrorCode(NO_INTERNET_CONNECTION)
         }

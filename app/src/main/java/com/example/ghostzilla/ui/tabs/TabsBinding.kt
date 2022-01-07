@@ -1,12 +1,10 @@
 package com.example.ghostzilla.ui.tabs
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
 import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.RelativeSizeSpan
-import android.view.View
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
@@ -15,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.utils.setTextViewLinkHtml
+import com.google.android.material.tabs.TabLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -25,10 +24,24 @@ import kotlin.math.pow
 @SuppressLint("SetTextI18n")
 object TabsBinding {
 
+    @BindingAdapter("addTabs")
+    @JvmStatic
+    fun TabLayout.addTabs(tabs: List<String>?) {
+        if (this.tabCount > 0)
+            return
+        tabs?.forEach { tabsLabel ->
+            this.apply {
+                addTab(newTab())
+                val tab = this.getTabAt(this.tabCount - 1)
+                tab?.text = tabsLabel
+            }
+        }
+    }
+
     @SuppressLint("SimpleDateFormat")
     @BindingAdapter("timestamp")
     @JvmStatic
-    fun TextView.convertLongToDate(timestamp: Long){
+    fun TextView.convertLongToDate(timestamp: Long) {
         val date = Date(timestamp)
         val format = SimpleDateFormat("dd MMMM, HH:mm", Locale.ENGLISH)
         this.text = format.format(date)

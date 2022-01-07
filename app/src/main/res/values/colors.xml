@@ -22,6 +22,7 @@
     <color name="Black">#000000</color>
     <color name="Black2">#121212</color>
     <color name="Black3">#242424</color>
+    <color name="BlackTransparent">#AD242424</color>
     <color name="Gray2">#DBDBDB</color>
     <color name="Gray2_transparent">#BFDBDBDB</color>
     <color name="Gray3">#949494</color>

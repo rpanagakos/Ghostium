@@ -1,22 +1,19 @@
 package com.example.ghostzilla.ui.tabs.trends
 
 import androidx.activity.viewModels
-import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
 import com.example.ghostzilla.di.SparkLineStyle
 import com.example.ghostzilla.models.coingecko.CryptoItem
-import com.example.ghostzilla.utils.customview.CustomMarker
-import com.example.ghostzilla.utils.getMyLongValue
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activity_details) {
+class DetailsActivity :
+    AbstractActivity<ActivityDetailsBinding>(com.example.ghostzilla.R.layout.activity_details) {
 
     @Inject
     lateinit var sparkLineStyle: SparkLineStyle
@@ -34,12 +31,25 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
                 viewModel.runOperation(cryptoItem!!.id)
             }
         }
+        binding.daysTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                /* tab?.let {
+                     val days = convertMonthsToDays(tab.text.toString())
+                     viewModel.getChartsData(cryptoItem!!.id, days )
+                 }*/
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+
         sparkLineStyle.styleChart(binding.chartLine, binding.priceIndicator, binding.dateIndicator)
         observeViewModel()
     }
 
     private fun observeViewModel() {
         viewModel.lineDataSet.observe(this, {
+            //binding.chartLine.resetChart()
             sparkLineStyle.styleLineDataSet(it)
             binding.chartLine.data = LineData(it)
             binding.chartLine.invalidate()
