@@ -171,7 +171,7 @@
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/daysTab"
                     addTabs="@{viewModel.tabs}"
-                    android:layout_width="200dp"
+                    android:layout_width="250dp"
                     android:layout_height="36dp"
                     android:layout_marginBottom="@dimen/large_spacing"
                     android:background="@drawable/bg_days_tab"

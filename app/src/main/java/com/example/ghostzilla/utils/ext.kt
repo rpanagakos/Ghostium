@@ -90,7 +90,7 @@ fun convertMonthsToDays(tabSelected: String): Int {
             return (months * 30)
         }
         tabSelected.contains("y") -> {
-            val months = (tabSelected.subSequence(0, tabSelected.indexOf('m'))).toString().toInt()
+            val months = (tabSelected.subSequence(0, tabSelected.indexOf('y'))).toString().toInt()
             return (months * 365)
         }
     }

@@ -36,7 +36,7 @@ class DetailsViewModel @Inject constructor(
     val cryptoDetails = SingleLiveEvent<Coin>()
     private val _priceData = mutableListOf<Entry>()
     val lineDataSet = SingleLiveEvent<LineDataSet>()
-    val tabs = listOf("1d", "7d", "1m", "3m")
+    val tabs = listOf("1d", "7d", "1m", "3m", "1y")
 
     fun runOperation(coinID: String) {
         if (networkConnectivity.isConnected()) {
