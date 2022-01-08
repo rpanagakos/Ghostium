@@ -1,7 +1,6 @@
 package com.example.ghostzilla.utils
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
@@ -9,7 +8,6 @@ import com.example.ghostzilla.models.errors.mapper.NETWORK_ERROR
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import retrofit2.Response
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
 
 class Network @Inject constructor(val context: Context) : NetworkConnectivity {

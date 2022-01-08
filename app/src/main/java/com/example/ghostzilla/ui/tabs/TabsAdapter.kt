@@ -2,21 +2,18 @@ package com.example.ghostzilla.ui.tabs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
-import com.example.ghostzilla.abstraction.DiffUtilClass
 import com.example.ghostzilla.abstraction.ItemOnClickListener
-import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderTrendsItemBinding
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
-class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter(){
+class TabsAdapter(private val listener: ItemOnClickListener) : AbstractAdapter() {
 
-    val currentPosition : AtomicInteger = AtomicInteger(0)
+    val currentPosition: AtomicInteger = AtomicInteger(0)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {

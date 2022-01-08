@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import android.view.View
-import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewModelScope
 import com.airbnb.lottie.LottieAnimationView

@@ -151,7 +151,7 @@ fun TextView.setTextViewLinkHtml(html: String, linkClickCallBack: ((Int, String)
     movementMethod = LinkMovementMethod.getInstance()
 }
 
-fun getSpannableText(span : SpannableString, originalText : String) : SpannableString {
+fun getSpannableText(span: SpannableString, originalText: String): SpannableString {
     when {
         originalText.contains(".") -> {
             val index = originalText.indexOf(".")
@@ -171,7 +171,7 @@ fun getSpannableText(span : SpannableString, originalText : String) : SpannableS
             )
         }
     }
-    return  span
+    return span
 }
 
 private fun SpannableStringBuilder.makeLinkClickable(

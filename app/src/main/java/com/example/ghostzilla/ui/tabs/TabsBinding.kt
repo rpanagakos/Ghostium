@@ -3,8 +3,6 @@ package com.example.ghostzilla.ui.tabs
 import android.annotation.SuppressLint
 import android.text.Html
 import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.RelativeSizeSpan
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter

@@ -9,21 +9,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 
-abstract class BackToTopScrollListener(val view: View, val requeredContext: Context) : RecyclerView.OnScrollListener() {
+abstract class BackToTopScrollListener(val view: View, val requeredContext: Context) :
+    RecyclerView.OnScrollListener() {
 
     private var animationStarted = false
 
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
         super.onScrollStateChanged(recyclerView, newState)
-        when(newState){
+        when (newState) {
             RecyclerView.SCROLL_STATE_DRAGGING, RecyclerView.SCROLL_STATE_IDLE -> {
                 val position =
                     (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition() + 1
-                if (position >= 12 && !animationStarted ){
+                if (position >= 12 && !animationStarted) {
                     animationStarted = true
                     view.apply {
                         visibility = View.VISIBLE
-                        val animation = AnimationUtils.loadAnimation(requeredContext, R.anim.fade_in)
+                        val animation =
+                            AnimationUtils.loadAnimation(requeredContext, R.anim.fade_in)
                         view.startAnimation(animation)
                     }
                 } else if (position <= 12 && animationStarted) {
