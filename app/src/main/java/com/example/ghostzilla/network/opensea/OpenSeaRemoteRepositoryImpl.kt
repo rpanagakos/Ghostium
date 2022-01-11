@@ -5,6 +5,7 @@ import com.example.ghostzilla.di.TypeEnum
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.generic.GenericResponse
+import com.example.ghostzilla.models.opensea.Assets
 import com.example.ghostzilla.utils.NetworkConnectivity
 import javax.inject.Inject
 
@@ -13,10 +14,10 @@ class OpenSeaRemoteRepositoryImpl @Inject constructor(
     private val networkConnectivity: NetworkConnectivity
 ) : OpenSeaRemoteRepository {
 
-    override suspend fun getAllNfts(): GenericResponse<Cryptos> {
+    override suspend fun getAllNfts(): GenericResponse<Assets> {
         return when (val response =
             networkConnectivity.processCall(openSeaApi::getAllNfts)) {
-            is List<*> -> GenericResponse.Success(data = Cryptos(response as ArrayList<CryptoItem>))
+            is Assets -> GenericResponse.Success(data = response)
             else -> GenericResponse.DataError(errorCode = response as Int)
         }    }
 

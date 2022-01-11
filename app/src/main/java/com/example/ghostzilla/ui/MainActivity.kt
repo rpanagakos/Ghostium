@@ -9,7 +9,7 @@ import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.tabs.home.HomeFragment
 import com.example.ghostzilla.ui.tabs.profile.ProfileFragment
 import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
-import com.example.ghostzilla.ui.tabs.wallet.WalletFragment
+import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,7 +36,7 @@ class MainActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     override fun onBackPressed() {
         when (nav_host_fragment_container.childFragmentManager.fragments[0]) {
             is HomeFragment, is TrendsFragment,
-            is WalletFragment, is ProfileFragment -> finishAffinity()
+            is NftsFragment, is ProfileFragment -> finishAffinity()
             else -> super.onBackPressed()
         }
     }

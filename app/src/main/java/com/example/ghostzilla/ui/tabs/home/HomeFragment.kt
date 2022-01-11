@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : AbstractFragment<FragmentHomeBinding, TrendsViewModel>(R.layout.fragment_home) {
 
-    override val viewModel: TrendsViewModel by activityViewModels()
+    override val viewModel: TrendsViewModel by viewModels()
 
     override fun initLayout() {
     }

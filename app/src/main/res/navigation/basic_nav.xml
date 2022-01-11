@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/walletFragment"
-        android:name="com.example.ghostzilla.ui.tabs.wallet.WalletFragment"
+        android:name="com.example.ghostzilla.ui.tabs.nft.NftsFragment"
         android:label="fragment_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_nfts" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.ghostzilla.ui.tabs.home.HomeFragment"

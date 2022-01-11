@@ -4,6 +4,12 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.ui.tabs.nft.NftsViewModel" />
+
     </data>
 
     <ScrollView
