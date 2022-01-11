@@ -1,7 +1,7 @@
 package com.example.ghostzilla.di
 
 import com.example.ghostzilla.network.opensea.OpenSeaApi
-import com.example.ghostzilla.utils.ConstantApi
+import com.example.ghostzilla.utils.ConstantApi.Companion.OPEN_SEA_BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -66,7 +66,7 @@ object OpenSeaNetworkModule {
         @OpenSeaNetwork(TypeEnum.GSON) gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(ConstantApi.BASE_URL)
+            .baseUrl(OPEN_SEA_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

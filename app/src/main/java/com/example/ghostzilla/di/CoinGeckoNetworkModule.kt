@@ -1,8 +1,8 @@
 package com.example.ghostzilla.di
 
 import android.content.Context
-import com.example.ghostzilla.utils.ConstantApi.Companion.BASE_URL
 import com.example.ghostzilla.network.coingecko.CoinGeckoApi
+import com.example.ghostzilla.utils.ConstantApi.Companion.COIN_GECKO_BASE_URL
 import com.example.ghostzilla.utils.Network
 import com.example.ghostzilla.utils.NetworkConnectivity
 import dagger.Module
@@ -69,7 +69,7 @@ object CoinGeckoNetworkModule {
         @CoinGeckoNetwork(TypeEnum.GSON) gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(COIN_GECKO_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
