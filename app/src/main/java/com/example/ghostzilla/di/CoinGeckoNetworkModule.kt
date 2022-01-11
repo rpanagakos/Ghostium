@@ -19,15 +19,19 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object CoinGeckoNetworkModule {
 
     @Singleton
     @Provides
+    @CoinGeckoNetwork(TypeEnum.HTTPLOGGING)
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
 
     @Singleton
     @Provides
-    fun provideHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    @CoinGeckoNetwork(TypeEnum.OKHTTP)
+    fun provideHttpClient(
+        @CoinGeckoNetwork(TypeEnum.HTTPLOGGING) httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder()
             .readTimeout(15, TimeUnit.SECONDS)
@@ -51,6 +55,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    @CoinGeckoNetwork(TypeEnum.GSON)
     fun provideConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
@@ -58,9 +63,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    @CoinGeckoNetwork(TypeEnum.RETROFIT)
     fun provideRetrofitInstance(
-        okHttpClient: OkHttpClient,
-        gsonConverterFactory: GsonConverterFactory
+        @CoinGeckoNetwork(TypeEnum.OKHTTP) okHttpClient: OkHttpClient,
+        @CoinGeckoNetwork(TypeEnum.GSON) gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -71,7 +77,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): CoinGeckoApi {
+    @CoinGeckoNetwork(TypeEnum.APISERVICE)
+    fun provideApiService(
+        @CoinGeckoNetwork(TypeEnum.RETROFIT) retrofit: Retrofit
+    ): CoinGeckoApi {
         return retrofit.create(CoinGeckoApi::class.java)
     }
 

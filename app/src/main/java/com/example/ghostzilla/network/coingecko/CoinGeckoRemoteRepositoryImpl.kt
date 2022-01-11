@@ -1,5 +1,7 @@
 package com.example.ghostzilla.network.coingecko
 
+import com.example.ghostzilla.di.CoinGeckoNetwork
+import com.example.ghostzilla.di.TypeEnum
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
@@ -9,7 +11,8 @@ import com.example.ghostzilla.utils.NetworkConnectivity
 import javax.inject.Inject
 
 class CoinGeckoRemoteRepositoryImpl @Inject constructor(
-    private val coinGeckoApi: CoinGeckoApi, private val networkConnectivity: NetworkConnectivity
+    @CoinGeckoNetwork(TypeEnum.APISERVICE) private val coinGeckoApi: CoinGeckoApi,
+    private val networkConnectivity: NetworkConnectivity
 ) : CoinGeckoRemoteRepository {
 
     override suspend fun getAllCryptos(): GenericResponse<Cryptos> {
