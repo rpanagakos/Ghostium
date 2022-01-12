@@ -3,11 +3,14 @@ package com.example.ghostzilla.ui.tabs
 import android.annotation.SuppressLint
 import android.text.Html
 import android.text.SpannableString
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.utils.getSpannableText
@@ -48,10 +51,34 @@ object TabsBinding {
 
     @BindingAdapter(value = ["imageURLContract"])
     @JvmStatic
-    fun CircleImageView.loadImageFromUrl(imageUrl: String?) {
+    fun ImageView.loadImageFromUrl(imageUrl: String?) {
         if (imageUrl != null) {
             Glide.with(this)
                 .load(imageUrl)
+                .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
+                .into(this)
+        }
+    }
+
+    @BindingAdapter(value = ["rectangleImageUrl"])
+    @JvmStatic
+    fun ImageView.loadRectangleImage(imageUrl: String?) {
+        if (imageUrl != null) {
+            Glide.with(this.context)
+                .load(imageUrl)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(8)))
+                .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
+                .into(this)
+        }
+    }
+
+    @BindingAdapter(value = ["circleImageUrl"])
+    @JvmStatic
+    fun ImageView.loadCircleImage(imageUrl: String?) {
+        if (imageUrl != null) {
+            Glide.with(this)
+                .load(imageUrl)
+                .circleCrop()
                 .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
                 .into(this)
         }

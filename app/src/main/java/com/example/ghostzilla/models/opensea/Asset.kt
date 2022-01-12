@@ -25,13 +25,13 @@ data class Asset(
     @SerializedName("id")
     val id: Int,
     @SerializedName("image_original_url")
-    val imageOriginalUrl: Any,
+    val imageOriginalUrl: String?,
     @SerializedName("image_preview_url")
-    val imagePreviewUrl: Any,
+    val imagePreviewUrl: String?,
     @SerializedName("image_thumbnail_url")
-    val imageThumbnailUrl: Any,
+    val imageThumbnailUrl: String?,
     @SerializedName("image_url")
-    val imageUrl: String,
+    val imageUrl: String?,
     @SerializedName("is_presale")
     val isPresale: Boolean,
     @SerializedName("last_sale")
@@ -39,7 +39,7 @@ data class Asset(
     @SerializedName("listing_date")
     val listingDate: Any,
     @SerializedName("name")
-    val name: Any,
+    val name: String?,
     @SerializedName("num_sales")
     val numSales: Int,
     @SerializedName("owner")
