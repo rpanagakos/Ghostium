@@ -1,6 +1,7 @@
 package com.example.ghostzilla.models.opensea
 
 
+import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class Asset(
@@ -60,4 +61,6 @@ data class Asset(
     val transferFee: Any,
     @SerializedName("transfer_fee_payment_token")
     val transferFeePaymentToken: Any
-)
+) : LocalModel {
+    override fun equalsContent(obj: LocalModel): Boolean = false
+}

@@ -4,11 +4,13 @@ import android.app.Application
 import android.widget.ImageView
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.errors.ErrorManager
 import com.example.ghostzilla.models.errors.mapper.NETWORK_ERROR
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
+import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.clearTextAndFocus
 import com.example.ghostzilla.utils.showKeyboard
@@ -62,6 +64,14 @@ abstract class AbstractViewModel(application: Application) : AndroidViewModel(ap
                 searchButton.setImageResource(R.drawable.ic_search)
             }
         }
+    }
+
+    fun scrollToTopRecycler(recyclerView: RecyclerView) {
+        when ((recyclerView.adapter as? TabsAdapter)?.currentPosition?.get()) {
+            in 0..18 -> Unit
+            else -> recyclerView.scrollToPosition(18)
+        }
+        recyclerView.smoothScrollToPosition(0)
     }
 
     protected fun CoroutineScope.launchPeriodicAsync(

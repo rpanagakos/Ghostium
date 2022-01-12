@@ -118,14 +118,6 @@ class TrendsViewModel @Inject constructor(
         }
     }
 
-    fun scrollToTopRecycler(recyclerView: RecyclerView) {
-        when ((recyclerView.adapter as? TabsAdapter)?.currentPosition?.get()) {
-            in 0..18 -> Unit
-            else -> recyclerView.scrollToPosition(18)
-        }
-        recyclerView.smoothScrollToPosition(0)
-    }
-
     fun makeCallWhenOnline(inputText: String) {
         if (inputText.isEmpty() && (cryptosJob?.isCancelled == true || cryptosJob == null))
             getAllCryptos()
