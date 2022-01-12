@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
+    android:layout_marginStart="@dimen/xlarge_spacing"
+    android:layout_marginTop="@dimen/large_spacing"
+    android:layout_marginEnd="@dimen/xlarge_spacing"
     android:background="@drawable/card_nft_item">
 
     <TextView
         android:id="@+id/textPriveLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Price:"
+        android:layout_marginStart="@dimen/large_spacing"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:text="@string/price"
         android:textAppearance="@style/caption_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,12 +24,12 @@
         android:id="@+id/priceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="ETH 4.65"
+        android:layout_marginStart="@dimen/small_spacing"
         android:textAppearance="@style/large_text"
         app:layout_constraintBottom_toBottomOf="@id/textPriveLabel"
         app:layout_constraintStart_toEndOf="@id/textPriveLabel"
-        app:layout_constraintTop_toTopOf="@id/textPriveLabel" />
+        app:layout_constraintTop_toTopOf="@id/textPriveLabel"
+        tools:text="ETH 4.65" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/favouritesButton"
@@ -44,8 +45,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/nftPicture"
         android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="@dimen/medium_spacing"
         app:layout_constraintEnd_toEndOf="@id/favouritesButton"
         app:layout_constraintStart_toStartOf="@id/textPriveLabel"
         app:layout_constraintTop_toBottomOf="@id/textPriveLabel" />
@@ -61,8 +62,8 @@
         android:id="@+id/view"
         android:layout_width="1dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/medium_spacing"
+        android:layout_marginBottom="@dimen/medium_spacing"
         android:background="@color/Gray2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline"
@@ -71,9 +72,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ownerPhoto"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/medium_container"
+        android:layout_height="@dimen/medium_container"
+        android:layout_marginTop="@dimen/medium_spacing"
         app:layout_constraintStart_toStartOf="@id/textPriveLabel"
         app:layout_constraintTop_toBottomOf="@id/nftPicture" />
 
@@ -81,9 +82,9 @@
         android:id="@+id/ownedLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:text="Owned by"
+        android:layout_marginStart="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/small_spacing"
+        android:text="@string/owned_by"
         android:textAppearance="@style/medium_gray"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toEndOf="@id/ownerPhoto"
@@ -93,31 +94,31 @@
         android:id="@+id/ownerText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Romanoooooos"
+        android:layout_marginBottom="@dimen/large_spacing"
         android:textAppearance="@style/regular_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ownedLabel"
         app:layout_constraintStart_toStartOf="@id/ownedLabel"
         app:layout_constraintTop_toBottomOf="@id/ownedLabel"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintVertical_bias="0"
+        tools:text="Romanoooooos" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/creatorPhoto"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@id/nftPicture"
+        android:layout_width="@dimen/medium_container"
+        android:layout_height="@dimen/medium_container"
+        android:layout_marginTop="@dimen/medium_spacing"
+        app:layout_constraintEnd_toEndOf="@id/favouritesButton"
         app:layout_constraintTop_toBottomOf="@id/nftPicture" />
 
     <TextView
         android:id="@+id/creatorLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/small_spacing"
         android:gravity="end"
-        android:text="Created by"
+        android:text="@string/created_by"
         android:textAppearance="@style/medium_gray"
         app:layout_constraintEnd_toStartOf="@id/creatorPhoto"
         app:layout_constraintStart_toEndOf="@+id/guideline"
@@ -127,15 +128,15 @@
         android:id="@+id/creatorText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/large_spacing"
         android:gravity="end"
-        android:text="Romanoooooos"
         android:textAppearance="@style/regular_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/creatorLabel"
         app:layout_constraintStart_toStartOf="@id/creatorLabel"
         app:layout_constraintTop_toBottomOf="@id/creatorLabel"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintVertical_bias="0"
+        tools:text="Romanoooooos" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

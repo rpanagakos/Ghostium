@@ -25,5 +25,8 @@
     <string name="mark_cap">Mark. Cap</string>
     <string name="low_24h">Low (24h)</string>
     <string name="description">Description</string>
+    <string name="price">Price:</string>
+    <string name="owned_by">Owned by</string>
+    <string name="created_by">Created by</string>
 
 </resources>
