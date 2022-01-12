@@ -29,7 +29,7 @@
             android:id="@+id/nameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/xlarge_spacing"
+            android:layout_marginStart="@dimen/large_spacing"
             android:layout_marginTop="@dimen/large_spacing"
             android:layout_marginEnd="@dimen/small_spacing"
             android:text="@{nft.name}"
@@ -43,7 +43,7 @@
             android:id="@+id/favouritesButton"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
-            android:layout_marginEnd="@dimen/xlarge_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
             app:layout_constraintBottom_toBottomOf="@id/nameText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/nameText"
@@ -52,9 +52,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/nftPicture"
-            rectangleImageUrl="@{nft.imageThumbnailUrl}"
+            rectangleImageUrl="@{nft.imageUrl}"
             android:layout_width="0dp"
             android:layout_height="200dp"
+            android:adjustViewBounds="true"
             android:layout_marginTop="@dimen/medium_spacing"
             app:layout_constraintEnd_toEndOf="@id/favouritesButton"
             app:layout_constraintStart_toStartOf="@id/nameText"
@@ -84,7 +85,7 @@
             circleImageUrl="@{nft.owner.profileImgUrl}"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
-            android:layout_marginTop="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/ml_spacing"
             app:layout_constraintStart_toStartOf="@id/nameText"
             app:layout_constraintTop_toBottomOf="@id/nftPicture" />
 
@@ -119,7 +120,7 @@
             circleImageUrl="@{nft.creator.profileImgUrl}"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
-            android:layout_marginTop="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/ml_spacing"
             app:layout_constraintEnd_toEndOf="@id/favouritesButton"
             app:layout_constraintTop_toBottomOf="@id/nftPicture" />
 

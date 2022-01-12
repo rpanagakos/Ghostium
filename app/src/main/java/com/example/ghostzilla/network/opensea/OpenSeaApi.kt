@@ -9,7 +9,7 @@ interface OpenSeaApi {
 
     @GET("/api/v1/assets/")
     suspend fun getAllNfts(
-        @Query("limit") limit : String = "1"
+        @Query("limit") limit : String = "50"
     ): Response<Assets>
 
 }

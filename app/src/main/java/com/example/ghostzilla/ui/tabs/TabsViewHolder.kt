@@ -6,6 +6,7 @@ import com.example.ghostzilla.abstraction.AbstractBindingViewHolder
 import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.opensea.Asset
 
 class TabsViewHolder(val binding: ViewDataBinding, val listener: ItemOnClickListener? = null) :
     AbstractBindingViewHolder(binding) {
@@ -15,6 +16,9 @@ class TabsViewHolder(val binding: ViewDataBinding, val listener: ItemOnClickList
             is CryptoItem -> {
                 binding.setVariable(BR.crypto, data)
                 binding.setVariable(BR.clickHandler, listener)
+            }
+            is Asset -> {
+                binding.setVariable(BR.nft, data)
             }
         }
     }
