@@ -46,11 +46,12 @@
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             android:visibility="@{viewModel.displayMessage ?  View.GONE : View.VISIBLE}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="2"
             tools:itemCount="8"
             tools:listitem="@layout/holder_nft_item" />
 

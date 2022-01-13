@@ -18,23 +18,25 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/xlarge_spacing"
-        android:layout_marginTop="@dimen/large_spacing"
-        android:layout_marginEnd="@dimen/xlarge_spacing"
+        android:layout_width="180dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="@dimen/medium_spacing"
+        android:layout_marginTop="@dimen/medium_spacing"
         android:background="@drawable/card_nft_item">
 
         <TextView
             android:id="@+id/nameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/large_spacing"
-            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/medium_spacing"
             android:layout_marginEnd="@dimen/small_spacing"
+            android:includeFontPadding="false"
+            android:maxLines="2"
             android:text="@{nft.name}"
-            android:textAppearance="@style/caption_bold"
-            app:layout_constraintEnd_toStartOf="@+id/favouritesButton"
+            android:textAppearance="@style/small_text_bold"
+            app:layout_constraintBottom_toTopOf="@+id/nftPicture"
+            app:layout_constraintEnd_toEndOf="@id/nftPicture"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Legend of Lycanthrope #601" />
@@ -43,10 +45,10 @@
             android:id="@+id/favouritesButton"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
-            android:layout_marginEnd="@dimen/large_spacing"
-            app:layout_constraintBottom_toBottomOf="@id/nameText"
+            android:layout_marginBottom="@dimen/medium_spacing"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/nameText"
+            app:layout_constraintStart_toStartOf="parent"
             app:lottie_fileName="favourite.json"
             app:lottie_progress="1" />
 
@@ -54,103 +56,15 @@
             android:id="@+id/nftPicture"
             rectangleImageUrl="@{nft.imageUrl}"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:adjustViewBounds="true"
+            android:layout_height="180dp"
+            android:layout_marginStart="@dimen/medium_spacing"
             android:layout_marginTop="@dimen/medium_spacing"
-            app:layout_constraintEnd_toEndOf="@id/favouritesButton"
-            app:layout_constraintStart_toStartOf="@id/nameText"
-            app:layout_constraintTop_toBottomOf="@id/nameText" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/medium_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
             android:layout_marginBottom="@dimen/medium_spacing"
-            android:background="@color/Gray2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/guideline"
-            app:layout_constraintStart_toStartOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/nftPicture" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ownerPhoto"
-            circleImageUrl="@{nft.owner.profileImgUrl}"
-            android:layout_width="@dimen/medium_container"
-            android:layout_height="@dimen/medium_container"
-            android:layout_marginTop="@dimen/ml_spacing"
-            app:layout_constraintStart_toStartOf="@id/nameText"
-            app:layout_constraintTop_toBottomOf="@id/nftPicture" />
-
-        <TextView
-            android:id="@+id/ownedLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
-            android:layout_marginEnd="@dimen/small_spacing"
-            android:text="@string/owned_by"
-            android:textAppearance="@style/small_regular_gray"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toEndOf="@id/ownerPhoto"
-            app:layout_constraintTop_toTopOf="@id/ownerPhoto" />
-
-        <TextView
-            android:id="@+id/ownerText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/large_spacing"
-            android:text="@{nft.owner.user.username}"
-            android:textAppearance="@style/small_regular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/ownedLabel"
-            app:layout_constraintStart_toStartOf="@id/ownedLabel"
-            app:layout_constraintTop_toBottomOf="@id/ownedLabel"
-            app:layout_constraintVertical_bias="0"
-            tools:text="Romanoooooos" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/creatorPhoto"
-            circleImageUrl="@{nft.creator.profileImgUrl}"
-            android:layout_width="@dimen/medium_container"
-            android:layout_height="@dimen/medium_container"
-            android:layout_marginTop="@dimen/ml_spacing"
-            app:layout_constraintEnd_toEndOf="@id/favouritesButton"
-            app:layout_constraintTop_toBottomOf="@id/nftPicture" />
-
-        <TextView
-            android:id="@+id/creatorLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
-            android:layout_marginEnd="@dimen/small_spacing"
-            android:gravity="end"
-            android:text="@string/created_by"
-            android:textAppearance="@style/small_regular_gray"
-            app:layout_constraintEnd_toStartOf="@id/creatorPhoto"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@id/creatorPhoto" />
-
-        <TextView
-            android:id="@+id/creatorText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/large_spacing"
-            android:gravity="end"
-            android:text="@{nft.creator.user.username}"
-            android:textAppearance="@style/small_regular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/creatorLabel"
-            app:layout_constraintStart_toStartOf="@id/creatorLabel"
-            app:layout_constraintTop_toBottomOf="@id/creatorLabel"
-            app:layout_constraintVertical_bias="0"
-            tools:text="Romanoooooos" />
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toTopOf="@+id/favouritesButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
