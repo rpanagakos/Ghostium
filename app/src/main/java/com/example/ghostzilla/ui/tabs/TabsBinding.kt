@@ -66,6 +66,7 @@ object TabsBinding {
         if (imageUrl != null) {
             Glide.with(this.context)
                 .load(imageUrl)
+                .centerCrop()
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(16)))
                 .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
                 .into(this)
