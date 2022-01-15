@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
@@ -67,6 +68,7 @@ object TabsBinding {
             Glide.with(this.context)
                 .load(imageUrl)
                 .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade(200))
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(16)))
                 .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
                 .into(this)
