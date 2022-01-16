@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.intro
 
+import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -18,11 +20,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.onboarding.OnBoardingPage
+import com.example.ghostzilla.ui.tabs.TabsActivity
 import com.google.accompanist.pager.*
 
 @ExperimentalPagerApi
 @Composable
 fun WelcomeScreen(navHostController: NavHostController) {
+
+    val context = LocalContext.current
 
     val ON_BOARDING_PAGE_COUNT = 3
 
@@ -62,7 +67,7 @@ fun WelcomeScreen(navHostController: NavHostController) {
         FinishButton(
             modifier = Modifier.weight(1f),
             pagerState = pagerState) {
-            
+            context.startActivity(Intent(context, TabsActivity::class.java))
         }
     }
 }
@@ -100,7 +105,6 @@ fun PagerScreen(page: OnBoardingPage) {
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center
         )
-
     }
 
 }
@@ -115,7 +119,7 @@ fun FinishButton(
 ) {
     Row(
         modifier = modifier
-            .padding(horizontal = 32.dp),
+            .padding(horizontal = 64.dp),
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.Center
     ) {
