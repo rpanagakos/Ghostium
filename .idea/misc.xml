@@ -48,7 +48,7 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_nfts.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.43072916666666666" />
-        <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.75" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />

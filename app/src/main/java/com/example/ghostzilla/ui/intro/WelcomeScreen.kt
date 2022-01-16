@@ -1,8 +1,10 @@
 package com.example.ghostzilla.ui.intro
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,10 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.onboarding.OnBoardingPage
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.rememberPagerState
+import com.google.accompanist.pager.*
 
 @ExperimentalPagerApi
 @Composable
@@ -60,6 +59,11 @@ fun WelcomeScreen(navHostController: NavHostController) {
             indicatorWidth = 12.dp,
             spacing = 8.dp
         )
+        FinishButton(
+            modifier = Modifier.weight(1f),
+            pagerState = pagerState) {
+            
+        }
     }
 }
 
@@ -99,4 +103,28 @@ fun PagerScreen(page: OnBoardingPage) {
 
     }
 
+}
+
+
+@ExperimentalPagerApi
+@Composable
+fun FinishButton(
+    modifier: Modifier,
+    pagerState: PagerState,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = modifier
+            .padding(horizontal = 32.dp),
+        verticalAlignment = Alignment.Top,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        AnimatedVisibility(
+            modifier = Modifier.fillMaxWidth(),
+            visible = pagerState.currentPage == 2) {
+            Button(onClick = onClick) {
+                Text(text = "Finish")
+            }
+        }
+    }
 }
