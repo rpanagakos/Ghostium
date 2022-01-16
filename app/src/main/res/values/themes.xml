@@ -7,4 +7,13 @@
         <item name="android:statusBarColor">@color/Black</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <style name="Theme.Ghostzilla.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Ghostzilla.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Ghostzilla.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

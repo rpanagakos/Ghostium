@@ -1,5 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext {
+        compose_version = '1.0.1'
+        accompanist_version = '0.21.2-beta'
+    }
     ext.hilt_version = '2.38.1'
     repositories {
         google()

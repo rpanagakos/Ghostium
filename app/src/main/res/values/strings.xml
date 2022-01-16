@@ -28,5 +28,6 @@
     <string name="price">Price:</string>
     <string name="owned_by">Owned by</string>
     <string name="created_by">Created by</string>
+    <string name="title_activity_intro">IntroActivity</string>
 
 </resources>
