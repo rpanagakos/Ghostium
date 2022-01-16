@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.onboarding.OnBoardingPage
+import com.example.ghostzilla.ui.intro.ui.theme.Shapes
 import com.example.ghostzilla.ui.tabs.TabsActivity
 import com.google.accompanist.pager.*
 
@@ -66,7 +67,8 @@ fun WelcomeScreen(navHostController: NavHostController) {
         )
         FinishButton(
             modifier = Modifier.weight(1f),
-            pagerState = pagerState) {
+            pagerState = pagerState
+        ) {
             context.startActivity(Intent(context, TabsActivity::class.java))
         }
     }
@@ -88,22 +90,20 @@ fun PagerScreen(page: OnBoardingPage) {
             text = page.title,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 32.dp)
                 .padding(vertical = 16.dp),
-            fontSize = MaterialTheme.typography.h4.fontSize,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.h1
 
         )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 32.dp)
                 .padding(vertical = 8.dp),
             text = page.description,
-            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-            fontWeight = FontWeight.Medium,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.body1
         )
     }
 
@@ -119,15 +119,22 @@ fun FinishButton(
 ) {
     Row(
         modifier = modifier
-            .padding(horizontal = 64.dp),
+            .padding(horizontal = 32.dp),
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.Center
     ) {
         AnimatedVisibility(
             modifier = Modifier.fillMaxWidth(),
-            visible = pagerState.currentPage == 2) {
-            Button(onClick = onClick) {
-                Text(text = "Finish")
+            visible = pagerState.currentPage == 2
+        ) {
+            Button(
+                onClick = onClick,
+                shape = Shapes.large
+            ) {
+                Text(
+                    text = "Finish",
+                    style = MaterialTheme.typography.body1
+                )
             }
         }
     }

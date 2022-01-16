@@ -10,20 +10,20 @@ import com.example.ghostzilla.R
 
 // Set of Material typography styles to start with
 val motserrat = FontFamily(
-    Font(R.font.montserrat),
-    Font(R.font.montserrat_bold, FontWeight.Bold)
+    Font(R.font.montserrat_compose),
+    Font(R.font.montserrat_compose_bold, FontWeight.Bold)
 )
 
 
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = motserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 18.sp
     ),
     h1 = TextStyle(
         fontFamily = motserrat,
-        fontSize = 18.sp,
-        fontWeight = FontWeight.Normal
+        fontSize = 32.sp,
+        fontWeight = FontWeight.Bold
     )
 )

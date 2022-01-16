@@ -22,14 +22,9 @@
         android:theme="@style/Theme.Ghostzilla">
         <activity
             android:name=".ui.intro.IntroActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_intro"
             android:theme="@style/Theme.Ghostzilla.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.tabs.trends.DetailsActivity"
@@ -38,7 +33,11 @@
             android:name=".ui.tabs.TabsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
