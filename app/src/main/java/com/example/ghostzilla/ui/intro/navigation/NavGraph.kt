@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.ghostzilla.ui.intro.WelcomeScreen
 
 @Composable
 fun setUpNavGraph(navController: NavHostController) {
@@ -13,7 +14,7 @@ fun setUpNavGraph(navController: NavHostController) {
         startDestination = Screen.Welcome.route
     ) {
         composable(route = Screen.Welcome.route) {
-
+            WelcomeScreen(navController)
         }
     }
 }
