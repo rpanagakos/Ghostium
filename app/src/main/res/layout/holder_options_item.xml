@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="option"
+            type="com.example.ghostzilla.models.account.OptionItem" />
+
+        <variable
+            name="clickHandler"
+            type="com.example.ghostzilla.abstraction.ItemOnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:foreground="@drawable/market_ripple"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/optionImage"
+            imageURLContract="@{option.image}"
+            android:layout_width="64dp"
+            android:layout_height="0dp"
+            android:paddingStart="16dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="26dp"
+            app:layout_constraintBottom_toBottomOf="@id/optionText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/optionText" />
+
+        <TextView
+            android:id="@+id/optionText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="24dp"
+            android:paddingStart="8dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="26dp"
+            android:text="@{option.title}"
+            android:textAppearance="@style/large_xlarge_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/optionImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Favourite Crypto" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -17,7 +17,6 @@ import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import com.google.android.material.tabs.TabLayout
-import de.hdodenhof.circleimageview.CircleImageView
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -53,6 +52,17 @@ object TabsBinding {
     @BindingAdapter(value = ["imageURLContract"])
     @JvmStatic
     fun ImageView.loadImageFromUrl(imageUrl: String?) {
+        if (imageUrl != null) {
+            Glide.with(this)
+                .load(imageUrl)
+                .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
+                .into(this)
+        }
+    }
+
+    @BindingAdapter(value = ["imageURLContract"])
+    @JvmStatic
+    fun ImageView.loadImageFromUrl(imageUrl: Int?) {
         if (imageUrl != null) {
             Glide.with(this)
                 .load(imageUrl)

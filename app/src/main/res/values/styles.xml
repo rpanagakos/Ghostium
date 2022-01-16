@@ -65,6 +65,13 @@
         <item name="android:textColor">@color/Black3</item>
     </style>
 
+    <style name="large_xlarge_text">
+        <item name="fontFamily">@font/montserrat_compose</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">22sp</item>
+        <item name="android:textColor">@color/Black3</item>
+    </style>
+
     <style name="xlarge_text_bold_white">
         <item name="fontFamily">@font/montserrat_compose_bold</item>
         <item name="android:textSize">22sp</item>
