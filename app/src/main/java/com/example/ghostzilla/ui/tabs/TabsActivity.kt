@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui
+package com.example.ghostzilla.ui.tabs
 
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
-class MainActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_main) {
+class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
 

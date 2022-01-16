@@ -24,7 +24,7 @@
             android:name=".ui.tabs.trends.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.tabs.TabsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
