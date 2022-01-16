@@ -12,11 +12,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.ghostzilla.ui.intro.navigation.setUpNavGraph
 import com.example.ghostzilla.ui.intro.ui.theme.GhostzillaTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 class IntroActivity : ComponentActivity() {
 
     private lateinit var navHostController: NavHostController
 
+    @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
