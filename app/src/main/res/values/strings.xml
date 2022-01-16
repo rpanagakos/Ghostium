@@ -29,5 +29,9 @@
     <string name="owned_by">Owned by</string>
     <string name="created_by">Created by</string>
     <string name="title_activity_intro">IntroActivity</string>
+    <string name="option_nft">Beloved Nfts</string>
+    <string name="option_cryptos">Favourite Cryptos</string>
+    <string name="options_wallet">Connect you wallet</string>
+    <string name="option_about">About Us</string>
 
 </resources>

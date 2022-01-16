@@ -20,11 +20,11 @@ class ProfileViewModel @Inject constructor(
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
-    val optionsList = listOf(
-        OptionItem(R.drawable.ic_twitter, "Beloved Nfts"),
-        OptionItem(R.drawable.ic_twitter, "Favourite Cryptos"),
-        OptionItem(R.drawable.ic_twitter, "Connect you wallet"),
-        OptionItem(R.drawable.ic_twitter, "About")
+    private val optionsList = listOf(
+        OptionItem(R.drawable.ic_photo_album, context.getString(R.string.option_nft)),
+        OptionItem(R.drawable.ic_bitcoin, context.getString(R.string.option_cryptos)),
+        OptionItem(R.drawable.ic_wallet_filled, context.getString(R.string.options_wallet)),
+        OptionItem(R.drawable.ic_baseline_info_24, context.getString(R.string.option_about))
     )
 
     val optionsAdapter: TabsAdapter = TabsAdapter(this)

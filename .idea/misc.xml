@@ -19,9 +19,12 @@
         <entry key="app/src/main/res/drawable/gray_marker.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_back_to_top.xml" value="0.5796875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_circle_background.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_home_filled.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_home_outline.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_left_arrow.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_photo_album.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_profile_filled.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_profile_outline.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.33958333333333335" />
