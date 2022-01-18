@@ -29,7 +29,7 @@ data class Coin(
     @SerializedName("platforms")
     val platforms: Platforms,
     @SerializedName("public_interest_score")
-    val publicInterestScore: Int,
+    val publicInterestScore: Double,
     @SerializedName("symbol")
     val symbol: String
 ): LocalModel {
