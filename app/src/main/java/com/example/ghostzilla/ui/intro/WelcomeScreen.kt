@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.onboarding.OnBoardingPage
@@ -26,7 +26,10 @@ import com.google.accompanist.pager.*
 
 @ExperimentalPagerApi
 @Composable
-fun WelcomeScreen(navHostController: NavHostController) {
+fun WelcomeScreen(
+    navHostController: NavHostController,
+    introViewModel: IntroViewModel = hiltViewModel()
+) {
 
     val context = LocalContext.current
 
@@ -69,6 +72,7 @@ fun WelcomeScreen(navHostController: NavHostController) {
             modifier = Modifier.weight(1f),
             pagerState = pagerState
         ) {
+            introViewModel.saveOnBoardingStatus()
             context.startActivity(Intent(context, TabsActivity::class.java))
         }
     }

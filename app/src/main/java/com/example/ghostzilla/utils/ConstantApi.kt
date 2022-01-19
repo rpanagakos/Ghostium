@@ -1,5 +1,6 @@
 package com.example.ghostzilla.utils
 
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 
 class ConstantApi {
@@ -14,7 +15,7 @@ class ConstantApi {
     }
 
     object DataStore {
-        val DATA = stringPreferencesKey("data")
+        val DATA = booleanPreferencesKey("data")
         val SECURED_DATA = stringPreferencesKey("secured_data")
     }
 }

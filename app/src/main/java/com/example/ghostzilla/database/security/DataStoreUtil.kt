@@ -20,17 +20,6 @@ class DataStoreUtil @Inject constructor(
     private val securityKeyAlias = "data-store"
     private val bytesToStringSeparator = "|"
 
-    fun getData() = dataStore.data
-        .map { preferences ->
-            preferences[DATA].orEmpty()
-        }
-
-    suspend fun setData(value: String) {
-        dataStore.edit {
-            it[DATA] = value
-        }
-    }
-
     fun getUserInfo(key: String) = dataStore.data
         .secureMap<String> { prefs ->
             prefs[stringPreferencesKey(key)].orEmpty()

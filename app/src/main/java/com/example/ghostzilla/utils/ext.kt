@@ -2,6 +2,7 @@ package com.example.ghostzilla.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -16,6 +17,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.core.text.getSpans
 import androidx.core.view.postDelayed
