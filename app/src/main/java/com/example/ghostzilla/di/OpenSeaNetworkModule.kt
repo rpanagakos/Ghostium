@@ -1,7 +1,7 @@
 package com.example.ghostzilla.di
 
 import com.example.ghostzilla.network.opensea.OpenSeaApi
-import com.example.ghostzilla.utils.ConstantApi.Companion.OPEN_SEA_BASE_URL
+import com.example.ghostzilla.utils.Constants.Companion.OPEN_SEA_BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

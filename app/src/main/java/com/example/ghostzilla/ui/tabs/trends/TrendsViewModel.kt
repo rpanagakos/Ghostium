@@ -4,7 +4,6 @@ import android.app.Application
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
