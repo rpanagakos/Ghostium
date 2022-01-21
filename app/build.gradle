@@ -98,7 +98,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
-    kapt "androidx.room:room-compiler:$room"
+    annotationProcessor "androidx.room:room-compiler:$room"
     implementation "androidx.room:room-ktx:$room"
     androidTestImplementation "androidx.room:room-testing:$room"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"

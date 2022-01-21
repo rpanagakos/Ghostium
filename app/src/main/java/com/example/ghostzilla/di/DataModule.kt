@@ -19,4 +19,5 @@ class DataModule {
     @Provides
     fun dataStore(@ApplicationContext context: Context): DataStore<Preferences> =
         preferencesDataStore(name = "data-store").getValue(context, String::javaClass)
+
 }
