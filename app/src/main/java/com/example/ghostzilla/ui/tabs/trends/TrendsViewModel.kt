@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
@@ -28,6 +29,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TrendsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
+    private val localRepository: LocalRepository,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 

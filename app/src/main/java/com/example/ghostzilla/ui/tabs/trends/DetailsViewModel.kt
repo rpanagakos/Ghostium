@@ -16,6 +16,8 @@ import com.example.ghostzilla.models.errors.mapper.SEARCH_ERROR
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.*
+import com.example.ghostzilla.utils.Constants.Companion.LOTTIE_FULL_STATE
+import com.example.ghostzilla.utils.Constants.Companion.LOTTIE_STARTING_STATE
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -110,8 +112,14 @@ class DetailsViewModel @Inject constructor(
     }
 
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {
-        lottieAnimationView.reverseAnimationSpeed()
-        lottieAnimationView.playAnimation()
+        lottieAnimationView.isEnabled = false
+        if (lottieAnimationView.progress == LOTTIE_FULL_STATE) {
+            lottieAnimationView.reverseAnimationSpeed()
+            lottieAnimationView.playAnimation()
+        } else if (lottieAnimationView.progress == LOTTIE_STARTING_STATE) {
+            lottieAnimationView.playAnimation()
+        }
+        lottieAnimationView.isEnabled = true
     }
 
 }

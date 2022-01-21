@@ -21,63 +21,6 @@ class SecurityUtil @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
-    /*private val ivStorage = context.getSharedPreferences("IV", Context.MODE_PRIVATE)
-
-    private val provider = "AndroidKeyStore"
-    private val cipher by lazy {
-        Cipher.getInstance("AES/GCM/NoPadding")
-    }
-    private val charset by lazy {
-        charset("UTF-8")
-
-    }
-    private val keyStore by lazy {
-        KeyStore.getInstance(provider).apply {
-            load(null)
-        }
-    }
-    private val keyGenerator by lazy {
-        KeyGenerator.getInstance(KEY_ALGORITHM_AES, provider)
-    }
-
-    fun encryptData(keyAlias: String, text: String): ByteArray {
-        cipher.init(Cipher.ENCRYPT_MODE, generateSecretKey(keyAlias))
-        ivStorage.edit { putString("IV", Base64.encodeToString(cipher.iv, Base64.DEFAULT)) }
-        return cipher.doFinal(text.toByteArray(charset))
-    }
-
-    fun decryptData(keyAlias: String, encryptedData: ByteArray): String {
-        cipher.apply {
-            init(
-                Cipher.DECRYPT_MODE,
-                getSecretKey(keyAlias),
-                GCMParameterSpec(
-                    128,
-                    Base64.decode(
-                        requireNotNull(ivStorage.getString("IV", "Fuck")),
-                        Base64.DEFAULT
-                    )
-                )
-            )
-        }
-        return cipher.doFinal(encryptedData).toString(charset)
-    }
-
-    private fun generateSecretKey(keyAlias: String): SecretKey {
-        return keyGenerator.apply {
-            init(
-                KeyGenParameterSpec
-                    .Builder(keyAlias, PURPOSE_ENCRYPT or PURPOSE_DECRYPT)
-                    .setBlockModes(BLOCK_MODE_GCM)
-                    .setEncryptionPaddings(ENCRYPTION_PADDING_NONE)
-                    .build()
-            )
-        }.generateKey()
-    }
-
-    private fun getSecretKey(keyAlias: String) =
-        (keyStore.getEntry(keyAlias, null) as KeyStore.SecretKeyEntry).secretKey*/
-
     private val provider = "AndroidKeyStore"
 
     private val cipher by lazy { Cipher.getInstance("AES/GCM/NoPadding") }

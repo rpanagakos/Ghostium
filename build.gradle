@@ -41,7 +41,7 @@ ext {
     glide = '4.12.0'
     hilt_viewmodels = '1.0.0-alpha03'
     livedata_ktx = '2.4.0'
-    room = '2.3.0'
+    room = '2.4.0'
     hiltVersion = '2.38.1'
     recyclerview = '1.2.0'
     coroutines = '1.5.2'
