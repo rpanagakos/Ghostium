@@ -81,13 +81,15 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidXJunitVersion"
     implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
     implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_version"
-    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
+    // Paging 3.0
+    implementation 'androidx.paging:paging-compose:1.0.0-alpha14'
 
 
     // Coordinator Layout
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
 
     // Navigation Component
+    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 

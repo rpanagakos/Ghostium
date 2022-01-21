@@ -2,16 +2,20 @@ package com.example.ghostzilla.models.coingecko
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity(tableName = "cryptos_table")
 data class CryptoItem(
+    @SerializedName("id")
+    @PrimaryKey(autoGenerate = false)
+    val id: String,
     @SerializedName("current_price")
     val currentPrice: Double,
-    @SerializedName("id")
-    val id: String,
     @SerializedName("image")
     val image: String,
     @SerializedName("low_24h")
