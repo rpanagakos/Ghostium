@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewModelScope
 import com.airbnb.lottie.LottieAnimationView
 import com.example.ghostzilla.abstraction.AbstractViewModel
+import com.example.ghostzilla.database.room.LocalRepository
+import com.example.ghostzilla.di.DefaultDispatcher
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
@@ -21,30 +23,48 @@ import com.example.ghostzilla.utils.Constants.Companion.LOTTIE_STARTING_STATE
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
+    private val localRepository: LocalRepository,
+    @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher,
     application: Application
 ) : AbstractViewModel(application) {
 
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
+    val isFavourite = SingleLiveEvent<Boolean>()
 
     val cryptoDetails = SingleLiveEvent<Coin>()
     private val _priceData = mutableListOf<Entry>()
     val lineDataSet = SingleLiveEvent<LineDataSet>()
     val tabs = listOf("1d", "7d", "1m", "3m", "1y")
+    lateinit var cryptoItem: CryptoItem
 
     fun runOperation(coinID: String) {
+        isCryptoInDB(coinID)
         if (networkConnectivity.isConnected()) {
             searchCoin(coinID)
             getChartsData(coinID, 1)
         } else {
             checkErrorCode(NO_INTERNET_CONNECTION)
+        }
+    }
+
+    private fun isCryptoInDB(coinID: String) {
+        viewModelScope.launch(Dispatchers.Default) {
+            kotlin.runCatching {
+                localRepository.isFavourite(coinID)
+            }.onSuccess {
+                isFavourite.postValue(it)
+            }
         }
     }
 
@@ -113,13 +133,36 @@ class DetailsViewModel @Inject constructor(
 
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {
         lottieAnimationView.isEnabled = false
-        if (lottieAnimationView.progress == LOTTIE_FULL_STATE) {
-            lottieAnimationView.reverseAnimationSpeed()
-            lottieAnimationView.playAnimation()
+        if (lottieAnimationView.progress > LOTTIE_STARTING_STATE) {
+            viewModelScope.launch(Dispatchers.Default) {
+                kotlin.runCatching {
+                    localRepository.deleteCrypto(cryptoItem)
+                }.onSuccess {
+                    withContext(Dispatchers.Main){
+                        lottieAnimationView.reverseAnimationSpeed()
+                        lottieAnimationView.playAnimation()
+                        lottieAnimationView.isEnabled = true
+                    }
+                }.onFailure {
+                    lottieAnimationView.isEnabled = true
+                }
+            }
         } else if (lottieAnimationView.progress == LOTTIE_STARTING_STATE) {
-            lottieAnimationView.playAnimation()
+            viewModelScope.launch(Dispatchers.Default) {
+                kotlin.runCatching {
+                    localRepository.insertFavouriteCrypto(cryptoItem)
+                }.onSuccess {
+                    withContext(Dispatchers.Main){
+                        lottieAnimationView.reverseAnimationSpeed()
+                        lottieAnimationView.playAnimation()
+                        lottieAnimationView.isEnabled = true
+                    }
+                }.onFailure {
+                    lottieAnimationView.isEnabled = true
+
+                }
+            }
         }
-        lottieAnimationView.isEnabled = true
     }
 
 }

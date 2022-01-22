@@ -60,6 +60,13 @@ object TabsBinding {
         }
     }
 
+
+    @BindingAdapter(value = ["checkProgress"])
+    @JvmStatic
+    fun LottieAnimationView.checkLottieProgress(isFavourite: Boolean?) {
+        this.progress = if (isFavourite == true) 1f else 0f
+    }
+
     @BindingAdapter(value = ["imageURLContract"])
     @JvmStatic
     fun ImageView.loadImageFromUrl(imageUrl: Int?) {

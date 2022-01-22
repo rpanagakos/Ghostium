@@ -88,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/coinImageDetails"
             app:lottie_fileName="favourite.json"
-            app:lottie_progress="1" />
+            checkProgress="@{viewModel.isFavourite()}"/>
 
 
         <View

@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailsActivity :
-    AbstractActivity<ActivityDetailsBinding>(com.example.ghostzilla.R.layout.activity_details) {
+    AbstractActivity<ActivityDetailsBinding>(R.layout.activity_details) {
 
     @Inject
     lateinit var sparkLineStyle: SparkLineStyle
@@ -25,6 +25,7 @@ class DetailsActivity :
 
     override fun initLayout() {
         cryptoItem = intent.getParcelableExtra("coin")
+        viewModel.cryptoItem = cryptoItem!!
         when (cryptoItem) {
             null -> onBackPressed()
             else -> {

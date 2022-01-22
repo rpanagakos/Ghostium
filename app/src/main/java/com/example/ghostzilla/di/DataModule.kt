@@ -5,7 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
-import com.example.ghostzilla.database.room.GhostlyDatabase
+import com.example.ghostzilla.database.room.GhostzillaDatabase
 import com.example.ghostzilla.utils.Constants.Companion.GHOSTZILLA_NAME
 import dagger.Module
 import dagger.Provides
@@ -29,13 +29,13 @@ class DataModule {
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(
             context,
-            GhostlyDatabase::class.java,
+            GhostzillaDatabase::class.java,
             GHOSTZILLA_NAME
         ).build()
 
 
     @Singleton
     @Provides
-    fun provideDao(database: GhostlyDatabase) = database.cryptoDao()
+    fun provideDao(database: GhostzillaDatabase) = database.cryptoDao()
 
 }

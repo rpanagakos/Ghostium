@@ -29,7 +29,6 @@ import javax.inject.Inject
 @HiltViewModel
 class TrendsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
-    private val localRepository: LocalRepository,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
