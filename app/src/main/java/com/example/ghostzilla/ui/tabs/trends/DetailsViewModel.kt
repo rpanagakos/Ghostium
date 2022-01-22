@@ -18,7 +18,6 @@ import com.example.ghostzilla.models.errors.mapper.SEARCH_ERROR
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.*
-import com.example.ghostzilla.utils.Constants.Companion.LOTTIE_FULL_STATE
 import com.example.ghostzilla.utils.Constants.Companion.LOTTIE_STARTING_STATE
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
@@ -132,19 +131,18 @@ class DetailsViewModel @Inject constructor(
     }
 
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {
-        lottieAnimationView.isEnabled = false
+        lottieAnimationView.disable()
         if (lottieAnimationView.progress > LOTTIE_STARTING_STATE) {
             viewModelScope.launch(Dispatchers.Default) {
                 kotlin.runCatching {
                     localRepository.deleteCrypto(cryptoItem)
                 }.onSuccess {
-                    withContext(Dispatchers.Main){
-                        lottieAnimationView.reverseAnimationSpeed()
-                        lottieAnimationView.playAnimation()
-                        lottieAnimationView.isEnabled = true
+                    withContext(Dispatchers.Main) {
+                        lottieAnimationView.progress = 0f
+                        lottieAnimationView.enable()
                     }
                 }.onFailure {
-                    lottieAnimationView.isEnabled = true
+                    lottieAnimationView.enable()
                 }
             }
         } else if (lottieAnimationView.progress == LOTTIE_STARTING_STATE) {
@@ -152,14 +150,11 @@ class DetailsViewModel @Inject constructor(
                 kotlin.runCatching {
                     localRepository.insertFavouriteCrypto(cryptoItem)
                 }.onSuccess {
-                    withContext(Dispatchers.Main){
-                        lottieAnimationView.reverseAnimationSpeed()
-                        lottieAnimationView.playAnimation()
-                        lottieAnimationView.isEnabled = true
+                    withContext(Dispatchers.Main) {
+                        lottieAnimationView.enableAfterAnimation()
                     }
                 }.onFailure {
-                    lottieAnimationView.isEnabled = true
-
+                    lottieAnimationView.enable()
                 }
             }
         }

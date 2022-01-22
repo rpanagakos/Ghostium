@@ -1,8 +1,8 @@
 package com.example.ghostzilla.utils
 
+import android.animation.Animator
 import android.app.Activity
 import android.content.Context
-import android.content.ContextWrapper
 import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -17,12 +17,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.core.text.getSpans
 import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.LottieAnimationView
 import com.github.mikephil.charting.charts.LineChart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -174,6 +174,34 @@ fun getSpannableText(span: SpannableString, originalText: String): SpannableStri
         }
     }
     return span
+}
+
+fun View.disable() {
+    this.apply {
+        isClickable = false
+        isEnabled = false
+    }
+}
+
+fun View.enable() {
+    this.apply {
+        isClickable = true
+        isEnabled = true
+    }
+}
+
+fun LottieAnimationView.enableAfterAnimation() {
+    this.playAnimation()
+    this.addAnimatorListener(object : Animator.AnimatorListener {
+        override fun onAnimationRepeat(animation: Animator?) {}
+
+        override fun onAnimationEnd(animation: Animator?) {
+            this@enableAfterAnimation.enable()
+        }
+
+        override fun onAnimationCancel(animation: Animator?) {}
+        override fun onAnimationStart(animation: Animator?) {}
+    })
 }
 
 private fun SpannableStringBuilder.makeLinkClickable(
