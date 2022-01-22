@@ -58,8 +58,8 @@ class NftsViewModel @Inject constructor(
 
     override fun onClick(
         data: LocalModel,
-        contractName: TextView,
-        contractTickerSumbol: TextView,
+        title: TextView,
+        subTitle: TextView?,
         circleImageView: CircleImageView
     ) {
         TODO("Not yet implemented")

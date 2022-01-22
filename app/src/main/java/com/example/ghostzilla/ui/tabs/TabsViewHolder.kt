@@ -23,6 +23,7 @@ class TabsViewHolder(val binding: ViewDataBinding, val listener: ItemOnClickList
             }
             is OptionItem -> {
                 binding.setVariable(BR.option, data)
+                binding.setVariable(BR.clickHandler, listener)
             }
         }
     }

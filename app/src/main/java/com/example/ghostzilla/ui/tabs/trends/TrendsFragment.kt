@@ -57,8 +57,8 @@ class TrendsFragment :
         }
 
         viewModel.runOperation() { data: LocalModel,
-                                   contractName: TextView,
-                                   contractTickerSumbol: TextView,
+                                   title: TextView,
+                                   subTitle: TextView?,
                                    circleImageView: CircleImageView ->
             when (data) {
                 is CryptoItem -> {
@@ -68,10 +68,10 @@ class TrendsFragment :
                     val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         requireActivity(),
                         Pair.create(
-                            contractName, getString(R.string.transition_coin_name)
+                            title, getString(R.string.transition_coin_name)
                         ),
                         Pair.create(
-                            contractTickerSumbol, getString(R.string.transition_coin_symbol)
+                            subTitle, getString(R.string.transition_coin_symbol)
                         ),
                         Pair.create(
                             circleImageView, getString(R.string.transition_coin_image)

@@ -20,6 +20,11 @@ class ProfileViewModel @Inject constructor(
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
+    private var callbacks: (
+        data: LocalModel,
+        contractName: TextView,
+    ) -> Unit = { _, _ -> }
+
     private val optionsList = listOf(
         OptionItem(R.drawable.ic_photo_album, context.getString(R.string.option_nft)),
         OptionItem(R.drawable.ic_bitcoin, context.getString(R.string.option_cryptos)),
@@ -29,17 +34,27 @@ class ProfileViewModel @Inject constructor(
 
     val optionsAdapter: TabsAdapter = TabsAdapter(this)
 
-    fun runOperation(){
+    fun runOperation(
+        listener: (
+            data: LocalModel,
+            contractName: TextView,
+        ) -> Unit
+    ){
+        this.callbacks = listener
         optionsAdapter.submitList(optionsList)
     }
 
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
+
     override fun onClick(
         data: LocalModel,
-        contractName: TextView,
-        contractTickerSumbol: TextView,
+        title: TextView,
+        subTtitle: TextView?,
         circleImageView: CircleImageView
-    ) {}
+    ) {
+        callbacks.invoke(data, title)
+
+    }
 
 }

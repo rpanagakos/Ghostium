@@ -5,5 +5,5 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 interface ItemOnClickListener {
 
-    fun onClick(data: LocalModel, contractName: TextView, contractTickerSumbol: TextView, circleImageView: CircleImageView)
+    fun onClick(data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView)
 }

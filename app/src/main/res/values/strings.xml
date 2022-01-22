@@ -17,9 +17,6 @@
     <string name="back_to_top">Back to Top</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="back_button">Back Button</string>
-    <string name="transition_coin_image">coinImage</string>
-    <string name="transition_coin_name">coinName</string>
-    <string name="transition_coin_symbol">coinSymbol</string>
     <string name="no_description">No description has been provided.</string>
     <string name="high_24h">High (24h)</string>
     <string name="mark_cap">Mark. Cap</string>
@@ -33,5 +30,12 @@
     <string name="option_cryptos">Favourite Cryptos</string>
     <string name="options_wallet">Connect you wallet</string>
     <string name="option_about">About Us</string>
+
+    <!--Transition Tags-->
+    <string name="transition_coin_image">coinImage</string>
+    <string name="transition_coin_name">coinName</string>
+    <string name="transition_coin_symbol">coinSymbol</string>
+    <string name="transition_option_image">optionImage</string>
+    <string name="transition_option_name">optionName</string>
 
 </resources>

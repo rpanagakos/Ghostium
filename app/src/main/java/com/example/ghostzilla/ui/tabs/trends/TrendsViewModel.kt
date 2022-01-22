@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
@@ -37,8 +36,8 @@ class TrendsViewModel @Inject constructor(
 
     private var callbacks: (
         data: LocalModel,
-        contractName: TextView,
-        contractTickerSumbol: TextView,
+        title: TextView,
+        subTitle: TextView?,
         circleImageView: CircleImageView
     ) -> Unit = { _, _, _, _ -> }
     val trendsAdapter: TabsAdapter = TabsAdapter(this)
@@ -52,8 +51,8 @@ class TrendsViewModel @Inject constructor(
     fun runOperation(
         listener: (
             data: LocalModel,
-            contractName: TextView,
-            contractTickerSumbol: TextView,
+            title: TextView,
+            subTitle: TextView?,
             circleImageView: CircleImageView
         ) -> Unit
     ) {
@@ -140,11 +139,11 @@ class TrendsViewModel @Inject constructor(
 
     override fun onClick(
         data: LocalModel,
-        contractName: TextView,
-        contractTickerSumbol: TextView,
+        title: TextView,
+        subTitle: TextView?,
         circleImageView: CircleImageView
     ) {
-        callbacks.invoke(data, contractName, contractTickerSumbol, circleImageView)
+        callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
 }

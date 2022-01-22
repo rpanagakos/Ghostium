@@ -22,9 +22,10 @@
         android:foreground="@drawable/market_ripple"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="@{()-> clickHandler.onClick(option, optionText, optionText , optionImage)}"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/optionImage"
             imageURLContract="@{option.image}"
             android:layout_width="64dp"
