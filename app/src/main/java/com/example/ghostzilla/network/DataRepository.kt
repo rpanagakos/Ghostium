@@ -8,6 +8,7 @@ import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.opensea.Assets
 import com.example.ghostzilla.network.coingecko.CoinGeckoRemoteRepository
 import com.example.ghostzilla.network.opensea.OpenSeaRemoteRepository
+import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -35,6 +36,12 @@ class DataRepository @Inject constructor(
     suspend fun getCoinChartDetails(coinID: String, days: Int): Flow<GenericResponse<CoinPrices>> {
         return flow {
             emit(coinGeckoRemoteRepository.getCoinChartDetails(coinID, days))
+        }.flowOn(ioDispatcher)
+    }
+
+    suspend fun getFavouritesPrices(cryptosIds: String): Flow<GenericResponse<JsonObject>> {
+        return flow {
+            emit(coinGeckoRemoteRepository.getFavouritesPrices(cryptosIds))
         }.flowOn(ioDispatcher)
     }
 

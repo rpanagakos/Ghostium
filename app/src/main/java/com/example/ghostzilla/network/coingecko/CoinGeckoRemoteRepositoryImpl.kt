@@ -8,6 +8,7 @@ import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.utils.NetworkConnectivity
+import com.google.gson.JsonObject
 import javax.inject.Inject
 
 class CoinGeckoRemoteRepositoryImpl @Inject constructor(
@@ -50,6 +51,19 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
             )
         }) {
             is CoinPrices -> GenericResponse.Success(data = response)
+            else -> GenericResponse.DataError(errorCode = response as Int)
+        }
+    }
+
+    override suspend fun getFavouritesPrices(
+        ids: String,
+    ): GenericResponse<JsonObject> {
+        return when (val response = networkConnectivity.processCall {
+            (coinGeckoApi::getFavouritesPrices)(
+                ids,
+            "eur")
+        }) {
+            is JsonObject -> GenericResponse.Success(data = response)
             else -> GenericResponse.DataError(errorCode = response as Int)
         }
     }

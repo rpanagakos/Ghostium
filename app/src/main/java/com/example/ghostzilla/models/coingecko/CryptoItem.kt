@@ -15,7 +15,7 @@ data class CryptoItem(
     @PrimaryKey(autoGenerate = false)
     val id: String,
     @SerializedName("current_price")
-    val currentPrice: Double,
+    var currentPrice: Double,
     @SerializedName("image")
     val image: String,
     @SerializedName("low_24h")

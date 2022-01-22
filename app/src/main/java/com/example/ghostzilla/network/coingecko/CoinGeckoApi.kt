@@ -3,6 +3,7 @@ package com.example.ghostzilla.network.coingecko
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
+import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -33,6 +34,7 @@ interface CoinGeckoApi {
 
     @GET("/api/v3/simple/price/")
     suspend fun getFavouritesPrices(
-        @Query("vs_currency") currency: String = "eur"
-    ): Response<List<CryptoItem>>
+        @Query("ids") ids: String,
+        @Query("vs_currencies") currency: String = "eur"
+    ): Response<JsonObject>
 }
