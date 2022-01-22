@@ -33,7 +33,6 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
-    @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher,
     application: Application
 ) : AbstractViewModel(application) {
 
