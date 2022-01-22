@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.profile.SettingsViewModel" />
+            type="com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel" />
 
     </data>
 
@@ -23,7 +23,7 @@
         tools:context=".ui.tabs.profile.OptionFragment">
 
         <include
-            android:id="@+id/backButton"
+            android:id="@+id/backButtonFavourite"
             layout="@layout/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,9 +41,9 @@
             android:includeFontPadding="false"
             android:text="@{title}"
             android:textAppearance="@style/large_xlarge_text_bold"
-            app:layout_constraintBottom_toBottomOf="@+id/backButton"
-            app:layout_constraintStart_toEndOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="@+id/backButton"
+            app:layout_constraintBottom_toBottomOf="@+id/backButtonFavourite"
+            app:layout_constraintStart_toEndOf="@+id/backButtonFavourite"
+            app:layout_constraintTop_toTopOf="@+id/backButtonFavourite"
             tools:text="Options Title" />
 
         <View
@@ -55,8 +55,8 @@
             android:background="@color/CoolGray"
             android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/backButton"
-            app:layout_constraintTop_toBottomOf="@id/backButton" />
+            app:layout_constraintStart_toStartOf="@id/backButtonFavourite"
+            app:layout_constraintTop_toBottomOf="@id/backButtonFavourite" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
@@ -64,7 +64,10 @@
             android:overScrollMode="never"
             android:paddingTop="@dimen/large_spacing"
             android:paddingBottom="@dimen/large_spacing"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:clipToPadding="false"
             android:scrollbars="none"
+            android:adapter="@{viewModel.favouriteAdapter}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/seperator"
             tools:itemCount="8"

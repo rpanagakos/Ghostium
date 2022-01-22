@@ -30,4 +30,9 @@ interface CoinGeckoApi {
         @Query("days") days: String,
         @Query("vs_currency") currency: String
     ): Response<CoinPrices>
+
+    @GET("/api/v3/simple/price/")
+    suspend fun getFavouritesPrices(
+        @Query("vs_currency") currency: String = "eur"
+    ): Response<List<CryptoItem>>
 }

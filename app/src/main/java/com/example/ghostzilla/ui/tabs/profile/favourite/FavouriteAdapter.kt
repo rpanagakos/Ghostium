@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.databinding.HolderEmptyBinding
-import com.example.ghostzilla.databinding.HolderTrendsItemBinding
+import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -17,7 +17,7 @@ class FavouriteAdapter() : AbstractAdapter() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
             R.layout.holder_favourite_item -> {
-                val view = HolderTrendsItemBinding.inflate(
+                val view = HolderFavouriteItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
                 CryptoFavouriteHolder(view)

@@ -6,8 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @ViewModelScoped
-class LocalRepository @Inject constructor
-    (private val cryptoDao: CryptoDao) {
+class LocalRepository @Inject constructor(private val cryptoDao: CryptoDao) {
 
     fun fetchFavouriteCryptos(): Flow<MutableList<CryptoItem>> {
         return cryptoDao.getAllCryptos()
