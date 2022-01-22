@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.profile.ProfileViewModel" />
+            type="com.example.ghostzilla.ui.tabs.profile.SettingsViewModel" />
 
     </data>
 
@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/contractsTrendsRecycler"
+            android:id="@+id/settingsRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="32dp"

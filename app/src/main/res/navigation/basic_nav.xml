@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.ghostzilla.ui.tabs.profile.ProfileFragment"
+        android:name="com.example.ghostzilla.ui.tabs.profile.SettingsFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/optionDetailsAction"
             app:destination="@id/optionFragment"

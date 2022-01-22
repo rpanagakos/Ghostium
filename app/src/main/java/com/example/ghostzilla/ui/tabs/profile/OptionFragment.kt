@@ -10,11 +10,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OptionFragment :
-    AbstractFragment<FragmentOptionBinding, TrendsViewModel>(R.layout.fragment_option) {
+    AbstractFragment<FragmentOptionBinding, SettingsViewModel>(R.layout.fragment_option) {
 
     private val args: OptionFragmentArgs by navArgs()
 
-    override val viewModel: TrendsViewModel by viewModels()
+    override val viewModel: SettingsViewModel by viewModels()
 
 
     override fun initLayout() {

@@ -15,7 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+class SettingsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {

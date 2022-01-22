@@ -7,17 +7,17 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.database.security.DataStoreUtil
-import com.example.ghostzilla.databinding.FragmentProfileBinding
+import com.example.ghostzilla.databinding.FragmentSettingsBinding
 import com.example.ghostzilla.models.account.OptionItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class ProfileFragment :
-    AbstractFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
+class SettingsFragment :
+    AbstractFragment<FragmentSettingsBinding, SettingsViewModel>(R.layout.fragment_settings) {
 
-    override val viewModel: ProfileViewModel by viewModels()
+    override val viewModel: SettingsViewModel by viewModels()
 
     @Inject
     lateinit var dataStore: DataStoreUtil
@@ -27,7 +27,7 @@ class ProfileFragment :
                                    title: TextView ->
             when (data) {
                 is OptionItem -> {
-                    findNavController().navigate(ProfileFragmentDirections.optionDetailsAction(data.title))
+                    findNavController().navigate(SettingsFragmentDirections.optionDetailsAction(data.title))
                 }
             }
         }
