@@ -12,7 +12,7 @@ import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
-class FavouriteAdapter(private val listener: FavouriteClickListener) : AbstractAdapter() {
+class FavouriteAdapter(private val viewModel: FavouriteViewModel, private val listener: FavouriteClickListener) : AbstractAdapter() {
 
     val currentPosition: AtomicInteger = AtomicInteger(0)
 
@@ -22,7 +22,7 @@ class FavouriteAdapter(private val listener: FavouriteClickListener) : AbstractA
                 val view = HolderFavouriteItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                CryptoFavouriteHolder(view, listener)
+                CryptoFavouriteHolder(view, listener, viewModel)
             }
             else -> {
                 val view = HolderEmptyBinding.inflate(

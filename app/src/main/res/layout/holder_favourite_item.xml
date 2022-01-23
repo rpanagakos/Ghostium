@@ -11,6 +11,10 @@
             name="crypto"
             type="com.example.ghostzilla.models.CryptoItemDB" />
 
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel" />
+
 
         <variable
             name="clickHandler"
@@ -39,6 +43,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contractCard"
             android:layout_width="0dp"
+            android:onLongClick="@{() -> viewModel.test()}"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/xlarge_spacing"
             android:layout_marginTop="@dimen/xlarge_spacing"

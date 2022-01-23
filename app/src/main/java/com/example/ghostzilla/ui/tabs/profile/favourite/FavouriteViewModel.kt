@@ -42,7 +42,7 @@ class FavouriteViewModel @Inject constructor(
 
     var cryptos: LiveData<MutableList<CryptoItemDB>> =
         localRepository.fetchFavouriteCryptos().asLiveData()
-    val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this)
+    val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this, this)
 
     fun runOperation(
         listener: (
@@ -82,6 +82,10 @@ class FavouriteViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun test(){
+        println("frfwfwefewfwefwwefewfwfwefwfwfweff")
     }
 
     override fun onClick(

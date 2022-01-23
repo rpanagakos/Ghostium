@@ -200,9 +200,10 @@ object TabsBinding {
 
 
     @BindingAdapter("android:onLongClick")
-    fun setOnLongClickListener(view: View, block : () -> Unit) {
-        view.setOnLongClickListener {
-            block()
+    @JvmStatic
+    fun View.setOnLongClickListener(onLongClick: () -> Unit) {
+        this.setOnLongClickListener {
+           onLongClick.invoke()
             return@setOnLongClickListener true
         }
     }
