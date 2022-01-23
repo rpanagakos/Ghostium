@@ -85,7 +85,15 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun test(){
+    fun test(cryptoItemDB: CryptoItemDB){
+       /* cryptos.value!!.forEachIndexed { index, _ ->
+            if (cryptos.value!![index].id == cryptoItemDB.id) {
+                cryptos.value!![index].isSelected = !cryptos.value!![index].isSelected
+            }
+        }
+        favouriteAdapter.submitList(cryptos.value as List<LocalModel>)*/
+        cryptoItemDB.isSelected = !cryptoItemDB.isSelected
+        favouriteAdapter.notifyDataSetChanged()
         checkBoxIsVisible.postValue(true)
     }
 

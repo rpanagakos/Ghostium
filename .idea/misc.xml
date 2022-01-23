@@ -13,10 +13,12 @@
         <entry key="app/src/main/res/drawable/bg_custom_tab.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/drawable/bg_days_tab.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.5" />
+        <entry key="app/src/main/res/drawable/card_crypto_selected.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/card_nft_item.xml" value="0.5707692307692308" />
         <entry key="app/src/main/res/drawable/card_trends_item.xml" value="0.5707692307692308" />
         <entry key="app/src/main/res/drawable/checkbox_selector.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/contract_image_trends.xml" value="0.5707692307692308" />
+        <entry key="app/src/main/res/drawable/crypto_symbol_selcted.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/custom_tab_indicator.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/gray_marker.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.5703703703703704" />

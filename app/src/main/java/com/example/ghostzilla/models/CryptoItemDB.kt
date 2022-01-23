@@ -4,7 +4,6 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.models.coingecko.CryptoItem
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -17,10 +16,10 @@ data class CryptoItemDB(
     val low24h: Double? = null,
     val name: String,
     val symbol: String,
-    val isSelected: Boolean = false
+    var isSelected: Boolean = false
 ) : LocalModel, Parcelable {
     override fun equalsContent(obj: LocalModel): Boolean = when (obj) {
-        is CryptoItem -> name == obj.name && currentPrice == obj.currentPrice && symbol == obj.symbol
+        is CryptoItemDB -> name == obj.name && currentPrice == obj.currentPrice && symbol == obj.symbol && isSelected == obj.isSelected
         else -> false
     }
 }

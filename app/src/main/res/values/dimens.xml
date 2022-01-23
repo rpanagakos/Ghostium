@@ -11,5 +11,6 @@
     <!-- Width and height values -->
     <dimen name="small_container">24dp</dimen>
     <dimen name="medium_container">32dp</dimen>
+    <dimen name="medium_container_fav">34dp</dimen>
     <dimen name="large_container">48dp</dimen>
 </resources>
