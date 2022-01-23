@@ -141,4 +141,8 @@
         <item name="android:textColor">@color/CoolGray</item>
     </style>
 
+    <style name="CustomCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selector</item>
+    </style>
+
 </resources>

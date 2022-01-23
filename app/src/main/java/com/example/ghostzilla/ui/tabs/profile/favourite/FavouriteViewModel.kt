@@ -3,6 +3,7 @@ package com.example.ghostzilla.ui.tabs.profile.favourite
 import android.app.Application
 import android.widget.TextView
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
@@ -40,9 +41,9 @@ class FavouriteViewModel @Inject constructor(
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
 
-    var cryptos: LiveData<MutableList<CryptoItemDB>> =
-        localRepository.fetchFavouriteCryptos().asLiveData()
+    var cryptos: LiveData<MutableList<CryptoItemDB>> = localRepository.fetchFavouriteCryptos().asLiveData()
     val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this, this)
+    var checkBoxIsVisible = MutableLiveData<Boolean>(false)
 
     fun runOperation(
         listener: (
@@ -85,7 +86,7 @@ class FavouriteViewModel @Inject constructor(
     }
 
     fun test(){
-        println("frfwfwefewfwefwwefewfwfwefwfwfweff")
+        checkBoxIsVisible.postValue(true)
     }
 
     override fun onClick(
