@@ -3,6 +3,7 @@ package com.example.ghostzilla.ui.tabs
 import android.annotation.SuppressLint
 import android.text.Html
 import android.text.SpannableString
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
@@ -182,6 +183,15 @@ object TabsBinding {
             this.text = resources.getString(R.string.nothing_found)
         } else {
             this.text = resources.getString(R.string.no_internet_connection)
+        }
+    }
+
+
+    @BindingAdapter("android:onLongClick")
+    fun setOnLongClickListener(view: View, block : () -> Unit) {
+        view.setOnLongClickListener {
+            block()
+            return@setOnLongClickListener true
         }
     }
 }
