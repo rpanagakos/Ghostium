@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
-import com.example.ghostzilla.abstraction.ItemOnClickListener
+import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderNftItemBinding
 import com.example.ghostzilla.databinding.HolderOptionsItemBinding

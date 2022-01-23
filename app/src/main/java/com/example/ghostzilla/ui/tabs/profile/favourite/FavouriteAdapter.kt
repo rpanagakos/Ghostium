@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
+import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
-class FavouriteAdapter() : AbstractAdapter() {
+class FavouriteAdapter(private val listener: FavouriteClickListener) : AbstractAdapter() {
 
     val currentPosition: AtomicInteger = AtomicInteger(0)
 
@@ -20,13 +21,13 @@ class FavouriteAdapter() : AbstractAdapter() {
                 val view = HolderFavouriteItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                CryptoFavouriteHolder(view)
+                CryptoFavouriteHolder(view, listener)
             }
             else -> {
                 val view = HolderEmptyBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                CryptoFavouriteHolder(view)
+                CryptoFavouriteHolder(view, listener)
             }
         }
 

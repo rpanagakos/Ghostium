@@ -3,8 +3,8 @@ package com.example.ghostzilla.ui.tabs
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import com.example.ghostzilla.abstraction.AbstractBindingViewHolder
-import com.example.ghostzilla.abstraction.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.models.account.OptionItem
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.opensea.Asset

@@ -1,10 +1,7 @@
 package com.example.ghostzilla.ui.tabs.trends
 
-import android.content.Intent
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ghostzilla.R
@@ -56,29 +53,10 @@ class TrendsFragment :
                 .launchIn(lifecycleScope)
         }
 
-        viewModel.runOperation() { data: LocalModel,
-                                   title: TextView,
-                                   subTitle: TextView?,
-                                   circleImageView: CircleImageView ->
+        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
             when (data) {
                 is CryptoItem -> {
-                    val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
-                        putExtra("coin", data)
-                    }
-                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        requireActivity(),
-                        Pair.create(
-                            title, getString(R.string.transition_coin_name)
-                        ),
-                        Pair.create(
-                            subTitle, getString(R.string.transition_coin_symbol)
-                        ),
-                        Pair.create(
-                            circleImageView, getString(R.string.transition_coin_image)
-                        )
-                    )
-                    startActivity(intent, options.toBundle())
-                    requireActivity().window.exitTransition = null
+                    navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
                 }
             }
         }

@@ -1,11 +1,13 @@
 package com.example.ghostzilla.ui.tabs.profile.favourite
 
 import android.app.Application
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.di.IoDispatcher
 import com.example.ghostzilla.models.coingecko.CryptoItem
@@ -14,6 +16,7 @@ import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -25,20 +28,37 @@ class FavouriteViewModel @Inject constructor(
     private val localRepository: LocalRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     application: Application
-) : AbstractViewModel(application) {
+) : AbstractViewModel(application), FavouriteClickListener {
+
+    private var callbacks: (
+        data: LocalModel,
+        title: TextView,
+        subTitle: TextView?,
+        circleImageView: CircleImageView
+    ) -> Unit = { _, _, _, _ -> }
+
+    @Inject
+    lateinit var networkConnectivity: NetworkConnectivity
 
     var cryptos: LiveData<MutableList<CryptoItem>> =
         localRepository.fetchFavouriteCryptos().asLiveData()
-    val favouriteAdapter: FavouriteAdapter = FavouriteAdapter()
+    val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this)
 
-    fun runOperation() {
+    fun runOperation(
+        listener: (
+            data: LocalModel,
+            title: TextView,
+            subTitle: TextView?,
+            circleImageView: CircleImageView
+        ) -> Unit
+    ) {
+        this.callbacks = listener
         if (cryptos.value?.isNotEmpty() == true) {
             var cryptosIds = cryptos.value!![0].id
             cryptos.value!!.drop(1).forEach { cryptoItem ->
                 cryptosIds = "$cryptosIds,${cryptoItem.id}"
             }
             getFavouriteCryptosPrices(cryptosIds)
-            //favouriteAdapter.submitList(cryptos.value as List<LocalModel>)
         }
     }
 
@@ -49,7 +69,8 @@ class FavouriteViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let { responseJson ->
                             cryptos.value?.forEach { cryptoItem ->
-                                cryptoItem.currentPrice = responseJson.get(cryptoItem.id).asJsonObject.get("eur").asDouble
+                                cryptoItem.currentPrice =
+                                    responseJson.get(cryptoItem.id).asJsonObject.get("eur").asDouble
                             }
                             favouriteAdapter.submitList(cryptos.value as List<LocalModel>)
                         } ?: run { showToastMessage(0) }
@@ -62,11 +83,13 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun getAllNfts() {
-
+    override fun onClick(
+        data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView
+    ) {
+        callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
-    @Inject
-    lateinit var networkConnectivity: NetworkConnectivity
+    override fun onLongClick() {
+    }
 
 }

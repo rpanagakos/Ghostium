@@ -4,7 +4,7 @@ import android.app.Application
 import android.widget.TextView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
-import com.example.ghostzilla.abstraction.ItemOnClickListener
+import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.models.account.OptionItem
 import com.example.ghostzilla.network.DataRepository

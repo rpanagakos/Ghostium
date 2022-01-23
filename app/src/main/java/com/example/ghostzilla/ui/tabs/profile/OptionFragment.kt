@@ -1,14 +1,18 @@
 package com.example.ghostzilla.ui.tabs.profile
 
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
+import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentOptionBinding
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_option.*
 
 @AndroidEntryPoint
@@ -27,10 +31,19 @@ class OptionFragment :
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
+
     }
 
     override fun observeViewModel() {
-        viewModel.cryptos.observe(this, { viewModel.runOperation() })
+        viewModel.cryptos.observe(this, {
+            viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
+                when (data) {
+                    is CryptoItem -> {
+                        navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
+                    }
+                }
+            }
+        })
     }
 
     override fun stopOperations() {

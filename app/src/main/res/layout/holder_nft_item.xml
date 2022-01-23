@@ -13,7 +13,7 @@
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.ItemOnClickListener" />
+            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
 
     </data>
 

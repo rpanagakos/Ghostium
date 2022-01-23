@@ -11,6 +11,11 @@
             name="crypto"
             type="com.example.ghostzilla.models.coingecko.CryptoItem" />
 
+
+        <variable
+            name="clickHandler"
+            type="com.example.ghostzilla.abstraction.listeners.FavouriteClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +47,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="@drawable/market_ripple"
+            android:onClick="@{()-> clickHandler.onClick(crypto, contractName, contractTickerSumbol, contractImg)}"
             android:paddingStart="@dimen/large_spacing"
             android:paddingEnd="@dimen/large_spacing"
             android:paddingBottom="@dimen/ml_spacing"
