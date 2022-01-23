@@ -59,19 +59,33 @@
             app:layout_constraintTop_toBottomOf="@id/backButtonFavourite" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favCryptosRecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:adapter="@{viewModel.favouriteAdapter}"
+            android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingTop="@dimen/large_spacing"
             android:paddingBottom="@dimen/large_spacing"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:clipToPadding="false"
             android:scrollbars="none"
-            android:adapter="@{viewModel.favouriteAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/seperator"
             tools:itemCount="8"
             tools:listitem="@layout/holder_trends_item" />
+
+
+        <include
+            android:id="@+id/backToTopImg"
+            layout="@layout/back_to_top_button"
+            recyclerView="@{favCryptosRecycler}"
+            viewModel="@{viewModel}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/large_spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/favCryptosRecycler" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

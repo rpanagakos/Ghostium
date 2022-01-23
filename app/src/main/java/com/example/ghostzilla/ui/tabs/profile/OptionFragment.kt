@@ -7,6 +7,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.databinding.FragmentOptionBinding
 import com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel
+import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_option.*
 
@@ -21,6 +22,11 @@ class OptionFragment :
     override fun initLayout() {
         binding.title = args.title
         backButtonFavourite.setOnClickListener { findNavController().popBackStack() }
+        binding.favCryptosRecycler.apply {
+            setHasFixedSize(true)
+            addOnScrollListener(object :
+                BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
+        }
     }
 
     override fun observeViewModel() {

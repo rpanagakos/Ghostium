@@ -36,7 +36,7 @@ class TrendsFragment :
         binding.contractsTrendsRecycler.apply {
             setHasFixedSize(true)
             addOnScrollListener(object :
-                BackToTopScrollListener(binding.backToTopImg, requireContext()) {})
+                BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
 
         binding.searchLayout.searchEditText.apply {

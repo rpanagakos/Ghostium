@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recyclerView"
+            type="androidx.recyclerview.widget.RecyclerView" />
+
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.abstraction.AbstractViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/backToTopImg"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            android:layout_marginBottom="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/xxlarge_spacing"
+            android:background="@drawable/contract_image_trends"
+            android:contentDescription="@string/back_to_top"
+            android:elevation="@dimen/large_spacing"
+            android:onClick="@{()-> viewModel.scrollToTopRecycler(recyclerView)}"
+            android:padding="6dp"
+            android:src="@drawable/ic_back_to_top"
+            android:tint="@color/Black"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
