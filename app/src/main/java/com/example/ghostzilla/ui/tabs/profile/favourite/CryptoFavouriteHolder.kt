@@ -5,7 +5,7 @@ import androidx.databinding.library.baseAdapters.BR
 import com.example.ghostzilla.abstraction.AbstractBindingViewHolder
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
-import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.CryptoItemDB
 
 class CryptoFavouriteHolder(
     val binding: ViewDataBinding,
@@ -15,7 +15,7 @@ class CryptoFavouriteHolder(
 
     override fun present(data: LocalModel) {
         when (data) {
-            is CryptoItem -> {
+            is CryptoItemDB -> {
                 binding.setVariable(BR.crypto, data)
                 binding.setVariable(BR.clickHandler, listener)
             }

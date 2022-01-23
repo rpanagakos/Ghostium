@@ -8,6 +8,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentOptionBinding
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel
 import com.example.ghostzilla.utils.BackToTopScrollListener
@@ -38,8 +39,15 @@ class OptionFragment :
         viewModel.cryptos.observe(this, {
             viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
                 when (data) {
-                    is CryptoItem -> {
-                        navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
+                    is CryptoItemDB -> {
+                        navigateToDetailsActivty(
+                            CryptoItem(
+                                id = data.id,
+                                name = data.name,
+                                symbol = data.symbol,
+                                image = data.image
+                            ), title, subTitle!!, circleImageView
+                        )
                     }
                 }
             }

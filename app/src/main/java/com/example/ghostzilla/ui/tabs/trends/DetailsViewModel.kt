@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.airbnb.lottie.LottieAnimationView
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.database.room.LocalRepository
-import com.example.ghostzilla.di.DefaultDispatcher
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
@@ -22,7 +22,6 @@ import com.example.ghostzilla.utils.Constants.Companion.LOTTIE_STARTING_STATE
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -44,7 +43,7 @@ class DetailsViewModel @Inject constructor(
     private val _priceData = mutableListOf<Entry>()
     val lineDataSet = SingleLiveEvent<LineDataSet>()
     val tabs = listOf("1d", "7d", "1m", "3m", "1y")
-    lateinit var cryptoItem: CryptoItem
+    lateinit var cryptoItem: CryptoItemDB
 
     fun runOperation(coinID: String) {
         isCryptoInDB(coinID)

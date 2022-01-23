@@ -10,7 +10,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.di.IoDispatcher
-import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -40,7 +40,7 @@ class FavouriteViewModel @Inject constructor(
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
 
-    var cryptos: LiveData<MutableList<CryptoItem>> =
+    var cryptos: LiveData<MutableList<CryptoItemDB>> =
         localRepository.fetchFavouriteCryptos().asLiveData()
     val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this)
 
@@ -59,7 +59,8 @@ class FavouriteViewModel @Inject constructor(
                 cryptosIds = "$cryptosIds,${cryptoItem.id}"
             }
             getFavouriteCryptosPrices(cryptosIds)
-        }
+        } else
+            favouriteAdapter.submitList(emptyList())
     }
 
     private fun getFavouriteCryptosPrices(cryptosIds: String) {

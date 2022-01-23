@@ -9,7 +9,7 @@
 
         <variable
             name="crypto"
-            type="com.example.ghostzilla.models.coingecko.CryptoItem" />
+            type="com.example.ghostzilla.models.CryptoItemDB" />
 
 
         <variable

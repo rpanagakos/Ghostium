@@ -8,6 +8,7 @@ import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -42,7 +43,7 @@ class FavouriteAdapter(private val listener: FavouriteClickListener) : AbstractA
     }
 
     override fun getItemViewType(position: Int) = when (getItem(position)) {
-        is CryptoItem -> R.layout.holder_favourite_item
+        is CryptoItemDB -> R.layout.holder_favourite_item
         else -> R.layout.holder_empty
     }
 

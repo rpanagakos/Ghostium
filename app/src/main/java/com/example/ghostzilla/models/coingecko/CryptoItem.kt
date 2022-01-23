@@ -9,13 +9,12 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "cryptos_table")
 data class CryptoItem(
     @SerializedName("id")
     @PrimaryKey(autoGenerate = false)
     val id: String,
     @SerializedName("current_price")
-    var currentPrice: Double,
+    var currentPrice: Double = 0.0,
     @SerializedName("image")
     val image: String,
     @SerializedName("low_24h")
@@ -29,7 +28,7 @@ data class CryptoItem(
     @SerializedName("price_change_24h")
     val priceChange24h: Double? = null,
     @SerializedName("price_change_percentage_24h")
-    val priceChangePercentage24h: Double,
+    val priceChangePercentage24h: Double = 0.0,
     @SerializedName("symbol")
     val symbol: String
 ) : LocalModel, Parcelable {

@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/back_button_background.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/back_button_ripple.xml" value="0.41759259259259257" />
+        <entry key="app/src/main/res/drawable/bg_bottom_options.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/bg_chart_line.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/bg_custom_tab.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/drawable/bg_days_tab.xml" value="0.3416666666666667" />
@@ -54,7 +55,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_nfts.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_option.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/layout/fragment_option.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3741935483870968" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.32592592592592595" />
@@ -64,6 +65,8 @@
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/holder_options_item.xml" value="0.3969571230982019" />
         <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/option_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/option_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/placeholder_trends_item.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/search_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/text_input_layout.xml" value="0.43020833333333336" />

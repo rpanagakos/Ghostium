@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.text.Html
 import android.text.SpannableString
 import android.view.View
@@ -71,6 +72,17 @@ object TabsBinding {
     @BindingAdapter(value = ["imageURLContract"])
     @JvmStatic
     fun ImageView.loadImageFromUrl(imageUrl: Int?) {
+        if (imageUrl != null) {
+            Glide.with(this)
+                .load(imageUrl)
+                .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
+                .into(this)
+        }
+    }
+
+    @BindingAdapter(value = ["imageURLContract"])
+    @JvmStatic
+    fun ImageView.loadImageFromUrl(imageUrl: Drawable?) {
         if (imageUrl != null) {
             Glide.with(this)
                 .load(imageUrl)

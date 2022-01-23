@@ -1,6 +1,6 @@
 package com.example.ghostzilla.database.room
 
-import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.CryptoItemDB
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -8,11 +8,11 @@ import javax.inject.Inject
 @ViewModelScoped
 class LocalRepository @Inject constructor(private val cryptoDao: CryptoDao) {
 
-    fun fetchFavouriteCryptos(): Flow<MutableList<CryptoItem>> {
+    fun fetchFavouriteCryptos(): Flow<MutableList<CryptoItemDB>> {
         return cryptoDao.getAllCryptos()
     }
 
-    suspend fun insertFavouriteCrypto(crypto: CryptoItem) {
+    suspend fun insertFavouriteCrypto(crypto: CryptoItemDB) {
         cryptoDao.addCrypto(crypto)
     }
 
@@ -24,7 +24,7 @@ class LocalRepository @Inject constructor(private val cryptoDao: CryptoDao) {
         cryptoDao.deleteListOfCryptos(list)
     }
 
-    suspend fun deleteCrypto(crypto: CryptoItem) {
+    suspend fun deleteCrypto(crypto: CryptoItemDB) {
         return cryptoDao.deleteLocation(crypto)
     }
 

@@ -1,6 +1,7 @@
 package com.example.ghostzilla.database.room
 
 import androidx.room.*
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import kotlinx.coroutines.flow.Flow
 
@@ -8,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 interface CryptoDao {
 
     @Query("SELECT * FROM cryptos_table ORDER BY id ASC")
-    fun getAllCryptos(): Flow<MutableList<CryptoItem>>
+    fun getAllCryptos(): Flow<MutableList<CryptoItemDB>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addCrypto(cryptoItem: CryptoItem)
+    suspend fun addCrypto(cryptoItem: CryptoItemDB)
 
     @Query("DELETE FROM cryptos_table")
     suspend fun  deleteAllCryptos()
@@ -20,7 +21,7 @@ interface CryptoDao {
     suspend fun deleteListOfCryptos(cryptosId : List<String>)
 
     @Delete
-    suspend fun deleteLocation(cryptoItem: CryptoItem)
+    suspend fun deleteLocation(cryptoItem: CryptoItemDB)
 
     @Query("SELECT EXISTS(SELECT * FROM cryptos_table WHERE id = :id)")
     fun isCryptoExist(id : String) : Boolean

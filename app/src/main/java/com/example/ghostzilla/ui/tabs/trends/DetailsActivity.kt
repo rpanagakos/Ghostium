@@ -5,6 +5,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
 import com.example.ghostzilla.di.SparkLineStyle
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.utils.resetChart
 import com.github.mikephil.charting.data.LineData
@@ -25,7 +26,13 @@ class DetailsActivity :
 
     override fun initLayout() {
         cryptoItem = intent.getParcelableExtra("coin")
-        viewModel.cryptoItem = cryptoItem!!
+        viewModel.cryptoItem = CryptoItemDB(
+            cryptoItem!!.id,
+            image = cryptoItem!!.image,
+            name = cryptoItem!!.name,
+            symbol = cryptoItem!!.symbol,
+            currentPrice = cryptoItem!!.currentPrice
+        )
         when (cryptoItem) {
             null -> onBackPressed()
             else -> {
