@@ -203,7 +203,7 @@ object TabsBinding {
     @JvmStatic
     fun View.setOnLongClickListener(onLongClick: () -> Unit) {
         this.setOnLongClickListener {
-           onLongClick.invoke()
+            onLongClick.invoke()
             return@setOnLongClickListener true
         }
     }

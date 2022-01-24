@@ -41,9 +41,11 @@ class FavouriteViewModel @Inject constructor(
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
 
-    var cryptos: LiveData<MutableList<CryptoItemDB>> = localRepository.fetchFavouriteCryptos().asLiveData()
+    var cryptos: LiveData<MutableList<CryptoItemDB>> =
+        localRepository.fetchFavouriteCryptos().asLiveData()
     val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this, this)
-    var checkBoxIsVisible = MutableLiveData<Boolean>(false)
+    var cryptosChosen = mutableListOf<CryptoItemDB>()
+    val isProcessing = MutableLiveData<Boolean>(false)
 
     fun runOperation(
         listener: (
@@ -85,25 +87,54 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun test(cryptoItemDB: CryptoItemDB){
-       /* cryptos.value!!.forEachIndexed { index, _ ->
-            if (cryptos.value!![index].id == cryptoItemDB.id) {
-                cryptos.value!![index].isSelected = !cryptos.value!![index].isSelected
-            }
-        }
-        favouriteAdapter.submitList(cryptos.value as List<LocalModel>)*/
+    fun processFavCrypto(cryptoItemDB: CryptoItemDB, dataLocation: Int) {
         cryptoItemDB.isSelected = !cryptoItemDB.isSelected
-        favouriteAdapter.notifyDataSetChanged()
-        checkBoxIsVisible.postValue(true)
+        if (cryptoItemDB.isSelected) {
+            if (isProcessing.value == false) isProcessing.postValue(true)
+            if (!cryptosChosen.isNullOrEmpty() && !cryptosChosen.contains(cryptoItemDB))
+                cryptosChosen.add(cryptoItemDB)
+        } else if (!cryptosChosen.isNullOrEmpty() && cryptosChosen.contains(
+                cryptoItemDB
+            )
+        )
+            cryptosChosen.remove(cryptoItemDB)
+
+        favouriteAdapter.notifyItemChanged(dataLocation)
+    }
+
+    fun checkState(checkState: Boolean) {
+        //this one needs refactor its not  good practice
+        if (checkState) {
+            cryptos.value?.forEach {
+                if (!it.isSelected) {
+                    cryptosChosen.add(it)
+                    it.isSelected = true
+                }
+            }
+            favouriteAdapter.notifyDataSetChanged()
+        } else {
+            cryptosChosen.clear()
+            cryptos.value?.forEach {
+                if (it.isSelected) {
+                    it.isSelected = false
+                }
+            }
+            favouriteAdapter.notifyDataSetChanged()
+        }
     }
 
     override fun onClick(
-        data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView
+        data: LocalModel,
+        title: TextView,
+        subTitle: TextView?,
+        circleImageView: CircleImageView,
+        position: Int
     ) {
-        callbacks.invoke(data, title, subTitle, circleImageView)
+        if (isProcessing.value == true)
+            processFavCrypto(data as CryptoItemDB, position)
+        else
+            callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
-    override fun onLongClick() {
-    }
 
 }

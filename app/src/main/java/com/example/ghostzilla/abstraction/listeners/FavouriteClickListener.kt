@@ -6,8 +6,5 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 interface FavouriteClickListener {
 
-    fun onClick(data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView)
-
-    fun onLongClick()
-
+    fun onClick(data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView, position : Int)
 }

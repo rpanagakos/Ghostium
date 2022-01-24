@@ -55,7 +55,7 @@
             android:layout_marginEnd="8dp"
             android:text="@string/all"
             android:textAppearance="@style/large_text_bold"
-            android:visibility="@{viewModel.checkBoxIsVisible ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.isProcessing ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@id/titleHeader"
             app:layout_constraintEnd_toStartOf="@id/checkbox"
             app:layout_constraintTop_toTopOf="@id/titleHeader" />
@@ -69,7 +69,8 @@
             android:gravity="center"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:visibility="@{viewModel.checkBoxIsVisible ? View.VISIBLE : View.GONE}"
+            android:onCheckedChanged="@{(view,checked) -> viewModel.checkState(checked)}"
+            android:visibility="@{viewModel.isProcessing ? View.VISIBLE : View.GONE}"
             app:buttonTint="@color/Black"
             app:layout_constraintBottom_toBottomOf="@id/titleHeader"
             app:layout_constraintEnd_toEndOf="parent"

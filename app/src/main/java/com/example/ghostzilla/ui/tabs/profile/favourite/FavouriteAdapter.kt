@@ -9,12 +9,14 @@ import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
 import com.example.ghostzilla.models.CryptoItemDB
-import com.example.ghostzilla.models.coingecko.CryptoItem
 import java.util.concurrent.atomic.AtomicInteger
 
-class FavouriteAdapter(private val viewModel: FavouriteViewModel, private val listener: FavouriteClickListener) : AbstractAdapter() {
+class FavouriteAdapter(
+    private val viewModel: FavouriteViewModel,
+    private val listener: FavouriteClickListener
+) : AbstractAdapter() {
 
-    val currentPosition: AtomicInteger = AtomicInteger(0)
+    private val currentPosition: AtomicInteger = AtomicInteger(0)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
@@ -36,7 +38,7 @@ class FavouriteAdapter(private val viewModel: FavouriteViewModel, private val li
         currentPosition.set(position)
         return when (holder) {
             is CryptoFavouriteHolder -> {
-                holder.present(getItem(position))
+                holder.present(getItem(position), position = position)
             }
             else -> Unit
         }
