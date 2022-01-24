@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.profile
+package com.example.ghostzilla.ui.tabs.settings
 
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -7,20 +7,20 @@ import androidx.navigation.fragment.navArgs
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.databinding.FragmentOptionBinding
+import com.example.ghostzilla.databinding.FragmentFavouriteBinding
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
-import com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel
+import com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteViewModel
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.fragment_option.*
+import kotlinx.android.synthetic.main.fragment_favourite.*
 
 @AndroidEntryPoint
-class OptionFragment :
-    AbstractFragment<FragmentOptionBinding, FavouriteViewModel>(R.layout.fragment_option) {
+class FavouriteFragment :
+    AbstractFragment<FragmentFavouriteBinding, FavouriteViewModel>(R.layout.fragment_favourite) {
 
-    private val args: OptionFragmentArgs by navArgs()
+    private val args: FavouriteFragmentArgs by navArgs()
 
     override val viewModel: FavouriteViewModel by viewModels()
 

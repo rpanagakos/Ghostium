@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.profile
+package com.example.ghostzilla.ui.tabs.settings
 
 import android.app.Application
 import android.widget.TextView

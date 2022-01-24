@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.ghostzilla.ui.tabs.profile.SettingsFragment"
+        android:name="com.example.ghostzilla.ui.tabs.settings.SettingsFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_trends" />
     <fragment
         android:id="@+id/optionFragment"
-        android:name="com.example.ghostzilla.ui.tabs.profile.OptionFragment"
+        android:name="com.example.ghostzilla.ui.tabs.settings.FavouriteFragment"
         android:label="OptionFragment" >
         <argument
             android:name="title"

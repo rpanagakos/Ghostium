@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.profile.favourite
+package com.example.ghostzilla.ui.tabs.settings.favourite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.profile.favourite
+package com.example.ghostzilla.ui.tabs.settings.favourite
 
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR

@@ -7,7 +7,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.tabs.home.HomeFragment
-import com.example.ghostzilla.ui.tabs.profile.SettingsFragment
+import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
 import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import dagger.hilt.android.AndroidEntryPoint

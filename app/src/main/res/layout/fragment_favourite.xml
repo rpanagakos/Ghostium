@@ -13,14 +13,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.profile.favourite.FavouriteViewModel" />
+            type="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tabs.profile.OptionFragment">
+        tools:context=".ui.tabs.settings.FavouriteFragment">
 
         <include
             android:id="@+id/backButtonFavourite"
