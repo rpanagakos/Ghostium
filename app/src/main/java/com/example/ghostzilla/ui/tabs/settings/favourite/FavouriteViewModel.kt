@@ -128,7 +128,7 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun dismissEveryting(checkBox: CheckBox) {
+    fun dismissEveryting() {
         checkState(false)
         isProcessing.postValue(false)
     }

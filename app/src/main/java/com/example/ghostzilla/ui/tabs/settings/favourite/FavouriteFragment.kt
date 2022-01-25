@@ -43,7 +43,7 @@ class FavouriteFragment :
             }
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
-            viewModel.isProcessing.postValue(false)
+            viewModel.dismissEveryting()
         }
     }
 

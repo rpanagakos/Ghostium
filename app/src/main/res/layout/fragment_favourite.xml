@@ -145,7 +145,7 @@
             <include
                 android:id="@+id/cancel"
                 layout="@layout/cancel_item"
-                android:onClick="@{() -> viewModel.dismissEveryting(checkbox)}"
+                android:onClick="@{() -> viewModel.dismissEveryting()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
