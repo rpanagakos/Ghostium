@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.settings.favourite
 
 import android.app.Application
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -121,6 +122,12 @@ class FavouriteViewModel @Inject constructor(
             }
             favouriteAdapter.notifyDataSetChanged()
         }
+    }
+
+    fun dismissEveryting(checkBox: CheckBox){
+        checkBox.isChecked = false
+        checkState(false)
+        isProcessing.postValue(false)
     }
 
     override fun onClick(

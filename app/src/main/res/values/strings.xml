@@ -38,5 +38,8 @@
     <string name="transition_option_image">optionImage</string>
     <string name="transition_option_name">optionName</string>
     <string name="all">All</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_back_to_top.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_bitcoin.xml" value="0.121875" />
         <entry key="app/src/main/res/drawable/ic_check_filled.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_circle_background.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_home_filled.xml" value="0.5703703703703704" />
@@ -39,6 +40,7 @@
         <entry key="app/src/main/res/drawable/ic_wallet_filled.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_wallet_outline.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/market_ripple.xml" value="0.33958333333333335" />
+        <entry key="app/src/main/res/drawable/menu_ripple.xml" value="0.121875" />
         <entry key="app/src/main/res/drawable/placeholder_trends_item.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/profile_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/search_background.xml" value="0.2984375" />
@@ -54,9 +56,12 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3816650411348873" />
         <entry key="app/src/main/res/layout/back_button.xml" value="0.39091331317725053" />
         <entry key="app/src/main/res/layout/back_to_top_button.xml" value="0.7493022659538356" />
+        <entry key="app/src/main/res/layout/cancel_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/custom_marker.xml" value="0.22" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.9231223046657951" />
+        <entry key="app/src/main/res/layout/delete_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/dummy_shimmer_announcement.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_nfts.xml" value="0.375" />
@@ -70,10 +75,11 @@
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/holder_options_item.xml" value="0.3969571230982019" />
         <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/option_item.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/option_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/option_item.xml" value="0.6848554425057238" />
+        <entry key="app/src/main/res/layout/option_menu.xml" value="0.20517780430138194" />
         <entry key="app/src/main/res/layout/placeholder_trends_item.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/search_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/share_item.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/layout/text_input_layout.xml" value="0.43020833333333336" />
         <entry key="app/src/main/res/layout/triple_labels_and_values.xml" value="0.3538822172994355" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.5635416666666667" />

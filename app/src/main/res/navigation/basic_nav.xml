@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_trends" />
     <fragment
         android:id="@+id/optionFragment"
-        android:name="com.example.ghostzilla.ui.tabs.settings.FavouriteFragment"
+        android:name="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteFragment"
         android:label="OptionFragment" >
         <argument
             android:name="title"

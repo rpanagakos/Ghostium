@@ -20,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tabs.settings.FavouriteFragment">
+        tools:context=".ui.tabs.settings.favourite.FavouriteFragment">
 
         <include
             android:id="@+id/backButtonFavourite"
@@ -99,7 +99,7 @@
             android:paddingBottom="@dimen/large_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/menuLayout"
             app:layout_constraintTop_toBottomOf="@id/seperator"
             tools:itemCount="8"
             tools:listitem="@layout/holder_trends_item" />
@@ -116,6 +116,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/favCryptosRecycler" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/menuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_options"
+            android:elevation="24dp"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include
+                android:id="@+id/share"
+                layout="@layout/share_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/delete"
+                layout="@layout/delete_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/cancel"
+                layout="@layout/cancel_item"
+                android:onClick="@{() -> viewModel.dismissEveryting(checkbox)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

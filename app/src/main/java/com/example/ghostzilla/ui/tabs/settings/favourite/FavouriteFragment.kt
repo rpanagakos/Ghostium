@@ -1,5 +1,7 @@
-package com.example.ghostzilla.ui.tabs.settings
+package com.example.ghostzilla.ui.tabs.settings.favourite
 
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,7 +12,6 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentFavouriteBinding
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
-import com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteViewModel
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
@@ -50,6 +51,15 @@ class FavouriteFragment :
                         )
                     }
                 }
+            }
+        })
+        viewModel.isProcessing.observe(this, { isProcessing ->
+            if (isProcessing) {
+                binding.menuLayout.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up))
+                binding.menuLayout.visibility = View.VISIBLE
+            } else {
+                binding.menuLayout.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_down))
+                binding.menuLayout.visibility = View.GONE
             }
         })
     }
