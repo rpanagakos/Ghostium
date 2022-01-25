@@ -46,6 +46,7 @@ class FavouriteViewModel @Inject constructor(
         localRepository.fetchFavouriteCryptos().asLiveData()
     val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this, this)
     var cryptosChosen = mutableListOf<CryptoItemDB>()
+    val ids = mutableListOf<String>()
     val isProcessing = MutableLiveData<Boolean>(false)
 
     fun runOperation(
@@ -92,13 +93,14 @@ class FavouriteViewModel @Inject constructor(
         cryptoItemDB.isSelected = !cryptoItemDB.isSelected
         if (cryptoItemDB.isSelected) {
             if (isProcessing.value == false) isProcessing.postValue(true)
-            if (!cryptosChosen.contains(cryptoItemDB))
+            if (!cryptosChosen.contains(cryptoItemDB)) {
                 cryptosChosen.add(cryptoItemDB)
-        } else if (!cryptosChosen.isNullOrEmpty() && cryptosChosen.contains(
-                cryptoItemDB
-            )
-        )
+                ids.add(cryptoItemDB.id)
+            }
+        } else if (!cryptosChosen.isNullOrEmpty() && cryptosChosen.contains(cryptoItemDB)) {
             cryptosChosen.remove(cryptoItemDB)
+            ids.remove(cryptoItemDB.id)
+        }
 
         favouriteAdapter.notifyItemChanged(dataLocation)
     }
@@ -108,6 +110,7 @@ class FavouriteViewModel @Inject constructor(
         if (checkState) {
             cryptos.value?.forEach {
                 if (!it.isSelected) {
+                    ids.add(it.id)
                     cryptosChosen.add(it)
                     it.isSelected = true
                 }
@@ -117,6 +120,7 @@ class FavouriteViewModel @Inject constructor(
             cryptosChosen.clear()
             cryptos.value?.forEach {
                 if (it.isSelected) {
+                    ids.remove(it.id)
                     it.isSelected = false
                 }
             }
@@ -135,10 +139,6 @@ class FavouriteViewModel @Inject constructor(
                 if (cryptosChosen.size.equals(cryptos.value?.size))
                     localRepository.deleteAllFavourites()
                 else {
-                    val ids = mutableListOf<String>()
-                    cryptosChosen.forEach {
-                        ids.add(it.id)
-                    }
                     localRepository.deleteSpecificCryptos(ids)
                 }
             }.onSuccess {
