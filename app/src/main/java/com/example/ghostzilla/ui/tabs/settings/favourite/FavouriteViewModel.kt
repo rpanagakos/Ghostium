@@ -148,6 +148,15 @@ class FavouriteViewModel @Inject constructor(
 
     }
 
+    fun getIntentText(): String {
+        var intentText = "My Favourite Cryptos \n\n"
+        cryptosChosen.forEachIndexed { index, cryptoItemDB ->
+            intentText += "${index + 1}. ${cryptoItemDB.name} \n"
+        }
+        intentText += "\n\nThis message has been sent via Ghostzilla"
+        return intentText
+    }
+
     override fun onClick(
         data: LocalModel,
         title: TextView,

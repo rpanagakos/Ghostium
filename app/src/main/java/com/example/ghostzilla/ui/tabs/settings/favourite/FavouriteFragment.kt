@@ -1,7 +1,6 @@
 package com.example.ghostzilla.ui.tabs.settings.favourite
 
 import android.content.Intent
-import android.net.Uri
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -36,6 +35,16 @@ class FavouriteFragment :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
 
+        binding.share.optionConstraint.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, viewModel.getIntentText())
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+            viewModel.isProcessing.postValue(false)
+        }
     }
 
     override fun observeViewModel() {
