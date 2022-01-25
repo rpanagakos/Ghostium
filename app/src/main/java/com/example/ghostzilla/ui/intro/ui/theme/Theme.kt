@@ -22,8 +22,9 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun GhostzillaTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+    //tempoarary solution
     val colors = if (darkTheme) {
-        DarkColorPalette
+        LightColorPalette
     } else {
         LightColorPalette
     }
