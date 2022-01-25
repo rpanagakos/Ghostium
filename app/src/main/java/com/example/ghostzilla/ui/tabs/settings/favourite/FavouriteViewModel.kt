@@ -92,7 +92,7 @@ class FavouriteViewModel @Inject constructor(
         cryptoItemDB.isSelected = !cryptoItemDB.isSelected
         if (cryptoItemDB.isSelected) {
             if (isProcessing.value == false) isProcessing.postValue(true)
-            if (!cryptosChosen.isNullOrEmpty() && !cryptosChosen.contains(cryptoItemDB))
+            if (!cryptosChosen.contains(cryptoItemDB))
                 cryptosChosen.add(cryptoItemDB)
         } else if (!cryptosChosen.isNullOrEmpty() && cryptosChosen.contains(
                 cryptoItemDB
@@ -124,10 +124,28 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun dismissEveryting(checkBox: CheckBox){
-        checkBox.isChecked = false
+    fun dismissEveryting(checkBox: CheckBox) {
         checkState(false)
         isProcessing.postValue(false)
+    }
+
+    fun deleteFavCryptos() {
+        viewModelScope.launch(ioDispatcher) {
+            kotlin.runCatching {
+                if (cryptosChosen.size.equals(cryptos.value?.size))
+                    localRepository.deleteAllFavourites()
+                else {
+                    val ids = mutableListOf<String>()
+                    cryptosChosen.forEach {
+                        ids.add(it.id)
+                    }
+                    localRepository.deleteSpecificCryptos(ids)
+                }
+            }.onSuccess {
+                isProcessing.postValue(false)
+            }
+        }
+
     }
 
     override fun onClick(

@@ -58,6 +58,7 @@ class FavouriteFragment :
                 binding.menuLayout.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up))
                 binding.menuLayout.visibility = View.VISIBLE
             } else {
+                binding.checkbox.isChecked = false
                 binding.menuLayout.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_down))
                 binding.menuLayout.visibility = View.GONE
             }

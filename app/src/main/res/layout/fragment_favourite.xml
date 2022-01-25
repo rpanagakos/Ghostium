@@ -137,6 +137,7 @@
             <include
                 android:id="@+id/delete"
                 layout="@layout/delete_item"
+                android:onClick="@{() -> viewModel.deleteFavCryptos()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
