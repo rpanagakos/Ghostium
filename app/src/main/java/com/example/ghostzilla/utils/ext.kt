@@ -13,16 +13,19 @@ import android.text.style.RelativeSizeSpan
 import android.text.style.URLSpan
 import android.view.View
 import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.text.HtmlCompat
 import androidx.core.text.getSpans
 import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
+import com.example.ghostzilla.R
 import com.github.mikephil.charting.charts.LineChart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -202,6 +205,20 @@ fun LottieAnimationView.enableAfterAnimation() {
         override fun onAnimationCancel(animation: Animator?) {}
         override fun onAnimationStart(animation: Animator?) {}
     })
+}
+
+fun View.appearStartCustomAnimation(animationFile : Int, context: Context){
+    this.apply {
+        startAnimation(AnimationUtils.loadAnimation(context, animationFile))
+        visibility = View.VISIBLE
+    }
+}
+
+fun View.disappearWithCustomAnimation(animationFile : Int, context: Context){
+    this.apply {
+        startAnimation(AnimationUtils.loadAnimation(context, animationFile))
+        visibility = View.GONE
+    }
 }
 
 private fun SpannableStringBuilder.makeLinkClickable(
