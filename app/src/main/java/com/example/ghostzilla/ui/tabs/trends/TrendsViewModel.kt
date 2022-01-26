@@ -12,7 +12,7 @@ import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
-import com.example.ghostzilla.ui.tabs.TabsAdapter
+import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.removeWhiteSpaces

@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs
+package com.example.ghostzilla.ui.tabs.common
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

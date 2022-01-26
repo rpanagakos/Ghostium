@@ -10,7 +10,7 @@ import com.example.ghostzilla.models.errors.ErrorManager
 import com.example.ghostzilla.models.errors.mapper.NETWORK_ERROR
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
-import com.example.ghostzilla.ui.tabs.TabsAdapter
+import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.clearTextAndFocus
 import com.example.ghostzilla.utils.showKeyboard

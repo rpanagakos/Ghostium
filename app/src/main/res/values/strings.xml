@@ -41,5 +41,11 @@
     <string name="share">Share</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="option_language">Language</string>
+    <string name="option_currency">Currency</string>
+    <string name="option_articles">Saved Articles</string>
+    <string name="option_contact">Contact Us</string>
+    <string name="option_share">Share the Ghostzilla App</string>
+    <string name="option_rate">Rate the Ghostzilla App</string>
 
 </resources>

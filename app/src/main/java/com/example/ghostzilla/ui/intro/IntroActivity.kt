@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.ghostzilla.ui.intro.navigation.setUpNavGraph
 import com.example.ghostzilla.ui.intro.ui.theme.GhostzillaTheme
-import com.example.ghostzilla.ui.tabs.TabsActivity
+import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 

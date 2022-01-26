@@ -8,7 +8,7 @@ import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.network.DataRepository
-import com.example.ghostzilla.ui.tabs.TabsAdapter
+import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.hdodenhof.circleimageview.CircleImageView
@@ -26,13 +26,13 @@ class SettingsViewModel @Inject constructor(
     ) -> Unit = { _, _ -> }
 
     private val settingsList = listOf(
-        AppOption("Language",R.drawable.ic_baseline_info_24, AppOption.SettingType.LANGUAGE ),
-        AppOption("Currency",R.drawable.ic_baseline_info_24, AppOption.SettingType.CURRENCY ),
+        AppOption(context.getString(R.string.option_language),R.drawable.ic_baseline_info_24, AppOption.SettingType.LANGUAGE ),
+        AppOption(context.getString(R.string.option_currency),R.drawable.ic_baseline_info_24, AppOption.SettingType.CURRENCY ),
         AppOption(context.getString(R.string.option_cryptos),R.drawable.ic_baseline_info_24, AppOption.SettingType.CRYPTO_FAV ),
-        AppOption("Saved Articles",R.drawable.ic_baseline_info_24, AppOption.SettingType.NEWS_FAV ),
-        AppOption("Share the Ghostzilla App",R.drawable.ic_baseline_info_24, AppOption.SettingType.SHARE_APP ),
-        AppOption("Rate the Ghostzilla App",R.drawable.ic_baseline_info_24, AppOption.SettingType.RATE_APP ),
-        AppOption("Contact Us",R.drawable.ic_baseline_info_24, AppOption.SettingType.CONTACT_US ),
+        AppOption(context.getString(R.string.option_articles),R.drawable.ic_baseline_info_24, AppOption.SettingType.NEWS_FAV ),
+        AppOption(context.getString(R.string.option_share),R.drawable.ic_baseline_info_24, AppOption.SettingType.SHARE_APP ),
+        AppOption(context.getString(R.string.option_rate),R.drawable.ic_baseline_info_24, AppOption.SettingType.RATE_APP ),
+        AppOption(context.getString(R.string.option_contact),R.drawable.ic_baseline_info_24, AppOption.SettingType.CONTACT_US ),
     )
 
     val optionsAdapter: TabsAdapter = TabsAdapter(this)

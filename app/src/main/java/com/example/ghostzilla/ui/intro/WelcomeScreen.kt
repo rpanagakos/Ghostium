@@ -21,7 +21,7 @@ import androidx.navigation.NavHostController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.onboarding.OnBoardingPage
 import com.example.ghostzilla.ui.intro.ui.theme.Shapes
-import com.example.ghostzilla.ui.tabs.TabsActivity
+import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.google.accompanist.pager.*
 
 @ExperimentalPagerApi

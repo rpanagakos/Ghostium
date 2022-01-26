@@ -3,8 +3,8 @@ package com.example.ghostzilla.utils.customview
 import android.content.Context
 import android.widget.TextView
 import com.example.ghostzilla.R
-import com.example.ghostzilla.ui.tabs.TabsBinding.convertLongToDate
-import com.example.ghostzilla.ui.tabs.TabsBinding.convertPrice
+import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertLongToDate
+import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPrice
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight

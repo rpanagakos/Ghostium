@@ -37,7 +37,7 @@
             android:name=".ui.tabs.trends.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tabs.TabsActivity"
+            android:name=".ui.tabs.common.TabsActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan">
 

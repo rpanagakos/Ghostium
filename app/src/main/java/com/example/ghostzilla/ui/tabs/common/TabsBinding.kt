@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs
+package com.example.ghostzilla.ui.tabs.common
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
