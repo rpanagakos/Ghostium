@@ -56,7 +56,7 @@ class DetailsActivity :
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        sparkLineStyle.styleChart(binding.chartLine, binding.priceIndicator, binding.dateIndicator)
+        sparkLineStyle.styleChart(binding.chartLine, binding.priceIndicator, binding.dateIndicator, binding.scrollView)
         observeViewModel()
     }
 

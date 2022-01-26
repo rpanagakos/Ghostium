@@ -3,9 +3,12 @@ package com.example.ghostzilla.di
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.MotionEvent
+import android.view.View
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.ghostzilla.R
+import com.example.ghostzilla.utils.CustomScrollView
 import com.example.ghostzilla.utils.customview.CustomMarker
 import com.example.ghostzilla.utils.fadeIn
 import com.example.ghostzilla.utils.fadeOut
@@ -20,7 +23,7 @@ class SparkLineStyle @Inject constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     fun styleChart(
-        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView
+        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView
     ) = lineChart.apply {
         axisLeft.isEnabled = false
         axisRight.isEnabled = false
@@ -36,12 +39,14 @@ class SparkLineStyle @Inject constructor(
         setOnTouchListener { _, motionEvent ->
             when (motionEvent?.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    scrollView.setScrolling(false)
                     priceIndicator.fadeIn()
                     dateIndicator.fadeIn()
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_SCROLL -> {
                     priceIndicator.fadeOut(600)
                     dateIndicator.fadeOut(600)
+                    scrollView.setScrolling(true)
                 }
             }
             false
