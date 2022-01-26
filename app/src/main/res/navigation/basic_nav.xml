@@ -11,14 +11,14 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/optionDetailsAction"
-            app:destination="@id/optionFragment"
+            android:id="@+id/settingsFavouriteAction"
+            app:destination="@id/favouriteFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_profileFragment_to_generalSettingsFragment"
+            android:id="@+id/settingsGeneralAction"
             app:destination="@id/generalSettingsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -41,9 +41,9 @@
         android:label="fragment_trends"
         tools:layout="@layout/fragment_trends" />
     <fragment
-        android:id="@+id/optionFragment"
+        android:id="@+id/favouriteFragment"
         android:name="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteFragment"
-        android:label="OptionFragment" >
+        android:label="favouriteFragment" >
         <argument
             android:name="title"
             app:argType="string" />

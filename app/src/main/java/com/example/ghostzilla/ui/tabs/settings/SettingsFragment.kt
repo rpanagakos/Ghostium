@@ -11,6 +11,7 @@ import com.example.ghostzilla.databinding.FragmentSettingsBinding
 import com.example.ghostzilla.models.settings.AppOption
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.example.ghostzilla.models.settings.AppOption.SettingType
 
 
 @AndroidEntryPoint
@@ -27,7 +28,12 @@ class SettingsFragment :
                                    title: TextView ->
             when (data) {
                 is AppOption -> {
-                    findNavController().navigate(SettingsFragmentDirections.optionDetailsAction(data.title))
+                    when (data.type) {
+                        SettingType.CRYPTO_FAV, SettingType.NEWS_FAV ->
+                            findNavController().navigate(SettingsFragmentDirections.settingsFavouriteAction(data.title))
+                        SettingType.LANGUAGE, SettingType.CURRENCY ->
+                            findNavController().navigate(SettingsFragmentDirections.settingsGeneralAction(data.title))
+                    }
                 }
             }
         }
