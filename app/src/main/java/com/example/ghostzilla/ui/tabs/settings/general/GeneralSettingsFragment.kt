@@ -25,7 +25,7 @@ class GeneralSettingsFragment :
     override fun initLayout() {
         binding.title = args.title
         backButtonFavourite.setOnClickListener { findNavController().popBackStack() }
-        viewModel.runOperation()
+        viewModel.runOperation(args.title == getString(R.string.option_language))
     }
 
     override fun observeViewModel() {

@@ -5,6 +5,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
+import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.models.settings.LanguageItem
 
 class GeneralSettingHolder(
@@ -15,9 +16,10 @@ class GeneralSettingHolder(
 
     fun present(data: LocalModel, position: Int) {
         when (data) {
-            is LanguageItem -> {
+            is LanguageItem, is CurrencyItem-> {
                 binding.setVariable(BR.item, data)
-                binding.setVariable(BR.viewModel, viewModel)
+                binding.setVariable(BR.dataPosition, position)
+                binding.setVariable(BR.clickHandler, listener)
             }
         }
     }
