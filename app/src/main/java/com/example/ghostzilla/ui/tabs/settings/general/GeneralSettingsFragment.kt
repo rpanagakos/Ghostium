@@ -25,6 +25,7 @@ class GeneralSettingsFragment :
     override fun initLayout() {
         binding.title = args.title
         backButtonFavourite.setOnClickListener { findNavController().popBackStack() }
+        viewModel.runOperation()
     }
 
     override fun observeViewModel() {

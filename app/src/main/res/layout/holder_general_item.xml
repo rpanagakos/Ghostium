@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.example.ghostzilla.models.settings.LanguageItem" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/generalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="24dp"
+            android:paddingStart="8dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="26dp"
+            android:text="@{item.nameLang}"
+            android:textAppearance="@style/large_xlarge_text"
+            app:layout_constraintEnd_toStartOf="@id/selectedImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Favourite Crypto" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CoolGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/generalText"
+            app:layout_constraintTop_toBottomOf="@id/generalText" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/selectedImage"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="@{item.seleted ? View.VISIBLE : View.GONE}"
+            app:srcCompat="@drawable/ic_check"
+            app:layout_constraintTop_toTopOf="@id/generalText"
+            app:layout_constraintBottom_toBottomOf="@id/generalText"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
