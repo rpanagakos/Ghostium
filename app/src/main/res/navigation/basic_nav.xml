@@ -17,6 +17,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_generalSettingsFragment"
+            app:destination="@id/generalSettingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
@@ -37,6 +44,14 @@
         android:id="@+id/optionFragment"
         android:name="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteFragment"
         android:label="OptionFragment" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/generalSettingsFragment"
+        android:name="com.example.ghostzilla.ui.tabs.settings.general.GeneralSettingsFragment"
+        android:label="GeneralSettingsFragment" >
         <argument
             android:name="title"
             app:argType="string" />
