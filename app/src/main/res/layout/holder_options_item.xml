@@ -9,7 +9,7 @@
 
         <variable
             name="option"
-            type="com.example.ghostzilla.models.account.OptionItem" />
+            type="com.example.ghostzilla.models.settings.AppOption" />
 
         <variable
             name="clickHandler"
@@ -19,15 +19,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:foreground="@drawable/market_ripple"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="@{()-> clickHandler.onClick(option, optionText, optionText , optionImage)}"
-        android:layout_height="wrap_content">
+        android:foreground="@drawable/market_ripple"
+        android:onClick="@{()-> clickHandler.onClick(option, optionText, optionText , optionImage)}">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/optionImage"
-            imageURLContract="@{option.image}"
+            imageURLContract="@{option.imageID}"
             android:layout_width="64dp"
             android:layout_height="0dp"
             android:paddingStart="16dp"
@@ -53,6 +53,14 @@
             app:layout_constraintStart_toEndOf="@+id/optionImage"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Favourite Crypto" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CoolGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/optionText"
+            app:layout_constraintTop_toBottomOf="@id/optionText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

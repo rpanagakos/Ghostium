@@ -5,9 +5,9 @@ import androidx.databinding.library.baseAdapters.BR
 import com.example.ghostzilla.abstraction.AbstractBindingViewHolder
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
-import com.example.ghostzilla.models.account.OptionItem
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.opensea.Asset
+import com.example.ghostzilla.models.settings.AppOption
 
 class TabsViewHolder(val binding: ViewDataBinding, val listener: ItemOnClickListener? = null) :
     AbstractBindingViewHolder(binding) {
@@ -21,7 +21,7 @@ class TabsViewHolder(val binding: ViewDataBinding, val listener: ItemOnClickList
             is Asset -> {
                 binding.setVariable(BR.nft, data)
             }
-            is OptionItem -> {
+            is AppOption -> {
                 binding.setVariable(BR.option, data)
                 binding.setVariable(BR.clickHandler, listener)
             }

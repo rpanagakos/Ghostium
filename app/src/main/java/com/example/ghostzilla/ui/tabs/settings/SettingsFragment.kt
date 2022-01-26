@@ -8,7 +8,7 @@ import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentSettingsBinding
-import com.example.ghostzilla.models.account.OptionItem
+import com.example.ghostzilla.models.settings.AppOption
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,7 +26,7 @@ class SettingsFragment :
         viewModel.runOperation() { data: LocalModel,
                                    title: TextView ->
             when (data) {
-                is OptionItem -> {
+                is AppOption -> {
                     findNavController().navigate(SettingsFragmentDirections.optionDetailsAction(data.title))
                 }
             }

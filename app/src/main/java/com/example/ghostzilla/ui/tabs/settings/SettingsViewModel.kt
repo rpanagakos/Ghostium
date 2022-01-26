@@ -6,7 +6,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.models.account.OptionItem
+import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -25,11 +25,14 @@ class SettingsViewModel @Inject constructor(
         contractName: TextView,
     ) -> Unit = { _, _ -> }
 
-    private val optionsList = listOf(
-        OptionItem(R.drawable.ic_photo_album, context.getString(R.string.option_nft)),
-        OptionItem(R.drawable.ic_bitcoin, context.getString(R.string.option_cryptos)),
-        OptionItem(R.drawable.ic_wallet_filled, context.getString(R.string.options_wallet)),
-        OptionItem(R.drawable.ic_baseline_info_24, context.getString(R.string.option_about))
+    private val settingsList = listOf(
+        AppOption("Language",R.drawable.ic_baseline_info_24, AppOption.SettingType.LANGUAGE ),
+        AppOption("Currency",R.drawable.ic_baseline_info_24, AppOption.SettingType.CURRENCY ),
+        AppOption(context.getString(R.string.option_cryptos),R.drawable.ic_baseline_info_24, AppOption.SettingType.CRYPTO_FAV ),
+        AppOption("Saved Articles",R.drawable.ic_baseline_info_24, AppOption.SettingType.NEWS_FAV ),
+        AppOption("Share the Ghostzilla App",R.drawable.ic_baseline_info_24, AppOption.SettingType.SHARE_APP ),
+        AppOption("Rate the Ghostzilla App",R.drawable.ic_baseline_info_24, AppOption.SettingType.RATE_APP ),
+        AppOption("Contact Us",R.drawable.ic_baseline_info_24, AppOption.SettingType.CONTACT_US ),
     )
 
     val optionsAdapter: TabsAdapter = TabsAdapter(this)
@@ -41,7 +44,7 @@ class SettingsViewModel @Inject constructor(
         ) -> Unit
     ){
         this.callbacks = listener
-        optionsAdapter.submitList(optionsList)
+        optionsAdapter.submitList(settingsList)
     }
 
     @Inject
