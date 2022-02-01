@@ -9,6 +9,6 @@ import dagger.hilt.android.HiltAndroidApp
 class GhostzillaApplication : Application() {
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LangContextWrapper.wrap(newBase, "de"))
+        super.attachBaseContext(LangContextWrapper.wrap(newBase, newBase.getSharedPreferences("Language", Context.MODE_PRIVATE).getString("Language", "") ?: "en"))
     }
 }

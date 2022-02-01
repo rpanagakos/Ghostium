@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
+    var languageChanged = false
 
     override fun initLayout() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)

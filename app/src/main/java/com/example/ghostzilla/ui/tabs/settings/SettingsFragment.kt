@@ -12,6 +12,7 @@ import com.example.ghostzilla.models.settings.AppOption
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.example.ghostzilla.models.settings.AppOption.SettingType
+import com.example.ghostzilla.ui.tabs.common.TabsActivity
 
 
 @AndroidEntryPoint
@@ -20,19 +21,36 @@ class SettingsFragment :
 
     override val viewModel: SettingsViewModel by viewModels()
 
+
+
     @Inject
     lateinit var dataStore: DataStoreUtil
 
     override fun initLayout() {
-        viewModel.runOperation() { data: LocalModel,
+        if ((requireActivity() as TabsActivity).languageChanged)
+            requireActivity().recreate()
+
+        val settingsList = listOf(
+            AppOption(this.resources.getString(R.string.option_language),R.drawable.ic_baseline_info_24, AppOption.SettingType.LANGUAGE ),
+            AppOption(this.resources.getString(R.string.option_currency),R.drawable.ic_baseline_info_24, AppOption.SettingType.CURRENCY ),
+            AppOption(this.resources.getString(R.string.option_cryptos),R.drawable.ic_baseline_info_24, AppOption.SettingType.CRYPTO_FAV ),
+            AppOption(this.resources.getString(R.string.option_articles),R.drawable.ic_baseline_info_24, AppOption.SettingType.NEWS_FAV ),
+            AppOption(this.resources.getString(R.string.option_share),R.drawable.ic_baseline_info_24, AppOption.SettingType.SHARE_APP ),
+            AppOption(this.resources.getString(R.string.option_rate),R.drawable.ic_baseline_info_24, AppOption.SettingType.RATE_APP ),
+            AppOption(this.resources.getString(R.string.option_contact),R.drawable.ic_baseline_info_24, AppOption.SettingType.CONTACT_US ),
+        )
+
+        viewModel.runOperation(settingsList) { data: LocalModel,
                                    title: TextView ->
             when (data) {
                 is AppOption -> {
                     when (data.type) {
                         SettingType.CRYPTO_FAV, SettingType.NEWS_FAV ->
                             findNavController().navigate(SettingsFragmentDirections.settingsFavouriteAction(data.title))
-                        SettingType.LANGUAGE, SettingType.CURRENCY ->
-                            findNavController().navigate(SettingsFragmentDirections.settingsGeneralAction(data.title))
+                        SettingType.LANGUAGE ->
+                            findNavController().navigate(SettingsFragmentDirections.settingsGeneralAction(0))
+                        SettingType.CURRENCY ->
+                            findNavController().navigate(SettingsFragmentDirections.settingsGeneralAction(1))
                     }
                 }
             }

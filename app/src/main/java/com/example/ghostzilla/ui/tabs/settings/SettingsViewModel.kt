@@ -25,26 +25,17 @@ class SettingsViewModel @Inject constructor(
         contractName: TextView,
     ) -> Unit = { _, _ -> }
 
-    private val settingsList = listOf(
-        AppOption(context.getString(R.string.option_language),R.drawable.ic_baseline_info_24, AppOption.SettingType.LANGUAGE ),
-        AppOption(context.getString(R.string.option_currency),R.drawable.ic_baseline_info_24, AppOption.SettingType.CURRENCY ),
-        AppOption(context.getString(R.string.option_cryptos),R.drawable.ic_baseline_info_24, AppOption.SettingType.CRYPTO_FAV ),
-        AppOption(context.getString(R.string.option_articles),R.drawable.ic_baseline_info_24, AppOption.SettingType.NEWS_FAV ),
-        AppOption(context.getString(R.string.option_share),R.drawable.ic_baseline_info_24, AppOption.SettingType.SHARE_APP ),
-        AppOption(context.getString(R.string.option_rate),R.drawable.ic_baseline_info_24, AppOption.SettingType.RATE_APP ),
-        AppOption(context.getString(R.string.option_contact),R.drawable.ic_baseline_info_24, AppOption.SettingType.CONTACT_US ),
-    )
-
     val optionsAdapter: TabsAdapter = TabsAdapter(this)
 
     fun runOperation(
+        list : List<LocalModel>,
         listener: (
             data: LocalModel,
             contractName: TextView,
         ) -> Unit
     ){
         this.callbacks = listener
-        optionsAdapter.submitList(settingsList)
+        optionsAdapter.submitList(list)
     }
 
     @Inject

@@ -41,7 +41,7 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
     }
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LangContextWrapper.wrap(newBase, "de"))
+        super.attachBaseContext(LangContextWrapper.wrap(newBase, newBase.getSharedPreferences("Language", Context.MODE_PRIVATE).getString("Language", "") ?: "en"))
     }
 
 

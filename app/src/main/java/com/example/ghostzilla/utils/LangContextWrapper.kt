@@ -2,6 +2,7 @@ package com.example.ghostzilla.utils
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import java.util.*
 
@@ -24,6 +25,25 @@ class LangContextWrapper private constructor(base: Context) : ContextWrapper(bas
                 wrappedContext = baseContext.createConfigurationContext(config)
             }
             return LangContextWrapper(wrappedContext)
+        }
+
+
+        fun setAppLocale(context: Context, language: String) {
+            saveSelectedLang(context, language)
+            val locale = Locale(language)
+            Locale.setDefault(locale)
+            val config = context.resources.configuration
+            config.setLocale(locale)
+            context.createConfigurationContext(config)
+            context.resources.updateConfiguration(config, context.resources.displayMetrics)
+        }
+
+        private fun saveSelectedLang(context: Context, language: String) {
+            val preferences: SharedPreferences =
+                context.getSharedPreferences("Language", Context.MODE_PRIVATE)
+            preferences.edit()
+                .putString("Language", language)
+                .apply()
         }
 
         /**

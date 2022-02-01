@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.settings.general
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -23,9 +24,12 @@ class GeneralSettingsFragment :
     lateinit var dataStore: DataStoreUtil
 
     override fun initLayout() {
-        binding.title = args.title
-        backButtonFavourite.setOnClickListener { findNavController().popBackStack() }
-        viewModel.runOperation(args.title == getString(R.string.option_language))
+        binding.title = if (args.generalType == 0) getString(R.string.option_language) else getString(R.string.option_currency)
+        backButtonFavourite.setOnClickListener {
+            binding.generalConstraint.visibility = View.GONE
+            requireActivity().recreate()
+            findNavController().popBackStack() }
+        viewModel.runOperation(args.generalType == 0)
     }
 
     override fun observeViewModel() {
