@@ -47,5 +47,14 @@
     <string name="option_contact">Contact Us</string>
     <string name="option_share">Share the Ghostzilla App</string>
     <string name="option_rate">Rate the Ghostzilla App</string>
+    <string name="english">English</string>
+    <string name="deutsch">Deutsch</string>
+    <string name="italiano">Italiano</string>
+    <string name="espanol">Español</string>
+    <string name="euro_currency">Euro - €</string>
+    <string name="dollar_currency">U.S. Dollar - $</string>
+    <string name="pounds_currency">British Pound - £</string>
+    <string name="australian_currency">Australian Dollar -$</string>
+
 
 </resources>

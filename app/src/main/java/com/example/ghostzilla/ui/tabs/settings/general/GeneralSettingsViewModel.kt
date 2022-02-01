@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.settings.general
 
 import android.app.Application
+import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
@@ -18,17 +19,18 @@ class GeneralSettingsViewModel @Inject constructor(
 
     val generalAdapter = GeneralSettingsAdapter(this, this)
     private val langList = listOf(
-        LanguageItem("English", true),
-        LanguageItem("Deutsch", false),
-        LanguageItem("Italiano", false),
-        LanguageItem("Español", false),
+        LanguageItem(context.getString(R.string.english), true),
+        LanguageItem(context.getString(R.string.deutsch), false),
+        LanguageItem(context.getString(R.string.italiano), false),
+        LanguageItem(context.getString(R.string.espanol), false),
     )
 
+
     private val currencyList = listOf(
-        CurrencyItem("Euro - €", true),
-        CurrencyItem("U.S. Dollar - $", false),
-        CurrencyItem("Australian Dollar -$", false),
-        CurrencyItem("British Pound - £", false)
+        CurrencyItem(context.getString(R.string.euro_currency), true),
+        CurrencyItem(context.getString(R.string.dollar_currency), false),
+        CurrencyItem(context.getString(R.string.australian_currency), false),
+        CurrencyItem(context.getString(R.string.pounds_currency), false)
     )
 
     fun runOperation(isLangFragment : Boolean) {
