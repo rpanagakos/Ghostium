@@ -19,7 +19,7 @@ class GeneralSettingsViewModel @Inject constructor(
 
     val generalAdapter = GeneralSettingsAdapter(this, this)
     private val langList = listOf(
-        LanguageItem(context.getString(R.string.english), true),
+        LanguageItem(context.resources.getString(R.string.english), true),
         LanguageItem(context.getString(R.string.deutsch), false),
         LanguageItem(context.getString(R.string.italiano), false),
         LanguageItem(context.getString(R.string.espanol), false),

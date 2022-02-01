@@ -1,10 +1,12 @@
 package com.example.ghostzilla.abstraction
 
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.example.ghostzilla.utils.LangContextWrapper
 
 abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId: Int) :
     AppCompatActivity() {
@@ -37,6 +39,11 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
         stopOperation()
         super.onStop()
     }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LangContextWrapper.wrap(newBase, "de"))
+    }
+
 
     abstract fun stopOperation()
 
