@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghostzilla</string>
+    <string name="don_t_have_an_account_choose_one_of_these_three_option_to_sign_up">Don\'t have an account? Choose one of these three options to sign up</string>
+    <string name="have_you_forgotten_your_passow_rd_click_here">Have you forgotten your password? Click here!</string>
+    <string name="log_in">Log in</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="searchbutton">Pulsante di Ricerca</string>
+    <string name="enter_your_crypto">Cerca la tua cripto</string>
+
+
+    <string name="no_internet">Per favore controlla la tua connessione Internet</string>
+    <string name="network_error">Errore di rete, impossibile ottenere i dati, riprova!</string>
+    <string name="no_data">No Data</string>
+    <string name="nothing_found">Scusarsi! Non abbiamo trovato nulla</string>
+    <string name="no_internet_connection">Nessuna Connessione Internet</string>
+    <string name="back_to_top">Torna In Cima</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="back_button">Tasto indietro</string>
+    <string name="no_description">Non è stata fornita alcuna descrizione.</string>
+    <string name="high_24h">Alto (24h)</string>
+    <string name="mark_cap">Mark. Cap</string>
+    <string name="low_24h">Basso (24h)</string>
+    <string name="description">Descrizione</string>
+    <string name="price">Prezzo:</string>
+    <string name="option_cryptos">Cripto Preferite</string>
+    <string name="option_about">Chi Siamo</string>
+
+    <string name="all">Tutti</string>
+    <string name="share">Condividi</string>
+    <string name="delete">Elimina</string>
+    <string name="cancel">Annulla</string>
+    <string name="option_language">Lingua</string>
+    <string name="option_currency">La Moneta</string>
+    <string name="option_articles">Articoli Salvati</string>
+    <string name="option_contact">Contact Us</string>
+    <string name="option_share">Condividi l Ghostzilla App</string>
+    <string name="option_rate">Valuta l Ghostzilla App</string>
+
+</resources>

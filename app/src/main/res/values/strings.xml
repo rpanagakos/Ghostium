@@ -10,7 +10,6 @@
 
     <string name="no_internet">Please check your internet connection</string>
     <string name="network_error">Network error, could get data,please try again!</string>
-    <string name="search_error">there is no such recipe name</string>
     <string name="no_data">No Data</string>
     <string name="nothing_found">Apologize! Nothing Found</string>
     <string name="no_internet_connection">No Internet Connection</string>
@@ -23,20 +22,20 @@
     <string name="low_24h">Low (24h)</string>
     <string name="description">Description</string>
     <string name="price">Price:</string>
-    <string name="owned_by">Owned by</string>
-    <string name="created_by">Created by</string>
-    <string name="title_activity_intro">IntroActivity</string>
-    <string name="option_nft">Beloved Nfts</string>
+    <string name="owned_by" translatable="false">Owned by</string>
+    <string name="created_by" translatable="false">Created by</string>
+    <string name="title_activity_intro" translatable="false">IntroActivity</string>
+    <string name="option_nft" translatable="false">Beloved Nfts</string>
     <string name="option_cryptos">Favourite Cryptos</string>
-    <string name="options_wallet">Connect you wallet</string>
+    <string name="options_wallet" translatable="false">Connect you wallet</string>
     <string name="option_about">About Us</string>
 
     <!--Transition Tags-->
-    <string name="transition_coin_image">coinImage</string>
-    <string name="transition_coin_name">coinName</string>
-    <string name="transition_coin_symbol">coinSymbol</string>
-    <string name="transition_option_image">optionImage</string>
-    <string name="transition_option_name">optionName</string>
+    <string name="transition_coin_image" translatable="false">coinImage</string>
+    <string name="transition_coin_name" translatable="false">coinName</string>
+    <string name="transition_coin_symbol" translatable="false">coinSymbol</string>
+    <string name="transition_option_image" translatable="false">optionImage</string>
+    <string name="transition_option_name" translatable="false">optionName</string>
     <string name="all">All</string>
     <string name="share">Share</string>
     <string name="delete">Delete</string>
@@ -47,14 +46,14 @@
     <string name="option_contact">Contact Us</string>
     <string name="option_share">Share the Ghostzilla App</string>
     <string name="option_rate">Rate the Ghostzilla App</string>
-    <string name="english">English</string>
-    <string name="deutsch">Deutsch</string>
-    <string name="italiano">Italiano</string>
-    <string name="espanol">Español</string>
-    <string name="euro_currency">Euro - €</string>
-    <string name="dollar_currency">U.S. Dollar - $</string>
-    <string name="pounds_currency">British Pound - £</string>
-    <string name="australian_currency">Australian Dollar -$</string>
+    <string name="english" translatable="false">English</string>
+    <string name="deutsch" translatable="false">Deutsch</string>
+    <string name="italiano" translatable="false">Italiano</string>
+    <string name="espanol" translatable="false">Español</string>
+    <string name="euro_currency" translatable="false">Euro - €</string>
+    <string name="dollar_currency" translatable="false">U.S. Dollar - $</string>
+    <string name="pounds_currency" translatable="false">British Pound - £</string>
+    <string name="australian_currency" translatable="false">Australian Dollar -$</string>
 
 
 </resources>
