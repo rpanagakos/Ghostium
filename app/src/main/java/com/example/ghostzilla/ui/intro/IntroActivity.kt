@@ -23,16 +23,11 @@ class IntroActivity : ComponentActivity() {
     @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContent {
+            GhostzillaTheme {
+                navHostController = rememberNavController()
+                setUpNavGraph(navController = navHostController)
 
-        if (viewModel.preferences.getBoolean("onBoarding", false)) {
-            startActivity(Intent(this, TabsActivity::class.java))
-        } else {
-            setContent {
-                GhostzillaTheme {
-                    navHostController = rememberNavController()
-                    setUpNavGraph(navController = navHostController)
-
-                }
             }
         }
     }
