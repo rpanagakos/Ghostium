@@ -30,7 +30,10 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
 
     override fun onPostResume() {
         super.onPostResume()
-        runOperation()
+        if (this.resources.configuration.locale.language == LangContextWrapper.getSavedLang(this))
+            runOperation()
+        else
+            this.recreate()
     }
 
     abstract fun runOperation()
@@ -44,6 +47,17 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
         super.attachBaseContext(LangContextWrapper.wrap(newBase))
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        (intent.extras ?: Bundle()).also {
+            it.putAll(savedInstanceState)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("Language", this.resources.configuration.locale.language)
+        super.onSaveInstanceState(outState)
+    }
 
     abstract fun stopOperation()
 

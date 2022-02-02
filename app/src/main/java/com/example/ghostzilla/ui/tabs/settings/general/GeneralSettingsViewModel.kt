@@ -16,7 +16,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GeneralSettingsViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
     private val currencyImpl: CurrencyImpl,
     application: Application
 ) : AbstractViewModel(application), GeneralClickListener {
@@ -29,7 +28,6 @@ class GeneralSettingsViewModel @Inject constructor(
         LanguageItem("it", context.getString(R.string.italiano), false),
         LanguageItem("es", context.getString(R.string.espanol), false),
     )
-
 
     private val currencyList = listOf(
         CurrencyItem(

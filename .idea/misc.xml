@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/font/montserrat.xml" value="0.59375" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_general.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3816650411348873" />
         <entry key="app/src/main/res/layout/back_button.xml" value="0.39091331317725053" />
         <entry key="app/src/main/res/layout/back_to_top_button.xml" value="0.7493022659538356" />
@@ -63,7 +64,7 @@
         <entry key="app/src/main/res/layout/delete_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/dummy_shimmer_announcement.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_general_settings.xml" value="0.46993524514338575" />
+        <entry key="app/src/main/res/layout/fragment_general_settings.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4888888888888889" />
         <entry key="app/src/main/res/layout/fragment_nfts.xml" value="0.375" />

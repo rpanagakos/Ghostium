@@ -13,6 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.example.ghostzilla.models.settings.AppOption.SettingType
 import com.example.ghostzilla.ui.tabs.common.TabsActivity
+import android.content.Intent
+import com.example.ghostzilla.ui.tabs.settings.general.GeneralActivity
 
 
 @AndroidEntryPoint
@@ -20,7 +22,6 @@ class SettingsFragment :
     AbstractFragment<FragmentSettingsBinding, SettingsViewModel>(R.layout.fragment_settings) {
 
     override val viewModel: SettingsViewModel by viewModels()
-
 
 
     @Inject
@@ -31,26 +32,63 @@ class SettingsFragment :
             requireActivity().recreate()
 
         val settingsList = listOf(
-            AppOption(this.resources.getString(R.string.option_language),R.drawable.ic_baseline_info_24, AppOption.SettingType.LANGUAGE ),
-            AppOption(this.resources.getString(R.string.option_currency),R.drawable.ic_baseline_info_24, AppOption.SettingType.CURRENCY ),
-            AppOption(this.resources.getString(R.string.option_cryptos),R.drawable.ic_baseline_info_24, AppOption.SettingType.CRYPTO_FAV ),
-            AppOption(this.resources.getString(R.string.option_articles),R.drawable.ic_baseline_info_24, AppOption.SettingType.NEWS_FAV ),
-            AppOption(this.resources.getString(R.string.option_share),R.drawable.ic_baseline_info_24, AppOption.SettingType.SHARE_APP ),
-            AppOption(this.resources.getString(R.string.option_rate),R.drawable.ic_baseline_info_24, AppOption.SettingType.RATE_APP ),
-            AppOption(this.resources.getString(R.string.option_contact),R.drawable.ic_baseline_info_24, AppOption.SettingType.CONTACT_US ),
+            AppOption(
+                this.resources.getString(R.string.option_language),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.LANGUAGE
+            ),
+            AppOption(
+                this.resources.getString(R.string.option_currency),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.CURRENCY
+            ),
+            AppOption(
+                this.resources.getString(R.string.option_cryptos),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.CRYPTO_FAV
+            ),
+            AppOption(
+                this.resources.getString(R.string.option_articles),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.NEWS_FAV
+            ),
+            AppOption(
+                this.resources.getString(R.string.option_share),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.SHARE_APP
+            ),
+            AppOption(
+                this.resources.getString(R.string.option_rate),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.RATE_APP
+            ),
+            AppOption(
+                this.resources.getString(R.string.option_contact),
+                R.drawable.ic_baseline_info_24,
+                AppOption.SettingType.CONTACT_US
+            ),
         )
 
         viewModel.runOperation(settingsList) { data: LocalModel,
-                                   title: TextView ->
+                                               title: TextView ->
             when (data) {
                 is AppOption -> {
                     when (data.type) {
                         SettingType.CRYPTO_FAV, SettingType.NEWS_FAV ->
-                            findNavController().navigate(SettingsFragmentDirections.settingsFavouriteAction(data.title))
-                        SettingType.LANGUAGE ->
-                            findNavController().navigate(SettingsFragmentDirections.settingsGeneralAction(0))
-                        SettingType.CURRENCY ->
-                            findNavController().navigate(SettingsFragmentDirections.settingsGeneralAction(1))
+                            findNavController().navigate(
+                                SettingsFragmentDirections.settingsFavouriteAction(
+                                    data.title
+                                )
+                            )
+                        SettingType.LANGUAGE, SettingType.CURRENCY -> {
+                            val i = Intent(requireContext(), GeneralActivity::class.java)
+                            i.putExtra("language", if (data.type == SettingType.LANGUAGE) 0 else 1)
+                            startActivity(i)
+                            requireActivity().overridePendingTransition(
+                                R.anim.slide_in_right,
+                                R.anim.slide_out_left
+                            )
+                        }
                     }
                 }
             }
