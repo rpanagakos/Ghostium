@@ -10,6 +10,10 @@
             name="title"
             type="String" />
 
+        <variable
+            name="language"
+            type="Boolean" />
+
         <import type="android.view.View" />
 
         <variable
@@ -52,19 +56,64 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginBottom="@dimen/medium_spacing"
             android:adapter="@{viewModel.generalAdapter}"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/backButtonFavourite"
             app:layout_constraintTop_toBottomOf="@id/backButtonFavourite"
             tools:itemCount="4"
             tools:listitem="@layout/holder_general_item" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_spacing"
+            android:background="@drawable/bg_hint_lang"
+            android:visibility="@{language ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/hintTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large_spacing"
+                android:layout_marginTop="@dimen/medium_spacing"
+                android:layout_marginEnd="32dp"
+                android:elevation="@dimen/medium_spacing"
+                android:text="@string/hint"
+                android:textAppearance="@style/xlarge_text_bold_white"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_spacing"
+                android:layout_marginBottom="@dimen/large_spacing"
+                android:elevation="@dimen/medium_spacing"
+                android:text="@string/language_hint_desc"
+                android:textAppearance="@style/medium_gray"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/hintTitle"
+                app:layout_constraintStart_toStartOf="@id/hintTitle"
+                app:layout_constraintTop_toBottomOf="@id/hintTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

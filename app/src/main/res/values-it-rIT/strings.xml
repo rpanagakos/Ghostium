@@ -36,5 +36,7 @@
     <string name="option_contact">Contact Us</string>
     <string name="option_share">Condividi l Ghostzilla App</string>
     <string name="option_rate">Valuta l Ghostzilla App</string>
+    <string name="language_hint_desc">Per una migliore esperienza e risultati, l opzione della lingua interessa solo i testi all interno dell app.</string>
+    <string name="hint">Suggerimento</string>
 
 </resources>

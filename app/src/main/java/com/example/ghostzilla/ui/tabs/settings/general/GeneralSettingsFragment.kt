@@ -25,6 +25,7 @@ class GeneralSettingsFragment :
     lateinit var dataStore: DataStoreUtil
 
     override fun initLayout() {
+        binding.language = args.generalType == 0
         binding.title = if (args.generalType == 0) getString(R.string.option_language) else getString(R.string.option_currency)
         backButtonFavourite.setOnClickListener {
             findNavController().popBackStack()

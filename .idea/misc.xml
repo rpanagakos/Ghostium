@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/bg_chart_line.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/bg_custom_tab.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/drawable/bg_days_tab.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/drawable/bg_hint_lang.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/card_crypto_selected.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/card_nft_item.xml" value="0.5707692307692308" />
@@ -73,7 +74,7 @@
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/holder_currency_item.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
-        <entry key="app/src/main/res/layout/holder_favourite_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/holder_favourite_item.xml" value="0.6471378736846425" />
         <entry key="app/src/main/res/layout/holder_general_item.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/holder_options_item.xml" value="0.7650390757697931" />

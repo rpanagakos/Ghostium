@@ -54,6 +54,8 @@
     <string name="dollar_currency" translatable="false">U.S. Dollar - $</string>
     <string name="pounds_currency" translatable="false">British Pound - £</string>
     <string name="australian_currency" translatable="false">Australian Dollar -$</string>
+    <string name="language_hint_desc">For better experience and results the language option affects only the texts inside the app.</string>
+    <string name="hint">Hint</string>
 
 
 </resources>
