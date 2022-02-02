@@ -11,8 +11,8 @@ class CurrencyItem (
 
     enum class CurrencyID(val value : String) {
         EURO("eur"),
-        DOLLAR("dollar"),
-        POUNDS("pounds"),
-        ADOLLAR("adollar")
+        DOLLAR("usd"),
+        POUNDS("gbp"),
+        ADOLLAR("aud")
     }
 }

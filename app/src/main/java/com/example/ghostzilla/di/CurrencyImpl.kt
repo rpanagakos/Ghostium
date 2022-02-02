@@ -4,14 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.ghostzilla.models.settings.CurrencyItem
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@ActivityRetainedScoped
 class CurrencyImpl @Inject constructor(
     @ApplicationContext context: Context
 ) {
-    private var currencySymbol = "€"
+    private lateinit var currency: String
 
     private val preferences: SharedPreferences = context.getSharedPreferences(
         "Currency",
@@ -19,21 +19,33 @@ class CurrencyImpl @Inject constructor(
     )
 
     fun saveCurrency(currencyItem: CurrencyItem) {
-        changeCurrencySymbol(currencyItem.currencyID)
+        currency = currencyItem.currencyID.value
         preferences.edit().putString("Currency", currencyItem.currencyID.value).apply()
     }
 
-    fun getCurrency(): String {
+    private fun getCurrencyFromShared(): String {
         return preferences.getString("Currency", "eur") ?: "eur"
     }
 
-    private fun changeCurrencySymbol(currencyId: CurrencyItem.CurrencyID) {
+    /*private fun changeCurrencySymbol(currencyId: CurrencyItem.CurrencyID) {
         currencySymbol = when (currencyId) {
             CurrencyItem.CurrencyID.EURO -> "€"
             CurrencyItem.CurrencyID.ADOLLAR, CurrencyItem.CurrencyID.DOLLAR -> "$"
             CurrencyItem.CurrencyID.POUNDS -> "£"
         }
+    }*/
+
+    fun getCurrency(): String {
+        if (!this::currency.isInitialized)
+            currency = getCurrencyFromShared()
+        return currency
     }
 
-    fun getCurrencySymbol() = currencySymbol
+    private fun getSymbol(currency: String): String {
+        return when (currency) {
+            CurrencyItem.CurrencyID.EURO.value -> "€"
+            CurrencyItem.CurrencyID.DOLLAR.value, CurrencyItem.CurrencyID.ADOLLAR.value -> "$"
+            else -> "£"
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.ghostzilla.network
 
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.di.IoDispatcher
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
@@ -18,6 +19,7 @@ import javax.inject.Inject
 class DataRepository @Inject constructor(
     private val coinGeckoRemoteRepository: CoinGeckoRemoteRepository,
     private val openSeaRemoteRepository: OpenSeaRemoteRepository,
+    private val currencyImpl: CurrencyImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 

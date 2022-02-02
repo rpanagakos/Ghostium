@@ -1,7 +1,6 @@
 package com.example.ghostzilla.ui.tabs.settings.favourite
 
 import android.app.Application
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
