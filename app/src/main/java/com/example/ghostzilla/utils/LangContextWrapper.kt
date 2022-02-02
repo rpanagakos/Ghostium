@@ -39,7 +39,7 @@ object LangContextWrapper {
 
     fun getSavedLang(context: Context): String {
         return context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_PRIVATE)
-            .getString(LANGUAGE_KEY, "") ?: "en"
+            .getString(LANGUAGE_KEY, "en") ?: "en"
     }
 
     private fun saveSelectedLang(context: Context, language: String) {

@@ -8,6 +8,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentGeneralSettingsBinding
+import com.example.ghostzilla.di.CurrencyImpl
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_favourite.*
 import javax.inject.Inject
