@@ -38,13 +38,13 @@ object LangContextWrapper {
     }
 
     fun getSavedLang(context: Context): String {
-        return context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_PRIVATE)
+        return context.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
             .getString(LANGUAGE_KEY, "en") ?: "en"
     }
 
     private fun saveSelectedLang(context: Context, language: String) {
         val preferences: SharedPreferences =
-            context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_PRIVATE)
+            context.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
         preferences.edit()
             .putString(LANGUAGE_KEY, language)
             .apply()

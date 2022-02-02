@@ -2,9 +2,7 @@ package com.example.ghostzilla.ui.tabs.common
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -13,9 +11,10 @@ import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.home.HomeFragment
+import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
 import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
-import com.example.ghostzilla.ui.tabs.nft.NftsFragment
+import com.example.ghostzilla.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,7 +25,8 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     var languageChanged = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val hasSeenIntro = this.getSharedPreferences("onBoarding", Context.MODE_PRIVATE).getBoolean("onBoarding", false)
+        val hasSeenIntro = this.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
+            .getBoolean("onBoarding", false)
         if (!hasSeenIntro)
             startActivity(Intent(this, IntroActivity::class.java))
         super.onCreate(savedInstanceState)

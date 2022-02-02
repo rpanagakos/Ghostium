@@ -3,6 +3,7 @@ package com.example.ghostzilla.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.ghostzilla.models.settings.CurrencyItem
+import com.example.ghostzilla.utils.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class CurrencyImpl @Inject constructor(
     private lateinit var currency: String
 
     private val preferences: SharedPreferences = context.getSharedPreferences(
-        "Currency",
+        Constants.SHARED_PREF,
         Context.MODE_PRIVATE
     )
 

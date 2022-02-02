@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.ghostzilla.abstraction.AbstractViewModel
+import com.example.ghostzilla.utils.Constants.Companion.SHARED_PREF
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -14,7 +15,7 @@ class IntroViewModel @Inject constructor(
 ) : AbstractViewModel(application) {
 
     val preferences: SharedPreferences = context.getSharedPreferences(
-        "onBoarding",
+        SHARED_PREF,
         Context.MODE_PRIVATE
     )
 
