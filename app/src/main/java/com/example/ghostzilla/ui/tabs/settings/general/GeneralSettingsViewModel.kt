@@ -20,7 +20,7 @@ class GeneralSettingsViewModel @Inject constructor(
 
     val generalAdapter = GeneralSettingsAdapter(this, this)
     private val langList = listOf(
-        LanguageItem("en", context.getString(R.string.english), true),
+        LanguageItem("en", context.getString(R.string.english), false),
         LanguageItem("de",context.getString(R.string.deutsch), false),
         LanguageItem("it",context.getString(R.string.italiano), false),
         LanguageItem("es",context.getString(R.string.espanol), false),
@@ -35,8 +35,13 @@ class GeneralSettingsViewModel @Inject constructor(
     )
 
     fun runOperation(isLangFragment : Boolean) {
-        if (isLangFragment)
+        if (isLangFragment) {
+            langList.forEach { lang ->
+                if (lang.id == LangContextWrapper.getSavedLang(context))
+                    lang.isSeleted = true
+            }
             generalAdapter.submitList(langList)
+        }
         else
             generalAdapter.submitList(currencyList)
     }

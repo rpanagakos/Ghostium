@@ -6,58 +6,58 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import java.util.*
 
-class LangContextWrapper private constructor(base: Context) : ContextWrapper(base) {
+object LangContextWrapper {
 
-    companion object {
+    private const val LANGUAGE_KEY = "Language"
+    private val enLocale = Locale("en")
+    private val deLocale = Locale("de")
+    private val esLocale = Locale("es")
+    private val itLocale = Locale("it")
 
-        private val enLocale = Locale("en")
-        private val deLocale = Locale("de")
+    fun wrap(baseContext: Context): ContextWrapper {
+        val wrappedContext: Context
+        val config = Configuration(baseContext.resources.configuration)
 
-        fun wrap(baseContext: Context, language: String): ContextWrapper {
-            var wrappedContext = baseContext
-            val config = Configuration(baseContext.resources.configuration)
+        val locale = returnOrCreateLocale(getSavedLang(baseContext))
+        Locale.setDefault(locale)
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+        wrappedContext = baseContext.createConfigurationContext(config)
 
-            if (language.isNotBlank()) {
-                val locale = returnOrCreateLocale(language)
-                Locale.setDefault(locale)
-                config.setLocale(locale)
-                config.setLayoutDirection(locale)
-                wrappedContext = baseContext.createConfigurationContext(config)
-            }
-            return LangContextWrapper(wrappedContext)
-        }
+        return ContextWrapper(wrappedContext)
+    }
 
+    fun setAppLocale(context: Context, language: String) {
+        saveSelectedLang(context, language)
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val config = context.resources.configuration
+        config.setLocale(locale)
+        context.createConfigurationContext(config)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
+    }
 
-        fun setAppLocale(context: Context, language: String) {
-            saveSelectedLang(context, language)
-            val locale = Locale(language)
-            Locale.setDefault(locale)
-            val config = context.resources.configuration
-            config.setLocale(locale)
-            context.createConfigurationContext(config)
-            context.resources.updateConfiguration(config, context.resources.displayMetrics)
-        }
+    fun getSavedLang(context: Context): String {
+        return context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_PRIVATE)
+            .getString(LANGUAGE_KEY, "") ?: "en"
+    }
 
-        private fun saveSelectedLang(context: Context, language: String) {
-            val preferences: SharedPreferences =
-                context.getSharedPreferences("Language", Context.MODE_PRIVATE)
-            preferences.edit()
-                .putString("Language", language)
-                .apply()
-        }
+    private fun saveSelectedLang(context: Context, language: String) {
+        val preferences: SharedPreferences =
+            context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_PRIVATE)
+        preferences.edit()
+            .putString(LANGUAGE_KEY, language)
+            .apply()
+    }
 
-        /**
-         * Method to return the existing local instead of creating new Locale object every time
-         * For now it is only for EN ot AR locale it will return the static objects
-         * @param language - the requested locale lang
-         * @return the created Locale (or the static variables in case of AR or EN)
-         */
-        private fun returnOrCreateLocale(language: String): Locale {
-            return when (language) {
-                "en" -> enLocale
-                "de" -> deLocale
-                else -> Locale(language)
-            }
+    private fun returnOrCreateLocale(language: String): Locale {
+        return when (language) {
+            "en" -> enLocale
+            "de" -> deLocale
+            "es" -> esLocale
+            "it" -> itLocale
+            else -> Locale(language)
         }
     }
+
 }
