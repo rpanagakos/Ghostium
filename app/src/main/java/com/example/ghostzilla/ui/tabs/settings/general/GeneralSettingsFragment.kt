@@ -26,13 +26,17 @@ class GeneralSettingsFragment :
     override fun initLayout() {
         binding.title = if (args.generalType == 0) getString(R.string.option_language) else getString(R.string.option_currency)
         backButtonFavourite.setOnClickListener {
-            binding.generalConstraint.visibility = View.GONE
-            requireActivity().recreate()
-            findNavController().popBackStack() }
+            findNavController().popBackStack()
+        }
         viewModel.runOperation(args.generalType == 0)
     }
 
     override fun observeViewModel() {
+        viewModel.langChanged.observe(this, {
+            binding.generalConstraint.visibility = View.GONE
+            requireActivity().recreate()
+            findNavController().popBackStack()
+        })
     }
 
     override fun stopOperations() {

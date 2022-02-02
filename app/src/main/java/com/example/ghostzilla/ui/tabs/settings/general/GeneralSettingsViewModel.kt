@@ -9,6 +9,7 @@ import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.models.settings.LanguageItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.LangContextWrapper
+import com.example.ghostzilla.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -19,6 +20,7 @@ class GeneralSettingsViewModel @Inject constructor(
 ) : AbstractViewModel(application), GeneralClickListener {
 
     val generalAdapter = GeneralSettingsAdapter(this, this)
+    val langChanged = SingleLiveEvent<Boolean>()
     private val langList = listOf(
         LanguageItem("en", context.getString(R.string.english), false),
         LanguageItem("de",context.getString(R.string.deutsch), false),
@@ -52,6 +54,7 @@ class GeneralSettingsViewModel @Inject constructor(
         }
         LangContextWrapper.setAppLocale(context, languageItem.id)
         generalAdapter.notifyDataSetChanged()
+        langChanged.postValue(true)
     }
 
     private fun changeCurrentCurrency(currencyItem: CurrencyItem, position: Int) {
