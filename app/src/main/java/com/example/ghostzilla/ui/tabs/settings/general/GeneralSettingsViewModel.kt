@@ -8,7 +8,6 @@ import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.models.settings.LanguageItem
-import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.LangContextWrapper
 import com.example.ghostzilla.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
