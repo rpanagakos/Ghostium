@@ -14,6 +14,7 @@ import javax.inject.Inject
 import com.example.ghostzilla.models.settings.AppOption.SettingType
 import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import android.content.Intent
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.ui.tabs.settings.general.GeneralActivity
 
 
@@ -23,9 +24,8 @@ class SettingsFragment :
 
     override val viewModel: SettingsViewModel by viewModels()
 
-
     @Inject
-    lateinit var dataStore: DataStoreUtil
+    lateinit var currencyImpl: CurrencyImpl
 
     override fun initLayout() {
         if ((requireActivity() as TabsActivity).languageChanged)
@@ -93,6 +93,11 @@ class SettingsFragment :
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        currencyImpl.updateChosenCurrency()
     }
 
     override fun observeViewModel() {

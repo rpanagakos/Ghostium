@@ -8,6 +8,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import com.example.ghostzilla.utils.changeImageOnEdittext
@@ -20,12 +21,16 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class TrendsFragment :
     AbstractFragment<FragmentTrendsBinding, TrendsViewModel>(R.layout.fragment_trends) {
 
     override val viewModel: TrendsViewModel by activityViewModels()
+
+    @Inject
+    lateinit var currencyImpl: CurrencyImpl
 
     @FlowPreview
     @ExperimentalCoroutinesApi
@@ -67,6 +72,8 @@ class TrendsFragment :
         }, {
             viewModel.displayInternetMessageWhenOffline()
         })
+
+        Toast.makeText(requireContext(), currencyImpl.getCurrency(), Toast.LENGTH_SHORT).show()
     }
 
     override fun observeViewModel() {

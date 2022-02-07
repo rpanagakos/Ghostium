@@ -36,8 +36,15 @@ class CurrencyImpl @Inject constructor(
         }
     }*/
 
+    fun updateChosenCurrency(){
+        if (this::currency.isInitialized && currency != getCurrencyFromShared())
+        {
+            currency = getCurrency()
+        }
+    }
+
     fun getCurrency(): String {
-        if (!this::currency.isInitialized)
+        if (!this::currency.isInitialized || currency != getCurrencyFromShared())
             currency = getCurrencyFromShared()
         return currency
     }
