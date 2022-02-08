@@ -41,7 +41,7 @@ class TrendsViewModel @Inject constructor(
         subTitle: TextView?,
         circleImageView: CircleImageView
     ) -> Unit = { _, _, _, _ -> }
-    val trendsAdapter: TabsAdapter = TabsAdapter(this)
+    val trendsAdapter: TabsAdapter = TabsAdapter(this, dataRepository.currencyImpl)
 
     val cryptosLiveData = SingleLiveEvent<Cryptos>()
     val displayMessage = MutableLiveData<Boolean>(false)

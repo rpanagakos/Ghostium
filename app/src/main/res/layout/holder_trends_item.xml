@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="currencyIml"
+            type="com.example.ghostzilla.di.CurrencyImpl" />
+
+        <variable
             name="crypto"
             type="com.example.ghostzilla.models.coingecko.CryptoItem" />
 
@@ -83,7 +87,8 @@
 
             <TextView
                 android:id="@+id/contractRate"
-                cryptoPrice="@{crypto.currentPrice}"
+                cryptoPrice2="@{crypto.currentPrice}"
+                currency="@{currencyIml}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/caption_bold"

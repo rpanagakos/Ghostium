@@ -19,7 +19,7 @@ import javax.inject.Inject
 class DataRepository @Inject constructor(
     private val coinGeckoRemoteRepository: CoinGeckoRemoteRepository,
     private val openSeaRemoteRepository: OpenSeaRemoteRepository,
-    private val currencyImpl: CurrencyImpl,
+    val currencyImpl: CurrencyImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 
