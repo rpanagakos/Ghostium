@@ -45,7 +45,7 @@ class FavouriteViewModel @Inject constructor(
 
     var cryptos: LiveData<MutableList<CryptoItemDB>> =
         localRepository.fetchFavouriteCryptos().asLiveData()
-    val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this, this)
+    val favouriteAdapter: FavouriteAdapter = FavouriteAdapter(this, this, currencyImpl)
     var cryptosChosen = mutableListOf<CryptoItemDB>()
     val ids = mutableListOf<String>()
     val isProcessing = MutableLiveData<Boolean>(false)

@@ -6,6 +6,7 @@ import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.utils.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
+import java.util.*
 import javax.inject.Inject
 
 @ActivityRetainedScoped
@@ -13,6 +14,7 @@ class CurrencyImpl @Inject constructor(
     @ApplicationContext context: Context
 ) {
     private lateinit var currency: String
+    lateinit var currencySymbol : String
 
     private val preferences: SharedPreferences = context.getSharedPreferences(
         Constants.SHARED_PREF,
@@ -44,9 +46,16 @@ class CurrencyImpl @Inject constructor(
     }
 
     fun getCurrency(): String {
-        if (!this::currency.isInitialized || currency != getCurrencyFromShared())
+        if (!this::currency.isInitialized || currency != getCurrencyFromShared()) {
             currency = getCurrencyFromShared()
+            getCurrencySymbol()
+        }
         return currency
+    }
+
+    private fun getCurrencySymbol(){
+        val currencyLoc = Currency.getInstance(currency)
+        currencySymbol = currencyLoc.symbol
     }
 
     private fun getSymbol(currency: String): String {

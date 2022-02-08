@@ -15,6 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
@@ -22,6 +23,7 @@ import com.google.android.material.tabs.TabLayout
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 import kotlin.math.ln
 import kotlin.math.pow
 
@@ -127,6 +129,19 @@ object TabsBinding {
             roundedPrice = dec.format(cryptoPrice)
         }
         val spannableInt = SpannableString("$roundedPrice €")
+        text = getSpannableText(spannableInt, roundedPrice)
+    }
+
+    @BindingAdapter("cryptoPrice2", "currency")
+    @JvmStatic
+    fun TextView.convertPrice2(cryptoPrice2: Double, currency: CurrencyImpl) {
+        var dec = DecimalFormat("#,###.####")
+        var roundedPrice = dec.format(cryptoPrice2)
+        if (roundedPrice.equals("0")) {
+            dec = DecimalFormat("#,###.######")
+            roundedPrice = dec.format(cryptoPrice2)
+        }
+        val spannableInt = SpannableString(roundedPrice + currency.currencySymbol)
         text = getSpannableText(spannableInt, roundedPrice)
     }
 

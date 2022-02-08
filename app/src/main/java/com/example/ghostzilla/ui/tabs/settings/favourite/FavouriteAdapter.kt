@@ -8,12 +8,14 @@ import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.CryptoItemDB
 import java.util.concurrent.atomic.AtomicInteger
 
 class FavouriteAdapter(
     private val viewModel: FavouriteViewModel,
-    private val listener: FavouriteClickListener
+    private val listener: FavouriteClickListener,
+    private val currencyImpl: CurrencyImpl
 ) : AbstractAdapter() {
 
     private val currentPosition: AtomicInteger = AtomicInteger(0)
@@ -24,7 +26,7 @@ class FavouriteAdapter(
                 val view = HolderFavouriteItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                CryptoFavouriteHolder(view, listener, viewModel)
+                CryptoFavouriteHolder(view, listener, viewModel, currencyImpl)
             }
             else -> {
                 val view = HolderEmptyBinding.inflate(

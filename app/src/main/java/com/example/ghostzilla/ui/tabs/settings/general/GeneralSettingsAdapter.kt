@@ -5,17 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
-import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.databinding.HolderCurrencyItemBinding
-import com.example.ghostzilla.databinding.HolderEmptyBinding
-import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
 import com.example.ghostzilla.databinding.HolderGeneralItemBinding
-import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.models.settings.LanguageItem
-import com.example.ghostzilla.ui.tabs.settings.favourite.CryptoFavouriteHolder
-import com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteViewModel
 import java.util.concurrent.atomic.AtomicInteger
 
 class GeneralSettingsAdapter(

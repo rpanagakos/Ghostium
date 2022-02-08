@@ -5,12 +5,14 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.CryptoItemDB
 
 class CryptoFavouriteHolder(
     val binding: ViewDataBinding,
     val listener: FavouriteClickListener? = null,
-    val viewModel: FavouriteViewModel? = null
+    val viewModel: FavouriteViewModel? = null,
+    val currencyImpl: CurrencyImpl? = null
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun present(data: LocalModel, position: Int) {
@@ -19,6 +21,7 @@ class CryptoFavouriteHolder(
                 binding.setVariable(BR.crypto, data)
                 binding.setVariable(BR.viewModel, viewModel)
                 binding.setVariable(BR.clickHandler, listener)
+                binding.setVariable(BR.currencyIml, currencyImpl)
                 binding.setVariable(BR.dataPosition, position)
             }
         }
