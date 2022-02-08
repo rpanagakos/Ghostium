@@ -16,12 +16,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
 import com.example.ghostzilla.di.CurrencyImpl
-import com.example.ghostzilla.models.coingecko.coin.High24h
 import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
 import com.example.ghostzilla.models.settings.CurrencyItem
-import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPriceUnspecifiedCurrency
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import com.google.android.material.tabs.TabLayout
