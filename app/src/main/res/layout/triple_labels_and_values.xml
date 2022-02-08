@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="currencyImpl"
+            type="com.example.ghostzilla.di.CurrencyImpl" />
+
+        <variable
             name="data"
             type="com.example.ghostzilla.models.coingecko.coin.MarketData" />
     </data>
@@ -55,7 +59,9 @@
             app:layout_constraintTop_toTopOf="@id/lowPriceLabel" />
 
         <TextView
-            cryptoPrice="@{data.low24h.eur}"
+            android:id="@+id/lowPriceValue"
+            chosenCurrency="@{currencyImpl}"
+            cryptoPriceElement="@{data.low24h}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/large_text_bold"
@@ -65,7 +71,8 @@
 
         <TextView
             android:id="@+id/highPriceValue"
-            cryptoPrice="@{data.high24h.eur}"
+            chosenCurrency="@{currencyImpl}"
+            cryptoPriceElement="@{data.high24h}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/large_text_bold"

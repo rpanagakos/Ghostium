@@ -1,6 +1,7 @@
 package com.example.ghostzilla.models.coingecko.coin
 
 
+import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class High24h(
@@ -12,4 +13,9 @@ data class High24h(
     val gbp: Double= 0.0,
     @SerializedName("usd")
     val usd: Double= 0.0
-)
+) : LocalModel{
+    override fun equalsContent(obj: LocalModel): Boolean {
+        return false
+    }
+
+}

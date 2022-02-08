@@ -18,19 +18,18 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class SparkLineStyle @Inject constructor(
-    @ApplicationContext val context: Context,
-) {
+    @ApplicationContext val context: Context) {
 
     @SuppressLint("ClickableViewAccessibility")
     fun styleChart(
-        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView
+        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView, currencyImpl: CurrencyImpl
     ) = lineChart.apply {
         axisLeft.isEnabled = false
         axisRight.isEnabled = false
         xAxis.isEnabled = false
         legend.isEnabled = false
         description.isEnabled = false
-        marker = CustomMarker(context = context, priceIndicator, dateIndicator)
+        marker = CustomMarker(context = context, priceIndicator, dateIndicator, currencyImpl)
         setTouchEnabled(true)
         isDragEnabled = true
         setScaleEnabled(false)

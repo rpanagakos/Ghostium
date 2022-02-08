@@ -4,6 +4,7 @@ import androidx.activity.viewModels
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.di.SparkLineStyle
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
@@ -21,6 +22,9 @@ class DetailsActivity :
     @Inject
     lateinit var sparkLineStyle: SparkLineStyle
 
+    @Inject
+    lateinit var currencyImpl: CurrencyImpl
+
     private var cryptoItem: CryptoItem? = null
     private val viewModel: DetailsViewModel by viewModels()
 
@@ -33,6 +37,7 @@ class DetailsActivity :
             symbol = cryptoItem!!.symbol,
             currentPrice = cryptoItem!!.currentPrice
         )
+        binding.currencyIml = currencyImpl
         when (cryptoItem) {
             null -> onBackPressed()
             else -> {
@@ -56,7 +61,7 @@ class DetailsActivity :
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        sparkLineStyle.styleChart(binding.chartLine, binding.priceIndicator, binding.dateIndicator, binding.scrollView)
+        sparkLineStyle.styleChart(binding.chartLine, binding.priceIndicator, binding.dateIndicator, binding.scrollView, currencyImpl)
         observeViewModel()
     }
 

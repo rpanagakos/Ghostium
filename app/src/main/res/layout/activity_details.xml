@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="currencyIml"
+            type="com.example.ghostzilla.di.CurrencyImpl" />
+
+        <variable
             name="crypto"
             type="com.example.ghostzilla.models.coingecko.CryptoItem" />
 
@@ -121,6 +125,7 @@
 
                 <include
                     android:id="@+id/tripleValue"
+                    currencyImpl="@{currencyIml}"
                     data="@{viewModel.cryptoDetails.marketData}"
                     layout="@layout/triple_labels_and_values" />
 

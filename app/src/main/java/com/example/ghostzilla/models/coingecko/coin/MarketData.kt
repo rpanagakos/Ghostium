@@ -15,11 +15,11 @@ data class MarketData(
     @SerializedName("fdv_to_tvl_ratio")
     val fdvToTvlRatio: Any,
     @SerializedName("high_24h")
-    val high24h: High24h,
+    val high24h: Price24h,
     @SerializedName("last_updated")
     val lastUpdated: String,
     @SerializedName("low_24h")
-    val low24h: Low24h,
+    val low24h: Price24h,
     @SerializedName("market_cap")
     val marketCap: MarketCap,
     @SerializedName("market_cap_change_24h")

@@ -16,14 +16,18 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
 import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.models.coingecko.coin.High24h
+import com.example.ghostzilla.models.coingecko.coin.MarketCap
+import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
+import com.example.ghostzilla.models.settings.CurrencyItem
+import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPriceUnspecifiedCurrency
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import com.google.android.material.tabs.TabLayout
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.inject.Inject
 import kotlin.math.ln
 import kotlin.math.pow
 
@@ -116,6 +120,21 @@ object TabsBinding {
                 .circleCrop()
                 .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
                 .into(this)
+        }
+    }
+
+    @BindingAdapter("cryptoPriceElement", "chosenCurrency")
+    @JvmStatic
+    fun TextView.convertPriceUnspecifiedCurrency(cryptoPriceElement: Price24h?, chosenCurrency: CurrencyImpl?) {
+        if (cryptoPriceElement != null && chosenCurrency != null) {
+            val cryptoPrice = when (chosenCurrency?.getCurrency()) {
+                CurrencyItem.CurrencyID.EURO.value -> cryptoPriceElement?.eur
+                CurrencyItem.CurrencyID.DOLLAR.value -> cryptoPriceElement?.usd
+                CurrencyItem.CurrencyID.ADOLLAR.value -> cryptoPriceElement?.aed
+                CurrencyItem.CurrencyID.POUNDS.value -> cryptoPriceElement?.gbp
+                else -> 0.0
+            }
+            this.convertPrice2(cryptoPrice, chosenCurrency!!)
         }
     }
 

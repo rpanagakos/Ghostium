@@ -3,19 +3,20 @@ package com.example.ghostzilla.utils.customview
 import android.content.Context
 import android.widget.TextView
 import com.example.ghostzilla.R
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertLongToDate
-import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPrice
+import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPrice2
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 
 
-class CustomMarker(context: Context, var price : TextView, var date: TextView) : MarkerView(context, R.layout.custom_marker) {
+class CustomMarker(context: Context, var price : TextView, var date: TextView, val currencyImpl: CurrencyImpl) : MarkerView(context, R.layout.custom_marker) {
 
     override fun refreshContent(entry: Entry, highlight: Highlight) {
         super.refreshContent(entry, highlight)
-        price.convertPrice(entry.y.toDouble())
+        price.convertPrice2(entry.y.toDouble(), currencyImpl)
         date.convertLongToDate(entry.x.toLong())
     }
 
