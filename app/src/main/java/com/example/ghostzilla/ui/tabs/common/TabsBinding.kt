@@ -125,7 +125,10 @@ object TabsBinding {
 
     @BindingAdapter("cryptoPriceElement", "chosenCurrency")
     @JvmStatic
-    fun TextView.convertPriceUnspecifiedCurrency(cryptoPriceElement: Price24h?, chosenCurrency: CurrencyImpl?) {
+    fun TextView.convertPriceUnspecifiedCurrency(
+        cryptoPriceElement: Price24h?,
+        chosenCurrency: CurrencyImpl?
+    ) {
         if (cryptoPriceElement != null && chosenCurrency != null) {
             val cryptoPrice = when (chosenCurrency?.getCurrency()) {
                 CurrencyItem.CurrencyID.EURO.value -> cryptoPriceElement?.eur
@@ -164,9 +167,19 @@ object TabsBinding {
         text = getSpannableText(spannableInt, roundedPrice)
     }
 
-    @BindingAdapter("marketCap")
+    @BindingAdapter("marketCapCrypto", "marketCapCurrency")
     @JvmStatic
-    fun TextView.marketCapFormatter(marketCap: Long) {
+    fun TextView.marketCapFormatter(marketCapCrypto: MarketCap?, marketCapCurrency: CurrencyImpl?) {
+        var marketCap = 0L
+        if (marketCapCrypto != null && marketCapCurrency != null) {
+            marketCap = when (marketCapCurrency.getCurrency()) {
+                CurrencyItem.CurrencyID.EURO.value -> marketCapCrypto.eur
+                CurrencyItem.CurrencyID.DOLLAR.value -> marketCapCrypto.usd
+                CurrencyItem.CurrencyID.ADOLLAR.value -> marketCapCrypto.aed
+                CurrencyItem.CurrencyID.POUNDS.value -> marketCapCrypto.gbp
+                else -> 0L
+            }
+        }
         if (marketCap < 1000) {
             this.text = "" + marketCap.toString()
             return

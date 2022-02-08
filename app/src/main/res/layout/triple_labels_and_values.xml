@@ -82,7 +82,8 @@
 
         <TextView
             android:id="@+id/totalVolValue"
-            marketCap="@{data.marketCap.eur}"
+            marketCapCurrency="@{currencyImpl}"
+            marketCapCrypto="@{data.marketCap}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/large_text_bold"

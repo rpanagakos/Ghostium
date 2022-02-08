@@ -4,7 +4,7 @@ package com.example.ghostzilla.models.coingecko.coin
 import com.google.gson.annotations.SerializedName
 
 data class MarketCap(
-    @SerializedName("aed")
+    @SerializedName("aud")
     val aed: Long = 0L,
     @SerializedName("eur")
     val eur: Long= 0L,
