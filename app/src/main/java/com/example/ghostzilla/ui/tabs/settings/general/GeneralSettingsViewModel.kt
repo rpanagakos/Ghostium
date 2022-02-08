@@ -54,14 +54,18 @@ class GeneralSettingsViewModel @Inject constructor(
     fun runOperation(isLangFragment: Boolean) {
         if (isLangFragment) {
             langList.forEach { lang ->
-                if (lang.id == LangContextWrapper.getSavedLang(context))
+                if (lang.id == LangContextWrapper.getSavedLang(context)) {
                     lang.isSeleted = true
+                    return@forEach
+                }
             }
             generalAdapter.submitList(langList)
         } else {
             currencyList.forEach { currencyItem ->
-                if (currencyItem.currencyID.value == currencyImpl.getCurrency())
+                if (currencyItem.currencyID.value == currencyImpl.getCurrency()) {
                     currencyItem.isSeleted = true
+                    return@forEach
+                }
             }
             generalAdapter.submitList(currencyList)
         }
