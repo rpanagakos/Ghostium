@@ -10,6 +10,7 @@ import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.database.room.LocalRepository
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.di.IoDispatcher
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.generic.GenericResponse
@@ -27,6 +28,7 @@ import javax.inject.Inject
 class FavouriteViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
+    private val currencyImpl: CurrencyImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     application: Application
 ) : AbstractViewModel(application), FavouriteClickListener {
@@ -75,7 +77,7 @@ class FavouriteViewModel @Inject constructor(
                         is GenericResponse.Success -> response.data?.let { responseJson ->
                             cryptos.value?.forEach { cryptoItem ->
                                 cryptoItem.currentPrice =
-                                    responseJson.get(cryptoItem.id).asJsonObject.get("eur").asDouble
+                                    responseJson.get(cryptoItem.id).asJsonObject.get(currencyImpl.getCurrency()).asDouble
                             }
                             favouriteAdapter.submitList(cryptos.value as List<LocalModel>)
                         } ?: run { showToastMessage(0) }

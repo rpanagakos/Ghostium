@@ -59,11 +59,12 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
 
     override suspend fun getFavouritesPrices(
         ids: String,
+        currency: String,
     ): GenericResponse<JsonObject> {
         return when (val response = networkConnectivity.processCall {
             (coinGeckoApi::getFavouritesPrices)(
                 ids,
-            "eur")
+            currency)
         }) {
             is JsonObject -> GenericResponse.Success(data = response)
             else -> GenericResponse.DataError(errorCode = response as Int)

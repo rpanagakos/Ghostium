@@ -43,7 +43,7 @@ class DataRepository @Inject constructor(
 
     suspend fun getFavouritesPrices(cryptosIds: String): Flow<GenericResponse<JsonObject>> {
         return flow {
-            emit(coinGeckoRemoteRepository.getFavouritesPrices(cryptosIds))
+            emit(coinGeckoRemoteRepository.getFavouritesPrices(cryptosIds, currencyImpl.getCurrency()))
         }.flowOn(ioDispatcher)
     }
 

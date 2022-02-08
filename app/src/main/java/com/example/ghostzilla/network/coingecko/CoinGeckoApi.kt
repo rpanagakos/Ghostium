@@ -35,6 +35,6 @@ interface CoinGeckoApi {
     @GET("/api/v3/simple/price/")
     suspend fun getFavouritesPrices(
         @Query("ids") ids: String,
-        @Query("vs_currencies") currency: String = "eur"
+        @Query("vs_currencies") currency: String
     ): Response<JsonObject>
 }
