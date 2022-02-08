@@ -2,11 +2,9 @@ package com.example.ghostzilla.ui.tabs.settings
 
 import android.app.Application
 import android.widget.TextView
-import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
-import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.models.settings.AppOption
+import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -28,12 +26,12 @@ class SettingsViewModel @Inject constructor(
     val optionsAdapter: TabsAdapter = TabsAdapter(this)
 
     fun runOperation(
-        list : List<LocalModel>,
+        list: List<LocalModel>,
         listener: (
             data: LocalModel,
             contractName: TextView,
         ) -> Unit
-    ){
+    ) {
         this.callbacks = listener
         optionsAdapter.submitList(list)
     }

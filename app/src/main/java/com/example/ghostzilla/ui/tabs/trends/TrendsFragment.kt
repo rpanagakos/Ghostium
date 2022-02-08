@@ -72,8 +72,6 @@ class TrendsFragment :
         }, {
             viewModel.displayInternetMessageWhenOffline()
         })
-
-        Toast.makeText(requireContext(), currencyImpl.getCurrency(), Toast.LENGTH_SHORT).show()
     }
 
     override fun observeViewModel() {
