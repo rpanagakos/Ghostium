@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class MarketCap(
     @SerializedName("aud")
-    val aed: Long = 0L,
+    val aud: Long = 0L,
     @SerializedName("eur")
     val eur: Long= 0L,
     @SerializedName("gbp")

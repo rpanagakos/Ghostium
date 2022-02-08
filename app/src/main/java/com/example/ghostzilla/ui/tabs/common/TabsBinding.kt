@@ -131,7 +131,7 @@ object TabsBinding {
             val cryptoPrice = when (chosenCurrency?.getCurrency()) {
                 CurrencyItem.CurrencyID.EURO.value -> cryptoPriceElement?.eur
                 CurrencyItem.CurrencyID.DOLLAR.value -> cryptoPriceElement?.usd
-                CurrencyItem.CurrencyID.ADOLLAR.value -> cryptoPriceElement?.aed
+                CurrencyItem.CurrencyID.ADOLLAR.value -> cryptoPriceElement?.aud
                 CurrencyItem.CurrencyID.POUNDS.value -> cryptoPriceElement?.gbp
                 else -> 0.0
             }
@@ -173,7 +173,7 @@ object TabsBinding {
             marketCap = when (marketCapCurrency.getCurrency()) {
                 CurrencyItem.CurrencyID.EURO.value -> marketCapCrypto.eur
                 CurrencyItem.CurrencyID.DOLLAR.value -> marketCapCrypto.usd
-                CurrencyItem.CurrencyID.ADOLLAR.value -> marketCapCrypto.aed
+                CurrencyItem.CurrencyID.ADOLLAR.value -> marketCapCrypto.aud
                 CurrencyItem.CurrencyID.POUNDS.value -> marketCapCrypto.gbp
                 else -> 0L
             }

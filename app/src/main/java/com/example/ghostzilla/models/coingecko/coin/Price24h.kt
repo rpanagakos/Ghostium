@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Price24h(
     @SerializedName("aud")
-    val aed: Double= 0.0,
+    val aud: Double= 0.0,
     @SerializedName("eur")
     val eur: Double= 0.0,
     @SerializedName("gbp")
