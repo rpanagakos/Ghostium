@@ -5,7 +5,7 @@ import android.widget.TextView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertLongToDate
-import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPrice2
+import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPrice
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
@@ -16,7 +16,7 @@ class CustomMarker(context: Context, var price : TextView, var date: TextView, v
 
     override fun refreshContent(entry: Entry, highlight: Highlight) {
         super.refreshContent(entry, highlight)
-        price.convertPrice2(entry.y.toDouble(), currencyImpl)
+        price.convertPrice(entry.y.toDouble(), currencyImpl)
         date.convertLongToDate(entry.x.toLong())
     }
 

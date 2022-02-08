@@ -135,31 +135,18 @@ object TabsBinding {
                 CurrencyItem.CurrencyID.POUNDS.value -> cryptoPriceElement?.gbp
                 else -> 0.0
             }
-            this.convertPrice2(cryptoPrice, chosenCurrency!!)
+            this.convertPrice(cryptoPrice, chosenCurrency!!)
         }
     }
 
-    @BindingAdapter("cryptoPrice")
+    @BindingAdapter("cryptoPrice", "currency")
     @JvmStatic
-    fun TextView.convertPrice(cryptoPrice: Double) {
+    fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
         var dec = DecimalFormat("#,###.####")
         var roundedPrice = dec.format(cryptoPrice)
         if (roundedPrice.equals("0")) {
             dec = DecimalFormat("#,###.######")
             roundedPrice = dec.format(cryptoPrice)
-        }
-        val spannableInt = SpannableString("$roundedPrice €")
-        text = getSpannableText(spannableInt, roundedPrice)
-    }
-
-    @BindingAdapter("cryptoPrice2", "currency")
-    @JvmStatic
-    fun TextView.convertPrice2(cryptoPrice2: Double, currency: CurrencyImpl) {
-        var dec = DecimalFormat("#,###.####")
-        var roundedPrice = dec.format(cryptoPrice2)
-        if (roundedPrice.equals("0")) {
-            dec = DecimalFormat("#,###.######")
-            roundedPrice = dec.format(cryptoPrice2)
         }
         val spannableInt = SpannableString(roundedPrice + currency.currencySymbol)
         text = getSpannableText(spannableInt, roundedPrice)
