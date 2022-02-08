@@ -16,9 +16,11 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
     private val networkConnectivity: NetworkConnectivity
 ) : CoinGeckoRemoteRepository {
 
-    override suspend fun getAllCryptos(): GenericResponse<Cryptos> {
-        return when (val response =
-            networkConnectivity.processCall(coinGeckoApi::getPriceVolatility)) {
+    override suspend fun getAllCryptos(currency : String): GenericResponse<Cryptos> {
+        return when (val response = networkConnectivity.processCall{(coinGeckoApi::getPriceVolatility)(
+            currency,
+            50
+        )}) {
             is List<*> -> GenericResponse.Success(data = Cryptos(response as ArrayList<CryptoItem>))
             else -> GenericResponse.DataError(errorCode = response as Int)
         }

@@ -25,7 +25,7 @@ class DataRepository @Inject constructor(
 
     suspend fun requestData(): Flow<GenericResponse<Cryptos>> {
         return flow {
-            emit(coinGeckoRemoteRepository.getAllCryptos())
+            emit(coinGeckoRemoteRepository.getAllCryptos(currencyImpl.getCurrency()))
         }.flowOn(ioDispatcher)
     }
 
