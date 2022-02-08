@@ -11,6 +11,6 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 interface CoinGeckoRemoteRepository {
     suspend fun getAllCryptos(currency : String): GenericResponse<Cryptos>
     suspend fun getCoinSearchResult(coinID: String): GenericResponse<Coin>
-    suspend fun getCoinChartDetails(coinID: String, days: Int): GenericResponse<CoinPrices>
+    suspend fun getCoinChartDetails(coinID: String, days: Int, currency : String): GenericResponse<CoinPrices>
     suspend fun getFavouritesPrices(ids: String, currency : String): GenericResponse<JsonObject>
 }

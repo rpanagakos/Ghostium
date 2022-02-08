@@ -43,13 +43,14 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
 
     override suspend fun getCoinChartDetails(
         coinID: String,
-        days: Int
+        days: Int,
+        currency: String
     ): GenericResponse<CoinPrices> {
         return when (val response = networkConnectivity.processCall {
             (coinGeckoApi::getCoinChartDetails)(
                 coinID,
                 days.toString(),
-                "eur"
+                currency
             )
         }) {
             is CoinPrices -> GenericResponse.Success(data = response)

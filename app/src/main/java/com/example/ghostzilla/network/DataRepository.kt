@@ -37,7 +37,7 @@ class DataRepository @Inject constructor(
 
     suspend fun getCoinChartDetails(coinID: String, days: Int): Flow<GenericResponse<CoinPrices>> {
         return flow {
-            emit(coinGeckoRemoteRepository.getCoinChartDetails(coinID, days))
+            emit(coinGeckoRemoteRepository.getCoinChartDetails(coinID, days, currencyImpl.getCurrency()))
         }.flowOn(ioDispatcher)
     }
 
