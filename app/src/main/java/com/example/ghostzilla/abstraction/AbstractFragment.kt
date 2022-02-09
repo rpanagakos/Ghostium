@@ -23,8 +23,7 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
     lateinit var binding: T
     abstract val viewModel : VM
 
-    @FlowPreview
-    @ExperimentalCoroutinesApi
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = DataBindingUtil.bind(view)!!
         super.onViewCreated(view, savedInstanceState)

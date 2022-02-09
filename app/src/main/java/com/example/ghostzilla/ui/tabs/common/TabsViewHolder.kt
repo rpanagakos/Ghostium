@@ -10,7 +10,11 @@ import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
 
-class TabsViewHolder(val binding: ViewDataBinding, val listener: ItemOnClickListener? = null, val currencyImpl: CurrencyImpl? = null) :
+class TabsViewHolder(
+    val binding: ViewDataBinding,
+    val listener: ItemOnClickListener? = null,
+    val currencyImpl: CurrencyImpl? = null
+) :
     AbstractBindingViewHolder(binding) {
 
     override fun present(data: LocalModel) {

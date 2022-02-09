@@ -32,8 +32,6 @@ class TrendsFragment :
     @Inject
     lateinit var currencyImpl: CurrencyImpl
 
-    @FlowPreview
-    @ExperimentalCoroutinesApi
     override fun initLayout() {
         binding.contractsTrendsRecycler.apply {
             setHasFixedSize(true)

@@ -1,21 +1,21 @@
 package com.example.ghostzilla.ui.tabs.settings
 
+import android.content.Intent
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentSettingsBinding
+import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.settings.AppOption
+import com.example.ghostzilla.models.settings.AppOption.SettingType
+import com.example.ghostzilla.models.settings.LogoOption
+import com.example.ghostzilla.ui.tabs.common.TabsActivity
+import com.example.ghostzilla.ui.tabs.settings.general.GeneralActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.example.ghostzilla.models.settings.AppOption.SettingType
-import com.example.ghostzilla.ui.tabs.common.TabsActivity
-import android.content.Intent
-import com.example.ghostzilla.di.CurrencyImpl
-import com.example.ghostzilla.ui.tabs.settings.general.GeneralActivity
 
 
 @AndroidEntryPoint
@@ -32,6 +32,7 @@ class SettingsFragment :
             requireActivity().recreate()
 
         val settingsList = listOf(
+            LogoOption(),
             AppOption(
                 this.resources.getString(R.string.option_language),
                 R.drawable.ic_baseline_info_24,

@@ -6,17 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
-import com.example.ghostzilla.databinding.HolderEmptyBinding
-import com.example.ghostzilla.databinding.HolderNftItemBinding
-import com.example.ghostzilla.databinding.HolderOptionsItemBinding
-import com.example.ghostzilla.databinding.HolderTrendsItemBinding
+import com.example.ghostzilla.databinding.*
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
+import com.example.ghostzilla.models.settings.LogoOption
 import java.util.concurrent.atomic.AtomicInteger
 
-class TabsAdapter(private val listener: ItemOnClickListener, private val currencyImpl: CurrencyImpl? =null) : AbstractAdapter() {
+class TabsAdapter(
+    private val listener: ItemOnClickListener,
+    private val currencyImpl: CurrencyImpl? = null
+) : AbstractAdapter() {
 
     val currentPosition: AtomicInteger = AtomicInteger(0)
 
@@ -36,6 +37,12 @@ class TabsAdapter(private val listener: ItemOnClickListener, private val currenc
             }
             R.layout.holder_options_item -> {
                 val view = HolderOptionsItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                TabsViewHolder(view, listener)
+            }
+            R.layout.holder_logo_item -> {
+                val view = HolderLogoItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
                 TabsViewHolder(view, listener)
@@ -62,6 +69,7 @@ class TabsAdapter(private val listener: ItemOnClickListener, private val currenc
         is CryptoItem -> R.layout.holder_trends_item
         is Asset -> R.layout.holder_nft_item
         is AppOption -> R.layout.holder_options_item
+        is LogoOption -> R.layout.holder_logo_item
         else -> R.layout.holder_empty
     }
 
