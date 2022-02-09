@@ -47,11 +47,11 @@ object TabsBinding {
     }
 
     @SuppressLint("SimpleDateFormat")
-    @BindingAdapter("timestamp")
+    @BindingAdapter("timestamp", "locale")
     @JvmStatic
-    fun TextView.convertLongToDate(timestamp: Long) {
+    fun TextView.convertLongToDate(timestamp: Long, locale: Locale) {
         val date = Date(timestamp)
-        val format = SimpleDateFormat("dd MMMM, HH:mm", Locale.ENGLISH)
+        val format = SimpleDateFormat("dd MMMM, HH:mm", locale)
         this.text = format.format(date)
     }
 

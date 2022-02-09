@@ -30,14 +30,6 @@ class CurrencyImpl @Inject constructor(
         return preferences.getString("Currency", "eur") ?: "eur"
     }
 
-    /*private fun changeCurrencySymbol(currencyId: CurrencyItem.CurrencyID) {
-        currencySymbol = when (currencyId) {
-            CurrencyItem.CurrencyID.EURO -> "€"
-            CurrencyItem.CurrencyID.ADOLLAR, CurrencyItem.CurrencyID.DOLLAR -> "$"
-            CurrencyItem.CurrencyID.POUNDS -> "£"
-        }
-    }*/
-
     fun updateChosenCurrency(){
         if (this::currency.isInitialized && currency != getCurrencyFromShared())
         {

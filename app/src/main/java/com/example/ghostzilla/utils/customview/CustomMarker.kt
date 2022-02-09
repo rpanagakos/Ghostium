@@ -17,7 +17,7 @@ class CustomMarker(context: Context, var price : TextView, var date: TextView, v
     override fun refreshContent(entry: Entry, highlight: Highlight) {
         super.refreshContent(entry, highlight)
         price.convertPrice(entry.y.toDouble(), currencyImpl)
-        date.convertLongToDate(entry.x.toLong())
+        date.convertLongToDate(entry.x.toLong(), context.resources.configuration.locale)
     }
 
     override fun getOffset(): MPPointF? {
