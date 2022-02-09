@@ -18,9 +18,9 @@
     <string name="something_went_wrong">Something went wrong</string>
     <string name="back_button">Zurück Button</string>
     <string name="no_description">Es wurde keine Beschreibung bereitgestellt.</string>
-    <string name="high_24h">Hoch (24h)</string>
+    <string name="high_24h">Hoch (24s)</string>
     <string name="mark_cap">Mark. Cap</string>
-    <string name="low_24h">Niedrig (24h)</string>
+    <string name="low_24h">Niedrig (24s)</string>
     <string name="description">Beschreibung</string>
     <string name="price">Preis:</string>
     <string name="option_cryptos">Lieblings Kryptos</string>

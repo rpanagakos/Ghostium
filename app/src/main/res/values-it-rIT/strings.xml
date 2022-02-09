@@ -18,9 +18,9 @@
     <string name="something_went_wrong">Something went wrong</string>
     <string name="back_button">Tasto indietro</string>
     <string name="no_description">Non è stata fornita alcuna descrizione.</string>
-    <string name="high_24h">Alto (24h)</string>
+    <string name="high_24h">Alto (24o)</string>
     <string name="mark_cap">Mark. Cap</string>
-    <string name="low_24h">Basso (24h)</string>
+    <string name="low_24h">Basso (24o)</string>
     <string name="description">Descrizione</string>
     <string name="price">Prezzo:</string>
     <string name="option_cryptos">Cripto Preferite</string>
