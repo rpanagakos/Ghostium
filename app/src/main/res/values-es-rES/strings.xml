@@ -38,4 +38,9 @@
     <string name="option_rate">Califica la Ghostzilla App</string>
     <string name="language_hint_desc">Para una mejor experiencia y resultados, la opción de idioma afecta solo a los textos dentro de la aplicación.</string>
     <string name="hint">Insinuación</string>
+    <string name="first_day">1d</string>
+    <string name="seven_days">7d</string>
+    <string name="one_month">1m</string>
+    <string name="three_months">3m</string>
+    <string name="one_year">1a</string>
 </resources>
