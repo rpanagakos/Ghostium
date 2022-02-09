@@ -19,7 +19,7 @@
     <string name="back_button">Botón de retroceso</string>
     <string name="no_description">No se ha proporcionado ninguna descripción.</string>
     <string name="high_24h">Alto (24h)</string>
-    <string name="mark_cap">Mer. Cap</string>
+    <string name="mark_cap">Cap. Mer.</string>
     <string name="low_24h">Bajo (24h)</string>
     <string name="description">Descripción</string>
     <string name="price">Precio:</string>

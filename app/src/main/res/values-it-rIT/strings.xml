@@ -19,7 +19,7 @@
     <string name="back_button">Tasto indietro</string>
     <string name="no_description">Non è stata fornita alcuna descrizione.</string>
     <string name="high_24h">Alto (24o)</string>
-    <string name="mark_cap">Mark. Cap</string>
+    <string name="mark_cap">Cap. Mer.</string>
     <string name="low_24h">Basso (24o)</string>
     <string name="description">Descrizione</string>
     <string name="price">Prezzo:</string>
@@ -33,7 +33,7 @@
     <string name="option_language">Lingua</string>
     <string name="option_currency">La Moneta</string>
     <string name="option_articles">Articoli Salvati</string>
-    <string name="option_contact">Contact Us</string>
+    <string name="option_contact">Contattaci</string>
     <string name="option_share">Condividi l Ghostzilla App</string>
     <string name="option_rate">Valuta l Ghostzilla App</string>
     <string name="language_hint_desc">Per una migliore esperienza e risultati, l opzione della lingua interessa solo i testi all interno dell app.</string>
