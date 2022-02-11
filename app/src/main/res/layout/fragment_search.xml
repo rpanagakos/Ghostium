@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchLayout"
             tools:itemCount="8"
-            tools:listitem="@layout/holder_trends_item" />
+            tools:listitem="@layout/holder_recently_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
