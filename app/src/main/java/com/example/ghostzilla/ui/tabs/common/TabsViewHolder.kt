@@ -9,6 +9,8 @@ import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
+import com.example.ghostzilla.models.settings.RecentlyItem
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 
 class TabsViewHolder(
     val binding: ViewDataBinding,
@@ -30,6 +32,12 @@ class TabsViewHolder(
             is AppOption -> {
                 binding.setVariable(BR.option, data)
                 binding.setVariable(BR.clickHandler, listener)
+            }
+            is RecentlyItem -> {
+                binding.setVariable(BR.recentlyItem, data)
+            }
+            is TitleRecyclerItem -> {
+                binding.setVariable(BR.item, data)
             }
         }
     }

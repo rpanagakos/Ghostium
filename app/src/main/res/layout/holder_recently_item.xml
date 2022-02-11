@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="recentlyName"
-            type="String" />
+            name="recentlyItem"
+            type="com.example.ghostzilla.models.settings.RecentlyItem" />
 
     </data>
 
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/small_spacing"
             android:paddingBottom="@dimen/small_spacing"
-            android:text="@{recentlyName}"
+            android:text="@{recentlyItem.searchedText}"
             android:textAppearance="@style/large_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

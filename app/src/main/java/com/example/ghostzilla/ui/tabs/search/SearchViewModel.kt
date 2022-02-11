@@ -26,7 +26,7 @@ class SearchViewModel @Inject constructor(
     lateinit var networkConnectivity: NetworkConnectivity
 
     private val list = listOf(
-        TitleRecyclerItem("RecentlyUsed"),
+        TitleRecyclerItem("Recently Searches"),
         RecentlyItem("Gala"),
         RecentlyItem("Gala"),
         RecentlyItem("Gala"),
