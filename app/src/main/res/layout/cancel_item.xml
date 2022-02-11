@@ -18,7 +18,7 @@
             android:id="@+id/optionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/small_spacing"
             android:layout_marginBottom="@dimen/medium_spacing"
             android:text="@string/cancel"
             android:textAppearance="@style/tiny_text_bold"

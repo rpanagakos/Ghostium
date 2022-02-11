@@ -84,6 +84,7 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/favouritesButton"
+            checkProgress="@{viewModel.isFavourite()}"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
             android:layout_marginEnd="@dimen/large_spacing"
@@ -91,8 +92,7 @@
             app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/coinImageDetails"
-            app:lottie_fileName="favourite.json"
-            checkProgress="@{viewModel.isFavourite()}"/>
+            app:lottie_fileName="favourite.json" />
 
 
         <View
@@ -217,8 +217,8 @@
                     android:layout_height="@dimen/xxlarge_spacing"
                     android:layout_marginTop="@dimen/xxlarge_spacing"
                     android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.homepage[0])}"
-                    android:visibility="@{viewModel.cryptoDetails.links.homepage[0] == null ? View.GONE : View.VISIBLE}"
                     android:src="@drawable/ic_googlechrome"
+                    android:visibility="@{viewModel.cryptoDetails.links.homepage[0] == null ? View.GONE : View.VISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/twitter"
                     app:layout_constraintHorizontal_bias="0.9"
@@ -232,8 +232,8 @@
                     android:layout_width="@dimen/xxlarge_spacing"
                     android:layout_height="@dimen/xxlarge_spacing"
                     android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.twitter)}"
-                    android:visibility="@{viewModel.cryptoDetails.links.twitter == null ? View.GONE : View.VISIBLE}"
                     android:src="@drawable/ic_twitter"
+                    android:visibility="@{viewModel.cryptoDetails.links.twitter == null ? View.GONE : View.VISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

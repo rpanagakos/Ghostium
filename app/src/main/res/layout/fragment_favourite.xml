@@ -52,7 +52,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/medium_spacing"
             android:text="@string/all"
             android:textAppearance="@style/large_text_bold"
             android:visibility="@{viewModel.isProcessing ? View.VISIBLE : View.GONE}"
