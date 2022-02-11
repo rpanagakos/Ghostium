@@ -1,5 +1,6 @@
 package com.example.ghostzilla.database.room
 
+import com.example.ghostzilla.database.room.cryptos.CryptoDao
 import com.example.ghostzilla.models.CryptoItemDB
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow

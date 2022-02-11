@@ -1,8 +1,7 @@
-package com.example.ghostzilla.database.room
+package com.example.ghostzilla.database.room.cryptos
 
 import androidx.room.*
 import com.example.ghostzilla.models.CryptoItemDB
-import com.example.ghostzilla.models.coingecko.CryptoItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao
