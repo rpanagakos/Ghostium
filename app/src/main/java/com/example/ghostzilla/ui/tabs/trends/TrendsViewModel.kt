@@ -4,6 +4,7 @@ import android.app.Application
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
@@ -11,6 +12,7 @@ import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.generic.GenericResponse
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -74,7 +76,7 @@ class TrendsViewModel @Inject constructor(
                             is GenericResponse.Success -> response.data?.let {
                                 displayMessage.value = false
                                 cryptosLiveData.value = it
-                                trendsAdapter.submitList(it.CryptosList as List<LocalModel>)
+                                trendsAdapter.submitList(getCryptoList())
                             } ?: run { showToastMessage(0) }
                             is GenericResponse.DataError -> response.errorCode?.let { error ->
                                 checkErrorCode(error)
@@ -144,6 +146,11 @@ class TrendsViewModel @Inject constructor(
         circleImageView: CircleImageView
     ) {
         callbacks.invoke(data, title, subTitle, circleImageView)
+    }
+
+    fun getCryptoList() : List<LocalModel>{
+        val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.top_fifty)))
+        return cryptosLiveData.value?.let { list.plus(it.CryptosList) } ?: emptyList()
     }
 
 }

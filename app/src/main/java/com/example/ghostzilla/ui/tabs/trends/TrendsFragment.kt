@@ -91,7 +91,7 @@ class TrendsFragment :
     private fun updateListWithData() {
         //when the user didnt type anything in the search bar, to fill the list and update it
         viewModel.cryptosLiveData.value?.let {
-            viewModel.trendsAdapter.submitList(viewModel.cryptosLiveData.value!!.CryptosList as List<LocalModel>)
+            viewModel.trendsAdapter.submitList(viewModel.getCryptoList())
         }
         viewModel.getAllCryptos()
     }
