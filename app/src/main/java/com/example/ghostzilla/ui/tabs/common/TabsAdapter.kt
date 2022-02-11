@@ -12,6 +12,8 @@ import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.models.settings.LogoOption
+import com.example.ghostzilla.models.settings.RecentlyItem
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import java.util.concurrent.atomic.AtomicInteger
 
 class TabsAdapter(
@@ -47,6 +49,18 @@ class TabsAdapter(
                 )
                 TabsViewHolder(view, listener)
             }
+            R.layout.holder_recently_item -> {
+                val view = HolderRecentlyItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                TabsViewHolder(view, listener)
+            }
+            R.layout.holder_title_item -> {
+                val view = HolderTitleItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                TabsViewHolder(view, listener)
+            }
             else -> {
                 val view = HolderEmptyBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
@@ -70,6 +84,8 @@ class TabsAdapter(
         is Asset -> R.layout.holder_nft_item
         is AppOption -> R.layout.holder_options_item
         is LogoOption -> R.layout.holder_logo_item
+        is RecentlyItem -> R.layout.holder_recently_item
+        is TitleRecyclerItem -> R.layout.holder_title_item
         else -> R.layout.holder_empty
     }
 

@@ -5,7 +5,6 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.databinding.FragmentSearchBinding
 import com.example.ghostzilla.di.CurrencyImpl
-import com.example.ghostzilla.ui.tabs.trends.TrendsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -19,6 +18,7 @@ class SearchFragment :
     lateinit var currencyImpl: CurrencyImpl
 
     override fun initLayout() {
+        viewModel.runOperation()
     }
 
     override fun observeViewModel() {
