@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/large_spacing"
+        android:paddingStart="@dimen/xlarge_spacing"
         android:paddingEnd="@dimen/large_spacing">
 
         <TextView

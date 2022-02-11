@@ -11,9 +11,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchFragment :
-    AbstractFragment<FragmentSearchBinding, TrendsViewModel>(R.layout.fragment_search) {
+    AbstractFragment<FragmentSearchBinding, SearchViewModel>(R.layout.fragment_search) {
 
-    override val viewModel: TrendsViewModel by viewModels()
+    override val viewModel: SearchViewModel by viewModels()
 
     @Inject
     lateinit var currencyImpl: CurrencyImpl

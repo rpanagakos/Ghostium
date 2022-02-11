@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.trends.TrendsViewModel" />
+            type="com.example.ghostzilla.ui.tabs.search.SearchViewModel" />
 
     </data>
 
@@ -32,12 +32,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/large_spacing"
-            android:adapter="@{viewModel.trendsAdapter}"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
-            android:visibility="@{viewModel.displayMessage ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
