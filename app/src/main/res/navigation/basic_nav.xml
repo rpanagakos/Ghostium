@@ -9,7 +9,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.ghostzilla.ui.tabs.settings.SettingsFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/settingsFavouriteAction"
             app:destination="@id/favouriteFragment"
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteFragment"
-        android:label="favouriteFragment" >
+        android:label="favouriteFragment">
         <argument
             android:name="title"
             app:argType="string" />
