@@ -77,6 +77,7 @@
         <entry key="app/src/main/res/layout/fragment_nfts.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_option.xml" value="0.2571428571428571" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3741935483870968" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.13442622950819672" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3618421052631579" />
         <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.32592592592592595" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
@@ -87,7 +88,9 @@
         <entry key="app/src/main/res/layout/holder_logo_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/holder_options_item.xml" value="0.31563845050215206" />
-        <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/holder_recently_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/holder_title_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.4779874213836478" />
         <entry key="app/src/main/res/layout/option_item.xml" value="0.6848554425057238" />
         <entry key="app/src/main/res/layout/option_menu.xml" value="0.20517780430138194" />
         <entry key="app/src/main/res/layout/placeholder_trends_item.xml" value="0.4245810055865922" />
