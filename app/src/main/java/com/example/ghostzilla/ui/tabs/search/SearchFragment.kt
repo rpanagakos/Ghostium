@@ -1,11 +1,19 @@
 package com.example.ghostzilla.ui.tabs.search
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.databinding.FragmentSearchBinding
 import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.utils.changeImageOnEdittext
+import com.example.ghostzilla.utils.removeWhiteSpaces
+import com.example.ghostzilla.utils.searchQuery
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -19,6 +27,22 @@ class SearchFragment :
 
     override fun initLayout() {
         viewModel.runOperation()
+        binding.searchLayout.searchEditText.apply {
+            searchQuery()
+                .debounce(350)
+                .onEach {
+                    binding.searchLayout.searchButton.changeImageOnEdittext(
+                        binding.searchLayout.searchEditText,
+                        R.drawable.ic_search,
+                        R.drawable.ic_outline_clear
+                    )
+                    if (!this.text.isNullOrEmpty())
+                        viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
+                    else
+                        Toast.makeText(requireContext(), "print", Toast.LENGTH_SHORT).show()
+                }
+                .launchIn(lifecycleScope)
+        }
     }
 
     override fun observeViewModel() {
@@ -26,4 +50,5 @@ class SearchFragment :
 
     override fun stopOperations() {
     }
+
 }

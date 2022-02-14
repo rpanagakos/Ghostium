@@ -148,8 +148,9 @@ class TrendsViewModel @Inject constructor(
         callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
-    fun getCryptoList() : List<LocalModel>{
-        val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.top_fifty)))
+    fun getCryptoList(): List<LocalModel> {
+        val list =
+            mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.top_fifty)))
         return cryptosLiveData.value?.let { list.plus(it.CryptosList) } ?: emptyList()
     }
 
