@@ -60,7 +60,7 @@ class SearchViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             val cryptoDetails = CryptoItem(
-                                currentPrice = it.marketData.currentPrice.eur,
+                                currentPrice = it.marketData.currentPrice.getPrice(dataRepository.currencyImpl.getCurrency()),
                                 id = it.id,
                                 image = it.image.thumb,
                                 name = it.name,

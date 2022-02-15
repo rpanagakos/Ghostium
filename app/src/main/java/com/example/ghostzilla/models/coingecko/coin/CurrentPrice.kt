@@ -1,15 +1,26 @@
 package com.example.ghostzilla.models.coingecko.coin
 
 
+import com.example.ghostzilla.models.settings.CurrencyItem
 import com.google.gson.annotations.SerializedName
 
 data class CurrentPrice(
     @SerializedName("aud")
-    val aud: Double,
+    private val aud: Double,
     @SerializedName("eur")
-    val eur: Double,
+    private val eur: Double,
     @SerializedName("gbp")
-    val gbp: Double,
+    private val gbp: Double,
     @SerializedName("usd")
-    val usd: Double
-)
+    private val usd: Double
+) {
+
+    fun getPrice(currency: String): Double {
+        when (currency) {
+            CurrencyItem.CurrencyID.EURO.value -> return eur
+            CurrencyItem.CurrencyID.DOLLAR.value -> return usd
+            CurrencyItem.CurrencyID.ADOLLAR.value -> return aud
+            else -> return gbp
+        }
+    }
+}

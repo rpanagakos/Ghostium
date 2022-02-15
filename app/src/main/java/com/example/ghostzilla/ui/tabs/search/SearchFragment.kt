@@ -1,12 +1,10 @@
 package com.example.ghostzilla.ui.tabs.search
 
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.databinding.FragmentSearchBinding
-import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.utils.changeImageOnEdittext
 import com.example.ghostzilla.utils.removeWhiteSpaces
 import com.example.ghostzilla.utils.searchQuery
@@ -14,16 +12,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchFragment :
     AbstractFragment<FragmentSearchBinding, SearchViewModel>(R.layout.fragment_search) {
 
     override val viewModel: SearchViewModel by viewModels()
-
-    @Inject
-    lateinit var currencyImpl: CurrencyImpl
 
     override fun initLayout() {
         viewModel.runOperation()
@@ -39,7 +33,7 @@ class SearchFragment :
                     if (!this.text.isNullOrEmpty())
                         viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
                     else
-                        Toast.makeText(requireContext(), "print", Toast.LENGTH_SHORT).show()
+                        viewModel.runOperation()
                 }
                 .launchIn(lifecycleScope)
         }
