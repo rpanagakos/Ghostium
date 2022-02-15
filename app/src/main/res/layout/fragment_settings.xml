@@ -22,12 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adapter="@{viewModel.optionsAdapter}"
-            app:layout_constraintTop_toTopOf="parent"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="4"
             tools:listitem="@layout/holder_options_item" />
 

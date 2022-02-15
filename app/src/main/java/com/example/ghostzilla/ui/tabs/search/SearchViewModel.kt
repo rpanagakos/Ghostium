@@ -8,7 +8,6 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
-import com.example.ghostzilla.models.errors.mapper.SEARCH_ERROR
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.settings.RecentlyItem
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
