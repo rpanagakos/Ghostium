@@ -34,7 +34,7 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     override fun initLayout() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
-        bottomNavigation.setupWithNavController(navController)
+        binding.bottomNavigation.setupWithNavController(navController)
         observeViewModel()
     }
 

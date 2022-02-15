@@ -39,23 +39,6 @@ class TrendsFragment :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
 
-        binding.searchLayout.searchEditText.apply {
-            searchQuery()
-                .debounce(350)
-                .onEach {
-                    binding.searchLayout.searchButton.changeImageOnEdittext(
-                        binding.searchLayout.searchEditText,
-                        R.drawable.ic_search,
-                        R.drawable.ic_outline_clear
-                    )
-                    if (!this.text.isNullOrEmpty())
-                        viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
-                    else
-                        updateListWithData()
-                }
-                .launchIn(lifecycleScope)
-        }
-
         viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
             when (data) {
                 is CryptoItem -> {
@@ -65,8 +48,7 @@ class TrendsFragment :
         }
 
         viewModel.networkConnectivity.registerNetworkCallback({
-            //vasili se syxainomai <3
-            binding.searchLayout.searchEditText.text?.let { viewModel.makeCallWhenOnline(it.toString()) }
+            viewModel.makeCallWhenOnline()
         }, {
             viewModel.displayInternetMessageWhenOffline()
         })
@@ -86,14 +68,6 @@ class TrendsFragment :
         super.onResume()
         if (viewModel.cryptosJob?.isCancelled == true && binding.searchLayout.searchEditText.text.isNullOrEmpty())
             viewModel.getAllCryptos()
-    }
-
-    private fun updateListWithData() {
-        //when the user didnt type anything in the search bar, to fill the list and update it
-        viewModel.cryptosLiveData.value?.let {
-            viewModel.trendsAdapter.submitList(viewModel.getCryptoList())
-        }
-        viewModel.getAllCryptos()
     }
 
 }

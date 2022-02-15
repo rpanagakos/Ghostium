@@ -89,43 +89,9 @@ class TrendsViewModel @Inject constructor(
         }
     }
 
-    fun searchCoin(coinID: String) {
-        if (cryptosJob?.isActive == true)
-            cryptosJob?.cancel()
-        viewModelScope.launch {
-            wrapEspressoIdlingResource {
-                dataRepository.searchCoin(coinID).collect { response ->
-                    when (response) {
-                        is GenericResponse.Success -> response.data?.let {
-                            displayMessage.value = false
-                            cryptoDetails.value = CryptoItem(
-                                currentPrice = it.marketData.currentPrice.eur,
-                                id = it.id,
-                                image = it.image.thumb,
-                                name = it.name,
-                                priceChangePercentage24h = it.marketData.priceChangePercentage24h,
-                                symbol = it.symbol
-                            )
-                            trendsAdapter.submitList(listOf(cryptoDetails.value) as List<LocalModel>)
-                        } ?: run { showToastMessage(0) }
-                        is GenericResponse.DataError -> response.errorCode?.let { error ->
-                            checkErrorCode(error)
-                            displayMessage.value = true
-                        }
-                    }
-                }
-            }
-
-        }
-    }
-
-    fun makeCallWhenOnline(inputText: String) {
-        if (inputText.isEmpty() && (cryptosJob?.isCancelled == true || cryptosJob == null))
+    fun makeCallWhenOnline() {
+        if (cryptosJob?.isCancelled == true || cryptosJob == null)
             getAllCryptos()
-        else if (inputText.isNotEmpty())
-            searchCoin(
-                inputText.lowercase().removeWhiteSpaces()
-            )
     }
 
     fun displayInternetMessageWhenOffline() {
