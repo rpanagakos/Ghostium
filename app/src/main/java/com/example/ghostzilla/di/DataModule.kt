@@ -36,6 +36,10 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideDao(database: GhostzillaDatabase) = database.cryptoDao()
+    fun provideCryptoDao(database: GhostzillaDatabase) = database.cryptoDao()
+
+    @Singleton
+    @Provides
+    fun provideSearchDao(database: GhostzillaDatabase) = database.searchDao()
 
 }

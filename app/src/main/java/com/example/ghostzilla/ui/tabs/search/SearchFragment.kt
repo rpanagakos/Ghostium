@@ -39,10 +39,8 @@ class SearchFragment :
         }
     }
 
-    override fun observeViewModel() {
-    }
+    override fun observeViewModel() {}
 
-    override fun stopOperations() {
-    }
+    override fun stopOperations() {}
 
 }

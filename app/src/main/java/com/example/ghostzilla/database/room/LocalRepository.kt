@@ -1,13 +1,18 @@
 package com.example.ghostzilla.database.room
 
 import com.example.ghostzilla.database.room.cryptos.CryptoDao
+import com.example.ghostzilla.database.room.searches.SearchesDao
 import com.example.ghostzilla.models.CryptoItemDB
+import com.example.ghostzilla.models.settings.RecentlyItem
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @ViewModelScoped
-class LocalRepository @Inject constructor(private val cryptoDao: CryptoDao) {
+class LocalRepository @Inject constructor(
+    private val cryptoDao: CryptoDao,
+    private val searchesDao: SearchesDao
+) {
 
     fun fetchFavouriteCryptos(): Flow<MutableList<CryptoItemDB>> {
         return cryptoDao.getAllCryptos()
@@ -31,6 +36,18 @@ class LocalRepository @Inject constructor(private val cryptoDao: CryptoDao) {
 
     fun isFavourite(id: String): Boolean {
         return cryptoDao.isCryptoExist(id)
+    }
+
+    suspend fun fetchRecentlySearches(): MutableList<RecentlyItem> {
+        return searchesDao.getAllSearches()
+    }
+
+    suspend fun deleteRecentItem(item: RecentlyItem) {
+        searchesDao.deleteRecentSearch(item)
+    }
+
+    suspend fun insertRecentItem(item: RecentlyItem) {
+        searchesDao.addSearch(item)
     }
 
 }

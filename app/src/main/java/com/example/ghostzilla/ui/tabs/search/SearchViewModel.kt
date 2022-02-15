@@ -14,6 +14,7 @@ import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
+import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.hdodenhof.circleimageview.CircleImageView
@@ -38,11 +39,12 @@ class SearchViewModel @Inject constructor(
         RecentlyItem("Gala"),
         RecentlyItem("Gala")
     )
+    val searches = SingleLiveEvent<MutableList<RecentlyItem>>()
 
     val searchAdapter: TabsAdapter = TabsAdapter(this, dataRepository.currencyImpl)
 
     fun runOperation() {
-        searchAdapter.submitList(list)
+        getSearches()
     }
 
     override fun onClick(
@@ -67,6 +69,7 @@ class SearchViewModel @Inject constructor(
                                 priceChangePercentage24h = it.marketData.priceChangePercentage24h,
                                 symbol = it.symbol
                             )
+                            localRepository.insertRecentItem(RecentlyItem(it.id))
                             searchAdapter.submitList(listOf(cryptoDetails) as List<LocalModel>)
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
@@ -76,6 +79,16 @@ class SearchViewModel @Inject constructor(
                 }
             }
 
+        }
+    }
+
+    fun getSearches() {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                localRepository.fetchRecentlySearches()
+            }.onSuccess {
+                searchAdapter.submitList(it as List<LocalModel>)
+            }
         }
     }
 }
