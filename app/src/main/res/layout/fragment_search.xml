@@ -21,6 +21,7 @@
         <include
             android:id="@+id/searchLayout"
             layout="@layout/search_layout"
+            seachedText="@{viewModel.searchText}"
             parentViewModel="@{viewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

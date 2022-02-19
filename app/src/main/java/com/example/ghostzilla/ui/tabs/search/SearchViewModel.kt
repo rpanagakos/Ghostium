@@ -1,10 +1,12 @@
 package com.example.ghostzilla.ui.tabs.search
 
 import android.app.Application
+import android.widget.TextView
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
+import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.generic.GenericResponse
@@ -15,6 +17,7 @@ import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -25,17 +28,37 @@ class SearchViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
     application: Application
-) : AbstractViewModel(application), GeneralClickListener {
+) : AbstractViewModel(application), GeneralClickListener, ItemOnClickListener {
 
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
 
+    private var callbacks: (
+        data: LocalModel,
+        title: TextView,
+        subTitle: TextView?,
+        circleImageView: CircleImageView
+    ) -> Unit = { _, _, _, _ -> }
+
     val searches = SingleLiveEvent<MutableList<RecentlyItem>>()
+    val searchText = SingleLiveEvent<String?>()
 
     val searchAdapter: TabsAdapter =
-        TabsAdapter(currencyImpl = dataRepository.currencyImpl, generalClickListener = this)
+        TabsAdapter(
+            listener = this,
+            currencyImpl = dataRepository.currencyImpl,
+            generalClickListener = this
+        )
 
-    fun runOperation() {
+    fun runOperation(
+        listener: (
+            data: LocalModel,
+            title: TextView,
+            subTitle: TextView?,
+            circleImageView: CircleImageView
+        ) -> Unit
+    ) {
+        this.callbacks = listener
         getSearches()
     }
 
@@ -66,7 +89,7 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    private fun getSearches() {
+    fun getSearches() {
         viewModelScope.launch {
             kotlin.runCatching {
                 localRepository.fetchRecentlySearches()
@@ -82,10 +105,19 @@ class SearchViewModel @Inject constructor(
                 if (position == 0)
                     localRepository.deleteRecentItem(data as RecentlyItem)
                 else
-                    searchCoin((data as RecentlyItem).searchedText)
+                    searchText.postValue((data as RecentlyItem).searchedText)
             }.onSuccess {
                 if (position == 0) getSearches()
             }
         }
+    }
+
+    override fun onClick(
+        data: LocalModel,
+        title: TextView,
+        subTitle: TextView?,
+        circleImageView: CircleImageView
+    ) {
+        callbacks.invoke(data, title, subTitle, circleImageView)
     }
 }

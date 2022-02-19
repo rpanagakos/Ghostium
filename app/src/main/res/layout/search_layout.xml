@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="seachedText"
+            type="String" />
+
+        <variable
             name="parentViewModel"
             type="com.example.ghostzilla.abstraction.AbstractViewModel" />
 
@@ -25,6 +29,7 @@
             android:background="@color/transparent"
             android:gravity="start|top"
             android:hint="@string/enter_your_crypto"
+            android:text="@{seachedText}"
             android:includeFontPadding="false"
             android:singleLine="true"
             android:textAppearance="@style/caption_bold"
