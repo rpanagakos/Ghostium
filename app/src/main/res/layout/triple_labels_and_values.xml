@@ -53,9 +53,8 @@
             android:layout_height="wrap_content"
             android:text="@string/mark_cap"
             android:textAppearance="@style/medium_gray"
-            app:layout_constraintEnd_toEndOf="@+id/totalVolValue"
             app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toEndOf="@id/highPriceLabel"
+            app:layout_constraintStart_toStartOf="@id/totalVolValue"
             app:layout_constraintTop_toTopOf="@id/lowPriceLabel" />
 
         <TextView
@@ -84,11 +83,12 @@
             android:id="@+id/totalVolValue"
             marketCapCrypto="@{data.marketCap}"
             marketCapCurrency="@{currencyImpl}"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            app:layout_constraintHorizontal_bias="1"
             android:layout_height="wrap_content"
             android:textAppearance="@style/large_text_bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/totalVolLabel"
+            app:layout_constraintStart_toEndOf="@+id/highPriceLabel"
             app:layout_constraintTop_toBottomOf="@id/totalVolLabel"
             tools:text="48,000$" />
 
