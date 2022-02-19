@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="onClickHandler"
+            type="com.example.ghostzilla.abstraction.listeners.GeneralClickListener" />
+
+        <variable
             name="recentlyItem"
             type="com.example.ghostzilla.models.settings.RecentlyItem" />
 
@@ -22,6 +26,7 @@
             android:id="@+id/recentlyText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> onClickHandler.onClick(recentlyItem, 1)}"
             android:paddingTop="@dimen/small_spacing"
             android:paddingBottom="@dimen/small_spacing"
             android:text="@{recentlyItem.searchedText}"
@@ -35,11 +40,12 @@
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="@id/recentlyText"
-            app:layout_constraintBottom_toBottomOf="@id/recentlyText"
+            android:onClick="@{() -> onClickHandler.onClick(recentlyItem, 0)}"
             android:src="@drawable/ic_cancel"
+            android:tint="@color/CoolGray"
+            app:layout_constraintBottom_toBottomOf="@id/recentlyText"
             app:layout_constraintEnd_toEndOf="parent"
-            android:tint="@color/CoolGray"/>
+            app:layout_constraintTop_toTopOf="@id/recentlyText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

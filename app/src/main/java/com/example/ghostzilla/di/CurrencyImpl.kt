@@ -49,12 +49,6 @@ class CurrencyImpl @Inject constructor(
         val currencyLoc = Currency.getInstance(currency)
         currencySymbol = currencyLoc.symbol
     }
+    //Numberfortmatter.getInstance
 
-    private fun getSymbol(currency: String): String {
-        return when (currency) {
-            CurrencyItem.CurrencyID.EURO.value -> "€"
-            CurrencyItem.CurrencyID.DOLLAR.value, CurrencyItem.CurrencyID.ADOLLAR.value -> "$"
-            else -> "£"
-        }
-    }
 }

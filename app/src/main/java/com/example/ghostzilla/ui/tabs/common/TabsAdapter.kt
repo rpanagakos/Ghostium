@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractAdapter
+import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.databinding.*
 import com.example.ghostzilla.di.CurrencyImpl
@@ -17,8 +18,9 @@ import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import java.util.concurrent.atomic.AtomicInteger
 
 class TabsAdapter(
-    private val listener: ItemOnClickListener,
-    private val currencyImpl: CurrencyImpl? = null
+    private val listener: ItemOnClickListener? = null,
+    private val currencyImpl: CurrencyImpl? = null,
+    private val generalClickListener: GeneralClickListener? = null
 ) : AbstractAdapter() {
 
     val currentPosition: AtomicInteger = AtomicInteger(0)
@@ -53,7 +55,7 @@ class TabsAdapter(
                 val view = HolderRecentlyItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                TabsViewHolder(view, listener)
+                TabsViewHolder(view, generalClickListener = generalClickListener)
             }
             R.layout.holder_title_item -> {
                 val view = HolderTitleItemBinding.inflate(
