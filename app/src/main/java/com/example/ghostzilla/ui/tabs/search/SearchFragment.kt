@@ -42,8 +42,10 @@ class SearchFragment :
                     )
                     if (!this.text.isNullOrEmpty())
                         viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
-                    else
-                        viewModel.getSearches()
+                    else {
+                        binding.generalRecycler.removeAllViewsInLayout()
+                        viewModel.clearSearch()
+                    }
                 }
                 .launchIn(lifecycleScope)
         }

@@ -2,6 +2,7 @@ package com.example.ghostzilla.ui.tabs.search
 
 import android.app.Application
 import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
@@ -32,6 +33,7 @@ class SearchViewModel @Inject constructor(
 
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
+    val displayMessage = MutableLiveData<Boolean>(false)
 
     private var callbacks: (
         data: LocalModel,
@@ -68,6 +70,7 @@ class SearchViewModel @Inject constructor(
                 dataRepository.searchCoin(coinID).collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
+                            displayMessage.value = false
                             val cryptoDetails = CryptoItem(
                                 currentPrice = it.marketData.currentPrice.getPrice(dataRepository.currencyImpl.getCurrency()),
                                 id = it.id,
@@ -81,6 +84,7 @@ class SearchViewModel @Inject constructor(
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)
+                            displayMessage.value = true
                         }
                     }
                 }
@@ -97,6 +101,11 @@ class SearchViewModel @Inject constructor(
                 searchAdapter.submitList(it as List<LocalModel>)
             }
         }
+    }
+
+    fun clearSearch() {
+        getSearches()
+        displayMessage.postValue(false)
     }
 
     override fun onClick(data: LocalModel, position: Int) {
