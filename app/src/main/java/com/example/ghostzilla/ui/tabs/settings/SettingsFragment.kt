@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.settings
 
 import android.content.Intent
+import android.net.Uri
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -89,6 +90,12 @@ class SettingsFragment :
                                 R.anim.slide_in_right,
                                 R.anim.slide_out_left
                             )
+                        }
+                        SettingType.CONTACT_US -> {
+                            val intent = Intent(Intent.ACTION_SENDTO)
+                            intent.data = Uri.parse("mailto:")
+                            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("support@ghostzilla.com"))
+                            startActivity(intent)
                         }
                     }
                 }

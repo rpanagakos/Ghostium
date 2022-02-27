@@ -76,18 +76,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/titleHeader" />
 
-        <View
-            android:id="@+id/seperator"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/large_spacing"
-            android:layout_marginEnd="@dimen/large_spacing"
-            android:background="@color/CoolGray"
-            android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/backButtonFavourite"
-            app:layout_constraintTop_toBottomOf="@id/backButtonFavourite" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favCryptosRecycler"
             android:layout_width="match_parent"
@@ -97,10 +85,11 @@
             android:overScrollMode="never"
             android:paddingTop="@dimen/large_spacing"
             android:paddingBottom="@dimen/large_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/menuLayout"
-            app:layout_constraintTop_toBottomOf="@id/seperator"
+            app:layout_constraintTop_toBottomOf="@id/backButtonFavourite"
             tools:itemCount="8"
             tools:listitem="@layout/holder_trends_item" />
 
