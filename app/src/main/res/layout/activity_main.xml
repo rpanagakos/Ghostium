@@ -31,6 +31,7 @@
             android:background="@color/white"
             android:elevation="4dp"
             app:labelVisibilityMode="unlabeled"
+            app:itemIconTint="@color/Black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
