@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/trendsFragment"
-        android:icon="@drawable/trends_selector"
+        android:icon="@drawable/cryptos_selector"
         android:title="" />
 
     <item
