@@ -40,7 +40,7 @@ class SettingsFragment :
             ),
             AppOption(
                 this.resources.getString(R.string.option_currency),
-                R.drawable.ic_coins,
+                R.drawable.ic_currencies,
                 AppOption.SettingType.CURRENCY
             ),
             AppOption(

@@ -2,6 +2,7 @@ package com.example.ghostzilla.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.ghostzilla.R
 import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.utils.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -43,6 +44,15 @@ class CurrencyImpl @Inject constructor(
             getCurrencySymbol()
         }
         return currency
+    }
+
+    fun getCurrencyImg() : Int {
+        return when (getCurrency()) {
+            CurrencyItem.CurrencyID.EURO.value -> R.drawable.ic_euro
+            CurrencyItem.CurrencyID.DOLLAR.value, CurrencyItem.CurrencyID.ADOLLAR.value -> R.drawable.ic_dollar
+            CurrencyItem.CurrencyID.POUNDS.value -> R.drawable.ic_sterling_sign_light
+            else -> R.drawable.ic_euro
+        }
     }
 
     private fun getCurrencySymbol(){
