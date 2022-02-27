@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.trends
 
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -30,7 +31,7 @@ class TrendsFragment :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
 
-        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
+        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
                 is CryptoItem -> {
                     navigateToDetailsActivty(data, title, subTitle!!, circleImageView)

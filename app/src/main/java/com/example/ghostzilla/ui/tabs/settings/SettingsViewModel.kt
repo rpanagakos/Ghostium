@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.settings
 
 import android.app.Application
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
@@ -43,7 +44,7 @@ class SettingsViewModel @Inject constructor(
         data: LocalModel,
         title: TextView,
         subTtitle: TextView?,
-        circleImageView: CircleImageView
+        circleImageView: ImageView
     ) {
         callbacks.invoke(data, title)
 

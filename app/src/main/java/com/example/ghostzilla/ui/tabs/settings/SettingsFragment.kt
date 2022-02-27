@@ -35,37 +35,37 @@ class SettingsFragment :
             LogoOption(),
             AppOption(
                 this.resources.getString(R.string.option_language),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_earth_europe,
                 AppOption.SettingType.LANGUAGE
             ),
             AppOption(
                 this.resources.getString(R.string.option_currency),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_coins,
                 AppOption.SettingType.CURRENCY
             ),
             AppOption(
                 this.resources.getString(R.string.option_cryptos),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_saved_cryptos,
                 AppOption.SettingType.CRYPTO_FAV
             ),
             AppOption(
                 this.resources.getString(R.string.option_articles),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_newspaper,
                 AppOption.SettingType.NEWS_FAV
             ),
             AppOption(
                 this.resources.getString(R.string.option_share),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_share,
                 AppOption.SettingType.SHARE_APP
             ),
             AppOption(
                 this.resources.getString(R.string.option_rate),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_rate,
                 AppOption.SettingType.RATE_APP
             ),
             AppOption(
                 this.resources.getString(R.string.option_contact),
-                R.drawable.ic_baseline_info_24,
+                R.drawable.ic_contact_us,
                 AppOption.SettingType.CONTACT_US
             ),
         )

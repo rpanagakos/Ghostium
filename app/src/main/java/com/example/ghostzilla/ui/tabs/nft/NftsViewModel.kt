@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.nft
 
 import android.app.Application
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -60,7 +61,7 @@ class NftsViewModel @Inject constructor(
         data: LocalModel,
         title: TextView,
         subTitle: TextView?,
-        circleImageView: CircleImageView
+        circleImageView: ImageView
     ) {
         TODO("Not yet implemented")
     }

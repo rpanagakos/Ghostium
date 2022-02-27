@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.search
 
 import android.app.Application
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -39,7 +40,7 @@ class SearchViewModel @Inject constructor(
         data: LocalModel,
         title: TextView,
         subTitle: TextView?,
-        circleImageView: CircleImageView
+        circleImageView: ImageView
     ) -> Unit = { _, _, _, _ -> }
 
     val searches = SingleLiveEvent<MutableList<RecentlyItem>>()
@@ -57,7 +58,7 @@ class SearchViewModel @Inject constructor(
             data: LocalModel,
             title: TextView,
             subTitle: TextView?,
-            circleImageView: CircleImageView
+            circleImageView: ImageView
         ) -> Unit
     ) {
         this.callbacks = listener
@@ -125,7 +126,7 @@ class SearchViewModel @Inject constructor(
         data: LocalModel,
         title: TextView,
         subTitle: TextView?,
-        circleImageView: CircleImageView
+        circleImageView: ImageView
     ) {
         callbacks.invoke(data, title, subTitle, circleImageView)
     }

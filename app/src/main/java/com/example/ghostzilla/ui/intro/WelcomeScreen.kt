@@ -74,7 +74,7 @@ fun WelcomeScreen(
             spacing = 8.dp
         )
         FinishButton(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(2f),
             pagerState = pagerState
         ) {
             introViewModel.saveOnBoardingStatus()
@@ -132,8 +132,8 @@ fun FinishButton(
     Row(
         modifier = modifier
             .padding(horizontal = 32.dp),
-        verticalAlignment = Alignment.Top,
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         AnimatedVisibility(
             modifier = Modifier.fillMaxWidth(),
@@ -141,7 +141,8 @@ fun FinishButton(
         ) {
             Button(
                 onClick = onClick,
-                shape = Shapes.large
+                shape = Shapes.large,
+                modifier = Modifier.height(54.dp)
             ) {
                 Text(
                     text = "Finish",

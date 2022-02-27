@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.search
 
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -24,7 +25,7 @@ class SearchFragment :
     override val viewModel: SearchViewModel by viewModels()
 
     override fun initLayout() {
-        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
+        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
                 is CryptoItem -> {
                     navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
