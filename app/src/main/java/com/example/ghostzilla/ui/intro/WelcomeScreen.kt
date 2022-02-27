@@ -9,6 +9,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -18,6 +20,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.onboarding.OnBoardingPage
 import com.example.ghostzilla.ui.intro.ui.theme.Shapes
@@ -30,7 +36,6 @@ fun WelcomeScreen(
     navHostController: NavHostController,
     introViewModel: IntroViewModel = hiltViewModel()
 ) {
-
     val context = LocalContext.current
 
     val ON_BOARDING_PAGE_COUNT = 3
@@ -65,7 +70,7 @@ fun WelcomeScreen(
             pagerState = pagerState,
             activeColor = colorResource(id = R.color.Black3),
             inactiveColor = colorResource(id = R.color.CoolGray),
-            indicatorWidth = 12.dp,
+            indicatorWidth = 16.dp,
             spacing = 8.dp
         )
         FinishButton(
@@ -86,9 +91,12 @@ fun PagerScreen(page: OnBoardingPage) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Image(
-            painter = painterResource(id = page.imageView),
-            contentDescription = "OnBoarding Image"
+        val composition by rememberLottieComposition(page.imageView)
+        LottieAnimation(
+            composition,
+            iterations = LottieConstants.IterateForever,
+            modifier = Modifier.fillMaxWidth()
+                .height(300.dp)
         )
         Text(
             text = page.title,
