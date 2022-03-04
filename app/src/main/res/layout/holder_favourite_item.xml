@@ -58,8 +58,6 @@
             android:layout_marginTop="@dimen/xlarge_spacing"
             android:layout_marginEnd="@dimen/xlarge_spacing"
             android:background='@{crypto.isSelected ? @drawable/card_crypto_selected : @drawable/card_trends_item}'
-            android:clickable="true"
-            android:focusable="true"
             android:foreground="@drawable/market_ripple"
             android:onClick="@{()-> clickHandler.onClick(crypto, contractName, contractTickerSumbol, contractImg, dataPosition)}"
             android:onLongClick="@{() -> viewModel.processFavCrypto(crypto, dataPosition)}"

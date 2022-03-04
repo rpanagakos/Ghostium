@@ -43,9 +43,12 @@ class TrendsViewModel @Inject constructor(
         subTitle: TextView?,
         circleImageView: ImageView
     ) -> Unit = { _, _, _, _ -> }
-    val trendsAdapter: TabsAdapter = TabsAdapter(this, dataRepository.currencyImpl)
+    val trendsAdapter: TabsAdapter by lazy {
+        TabsAdapter(this, dataRepository.currencyImpl).also {
+            it.submitList(listOf(TitleRecyclerItem(context.getString(R.string.top_fifty))))
+        }
+    }
 
-    val cryptosLiveData = SingleLiveEvent<Cryptos>()
     val displayMessage = MutableLiveData<Boolean>(false)
     private val cryptoDetails = SingleLiveEvent<CryptoItem>()
 
@@ -70,14 +73,13 @@ class TrendsViewModel @Inject constructor(
 
     fun getAllCryptos() {
         if ((cryptosJob?.isActive == false || cryptosJob == null) && networkConnectivity.isConnected()) {
-            cryptosJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(30)) {
+            cryptosJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(10)) {
                 wrapEspressoIdlingResource {
                     dataRepository.requestData().collect { response ->
                         when (response) {
                             is GenericResponse.Success -> response.data?.let {
                                 displayMessage.value = false
-                                cryptosLiveData.value = it
-                                trendsAdapter.submitList(getCryptoList())
+                                trendsAdapter.submitList(getCryptoList(it))
                             } ?: run { showToastMessage(0) }
                             is GenericResponse.DataError -> response.errorCode?.let { error ->
                                 checkErrorCode(error)
@@ -115,10 +117,12 @@ class TrendsViewModel @Inject constructor(
         callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
-    fun getCryptoList(): List<LocalModel> {
-        val list =
-            mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.top_fifty)))
-        return cryptosLiveData.value?.let { list.plus(it.CryptosList) } ?: emptyList()
+    fun getCryptoList(listCryptos : Cryptos): List<LocalModel> {
+        val list = listCryptos.CryptosList
+        val title = trendsAdapter.currentList.firstOrNull()
+        return title?.let {
+            mutableListOf(it).plus(list)
+        } ?: list
     }
 
 }
