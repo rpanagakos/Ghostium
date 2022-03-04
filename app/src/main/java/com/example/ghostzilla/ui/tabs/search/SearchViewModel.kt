@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
@@ -13,6 +14,7 @@ import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.settings.RecentlyItem
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -99,7 +101,8 @@ class SearchViewModel @Inject constructor(
             kotlin.runCatching {
                 localRepository.fetchRecentlySearches()
             }.onSuccess {
-                searchAdapter.submitList(it as List<LocalModel>)
+                val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
+                searchAdapter.submitList(list.plus(it))
             }
         }
     }
