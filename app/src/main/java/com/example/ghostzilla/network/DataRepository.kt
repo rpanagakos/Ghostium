@@ -5,6 +5,7 @@ import com.example.ghostzilla.di.IoDispatcher
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
+import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.opensea.Assets
 import com.example.ghostzilla.network.coingecko.CoinGeckoRemoteRepository
@@ -32,6 +33,12 @@ class DataRepository @Inject constructor(
     suspend fun searchCoin(coinID: String): Flow<GenericResponse<Coin>> {
         return flow {
             emit(coinGeckoRemoteRepository.getCoinSearchResult(coinID))
+        }.flowOn(ioDispatcher)
+    }
+
+    suspend fun getTredingCryptos(): Flow<GenericResponse<TredingCoins>> {
+        return flow {
+            emit(coinGeckoRemoteRepository.getTrendingCryptos())
         }.flowOn(ioDispatcher)
     }
 

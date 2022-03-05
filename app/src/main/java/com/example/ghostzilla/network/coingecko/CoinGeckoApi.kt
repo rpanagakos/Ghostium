@@ -3,6 +3,7 @@ package com.example.ghostzilla.network.coingecko
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
+import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.GET
@@ -37,4 +38,7 @@ interface CoinGeckoApi {
         @Query("ids") ids: String,
         @Query("vs_currencies") currency: String
     ): Response<JsonObject>
+
+    @GET("/api/v3/search/trending/")
+    suspend fun getTredingCryptos() : Response<TredingCoins>
 }

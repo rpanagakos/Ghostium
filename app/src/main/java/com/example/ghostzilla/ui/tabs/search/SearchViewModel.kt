@@ -65,6 +65,21 @@ class SearchViewModel @Inject constructor(
     ) {
         this.callbacks = listener
         getSearches()
+        getCryptos()
+    }
+
+    fun getCryptos(){
+        viewModelScope.launch {
+            wrapEspressoIdlingResource {
+                dataRepository.getTredingCryptos().collect { response ->
+                    when(response){
+                        is GenericResponse.Success -> response.data?.let {
+                           val cryptos = it
+                        } ?: run { showToastMessage(0) }
+                    }
+                }
+            }
+        }
     }
 
     fun searchCoin(coinID: String) {

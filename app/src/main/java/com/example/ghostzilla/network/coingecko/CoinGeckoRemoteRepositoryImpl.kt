@@ -6,6 +6,7 @@ import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
+import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.utils.NetworkConnectivity
 import com.google.gson.JsonObject
@@ -68,6 +69,14 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
             currency)
         }) {
             is JsonObject -> GenericResponse.Success(data = response)
+            else -> GenericResponse.DataError(errorCode = response as Int)
+        }
+    }
+
+    override suspend fun getTrendingCryptos(): GenericResponse<TredingCoins> {
+        return when (val response =
+            networkConnectivity.processCall(coinGeckoApi::getTredingCryptos)) {
+            is TredingCoins -> GenericResponse.Success(data = response)
             else -> GenericResponse.DataError(errorCode = response as Int)
         }
     }
