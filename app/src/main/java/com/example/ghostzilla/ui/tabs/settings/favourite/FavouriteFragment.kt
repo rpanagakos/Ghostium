@@ -11,6 +11,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentFavouriteBinding
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import com.example.ghostzilla.utils.appearStartCustomAnimation
 import com.example.ghostzilla.utils.disappearWithCustomAnimation
@@ -28,7 +29,10 @@ class FavouriteFragment :
 
     override fun initLayout() {
         binding.title = args.title
-        backButtonFavourite.setOnClickListener { findNavController().popBackStack() }
+        backButtonFavourite.setOnClickListener {
+            (requireActivity() as TabsActivity).showMenuBar()
+            findNavController().popBackStack()
+        }
         binding.favCryptosRecycler.apply {
             setHasFixedSize(true)
             addOnScrollListener(object :

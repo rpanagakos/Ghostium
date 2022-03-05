@@ -76,12 +76,14 @@ class SettingsFragment :
             when (data) {
                 is AppOption -> {
                     when (data.type) {
-                        SettingType.CRYPTO_FAV, SettingType.NEWS_FAV ->
+                        SettingType.CRYPTO_FAV, SettingType.NEWS_FAV -> {
                             findNavController().navigate(
                                 SettingsFragmentDirections.settingsFavouriteAction(
                                     data.title
                                 )
                             )
+                            (requireActivity() as TabsActivity).hideMenuBar()
+                        }
                         SettingType.LANGUAGE, SettingType.CURRENCY -> {
                             val i = Intent(requireContext(), GeneralActivity::class.java)
                             i.putExtra("language", if (data.type == SettingType.LANGUAGE) 0 else 1)

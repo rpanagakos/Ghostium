@@ -3,6 +3,7 @@ package com.example.ghostzilla.ui.tabs.common
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -35,23 +36,28 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     override fun initLayout() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
         binding.bottomNavigation.setupWithNavController(navController)
-        observeViewModel()
     }
 
-    private fun observeViewModel() {
+    override fun runOperation() {}
+
+    override fun stopOperation() {}
+
+    fun hideMenuBar() {
+        binding.bottomNavigation.visibility = View.GONE
     }
 
-    override fun runOperation() {
-    }
-
-    override fun stopOperation() {
+    fun showMenuBar() {
+        binding.bottomNavigation.visibility = View.VISIBLE
     }
 
     override fun onBackPressed() {
         when (nav_host_fragment_container.childFragmentManager.fragments[0]) {
             is HomeFragment, is TrendsFragment,
             is NftsFragment, is SettingsFragment -> finishAffinity()
-            else -> super.onBackPressed()
+            else -> {
+
+                super.onBackPressed()
+            }
         }
     }
 
