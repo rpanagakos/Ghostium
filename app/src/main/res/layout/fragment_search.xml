@@ -49,17 +49,14 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieImage"
             lottieStatus="@{viewModel.resultNotFound}"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="64dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="72dp"
             android:contentDescription="@string/something_went_wrong"
             android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchLayout"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="nothing_found.json"
-            app:lottie_repeatCount="2"
             tools:visibility="gone" />
 
         <TextView

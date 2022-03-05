@@ -101,8 +101,15 @@ class SearchViewModel @Inject constructor(
             kotlin.runCatching {
                 localRepository.fetchRecentlySearches()
             }.onSuccess {
-                val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
-                searchAdapter.submitList(list.plus(it))
+                if (it.isEmpty()) {
+                    resultNotFound.postValue(1)
+                    displayMessage.postValue(true)
+                }
+                else
+                {
+                    val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
+                    searchAdapter.submitList(list.plus(it))
+                }
             }
         }
     }
