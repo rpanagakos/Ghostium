@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/trendsFragment"
-        android:name="com.example.ghostzilla.ui.tabs.trends.TrendsFragment"
+        android:name="com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment"
         android:label="fragment_trends"
         tools:layout="@layout/fragment_trends" />
     <fragment

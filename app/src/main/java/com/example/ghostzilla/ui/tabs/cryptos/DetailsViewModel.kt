@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.trends
+package com.example.ghostzilla.ui.tabs.cryptos
 
 import android.app.Application
 import android.content.Intent

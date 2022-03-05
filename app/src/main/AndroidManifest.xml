@@ -31,7 +31,7 @@
 
         </activity>
         <activity
-            android:name=".ui.tabs.trends.DetailsActivity"
+            android:name=".ui.tabs.cryptos.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.tabs.common.TabsActivity"

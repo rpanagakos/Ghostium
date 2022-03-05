@@ -17,14 +17,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.trends.DetailsViewModel" />
+            type="com.example.ghostzilla.ui.tabs.cryptos.DetailsViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tabs.trends.DetailsActivity">
+        tools:context=".ui.tabs.cryptos.DetailsActivity">
 
         <include
             android:id="@+id/backButton"

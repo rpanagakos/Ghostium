@@ -10,12 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import androidx.databinding.library.baseAdapters.BR
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.coingecko.CryptoItem
-import com.example.ghostzilla.ui.tabs.trends.DetailsActivity
+import com.example.ghostzilla.ui.tabs.cryptos.DetailsActivity
 
 abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayoutId: Int) :
     Fragment(contentLayoutId) {

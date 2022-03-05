@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.trends
+package com.example.ghostzilla.ui.tabs.cryptos
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,7 +12,6 @@ import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
-import de.hdodenhof.circleimageview.CircleImageView
 import javax.inject.Inject
 
 @AndroidEntryPoint

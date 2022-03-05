@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.trends
+package com.example.ghostzilla.ui.tabs.cryptos
 
 import android.app.Application
 import android.widget.ImageView
@@ -18,13 +18,10 @@ import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
-import com.example.ghostzilla.utils.removeWhiteSpaces
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

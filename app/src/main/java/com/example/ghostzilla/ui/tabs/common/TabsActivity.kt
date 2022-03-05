@@ -14,7 +14,7 @@ import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.home.HomeFragment
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
-import com.example.ghostzilla.ui.tabs.trends.TrendsFragment
+import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment
 import com.example.ghostzilla.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
