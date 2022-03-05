@@ -12,6 +12,7 @@ import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.errors.mapper.NO_SEARCHES
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.settings.RecentlyItem
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
@@ -21,7 +22,6 @@ import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -102,11 +102,9 @@ class SearchViewModel @Inject constructor(
                 localRepository.fetchRecentlySearches()
             }.onSuccess {
                 if (it.isEmpty()) {
-                    resultNotFound.postValue(1)
+                    resultNotFound.postValue(NO_SEARCHES)
                     displayMessage.postValue(true)
-                }
-                else
-                {
+                } else {
                     val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
                     searchAdapter.submitList(list.plus(it))
                 }

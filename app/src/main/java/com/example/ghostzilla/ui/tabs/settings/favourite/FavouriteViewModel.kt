@@ -13,6 +13,7 @@ import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.di.IoDispatcher
 import com.example.ghostzilla.models.CryptoItemDB
+import com.example.ghostzilla.models.errors.mapper.NO_CRYPTOS
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.NetworkConnectivity
@@ -49,6 +50,7 @@ class FavouriteViewModel @Inject constructor(
     var cryptosChosen = mutableListOf<CryptoItemDB>()
     val ids = mutableListOf<String>()
     val isProcessing = MutableLiveData<Boolean>(false)
+    val isEmpty = MutableLiveData(false)
 
     fun runOperation(
         listener: (
@@ -65,8 +67,10 @@ class FavouriteViewModel @Inject constructor(
                 cryptosIds = "$cryptosIds,${cryptoItem.id}"
             }
             getFavouriteCryptosPrices(cryptosIds)
-        } else
-            favouriteAdapter.submitList(emptyList())
+        } else {
+            resultNotFound.postValue(NO_CRYPTOS)
+            isEmpty.postValue(true)
+        }
     }
 
     private fun getFavouriteCryptosPrices(cryptosIds: String) {
@@ -80,6 +84,7 @@ class FavouriteViewModel @Inject constructor(
                                     responseJson.get(cryptoItem.id).asJsonObject.get(currencyImpl.getCurrency()).asDouble
                             }
                             favouriteAdapter.submitList(cryptos.value as List<LocalModel>)
+                            isEmpty.postValue(false)
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             println(error)

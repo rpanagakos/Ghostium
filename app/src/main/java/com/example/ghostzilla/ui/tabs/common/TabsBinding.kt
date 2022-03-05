@@ -18,10 +18,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
-import com.example.ghostzilla.models.errors.mapper.NETWORK_ERROR
-import com.example.ghostzilla.models.errors.mapper.NOT_FOUND
-import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
-import com.example.ghostzilla.models.errors.mapper.NO_SEARCHES
+import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
@@ -229,7 +226,8 @@ object TabsBinding {
     fun TextView.displayErrorMessage(result: Int) {
         when (result) {
             NOT_FOUND -> this.text = resources.getString(R.string.nothing_found)
-            NO_SEARCHES -> this.text = "You don't have recently searches"
+            NO_SEARCHES -> this.text = "You don't have recently searches."
+            NO_CRYPTOS -> this.text = "Nothing in your Favourite Cryptos"
             else -> this.text = resources.getString(R.string.no_internet_connection)
         }
     }
