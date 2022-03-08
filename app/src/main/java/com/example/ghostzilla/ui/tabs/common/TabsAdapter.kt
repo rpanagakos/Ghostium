@@ -10,6 +10,7 @@ import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.databinding.*
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.models.settings.LogoOption
@@ -63,6 +64,12 @@ class TabsAdapter(
                 )
                 TabsViewHolder(view, listener)
             }
+            R.layout.holder_trending_coins_items -> {
+                val view = HolderTrendingCoinsItemsBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                TabsViewHolder(view, listener)
+            }
             else -> {
                 val view = HolderEmptyBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
@@ -88,6 +95,7 @@ class TabsAdapter(
         is LogoOption -> R.layout.holder_logo_item
         is RecentlyItem -> R.layout.holder_recently_item
         is TitleRecyclerItem -> R.layout.holder_title_item
+        is TredingCoins -> R.layout.holder_trending_coins_items
         else -> R.layout.holder_empty
     }
 

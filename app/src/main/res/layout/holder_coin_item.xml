@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:layout_marginEnd="@dimen/large_spacing"
+        android:background="@drawable/card_nft_item"
+        android:backgroundTint="@color/dark_purple">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/coinImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/xlarge_spacing"
+            android:background="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            android:gravity="center"
+            android:textAppearance="@style/caption_bold"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/coinImage"
+            tools:text="Bitcoin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

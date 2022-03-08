@@ -10,5 +10,4 @@ data class Coin(
     override fun equalsContent(obj: LocalModel): Boolean {
          return true
     }
-
 }

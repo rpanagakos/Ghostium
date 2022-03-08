@@ -12,8 +12,6 @@ import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
-import com.example.ghostzilla.models.CryptoItemDB
-import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
@@ -22,7 +20,6 @@ import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
-import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -47,12 +44,14 @@ class TrendsViewModel @Inject constructor(
         circleImageView: ImageView
     ) -> Unit = { _, _, _, _ -> }
     val trendsAdapter: TabsAdapter by lazy {
-        TabsAdapter(this, dataRepository.currencyImpl).also {
+        TabsAdapter(this, dataRepository.currencyImpl)/*.also {
             it.submitList(listOf(TitleRecyclerItem(context.getString(R.string.top_fifty))))
-        }
+        }*/
     }
 
     val displayMessage = MutableLiveData<Boolean>(false)
+    val trendingTitle = TitleRecyclerItem("Trending Cryptos")
+    val topTitle = TitleRecyclerItem(context.getString(R.string.top_fifty))
     var trendingCryptos: LiveData<MutableList<TredingCoins>> =
         localRepository.fetchTrendingCryptos().asLiveData()
 
@@ -121,12 +120,11 @@ class TrendsViewModel @Inject constructor(
         callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
-    private fun getCryptoList(listCryptos : Cryptos): List<LocalModel> {
+    private fun getCryptoList(listCryptos: Cryptos): List<LocalModel> {
         val list = listCryptos.CryptosList
-        val title = trendsAdapter.currentList.firstOrNull()
-        return title?.let {
-            mutableListOf(it).plus(list)
-        } ?: list
+        return trendingCryptos.value?.let {
+            mutableListOf(trendingTitle).plus(it[0]).plus(topTitle).plus(list)
+        } ?: mutableListOf(topTitle).plus(list)
     }
 
 }

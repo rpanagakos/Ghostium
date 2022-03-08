@@ -94,6 +94,7 @@
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3618421052631579" />
         <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.32592592592592595" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
+        <entry key="app/src/main/res/layout/holder_coin_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_currency_item.xml" value="0.4293785310734463" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_favourite_item.xml" value="0.24103467283595226" />
@@ -104,6 +105,7 @@
         <entry key="app/src/main/res/layout/holder_recently_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_title_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_topcrypto_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/holder_trending_coins_items.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_trends_item.xml" value="0.43640350877192985" />
         <entry key="app/src/main/res/layout/option_item.xml" value="0.6848554425057238" />
         <entry key="app/src/main/res/layout/option_menu.xml" value="0.20517780430138194" />

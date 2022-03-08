@@ -8,10 +8,12 @@ import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.models.settings.RecentlyItem
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
+import com.example.ghostzilla.ui.tabs.cryptos.TrendingCryptosAdapter
 
 class TabsViewHolder(
     val binding: ViewDataBinding,
@@ -41,6 +43,11 @@ class TabsViewHolder(
             }
             is TitleRecyclerItem -> {
                 binding.setVariable(BR.item, data)
+            }
+            is TredingCoins -> {
+                val adapter = TrendingCryptosAdapter(listener)
+                binding.setVariable(BR.adapter, adapter)
+                adapter.submitList(data.coins)
             }
         }
     }
