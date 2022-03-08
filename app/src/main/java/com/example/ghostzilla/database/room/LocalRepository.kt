@@ -1,6 +1,7 @@
 package com.example.ghostzilla.database.room
 
 import com.example.ghostzilla.database.room.cryptos.CryptoDao
+import com.example.ghostzilla.database.room.cryptos.TrendingDao
 import com.example.ghostzilla.database.room.searches.SearchesDao
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.settings.RecentlyItem
@@ -11,7 +12,8 @@ import javax.inject.Inject
 @ViewModelScoped
 class LocalRepository @Inject constructor(
     private val cryptoDao: CryptoDao,
-    private val searchesDao: SearchesDao
+    private val searchesDao: SearchesDao,
+    private val  trendingDao: TrendingDao
 ) {
 
     fun fetchFavouriteCryptos(): Flow<MutableList<CryptoItemDB>> {

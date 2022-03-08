@@ -1,6 +1,7 @@
 package com.example.ghostzilla.models.coingecko.tredings
 
 
+import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class Item(
@@ -24,4 +25,9 @@ data class Item(
     val symbol: String,
     @SerializedName("thumb")
     val thumb: String
-)
+) : LocalModel {
+    override fun equalsContent(obj: LocalModel): Boolean {
+        return true
+    }
+
+}
