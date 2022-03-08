@@ -5,12 +5,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TrendingDao {
 
-    @Query("SELECT * FROM trendings_table")
-    suspend fun getAllTrendings(): TredingCoins
+    @Query("SELECT * FROM trendings_table ORDER BY timetamps ASC")
+    fun getAllTrendings(): Flow<MutableList<TredingCoins>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addTrendings(item: TredingCoins)

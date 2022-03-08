@@ -68,13 +68,15 @@ class SearchViewModel @Inject constructor(
         getCryptos()
     }
 
-    fun getCryptos(){
+    fun getCryptos() {
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.getTredingCryptos().collect { response ->
-                    when(response){
+                    when (response) {
                         is GenericResponse.Success -> response.data?.let {
-                           val cryptos = it
+                            it.timetamps =  System.currentTimeMillis()
+                            localRepository.insertTrendingCoins(it)
+                            val cryptos = it
                         } ?: run { showToastMessage(0) }
                     }
                 }
@@ -120,7 +122,8 @@ class SearchViewModel @Inject constructor(
                     resultNotFound.postValue(NO_SEARCHES)
                     displayMessage.postValue(true)
                 } else {
-                    val list = mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
+                    val list =
+                        mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
                     searchAdapter.submitList(list.plus(it))
                 }
             }
