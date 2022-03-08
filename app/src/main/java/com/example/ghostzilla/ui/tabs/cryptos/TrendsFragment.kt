@@ -30,14 +30,6 @@ class TrendsFragment :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
 
-        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
-            when (data) {
-                is CryptoItem -> {
-                    navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
-                }
-            }
-        }
-
         viewModel.networkConnectivity.registerNetworkCallback({
             viewModel.makeCallWhenOnline()
         }, {
@@ -48,6 +40,16 @@ class TrendsFragment :
     override fun observeViewModel() {
         viewModel.showToast.observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), it as String, Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.trendingCryptos.observe(this, {
+            viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
+                when (data) {
+                    is CryptoItem -> {
+                        navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
+                    }
+                }
+            }
         })
     }
 

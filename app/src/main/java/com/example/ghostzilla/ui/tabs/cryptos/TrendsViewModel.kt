@@ -3,14 +3,19 @@ package com.example.ghostzilla.ui.tabs.cryptos
 import android.app.Application
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
+import com.example.ghostzilla.database.room.LocalRepository
+import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
+import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
@@ -28,6 +33,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TrendsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
+    private val localRepository: LocalRepository,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
@@ -47,7 +53,8 @@ class TrendsViewModel @Inject constructor(
     }
 
     val displayMessage = MutableLiveData<Boolean>(false)
-    private val cryptoDetails = SingleLiveEvent<CryptoItem>()
+    var trendingCryptos: LiveData<MutableList<TredingCoins>> =
+        localRepository.fetchTrendingCryptos().asLiveData()
 
     var cryptosJob: Job? = null
 
@@ -114,7 +121,7 @@ class TrendsViewModel @Inject constructor(
         callbacks.invoke(data, title, subTitle, circleImageView)
     }
 
-    fun getCryptoList(listCryptos : Cryptos): List<LocalModel> {
+    private fun getCryptoList(listCryptos : Cryptos): List<LocalModel> {
         val list = listCryptos.CryptosList
         val title = trendsAdapter.currentList.firstOrNull()
         return title?.let {

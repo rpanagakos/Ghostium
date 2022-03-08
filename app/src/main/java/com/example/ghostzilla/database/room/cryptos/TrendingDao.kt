@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TrendingDao {
 
-    @Query("SELECT * FROM trendings_table ORDER BY timetamps ASC")
+    @Query("SELECT * FROM trendings_table")
     fun getAllTrendings(): Flow<MutableList<TredingCoins>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
