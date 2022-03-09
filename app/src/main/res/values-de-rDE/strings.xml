@@ -43,6 +43,7 @@
     <string name="one_month">1m</string>
     <string name="three_months">3m</string>
     <string name="one_year">1j</string>
-    <string name="top_fifty">Top 50 Cryptos</string>
-    <string name="recently_searches">Zuletzt gesucht</string>
+    <string name="top_fifty">Top 50 Kryptos</string>
+    <string name="recently_searches">Letzte Suchen</string>
+    <string name="trending_cryptos">Kryptos im Trend</string>
 </resources>

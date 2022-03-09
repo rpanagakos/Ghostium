@@ -62,6 +62,7 @@
     <string name="three_months">3m</string>
     <string name="one_year">1y</string>
     <string name="top_fifty">Top 50 Cryptos</string>
-    <string name="recently_searches">Recently Searches</string>
+    <string name="recently_searches">Recent Searches</string>
+    <string name="trending_cryptos">Trending Cryptos</string>
 
 </resources>

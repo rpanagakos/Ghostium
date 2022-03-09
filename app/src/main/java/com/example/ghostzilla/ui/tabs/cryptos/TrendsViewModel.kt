@@ -41,13 +41,11 @@ class TrendsViewModel @Inject constructor(
         circleImageView: ImageView
     ) -> Unit = { _, _, _, _ -> }
     val trendsAdapter: TabsAdapter by lazy {
-        TabsAdapter(this, dataRepository.currencyImpl)/*.also {
-            it.submitList(listOf(TitleRecyclerItem(context.getString(R.string.top_fifty))))
-        }*/
+        TabsAdapter(this, dataRepository.currencyImpl)
     }
 
-    val trendingTitle = TitleRecyclerItem("Trending Cryptos")
-    val topTitle = TitleRecyclerItem(context.getString(R.string.top_fifty))
+    var trendingTitle = MutableLiveData<TitleRecyclerItem>()
+    var topTitle = MutableLiveData<TitleRecyclerItem>()
     var trendingCryptos: LiveData<MutableList<TredingCoins>> =
         localRepository.fetchTrendingCryptos().asLiveData()
 
@@ -106,8 +104,8 @@ class TrendsViewModel @Inject constructor(
     private fun getCryptoList(listCryptos: Cryptos): List<LocalModel> {
         val list = listCryptos.CryptosList
         return trendingCryptos.value?.let {
-            mutableListOf(trendingTitle).plus(it[0]).plus(topTitle).plus(list)
-        } ?: mutableListOf(topTitle).plus(list)
+            mutableListOf(trendingTitle.value!!).plus(it[0]).plus(topTitle.value!!).plus(list)
+        } ?: mutableListOf(topTitle.value!!).plus(list)
     }
 
 }

@@ -11,6 +11,7 @@ import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.tredings.Item
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -30,6 +31,8 @@ class TrendsFragment :
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
+        viewModel.trendingTitle.value = TitleRecyclerItem(this.resources.getString(R.string.trending_cryptos))
+        viewModel.topTitle.value = TitleRecyclerItem(this.resources.getString(R.string.top_fifty))
     }
 
     override fun observeViewModel() {
