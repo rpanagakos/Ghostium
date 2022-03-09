@@ -76,7 +76,7 @@ class TrendsViewModel @Inject constructor(
 
     fun getAllCryptos() {
         if ((cryptosJob?.isActive == false || cryptosJob == null) && networkConnectivity.isConnected()) {
-            cryptosJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(10)) {
+            cryptosJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(40)) {
                 wrapEspressoIdlingResource {
                     dataRepository.requestData().collect { response ->
                         when (response) {

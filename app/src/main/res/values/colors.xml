@@ -7,6 +7,7 @@
     <color name="textColorSecondary">#333333</color>
     <color name="chipBackGroundColor">#E5E9ED</color>
     <color name="hintColor">#979797</color>
+    <color name="dede">#52F1F4F6</color>
     <color name="transparentWhite">#b3ffffff</color>
     <color name="transpWhite">#f2ffffff</color>
     <color name="transpBlack">#b3000000</color>
@@ -22,7 +23,16 @@
     <color name="lang_hint">#8A425B</color>
     <color name="support_card_color">#B47E00</color>
     <color name="invite_card_color">#066F68</color>
+
+
+    
     <color name="dark_sienna">#481620</color>
+    <color name="midnight_blue">#07004D</color>
+    <color name="gunmetal">#143642</color>
+    <color name="hunter_green">#2E5339</color>
+    <color name="russian_violet">#231651</color>
+    <color name="dark_purple">#3B1F2B</color>
+    <color name="russian_green">#8BB174</color>
 
     <color name="Black">#000000</color>
     <color name="Black2">#121212</color>

@@ -23,7 +23,7 @@
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
-            android:paddingStart="@dimen/xlarge_spacing"
+            android:paddingStart="@dimen/large_spacing"
             android:paddingEnd="@dimen/medium_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
