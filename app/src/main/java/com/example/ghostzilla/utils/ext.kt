@@ -73,7 +73,7 @@ fun String.removeWhiteSpaces(): String {
 
 @ExperimentalCoroutinesApi
 fun EditText.searchQuery() = callbackFlow<Unit> {
-    doAfterTextChanged { offer(Unit) }
+    doAfterTextChanged { trySend(Unit).isSuccess }
     awaitClose()
 }
 
