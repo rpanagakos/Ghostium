@@ -30,7 +30,7 @@
             android:paddingTop="@dimen/small_spacing"
             android:paddingBottom="@dimen/small_spacing"
             android:text="@{recentlyItem.searchedText}"
-            android:textAppearance="@style/large_gray"
+            android:textAppearance="@style/large_text"
             app:layout_constraintEnd_toStartOf="@id/deleteButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

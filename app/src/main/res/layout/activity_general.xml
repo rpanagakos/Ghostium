@@ -95,7 +95,7 @@
                 android:layout_marginEnd="32dp"
                 android:elevation="@dimen/medium_spacing"
                 android:text="@string/hint"
-                android:textAppearance="@style/xlarge_text_bold_white"
+                android:textAppearance="@style/caption_bold"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
