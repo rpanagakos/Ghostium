@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="isLastOption"
+            type="Boolean" />
+
+        <variable
             name="option"
             type="com.example.ghostzilla.models.settings.AppOption" />
 
@@ -42,16 +46,12 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/optionImag2"
             imageURLContract="@{option.imageID}"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:paddingStart="@dimen/large_spacing"
-            android:paddingTop="@dimen/large_spacing"
-            android:paddingEnd="@dimen/medium_spacing"
-            android:paddingBottom="@dimen/large_spacing"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="14dp"
             app:layout_constraintBottom_toBottomOf="@id/optionText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/optionText" />
-
 
         <TextView
             android:id="@+id/optionText"
@@ -59,11 +59,11 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/xlarge_spacing"
             android:paddingStart="@dimen/medium_spacing"
-            android:paddingTop="26dp"
+            android:paddingTop="24dp"
             android:paddingEnd="@dimen/large_spacing"
-            android:paddingBottom="26dp"
+            android:paddingBottom="24dp"
             android:text="@{option.title}"
-            android:textAppearance="@style/large_text"
+            android:textAppearance="@style/regular_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/optionImag2"
             app:layout_constraintTop_toTopOf="parent"
@@ -73,6 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/CoolGray"
+            android:visibility="@{isLastOption ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/optionText"
             app:layout_constraintTop_toBottomOf="@id/optionText" />

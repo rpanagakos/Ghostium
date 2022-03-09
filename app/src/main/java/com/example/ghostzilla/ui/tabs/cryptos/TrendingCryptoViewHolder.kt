@@ -7,12 +7,12 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.models.coingecko.tredings.Coin
 
-class TrendingCryptoViewHolder (
+class TrendingCryptoViewHolder(
     val binding: ViewDataBinding,
     val listener: ItemOnClickListener? = null
 ) : AbstractBindingViewHolder(binding) {
 
-    override fun present(data: LocalModel) {
+    override fun present(data: LocalModel, isLastElement: Boolean) {
         when (data) {
             is Coin -> {
                 binding.setVariable(BR.coin, data.item)

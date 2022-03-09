@@ -21,14 +21,18 @@
             android:id="@+id/settingsRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_spacing"
             android:adapter="@{viewModel.optionsAdapter}"
+            android:background="@drawable/card_trends_item"
             android:clipToPadding="false"
+            android:elevation="2dp"
             android:overScrollMode="never"
-            android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="4"
+            tools:layout_editor_absoluteX="16dp"
             tools:listitem="@layout/holder_options_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

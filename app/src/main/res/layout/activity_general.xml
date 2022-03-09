@@ -26,6 +26,7 @@
         android:id="@+id/generalConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/dede"
         tools:context=".ui.tabs.settings.general.GeneralSettingsFragment">
 
         <include
@@ -57,18 +58,21 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/generalRecycler"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
             android:layout_marginBottom="@dimen/medium_spacing"
+            android:background="@drawable/card_trends_item"
             android:clipToPadding="false"
+            android:elevation="2dp"
             android:overScrollMode="never"
-            android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/backButtonFavourite"
             app:layout_constraintTop_toBottomOf="@id/backButtonFavourite"
+            app:layout_constraintVertical_bias="0"
             tools:itemCount="4"
             tools:listitem="@layout/holder_general_item" />
 

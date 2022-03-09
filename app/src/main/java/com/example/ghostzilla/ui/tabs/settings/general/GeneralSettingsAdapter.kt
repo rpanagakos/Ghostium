@@ -45,14 +45,14 @@ class GeneralSettingsAdapter(
         currentPosition.set(position)
         return when (holder) {
             is GeneralSettingHolder -> {
-                holder.present(getItem(position), position = position)
+                holder.present(getItem(position), position = position, position == itemCount - 1)
             }
             else -> Unit
         }
     }
 
     override fun getItemViewType(position: Int) = when (getItem(position)) {
-        is LanguageItem ->R.layout.holder_general_item
+        is LanguageItem -> R.layout.holder_general_item
         is CurrencyItem -> R.layout.holder_currency_item
         else -> R.layout.holder_empty
     }

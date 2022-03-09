@@ -82,7 +82,7 @@ class TabsAdapter(
         currentPosition.set(position)
         return when (holder) {
             is TabsViewHolder -> {
-                holder.present(getItem(position))
+                holder.present(getItem(position), position == itemCount - 1)
             }
             else -> Unit
         }

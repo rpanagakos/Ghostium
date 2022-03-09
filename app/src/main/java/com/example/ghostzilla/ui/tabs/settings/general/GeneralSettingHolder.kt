@@ -14,12 +14,13 @@ class GeneralSettingHolder(
     val viewModel: GeneralSettingsViewModel? = null
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun present(data: LocalModel, position: Int) {
+    fun present(data: LocalModel, position: Int, isLastElement: Boolean) {
         when (data) {
-            is LanguageItem, is CurrencyItem-> {
+            is LanguageItem, is CurrencyItem -> {
                 binding.setVariable(BR.item, data)
                 binding.setVariable(BR.dataPosition, position)
                 binding.setVariable(BR.clickHandler, listener)
+                binding.setVariable(BR.isLastOption, isLastElement)
             }
         }
     }

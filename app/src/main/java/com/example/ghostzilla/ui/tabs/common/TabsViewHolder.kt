@@ -23,7 +23,7 @@ class TabsViewHolder(
 ) :
     AbstractBindingViewHolder(binding) {
 
-    override fun present(data: LocalModel) {
+    override fun present(data: LocalModel, isLastElement: Boolean) {
         when (data) {
             is CryptoItem -> {
                 binding.setVariable(BR.crypto, data)
@@ -36,6 +36,7 @@ class TabsViewHolder(
             is AppOption -> {
                 binding.setVariable(BR.option, data)
                 binding.setVariable(BR.clickHandler, listener)
+                binding.setVariable(BR.isLastOption, isLastElement)
             }
             is RecentlyItem -> {
                 binding.setVariable(BR.recentlyItem, data)

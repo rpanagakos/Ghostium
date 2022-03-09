@@ -12,6 +12,10 @@
             type="Integer" />
 
         <variable
+            name="isLastOption"
+            type="Boolean" />
+
+        <variable
             name="item"
             type="com.example.ghostzilla.models.settings.LanguageItem" />
 
@@ -27,8 +31,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="@{()-> clickHandler.onClick(item, dataPosition)}"
-        android:foreground="@drawable/general_setting_ripple">
+        android:foreground="@drawable/general_setting_ripple"
+        android:onClick="@{()-> clickHandler.onClick(item, dataPosition)}">
 
         <TextView
             android:id="@+id/generalText"
@@ -40,7 +44,7 @@
             android:paddingEnd="@dimen/large_spacing"
             android:paddingBottom="26dp"
             android:text="@{item.nameLang}"
-            android:textAppearance="@style/large_xlarge_text"
+            android:textAppearance="@style/regular_text"
             app:layout_constraintEnd_toStartOf="@id/selectedImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/CoolGray"
+            android:visibility="@{isLastOption ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/generalText"
             app:layout_constraintTop_toBottomOf="@id/generalText" />
@@ -60,10 +65,10 @@
             android:layout_height="36dp"
             android:layout_marginEnd="@dimen/large_spacing"
             android:visibility="@{item.seleted ? View.VISIBLE : View.GONE}"
-            app:srcCompat="@drawable/ic_check"
-            app:layout_constraintTop_toTopOf="@id/generalText"
             app:layout_constraintBottom_toBottomOf="@id/generalText"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/generalText"
+            app:srcCompat="@drawable/ic_check" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
