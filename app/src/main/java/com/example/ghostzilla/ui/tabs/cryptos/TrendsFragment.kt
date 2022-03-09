@@ -31,8 +31,6 @@ class TrendsFragment :
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
-        viewModel.trendingTitle.value = TitleRecyclerItem(this.resources.getString(R.string.trending_cryptos))
-        viewModel.topTitle.value = TitleRecyclerItem(this.resources.getString(R.string.top_fifty))
     }
 
     override fun observeViewModel() {
