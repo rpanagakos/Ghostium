@@ -94,33 +94,21 @@
             app:layout_constraintTop_toTopOf="@id/coinImageDetails"
             app:lottie_fileName="favourite.json" />
 
-
-        <View
-            android:id="@+id/seperator"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/large_spacing"
-            android:background="@color/CoolGray"
-            android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="@id/favouritesButton"
-            app:layout_constraintStart_toStartOf="@id/backButton"
-            app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail" />
-
         <com.example.ghostzilla.utils.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/large_spacing"
             android:layout_marginEnd="@dimen/large_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
             android:fillViewport="true"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/seperator">
+            app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/xlarge_spacing"
                 android:paddingBottom="@dimen/xlarge_spacing">
 
                 <include

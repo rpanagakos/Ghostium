@@ -31,7 +31,7 @@ class TabsViewModel @Inject constructor(
     val displayInternetMessage = MutableLiveData<Boolean>(false)
     var trendingCryptos: LiveData<MutableList<TredingCoins>> =
         localRepository.fetchTrendingCryptos().asLiveData()
-    private val time24h = 86400
+    private val time24h = 48200
 
     fun runOperation() {
         if (trendingCryptos.value == null || trendingCryptos.value!!.isEmpty() || trendingCryptos.value!![0].timetamps + time24h <= System.currentTimeMillis())
