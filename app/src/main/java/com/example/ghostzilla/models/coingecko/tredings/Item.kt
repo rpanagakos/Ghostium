@@ -2,6 +2,7 @@ package com.example.ghostzilla.models.coingecko.tredings
 
 
 import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.google.gson.annotations.SerializedName
 
 data class Item(
@@ -28,6 +29,10 @@ data class Item(
 ) : LocalModel {
     override fun equalsContent(obj: LocalModel): Boolean {
         return true
+    }
+
+    fun getItAsCryptoItem(): CryptoItem {
+        return CryptoItem(id = id, name = name, symbol = symbol, image = large)
     }
 
 }

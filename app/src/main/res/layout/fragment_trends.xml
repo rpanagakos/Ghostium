@@ -25,7 +25,6 @@
             android:adapter="@{viewModel.trendsAdapter}"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingTop="@dimen/small_spacing"
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
             android:visibility="@{viewModel.displayMessage ?  View.GONE : View.VISIBLE}"

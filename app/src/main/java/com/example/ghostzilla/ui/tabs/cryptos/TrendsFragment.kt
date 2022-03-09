@@ -10,6 +10,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.tredings.Item
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -47,6 +48,14 @@ class TrendsFragment :
                 when (data) {
                     is CryptoItem -> {
                         navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
+                    }
+                    is Item -> {
+                        navigateToDetailsActivty(
+                            data.getItAsCryptoItem(),
+                            title,
+                            subTitle!!,
+                            circleImageView
+                        )
                     }
                 }
             }

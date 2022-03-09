@@ -15,6 +15,8 @@ class TrendingCryptoViewHolder (
     override fun present(data: LocalModel) {
         when (data) {
             is Coin -> {
+                binding.setVariable(BR.coin, data.item)
+                binding.setVariable(BR.clickHandler, listener)
             }
         }
     }

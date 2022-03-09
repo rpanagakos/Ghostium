@@ -5,6 +5,14 @@
 
     <data>
 
+        <variable
+            name="coin"
+            type="com.example.ghostzilla.models.coingecko.tredings.Item" />
+
+        <variable
+            name="clickHandler"
+            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,10 +21,12 @@
         android:layout_marginTop="@dimen/large_spacing"
         android:layout_marginEnd="@dimen/large_spacing"
         android:background="@drawable/card_nft_item"
-        android:backgroundTint="@color/dark_purple">
+        android:backgroundTint="@color/russian_green"
+        android:onClick="@{()-> clickHandler.onClick(coin,coinName,symbolName,coinImage)}">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/coinImage"
+            imageURLContract="@{coin.large}"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="@dimen/xlarge_spacing"
@@ -26,19 +36,38 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/coinName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_spacing"
-            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginTop="@dimen/medium_spacing"
             android:layout_marginEnd="@dimen/medium_spacing"
             android:gravity="center"
+            android:lines="1"
+            android:text="@{coin.name}"
             android:textAppearance="@style/caption_bold"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/symbolName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/coinImage"
+            app:layout_constraintVertical_bias="1"
             tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/symbolName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/medium_spacing"
+            android:gravity="center"
+            android:text="@{coin.symbol}"
+            android:textAppearance="@style/small_regular_gray"
+            android:textColor="@color/transparentWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="BTC" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
