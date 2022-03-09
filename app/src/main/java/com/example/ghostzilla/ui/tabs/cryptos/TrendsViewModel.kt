@@ -34,9 +34,6 @@ class TrendsViewModel @Inject constructor(
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
-    @Inject
-    lateinit var networkConnectivity: NetworkConnectivity
-
     private var callbacks: (
         data: LocalModel,
         title: TextView,
@@ -49,7 +46,6 @@ class TrendsViewModel @Inject constructor(
         }*/
     }
 
-    val displayMessage = MutableLiveData<Boolean>(false)
     val trendingTitle = TitleRecyclerItem("Trending Cryptos")
     val topTitle = TitleRecyclerItem(context.getString(R.string.top_fifty))
     var trendingCryptos: LiveData<MutableList<TredingCoins>> =
@@ -66,44 +62,31 @@ class TrendsViewModel @Inject constructor(
         ) -> Unit
     ) {
         this.callbacks = listener
-        if (networkConnectivity.isConnected())
+        //if (networkConnectivity.isConnected())
             getAllCryptos()
-        else {
+        /*else {
             checkErrorCode(NO_INTERNET_CONNECTION)
             displayMessage.value = true
-        }
+        }*/
     }
 
     fun getAllCryptos() {
-        if ((cryptosJob?.isActive == false || cryptosJob == null) && networkConnectivity.isConnected()) {
+        if ((cryptosJob?.isActive == false || cryptosJob == null)) {
             cryptosJob = viewModelScope.launchPeriodicAsync(TimeUnit.SECONDS.toMillis(40)) {
                 wrapEspressoIdlingResource {
                     dataRepository.requestData().collect { response ->
                         when (response) {
                             is GenericResponse.Success -> response.data?.let {
-                                displayMessage.value = false
                                 trendsAdapter.submitList(getCryptoList(it))
                             } ?: run { showToastMessage(0) }
                             is GenericResponse.DataError -> response.errorCode?.let { error ->
                                 checkErrorCode(error)
-                                displayMessage.value = true
                             }
                         }
                     }
                 }
             }
         }
-    }
-
-    fun makeCallWhenOnline() {
-        if (cryptosJob?.isCancelled == true || cryptosJob == null)
-            getAllCryptos()
-    }
-
-    fun displayInternetMessageWhenOffline() {
-        if (cryptosJob?.isActive == true)
-            cryptosJob?.cancel()
-        showToastMessage(NO_INTERNET_CONNECTION)
     }
 
     override fun onCleared() {

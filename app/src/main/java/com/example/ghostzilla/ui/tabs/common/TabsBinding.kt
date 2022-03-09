@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.text.Html
 import android.text.SpannableString
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
@@ -20,6 +21,8 @@ import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
+import com.example.ghostzilla.utils.appearStartCustomAnimation
+import com.example.ghostzilla.utils.disappearWithCustomAnimation
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
 import com.google.android.material.tabs.TabLayout
@@ -31,6 +34,15 @@ import kotlin.math.pow
 
 @SuppressLint("SetTextI18n")
 object TabsBinding {
+
+    @BindingAdapter("displaySliding")
+    @JvmStatic
+    fun View.slideAnimation(displaySliding : Boolean){
+        if (displaySliding)
+            this.appearStartCustomAnimation(R.anim.fade_in, this.context)
+        else
+            this.disappearWithCustomAnimation(R.anim.fade_out, this.context)
+    }
 
     @BindingAdapter("addTabs")
     @JvmStatic

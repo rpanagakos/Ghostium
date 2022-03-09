@@ -30,12 +30,6 @@ class TrendsFragment :
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
-
-        viewModel.networkConnectivity.registerNetworkCallback({
-            viewModel.makeCallWhenOnline()
-        }, {
-            viewModel.displayInternetMessageWhenOffline()
-        })
     }
 
     override fun observeViewModel() {

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -24,6 +25,8 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     private lateinit var navController: NavController
     var languageChanged = false
+    val viewModel : TabsViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val hasSeenIntro = this.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
@@ -35,10 +38,15 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     override fun initLayout() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
+        binding.viewModel = viewModel
         binding.bottomNavigation.setupWithNavController(navController)
     }
 
-    override fun runOperation() {}
+    override fun runOperation() {
+        viewModel.trendingCryptos.observe(this, {
+            viewModel.runOperation()
+        })
+    }
 
     override fun stopOperation() {}
 

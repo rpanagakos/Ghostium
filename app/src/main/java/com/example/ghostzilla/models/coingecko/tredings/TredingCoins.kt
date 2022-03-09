@@ -11,6 +11,7 @@ data class TredingCoins(
     @SerializedName("coins")
     val coins: List<Coin>,
     @PrimaryKey(autoGenerate = false)
+    val id : Int = 0,
     var timetamps: Long = 0
 ) : LocalModel {
     override fun equalsContent(obj: LocalModel): Boolean {

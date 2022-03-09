@@ -27,7 +27,6 @@
             android:overScrollMode="never"
             android:paddingBottom="@dimen/xlarge_spacing"
             android:scrollbars="none"
-            android:visibility="@{viewModel.displayMessage ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,38 +46,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/contractsTrendsRecycler" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieImage"
-            lottieStatus="@{viewModel.resultNotFound}"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="64dp"
-            android:contentDescription="@string/something_went_wrong"
-            android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="nothing_found.json"
-            app:lottie_repeatCount="2"
-            tools:visibility="gone" />
-
-        <TextView
-            android:id="@+id/errorText"
-            errorMessageStatus="@{viewModel.resultNotFound}"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/xxlarge_spacing"
-            android:layout_marginTop="@dimen/large_spacing"
-            android:layout_marginEnd="@dimen/xxlarge_spacing"
-            android:gravity="center"
-            android:textAppearance="@style/large_text"
-            android:visibility="@{viewModel.displayMessage ?  View.VISIBLE : View.GONE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lottieImage" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

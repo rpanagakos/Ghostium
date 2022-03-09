@@ -34,8 +34,6 @@ class SearchViewModel @Inject constructor(
     application: Application
 ) : AbstractViewModel(application), GeneralClickListener, ItemOnClickListener {
 
-    @Inject
-    lateinit var networkConnectivity: NetworkConnectivity
     val displayMessage = MutableLiveData<Boolean>(false)
 
     private var callbacks: (
@@ -65,23 +63,6 @@ class SearchViewModel @Inject constructor(
     ) {
         this.callbacks = listener
         getSearches()
-        getCryptos()
-    }
-
-    fun getCryptos() {
-        viewModelScope.launch {
-            wrapEspressoIdlingResource {
-                dataRepository.getTredingCryptos().collect { response ->
-                    when (response) {
-                        is GenericResponse.Success -> response.data?.let {
-                            it.timetamps =  System.currentTimeMillis()
-                            localRepository.insertTrendingCoins(it)
-                            val cryptos = it
-                        } ?: run { showToastMessage(0) }
-                    }
-                }
-            }
-        }
     }
 
     fun searchCoin(coinID: String) {

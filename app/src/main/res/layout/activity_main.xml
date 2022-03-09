@@ -4,12 +4,30 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.ui.tabs.common.TabsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dede">
+
+        <TextView
+            android:id="@+id/internetTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/medium_spacing"
+            android:text="No Internet Connection"
+            android:textAppearance="@style/regular_text"
+            android:textColor="@color/reddit_color"
+            displaySliding="@{viewModel.displayInternetMessage}"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <fragment
             android:id="@+id/nav_host_fragment_container"
@@ -20,7 +38,7 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/internetTextView"
             app:navGraph="@navigation/basic_nav" />
 
 
