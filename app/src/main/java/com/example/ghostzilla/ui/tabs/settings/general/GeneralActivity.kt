@@ -12,15 +12,16 @@ import kotlinx.android.synthetic.main.activity_general.*
 class GeneralActivity : AbstractActivity<ActivityGeneralBinding>(R.layout.activity_general) {
 
     val viewModel: GeneralSettingsViewModel by viewModels()
+    val language_key = "language"
 
     override fun initLayout() {
         observeViewModel()
         intent.extras?.let {
-            binding.language = it.getInt("language") == 0
+            binding.language = it.getInt(language_key) == 0
             binding.title =
-                if (it.getInt("language") == 0) getString(R.string.option_language) else getString(R.string.option_currency)
+                if (it.getInt(language_key) == 0) getString(R.string.option_language) else getString(R.string.option_currency)
             binding.generalRecycler.adapter = viewModel.generalAdapter
-            viewModel.runOperation(it.getInt("language") == 0)
+            viewModel.runOperation(it.getInt(language_key) == 0)
         }
         backButtonFavourite.setOnClickListener {
             onBackPressed()

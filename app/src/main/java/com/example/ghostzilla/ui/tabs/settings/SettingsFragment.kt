@@ -18,7 +18,6 @@ import com.example.ghostzilla.ui.tabs.settings.general.GeneralActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class SettingsFragment :
     AbstractFragment<FragmentSettingsBinding, SettingsViewModel>(R.layout.fragment_settings) {

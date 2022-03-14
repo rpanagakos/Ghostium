@@ -6,16 +6,13 @@ import android.widget.TextView
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
-import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.hdodenhof.circleimageview.CircleImageView
 import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 

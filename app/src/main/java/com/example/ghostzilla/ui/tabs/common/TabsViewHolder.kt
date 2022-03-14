@@ -13,7 +13,7 @@ import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.models.settings.RecentlyItem
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
-import com.example.ghostzilla.ui.tabs.cryptos.TrendingCryptosAdapter
+import com.example.ghostzilla.ui.tabs.cryptos.recycler.TrendingCryptosAdapter
 
 class TabsViewHolder(
     val binding: ViewDataBinding,

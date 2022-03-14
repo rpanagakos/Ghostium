@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 
-abstract class BackToTopScrollListener(val view: View, val requeredContext: Context) :
+abstract class BackToTopScrollListener(val view: View, val requiredContext: Context) :
     RecyclerView.OnScrollListener() {
 
     private var animationStarted = false
@@ -25,11 +25,11 @@ abstract class BackToTopScrollListener(val view: View, val requeredContext: Cont
                     view.apply {
                         visibility = View.VISIBLE
                         val animation =
-                            AnimationUtils.loadAnimation(requeredContext, R.anim.fade_in)
+                            AnimationUtils.loadAnimation(requiredContext, R.anim.fade_in)
                         view.startAnimation(animation)
                     }
                 } else if (position <= 12 && animationStarted) {
-                    val animation = AnimationUtils.loadAnimation(requeredContext, R.anim.fade_out)
+                    val animation = AnimationUtils.loadAnimation(requiredContext, R.anim.fade_out)
                     view.startAnimation(animation)
                     Handler(Looper.getMainLooper()).postDelayed({
                         view.visibility = View.GONE

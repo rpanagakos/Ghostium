@@ -22,6 +22,7 @@ class TrendsFragment :
 
     override val viewModel: TrendsViewModel by activityViewModels()
 
+    //remove
     @Inject
     lateinit var currencyImpl: CurrencyImpl
 

@@ -13,7 +13,7 @@ import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.example.ghostzilla.utils.BackToTopScrollListener
-import com.example.ghostzilla.utils.appearStartCustomAnimation
+import com.example.ghostzilla.utils.appearWithCustomAnimation
 import com.example.ghostzilla.utils.disappearWithCustomAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
@@ -70,7 +70,7 @@ class FavouriteFragment :
         })
         viewModel.isProcessing.observe(this, { isProcessing ->
             if (isProcessing) {
-                binding.menuLayout.appearStartCustomAnimation(R.anim.slide_up, requireContext())
+                binding.menuLayout.appearWithCustomAnimation(R.anim.slide_up, requireContext())
             } else {
                 binding.checkbox.isChecked = false
                 binding.menuLayout.disappearWithCustomAnimation(R.anim.slide_down, requireContext())

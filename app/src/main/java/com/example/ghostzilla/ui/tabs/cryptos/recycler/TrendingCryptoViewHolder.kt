@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.cryptos
+package com.example.ghostzilla.ui.tabs.cryptos.recycler
 
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR

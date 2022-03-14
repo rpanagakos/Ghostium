@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="com.example.ghostzilla.ui.tabs.cryptos.TrendingCryptosAdapter" />
+            type="com.example.ghostzilla.ui.tabs.cryptos.recycler.TrendingCryptosAdapter" />
 
     </data>
 

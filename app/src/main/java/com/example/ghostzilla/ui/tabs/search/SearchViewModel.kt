@@ -94,7 +94,7 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun getSearches() {
+    private fun getSearches() {
         viewModelScope.launch {
             kotlin.runCatching {
                 localRepository.fetchRecentlySearches()

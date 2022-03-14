@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.cryptos
+package com.example.ghostzilla.ui.tabs.cryptos.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

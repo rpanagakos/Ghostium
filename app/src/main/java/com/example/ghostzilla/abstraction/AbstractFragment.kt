@@ -29,7 +29,6 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
         observeViewModel()
         binding.setVariable(BR.viewModel, viewModel )
         binding.lifecycleOwner = viewLifecycleOwner
-        //otan xrisimopoiw boolean h string poy den einai livedata kalyptw ayth thn periptwsh
         //merge recyclerview
         //include to toolbar
         //linear -> linear -> 25ms

@@ -207,7 +207,7 @@ fun LottieAnimationView.enableAfterAnimation() {
     })
 }
 
-fun View.appearStartCustomAnimation(animationFile : Int, context: Context){
+fun View.appearWithCustomAnimation(animationFile : Int, context: Context){
     this.apply {
         startAnimation(AnimationUtils.loadAnimation(context, animationFile))
         visibility = View.VISIBLE

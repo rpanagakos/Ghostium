@@ -8,6 +8,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
@@ -21,7 +22,7 @@ import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
-import com.example.ghostzilla.utils.appearStartCustomAnimation
+import com.example.ghostzilla.utils.appearWithCustomAnimation
 import com.example.ghostzilla.utils.disappearWithCustomAnimation
 import com.example.ghostzilla.utils.getSpannableText
 import com.example.ghostzilla.utils.setTextViewLinkHtml
@@ -39,7 +40,7 @@ object TabsBinding {
     @JvmStatic
     fun View.slideAnimation(displaySliding : Boolean){
         if (displaySliding)
-            this.appearStartCustomAnimation(R.anim.fade_in, this.context)
+            this.appearWithCustomAnimation(R.anim.fade_in, this.context)
         else
             this.disappearWithCustomAnimation(R.anim.fade_out, this.context)
     }
@@ -140,14 +141,14 @@ object TabsBinding {
         chosenCurrency: CurrencyImpl?
     ) {
         if (cryptoPriceElement != null && chosenCurrency != null) {
-            val cryptoPrice = when (chosenCurrency?.getCurrency()) {
-                CurrencyItem.CurrencyID.EURO.value -> cryptoPriceElement?.eur
-                CurrencyItem.CurrencyID.DOLLAR.value -> cryptoPriceElement?.usd
-                CurrencyItem.CurrencyID.ADOLLAR.value -> cryptoPriceElement?.aud
-                CurrencyItem.CurrencyID.POUNDS.value -> cryptoPriceElement?.gbp
+            val cryptoPrice = when (chosenCurrency.getCurrency()) {
+                CurrencyItem.CurrencyID.EURO.value -> cryptoPriceElement.eur
+                CurrencyItem.CurrencyID.DOLLAR.value -> cryptoPriceElement.usd
+                CurrencyItem.CurrencyID.ADOLLAR.value -> cryptoPriceElement.aud
+                CurrencyItem.CurrencyID.POUNDS.value -> cryptoPriceElement.gbp
                 else -> 0.0
             }
-            this.convertPrice(cryptoPrice, chosenCurrency!!)
+            this.convertPrice(cryptoPrice, chosenCurrency)
         }
     }
 
@@ -227,7 +228,7 @@ object TabsBinding {
         when (result) {
             NOT_FOUND -> this.setAnimation("nothing_found.json")
             NO_INTERNET_CONNECTION, NETWORK_ERROR -> this.setAnimation("internet_connection.json")
-            else -> this.setImageDrawable(resources.getDrawable(R.drawable.ic_search_failed))
+            else -> this.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_search_failed, null))
         }
 
         this.playAnimation()
