@@ -33,6 +33,10 @@ class FavouriteFragment :
             (requireActivity() as TabsActivity).showMenuBar()
             findNavController().popBackStack()
         }
+
+        onBackPressed {
+            (requireActivity() as TabsActivity).showMenuBar()
+        }
         binding.favCryptosRecycler.apply {
             setHasFixedSize(true)
             addOnScrollListener(object :

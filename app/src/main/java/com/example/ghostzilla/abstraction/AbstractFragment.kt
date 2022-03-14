@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
@@ -11,6 +12,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.databinding.library.baseAdapters.BR
+import androidx.navigation.fragment.findNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.ui.tabs.cryptos.DetailsActivity
@@ -50,6 +52,15 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
     }
 
     abstract fun stopOperations()
+
+    protected fun onBackPressed(click :() -> Unit){
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                click.invoke()
+                findNavController().popBackStack()
+            }
+        })
+    }
 
     fun navigateToDetailsActivty(data : CryptoItem, title : View, subTitle : View, image : ImageView){
         val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
