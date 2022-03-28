@@ -43,7 +43,6 @@ class Network @Inject constructor(val context: Context) : NetworkConnectivity {
             }
             )
         } catch (e: Exception) {
-            isOffline.invoke()
         }
     }
 

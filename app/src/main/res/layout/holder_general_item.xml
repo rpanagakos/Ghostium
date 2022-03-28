@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/xlarge_spacing"
-            android:paddingStart="@dimen/medium_spacing"
+            android:paddingStart="@dimen/large_spacing"
             android:paddingTop="26dp"
             android:paddingEnd="@dimen/large_spacing"
             android:paddingBottom="26dp"

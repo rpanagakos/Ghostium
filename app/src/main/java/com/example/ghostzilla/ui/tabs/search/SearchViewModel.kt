@@ -71,7 +71,7 @@ class SearchViewModel @Inject constructor(
                 dataRepository.searchCoin(coinID).collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
-                            displayMessage.value = false
+                            displayMessage.postValue(false)
                             val cryptoDetails = CryptoItem(
                                 currentPrice = it.marketData.currentPrice.getPrice(dataRepository.currencyImpl.getCurrency()),
                                 id = it.id,
@@ -85,7 +85,8 @@ class SearchViewModel @Inject constructor(
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)
-                            displayMessage.value = true
+                            if (displayMessage.value == false)
+                                displayMessage.postValue( true)
                         }
                     }
                 }
