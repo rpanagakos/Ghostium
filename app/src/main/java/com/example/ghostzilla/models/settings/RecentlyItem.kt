@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.ghostzilla.abstraction.LocalModel
 
 @Entity(tableName = "searches_table")
-class RecentlyItem(
+data class RecentlyItem(
     @PrimaryKey(autoGenerate = false)
     val searchedText : String): LocalModel {
 

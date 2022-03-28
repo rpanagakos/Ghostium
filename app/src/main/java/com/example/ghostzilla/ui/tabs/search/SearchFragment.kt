@@ -13,6 +13,8 @@ import com.example.ghostzilla.utils.changeImageOnEdittext
 import com.example.ghostzilla.utils.removeWhiteSpaces
 import com.example.ghostzilla.utils.searchQuery
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -23,6 +25,8 @@ class SearchFragment :
 
     override val viewModel: SearchViewModel by viewModels()
 
+    @FlowPreview
+    @ExperimentalCoroutinesApi
     override fun initLayout() {
         viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
@@ -42,7 +46,7 @@ class SearchFragment :
                     )
                     if (!this.text.isNullOrEmpty())
                         viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
-                    else {
+                    else if (this.hasFocus() && this.text.isNullOrEmpty()) {
                         binding.generalRecycler.removeAllViewsInLayout()
                         viewModel.clearSearch()
                     }
@@ -53,6 +57,8 @@ class SearchFragment :
 
     override fun observeViewModel() {}
 
-    override fun stopOperations() {}
+    override fun stopOperations() {
+
+    }
 
 }
