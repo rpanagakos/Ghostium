@@ -80,8 +80,8 @@ class SearchViewModel @Inject constructor(
                                 priceChangePercentage24h = it.marketData.priceChangePercentage24h,
                                 symbol = it.symbol
                             )
-                            localRepository.insertRecentItem(RecentlyItem(it.id))
                             searchAdapter.submitList(listOf(cryptoDetails) as List<LocalModel>)
+                            localRepository.insertRecentItem(RecentlyItem(it.id))
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)
@@ -107,14 +107,15 @@ class SearchViewModel @Inject constructor(
                     val list =
                         mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
                     searchAdapter.submitList(list.plus(it))
+                    displayMessage.value = false
                 }
             }
         }
     }
 
     fun clearSearch() {
+        displayMessage.value = false
         getSearches()
-        displayMessage.postValue(false)
     }
 
     override fun onClick(data: LocalModel, position: Int) {

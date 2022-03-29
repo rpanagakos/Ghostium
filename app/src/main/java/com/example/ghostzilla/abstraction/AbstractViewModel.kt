@@ -60,7 +60,7 @@ abstract class AbstractViewModel(application: Application) : AndroidViewModel(ap
                 }
             }
             else -> {
-                searchEditText.clearTextAndFocus(context)
+                searchEditText.setText("")
                 searchButton.setImageResource(R.drawable.ic_search)
             }
         }

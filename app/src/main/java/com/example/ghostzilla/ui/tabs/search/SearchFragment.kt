@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.search
 
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -25,8 +26,6 @@ class SearchFragment :
 
     override val viewModel: SearchViewModel by viewModels()
 
-    @FlowPreview
-    @ExperimentalCoroutinesApi
     override fun initLayout() {
         viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
@@ -37,7 +36,7 @@ class SearchFragment :
         }
         binding.searchLayout.searchEditText.apply {
             searchQuery()
-                .debounce(350)
+                .debounce(400)
                 .onEach {
                     binding.searchLayout.searchButton.changeImageOnEdittext(
                         binding.searchLayout.searchEditText,
@@ -46,12 +45,18 @@ class SearchFragment :
                     )
                     if (!this.text.isNullOrEmpty())
                         viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
-                    else if (this.hasFocus() && this.text.isNullOrEmpty()) {
+                    else if (binding.searchLayout.searchEditText.hasFocus()) {
                         binding.generalRecycler.removeAllViewsInLayout()
                         viewModel.clearSearch()
                     }
                 }
                 .launchIn(lifecycleScope)
+            this.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
+                }
+                true
+            }
         }
     }
 
