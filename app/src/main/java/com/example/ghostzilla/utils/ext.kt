@@ -3,6 +3,8 @@ package com.example.ghostzilla.utils
 import android.animation.Animator
 import android.app.Activity
 import android.content.Context
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -18,14 +20,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.text.HtmlCompat
 import androidx.core.text.getSpans
 import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
-import com.example.ghostzilla.R
 import com.github.mikephil.charting.charts.LineChart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -156,6 +156,16 @@ fun TextView.setTextViewLinkHtml(html: String, linkClickCallBack: ((Int, String)
     movementMethod = LinkMovementMethod.getInstance()
 }
 
+fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2) :  SpannableString {
+    this.setSpan(
+        RelativeSizeSpan(1.1f),
+        0,
+        this.length - (fractionalDigits + 1),
+        Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+    )
+    return  this
+}
+
 fun getSpannableText(span: SpannableString, originalText: String): SpannableString {
     when {
         originalText.contains(".") -> {
@@ -216,19 +226,27 @@ fun LottieAnimationView.enableAfterAnimation() {
     })
 }
 
-fun View.appearWithCustomAnimation(animationFile : Int, context: Context){
+fun View.appearWithCustomAnimation(animationFile: Int, context: Context) {
     this.apply {
         startAnimation(AnimationUtils.loadAnimation(context, animationFile))
         visibility = View.VISIBLE
     }
 }
 
-fun View.disappearWithCustomAnimation(animationFile : Int, context: Context){
+fun View.disappearWithCustomAnimation(animationFile: Int, context: Context) {
     this.apply {
         startAnimation(AnimationUtils.loadAnimation(context, animationFile))
         visibility = View.GONE
     }
 }
+
+fun Double.format(currency: Currency, fractionalDigits: Int = 2): String =
+    NumberFormat.getCurrencyInstance()
+        .apply {
+            minimumFractionDigits = fractionalDigits
+            maximumFractionDigits = fractionalDigits
+            setCurrency(currency)
+        }.format(this)
 
 private fun SpannableStringBuilder.makeLinkClickable(
     span: URLSpan,

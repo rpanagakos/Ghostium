@@ -2,8 +2,10 @@ package com.example.ghostzilla.ui.tabs.common
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.icu.number.LocalizedNumberFormatter
 import android.icu.number.NumberFormatter
 import android.icu.number.Precision
+import android.icu.text.NumberFormat
 import android.icu.util.Currency
 import android.icu.util.ULocale
 import android.os.Build
@@ -26,11 +28,9 @@ import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
-import com.example.ghostzilla.utils.appearWithCustomAnimation
-import com.example.ghostzilla.utils.disappearWithCustomAnimation
-import com.example.ghostzilla.utils.getSpannableText
-import com.example.ghostzilla.utils.setTextViewLinkHtml
+import com.example.ghostzilla.utils.*
 import com.google.android.material.tabs.TabLayout
+import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -156,44 +156,20 @@ object TabsBinding {
         }
     }
 
-    /*@BindingAdapter("cryptoPrice", "currency")
-    @JvmStatic
-    fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
-        var dec = DecimalFormat("#,###.####")
-        var roundedPrice = dec.format(cryptoPrice)
-        if (roundedPrice.equals("0")) {
-            dec = DecimalFormat("#,###.######")
-            roundedPrice = dec.format(cryptoPrice)
-        }
-        val spannableInt = SpannableString(roundedPrice + currency.currencySymbol)
-        text = getSpannableText(spannableInt, roundedPrice)
-    }*/
-
     @BindingAdapter("cryptoPrice", "currency")
     @JvmStatic
     fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
-        var dec = DecimalFormat("#,###.####")
-        var roundedPrice = dec.format(cryptoPrice)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-           val price = NumberFormatter.with()
-                .unit(Currency.getInstance(currency.getCurrency()))
-                .precision(
-                    if (roundedPrice.equals(0))
-                        Precision.maxFraction(5)
-                    else
-                        Precision.maxFraction(3)
-                )
-                .locale(ULocale.getDefault())
-            val price2 = price.format(cryptoPrice).toString()
-            text = getSpannableText(SpannableString(price2), price2)
-        } else {
-            if (roundedPrice.equals("0")) {
-                dec = DecimalFormat("#,###.######")
-                roundedPrice = dec.format(cryptoPrice)
-            }
-            val spannableInt = SpannableString(currency.currencySymbol + roundedPrice )
-            text = getSpannableText(spannableInt, roundedPrice)
+        val dec = DecimalFormat("#,###.####")
+        val roundedPrice = dec.format(cryptoPrice)
+        if (roundedPrice.equals("0")) {
+            val price =  cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 5)
+            text = SpannableString(price).getSpannableTextForPrices(5)
         }
+        else {
+            val price =cryptoPrice.format(Currency.getInstance(currency.getCurrency()))
+            text = SpannableString(price).getSpannableTextForPrices()
+        }
+
     }
 
     @BindingAdapter("marketCapCrypto", "marketCapCurrency")
@@ -219,6 +195,7 @@ object TabsBinding {
             marketCap / 1000.0.pow(exp.toDouble()),
             "kMBTPE"[exp - 1]
         )
+        text = capValue
         val spannableInt = SpannableString(capValue)
         this.text = getSpannableText(spannableInt, capValue)
     }
