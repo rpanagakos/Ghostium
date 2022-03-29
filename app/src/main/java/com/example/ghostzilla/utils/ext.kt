@@ -167,6 +167,15 @@ fun getSpannableText(span: SpannableString, originalText: String): SpannableStri
                 Spanned.SPAN_EXCLUSIVE_INCLUSIVE
             )
         }
+        originalText.contains(",") -> {
+            val index = originalText.indexOf(",")
+            span.setSpan(
+                RelativeSizeSpan(1.1f),
+                0,
+                index,
+                Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+            )
+        }
         !originalText.isNullOrEmpty() -> {
             span.setSpan(
                 RelativeSizeSpan(1.1f),

@@ -33,7 +33,6 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
         binding.lifecycleOwner = viewLifecycleOwner
         //merge recyclerview
         //include to toolbar
-        //linear -> linear -> 25ms
         binding.executePendingBindings()
     }
 

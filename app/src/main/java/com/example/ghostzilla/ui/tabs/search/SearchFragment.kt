@@ -14,8 +14,6 @@ import com.example.ghostzilla.utils.changeImageOnEdittext
 import com.example.ghostzilla.utils.removeWhiteSpaces
 import com.example.ghostzilla.utils.searchQuery
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

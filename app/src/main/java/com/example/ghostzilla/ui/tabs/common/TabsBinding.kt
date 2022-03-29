@@ -2,10 +2,14 @@ package com.example.ghostzilla.ui.tabs.common
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.icu.number.NumberFormatter
+import android.icu.number.Precision
+import android.icu.util.Currency
+import android.icu.util.ULocale
+import android.os.Build
 import android.text.Html
 import android.text.SpannableString
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -38,7 +42,7 @@ object TabsBinding {
 
     @BindingAdapter("displaySliding")
     @JvmStatic
-    fun View.slideAnimation(displaySliding : Boolean){
+    fun View.slideAnimation(displaySliding: Boolean) {
         if (displaySliding)
             this.appearWithCustomAnimation(R.anim.fade_in, this.context)
         else
@@ -152,7 +156,7 @@ object TabsBinding {
         }
     }
 
-    @BindingAdapter("cryptoPrice", "currency")
+    /*@BindingAdapter("cryptoPrice", "currency")
     @JvmStatic
     fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
         var dec = DecimalFormat("#,###.####")
@@ -163,6 +167,33 @@ object TabsBinding {
         }
         val spannableInt = SpannableString(roundedPrice + currency.currencySymbol)
         text = getSpannableText(spannableInt, roundedPrice)
+    }*/
+
+    @BindingAdapter("cryptoPrice", "currency")
+    @JvmStatic
+    fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
+        var dec = DecimalFormat("#,###.####")
+        var roundedPrice = dec.format(cryptoPrice)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+           val price = NumberFormatter.with()
+                .unit(Currency.getInstance(currency.getCurrency()))
+                .precision(
+                    if (roundedPrice.equals(0))
+                        Precision.maxFraction(5)
+                    else
+                        Precision.maxFraction(3)
+                )
+                .locale(ULocale.getDefault())
+            val price2 = price.format(cryptoPrice).toString()
+            text = getSpannableText(SpannableString(price2), price2)
+        } else {
+            if (roundedPrice.equals("0")) {
+                dec = DecimalFormat("#,###.######")
+                roundedPrice = dec.format(cryptoPrice)
+            }
+            val spannableInt = SpannableString(currency.currencySymbol + roundedPrice )
+            text = getSpannableText(spannableInt, roundedPrice)
+        }
     }
 
     @BindingAdapter("marketCapCrypto", "marketCapCurrency")
@@ -228,7 +259,13 @@ object TabsBinding {
         when (result) {
             NOT_FOUND -> this.setAnimation("nothing_found.json")
             NO_INTERNET_CONNECTION, NETWORK_ERROR -> this.setAnimation("internet_connection.json")
-            else -> this.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_search_failed, null))
+            else -> this.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_search_failed,
+                    null
+                )
+            )
         }
 
         this.playAnimation()
