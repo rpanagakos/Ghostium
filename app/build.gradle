@@ -84,10 +84,6 @@ dependencies {
     // Paging 3.0
     implementation 'androidx.paging:paging-compose:1.0.0-alpha14'
 
-
-    // Coordinator Layout
-    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
-
     // Navigation Component
     implementation("androidx.navigation:navigation-compose:2.5.0-alpha03")
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
