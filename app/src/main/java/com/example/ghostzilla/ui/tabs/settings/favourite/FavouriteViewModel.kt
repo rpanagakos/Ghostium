@@ -13,6 +13,7 @@ import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.di.IoDispatcher
 import com.example.ghostzilla.models.CryptoItemDB
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.errors.mapper.NO_CRYPTOS
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.network.DataRepository
@@ -62,6 +63,7 @@ class FavouriteViewModel @Inject constructor(
     ) {
         this.callbacks = listener
         if (cryptos.value?.isNotEmpty() == true) {
+            favouriteAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
             var cryptosIds = cryptos.value!![0].id
             cryptos.value!!.drop(1).forEach { cryptoItem ->
                 cryptosIds = "$cryptosIds,${cryptoItem.id}"

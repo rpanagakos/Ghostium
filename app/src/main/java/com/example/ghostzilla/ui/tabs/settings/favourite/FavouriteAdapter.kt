@@ -8,8 +8,11 @@ import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
+import com.example.ghostzilla.databinding.HolderShimmerCryptosBinding
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.CryptoItemDB
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
+import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder
 import java.util.concurrent.atomic.AtomicInteger
 
 class FavouriteAdapter(
@@ -28,6 +31,12 @@ class FavouriteAdapter(
                 )
                 CryptoFavouriteHolder(view, listener, viewModel, currencyImpl)
             }
+            R.layout.holder_shimmer_cryptos -> {
+                val view = HolderShimmerCryptosBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                ShimmerViewHolder(view)
+            }
             else -> {
                 val view = HolderEmptyBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
@@ -42,12 +51,14 @@ class FavouriteAdapter(
             is CryptoFavouriteHolder -> {
                 holder.present(getItem(position), position = position)
             }
+            is ShimmerViewHolder -> holder.present(getItem(position), false)
             else -> Unit
         }
     }
 
     override fun getItemViewType(position: Int) = when (getItem(position)) {
         is CryptoItemDB -> R.layout.holder_favourite_item
+        is CryptoShimmer -> R.layout.holder_shimmer_cryptos
         else -> R.layout.holder_empty
     }
 

@@ -11,6 +11,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentFavouriteBinding
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import com.example.ghostzilla.utils.appearWithCustomAnimation
