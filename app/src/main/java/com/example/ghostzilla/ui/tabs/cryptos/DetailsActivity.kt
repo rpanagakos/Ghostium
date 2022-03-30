@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.cryptos
 
+import android.view.View
 import androidx.activity.viewModels
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
@@ -29,6 +30,7 @@ class DetailsActivity :
     private val viewModel: DetailsViewModel by viewModels()
 
     override fun initLayout() {
+        viewModel.isLoading.value = true
         cryptoItem = intent.getParcelableExtra("coin")
         viewModel.cryptoItem = CryptoItemDB(
             cryptoItem!!.id,
@@ -77,6 +79,12 @@ class DetailsActivity :
             sparkLineStyle.styleLineDataSet(it)
             binding.chartLine.data = LineData(it)
             binding.chartLine.invalidate()
+        })
+        viewModel.isLoading.observe(this,{
+            if (!it){
+                binding.layoutShimmer.root.visibility = View.GONE
+                binding.scrollView.visibility = View.VISIBLE
+            }
         })
     }
 

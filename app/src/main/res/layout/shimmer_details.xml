@@ -19,78 +19,78 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <View
-            android:id="@+id/lowPriceLabel"
+            android:id="@+id/lowPriceLabel2"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:background="@color/CoolGray"
-            app:layout_constraintEnd_toStartOf="@id/highPriceLabel"
+            app:layout_constraintEnd_toStartOf="@id/highPriceLabel2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/highPriceLabel"
+            android:id="@+id/highPriceLabel2"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:background="@color/CoolGray"
             app:layout_constraintEnd_toEndOf="@id/guideline"
             app:layout_constraintStart_toStartOf="@id/guideline"
-            app:layout_constraintTop_toTopOf="@id/lowPriceLabel" />
+            app:layout_constraintTop_toTopOf="@id/lowPriceLabel2" />
 
         <View
-            android:id="@+id/totalVolLabel"
+            android:id="@+id/totalVolLabel2"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:background="@color/CoolGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintTop_toTopOf="@id/lowPriceLabel" />
+            app:layout_constraintTop_toTopOf="@id/lowPriceLabel2" />
 
         <View
-            android:id="@+id/lowPriceValue"
+            android:id="@+id/lowPriceValue2"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
             android:background="@color/CoolGray"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lowPriceLabel" />
+            app:layout_constraintTop_toBottomOf="@id/lowPriceLabel2" />
 
         <View
-            android:id="@+id/highPriceValue"
+            android:id="@+id/highPriceValue2"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
             android:background="@color/CoolGray"
-            app:layout_constraintStart_toStartOf="@id/highPriceLabel"
-            app:layout_constraintTop_toBottomOf="@id/highPriceLabel" />
+            app:layout_constraintStart_toStartOf="@id/highPriceLabel2"
+            app:layout_constraintTop_toBottomOf="@id/highPriceLabel2" />
 
         <View
-            android:id="@+id/totalVolValue"
+            android:id="@+id/totalVolValue2"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
             android:background="@color/CoolGray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/totalVolLabel"
-            app:layout_constraintTop_toBottomOf="@id/totalVolLabel" />
+            app:layout_constraintStart_toStartOf="@+id/totalVolLabel2"
+            app:layout_constraintTop_toBottomOf="@id/totalVolLabel2" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/statsBoard"
+            android:id="@+id/statsBoard2"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginTop="@dimen/large_spacing"
             app:cardBackgroundColor="@color/CoolGray"
             app:cardCornerRadius="12dp"
-            app:layout_constraintTop_toBottomOf="@id/totalVolValue" />
+            app:layout_constraintTop_toBottomOf="@id/totalVolValue2" />
 
         <View
-            android:id="@+id/titleDescription"
+            android:id="@+id/titleDescription2"
             android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_marginTop="@dimen/large_spacing"
             android:background="@color/CoolGray"
-            app:layout_constraintTop_toBottomOf="@id/statsBoard"
+            app:layout_constraintTop_toBottomOf="@id/statsBoard2"
             app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

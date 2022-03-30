@@ -39,6 +39,7 @@ class DetailsViewModel @Inject constructor(
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
     val isFavourite = SingleLiveEvent<Boolean>()
+    val isLoading = SingleLiveEvent<Boolean>()
 
     val cryptoDetails = SingleLiveEvent<Coin>()
     private val _priceData = mutableListOf<Entry>()
@@ -75,6 +76,7 @@ class DetailsViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             cryptoDetails.postValue(it)
+                            isLoading.postValue(false)
                         } ?: run { showToastMessage(SEARCH_ERROR) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)
