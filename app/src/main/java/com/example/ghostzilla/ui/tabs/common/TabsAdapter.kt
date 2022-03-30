@@ -10,6 +10,7 @@ import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.databinding.*
 import com.example.ghostzilla.di.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.opensea.Asset
 import com.example.ghostzilla.models.settings.AppOption
@@ -70,6 +71,12 @@ class TabsAdapter(
                 )
                 TabsViewHolder(view, listener)
             }
+            R.layout.holder_shimmer_cryptos -> {
+                val view = HolderShimmerCryptosBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                ShimmerViewHolder(view)
+            }
             else -> {
                 val view = HolderEmptyBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
@@ -84,6 +91,7 @@ class TabsAdapter(
             is TabsViewHolder -> {
                 holder.present(getItem(position), position == itemCount - 1)
             }
+            is ShimmerViewHolder -> holder.present(getItem(position), false)
             else -> Unit
         }
     }
@@ -96,6 +104,7 @@ class TabsAdapter(
         is RecentlyItem -> R.layout.holder_recently_item
         is TitleRecyclerItem -> R.layout.holder_title_item
         is TredingCoins -> R.layout.holder_trending_coins_items
+        is CryptoShimmer -> R.layout.holder_shimmer_cryptos
         else -> R.layout.holder_empty
     }
 

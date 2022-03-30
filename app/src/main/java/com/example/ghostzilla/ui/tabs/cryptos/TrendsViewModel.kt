@@ -13,6 +13,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.Cryptos
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.example.ghostzilla.models.generic.GenericResponse
@@ -63,6 +64,8 @@ class TrendsViewModel @Inject constructor(
         ) -> Unit
     ) {
         this.callbacks = listener
+        if (trendsAdapter.currentList.size == 0)
+            trendsAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
         //if (networkConnectivity.isConnected())
             getAllCryptos()
         /*else {

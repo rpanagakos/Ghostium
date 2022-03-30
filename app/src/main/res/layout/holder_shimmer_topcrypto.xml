@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/coinImage"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:elevation="3dp"
+            android:background="@drawable/contract_image_trends"
+            app:layout_constraintBottom_toTopOf="@id/constraintParentCoin"
+            app:layout_constraintEnd_toEndOf="@id/constraintParentCoin"
+            app:layout_constraintStart_toStartOf="@id/constraintParentCoin"
+            app:layout_constraintTop_toTopOf="@id/constraintParentCoin" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintParentCoin"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/xlarge_spacing"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            android:layout_marginBottom="@dimen/small_spacing"
+            android:background="@drawable/card_trends_item"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            android:paddingBottom="@dimen/ml_spacing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/coinName"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:layout_marginTop="@dimen/xlarge_spacing"
+                android:layout_marginEnd="@dimen/medium_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintBottom_toTopOf="@id/symbolName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/symbolName"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:background="@color/CoolGray"
+                android:layout_marginBottom="@dimen/medium_spacing"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:layout_marginEnd="@dimen/medium_spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/coinName" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.facebook.shimmer.ShimmerFrameLayout>
