@@ -67,7 +67,7 @@ object GuardianNetworkModule {
         @GuardianNetwork(TypeEnum.GSON) gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.COIN_GECKO_BASE_URL)
+            .baseUrl(Constants.GUARDIAN_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
