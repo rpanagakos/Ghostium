@@ -1,4 +1,4 @@
-package com.example.ghostzilla.utils
+package com.example.ghostzilla.utils.customview
 
 import android.annotation.TargetApi
 import android.content.Context

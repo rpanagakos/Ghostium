@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.ghostzilla.R
-import com.example.ghostzilla.utils.CustomScrollView
+import com.example.ghostzilla.utils.customview.CustomScrollView
 import com.example.ghostzilla.utils.customview.CustomMarker
 import com.example.ghostzilla.utils.fadeIn
 import com.example.ghostzilla.utils.fadeOut

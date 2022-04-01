@@ -102,7 +102,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail"/>
 
-        <com.example.ghostzilla.utils.CustomScrollView
+        <com.example.ghostzilla.utils.customview.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:visibility="gone"
@@ -251,7 +251,7 @@
                     app:layout_constraintTop_toTopOf="@id/website"
                     app:tint="@color/reddit_color" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.example.ghostzilla.utils.CustomScrollView>
+        </com.example.ghostzilla.utils.customview.CustomScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
