@@ -7,15 +7,12 @@ import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ArticleClickListener
 import com.example.ghostzilla.database.room.LocalRepository
-import com.example.ghostzilla.di.IoDispatcher
-import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.guardian.GuardianResponse
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -26,8 +23,6 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
-    private val currencyImpl: CurrencyImpl,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     application: Application
 ) : AbstractViewModel(application), ArticleClickListener {
 
