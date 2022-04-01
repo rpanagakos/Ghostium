@@ -5,7 +5,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.CryptoItemDB
 
 class CryptoFavouriteHolder(

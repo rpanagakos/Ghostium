@@ -1,4 +1,4 @@
-package com.example.ghostzilla.di
+package com.example.ghostzilla.di.common
 
 import android.content.Context
 import android.content.SharedPreferences

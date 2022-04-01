@@ -7,7 +7,7 @@
 
         <variable
             name="currencyImpl"
-            type="com.example.ghostzilla.di.CurrencyImpl" />
+            type="com.example.ghostzilla.di.common.CurrencyImpl" />
 
         <variable
             name="data"

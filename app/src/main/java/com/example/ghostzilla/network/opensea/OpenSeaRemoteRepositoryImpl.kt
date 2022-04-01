@@ -1,9 +1,7 @@
 package com.example.ghostzilla.network.opensea
 
-import com.example.ghostzilla.di.OpenSeaNetwork
-import com.example.ghostzilla.di.TypeEnum
-import com.example.ghostzilla.models.coingecko.CryptoItem
-import com.example.ghostzilla.models.coingecko.Cryptos
+import com.example.ghostzilla.di.opensea.OpenSeaNetwork
+import com.example.ghostzilla.di.common.TypeEnum
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.opensea.Assets
 import com.example.ghostzilla.utils.NetworkConnectivity

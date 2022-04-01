@@ -8,10 +8,9 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentTrendsBinding
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.tredings.Item
-import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

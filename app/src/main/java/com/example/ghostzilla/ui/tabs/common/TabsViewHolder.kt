@@ -6,7 +6,7 @@ import com.example.ghostzilla.abstraction.AbstractBindingViewHolder
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.opensea.Asset

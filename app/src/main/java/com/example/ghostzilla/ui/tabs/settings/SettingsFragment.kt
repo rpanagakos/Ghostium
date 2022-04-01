@@ -9,7 +9,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentSettingsBinding
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.settings.AppOption
 import com.example.ghostzilla.models.settings.AppOption.SettingType
 import com.example.ghostzilla.models.settings.LogoOption

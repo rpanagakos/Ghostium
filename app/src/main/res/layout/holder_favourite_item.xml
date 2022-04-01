@@ -9,7 +9,7 @@
 
         <variable
             name="currencyIml"
-            type="com.example.ghostzilla.di.CurrencyImpl" />
+            type="com.example.ghostzilla.di.common.CurrencyImpl" />
 
         <variable
             name="dataPosition"

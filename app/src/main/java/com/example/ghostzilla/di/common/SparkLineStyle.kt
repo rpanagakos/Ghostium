@@ -1,10 +1,8 @@
-package com.example.ghostzilla.di
+package com.example.ghostzilla.di.common
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.MotionEvent
-import android.view.View
-import android.widget.ScrollView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.ghostzilla.R

@@ -8,7 +8,7 @@ import com.example.ghostzilla.abstraction.AbstractAdapter
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.databinding.*
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins

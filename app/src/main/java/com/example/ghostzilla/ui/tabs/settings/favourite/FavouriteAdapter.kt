@@ -9,7 +9,7 @@ import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderFavouriteItemBinding
 import com.example.ghostzilla.databinding.HolderShimmerCryptosBinding
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder

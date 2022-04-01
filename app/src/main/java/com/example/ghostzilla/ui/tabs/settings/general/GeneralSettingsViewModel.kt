@@ -5,7 +5,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.models.settings.LanguageItem
 import com.example.ghostzilla.utils.LangContextWrapper

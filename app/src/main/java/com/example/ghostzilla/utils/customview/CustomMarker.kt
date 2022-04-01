@@ -3,7 +3,7 @@ package com.example.ghostzilla.utils.customview
 import android.content.Context
 import android.widget.TextView
 import com.example.ghostzilla.R
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertLongToDate
 import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertPrice
 import com.github.mikephil.charting.components.MarkerView

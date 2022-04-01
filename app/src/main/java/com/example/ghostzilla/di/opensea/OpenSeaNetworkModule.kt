@@ -1,14 +1,11 @@
-package com.example.ghostzilla.di
+package com.example.ghostzilla.di.opensea
 
-import android.content.Context
-import com.example.ghostzilla.network.coingecko.CoinGeckoApi
-import com.example.ghostzilla.utils.Constants.Companion.COIN_GECKO_BASE_URL
-import com.example.ghostzilla.utils.Network
-import com.example.ghostzilla.utils.NetworkConnectivity
+import com.example.ghostzilla.di.common.TypeEnum
+import com.example.ghostzilla.network.opensea.OpenSeaApi
+import com.example.ghostzilla.utils.Constants.Companion.OPEN_SEA_BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,20 +14,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
-object CoinGeckoNetworkModule {
+object OpenSeaNetworkModule {
 
     @Singleton
     @Provides
-    @CoinGeckoNetwork(TypeEnum.HTTPLOGGING)
+    @OpenSeaNetwork(TypeEnum.HTTPLOGGING)
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
 
     @Singleton
     @Provides
-    @CoinGeckoNetwork(TypeEnum.OKHTTP)
+    @OpenSeaNetwork(TypeEnum.OKHTTP)
     fun provideHttpClient(
-        @CoinGeckoNetwork(TypeEnum.HTTPLOGGING) httpLoggingInterceptor: HttpLoggingInterceptor
+        @OpenSeaNetwork(TypeEnum.HTTPLOGGING) httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder()
@@ -55,7 +53,7 @@ object CoinGeckoNetworkModule {
 
     @Singleton
     @Provides
-    @CoinGeckoNetwork(TypeEnum.GSON)
+    @OpenSeaNetwork(TypeEnum.GSON)
     fun provideConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
@@ -63,13 +61,13 @@ object CoinGeckoNetworkModule {
 
     @Singleton
     @Provides
-    @CoinGeckoNetwork(TypeEnum.RETROFIT)
+    @OpenSeaNetwork(TypeEnum.RETROFIT)
     fun provideRetrofitInstance(
-        @CoinGeckoNetwork(TypeEnum.OKHTTP) okHttpClient: OkHttpClient,
-        @CoinGeckoNetwork(TypeEnum.GSON) gsonConverterFactory: GsonConverterFactory
+        @OpenSeaNetwork(TypeEnum.OKHTTP) okHttpClient: OkHttpClient,
+        @OpenSeaNetwork(TypeEnum.GSON) gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(COIN_GECKO_BASE_URL)
+            .baseUrl(OPEN_SEA_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
@@ -77,17 +75,11 @@ object CoinGeckoNetworkModule {
 
     @Singleton
     @Provides
-    @CoinGeckoNetwork(TypeEnum.APISERVICE)
+    @OpenSeaNetwork(TypeEnum.APISERVICE)
     fun provideApiService(
-        @CoinGeckoNetwork(TypeEnum.RETROFIT) retrofit: Retrofit
-    ): CoinGeckoApi {
-        return retrofit.create(CoinGeckoApi::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideNetworkConnectivity(@ApplicationContext context: Context): NetworkConnectivity {
-        return Network(context)
+        @OpenSeaNetwork(TypeEnum.RETROFIT) retrofit: Retrofit
+    ): OpenSeaApi {
+        return retrofit.create(OpenSeaApi::class.java)
     }
 
 }

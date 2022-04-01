@@ -1,4 +1,4 @@
-package com.example.ghostzilla.di
+package com.example.ghostzilla.di.common
 
 import com.example.ghostzilla.models.errors.ErrorManager
 import com.example.ghostzilla.models.errors.ErrorUseCase

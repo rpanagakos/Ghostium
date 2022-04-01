@@ -2,13 +2,7 @@ package com.example.ghostzilla.ui.tabs.common
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
-import android.icu.number.LocalizedNumberFormatter
-import android.icu.number.NumberFormatter
-import android.icu.number.Precision
-import android.icu.text.NumberFormat
 import android.icu.util.Currency
-import android.icu.util.ULocale
-import android.os.Build
 import android.text.Html
 import android.text.SpannableString
 import android.view.View
@@ -23,14 +17,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
-import com.example.ghostzilla.di.CurrencyImpl
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
 import com.example.ghostzilla.utils.*
 import com.google.android.material.tabs.TabLayout
-import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*

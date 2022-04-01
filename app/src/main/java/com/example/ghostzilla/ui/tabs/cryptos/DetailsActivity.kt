@@ -5,8 +5,8 @@ import androidx.activity.viewModels
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityDetailsBinding
-import com.example.ghostzilla.di.CurrencyImpl
-import com.example.ghostzilla.di.SparkLineStyle
+import com.example.ghostzilla.di.common.CurrencyImpl
+import com.example.ghostzilla.di.common.SparkLineStyle
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.utils.resetChart

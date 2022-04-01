@@ -1,5 +1,6 @@
-package com.example.ghostzilla.di
+package com.example.ghostzilla.di.opensea
 
+import com.example.ghostzilla.di.common.TypeEnum
 import javax.inject.Qualifier
 
 @Qualifier

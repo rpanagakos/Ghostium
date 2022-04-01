@@ -1,4 +1,4 @@
-package com.example.ghostzilla.di
+package com.example.ghostzilla.di.common
 
 import com.example.ghostzilla.network.coingecko.CoinGeckoRemoteRepository
 import com.example.ghostzilla.network.coingecko.CoinGeckoRemoteRepositoryImpl

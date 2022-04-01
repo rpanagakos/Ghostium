@@ -1,7 +1,7 @@
 package com.example.ghostzilla.network.coingecko
 
-import com.example.ghostzilla.di.CoinGeckoNetwork
-import com.example.ghostzilla.di.TypeEnum
+import com.example.ghostzilla.di.coingecko.CoinGeckoNetwork
+import com.example.ghostzilla.di.common.TypeEnum
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
