@@ -1,14 +1,16 @@
 package com.example.ghostzilla.network
 
-import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.di.IoDispatcher
+import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.Cryptos
 import com.example.ghostzilla.models.coingecko.charts.CoinPrices
 import com.example.ghostzilla.models.coingecko.coin.Coin
 import com.example.ghostzilla.models.coingecko.tredings.TredingCoins
 import com.example.ghostzilla.models.generic.GenericResponse
+import com.example.ghostzilla.models.guardian.GuardianResponse
 import com.example.ghostzilla.models.opensea.Assets
 import com.example.ghostzilla.network.coingecko.CoinGeckoRemoteRepository
+import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
 import com.example.ghostzilla.network.opensea.OpenSeaRemoteRepository
 import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -20,6 +22,7 @@ import javax.inject.Inject
 class DataRepository @Inject constructor(
     private val coinGeckoRemoteRepository: CoinGeckoRemoteRepository,
     private val openSeaRemoteRepository: OpenSeaRemoteRepository,
+    private val guardianRemoteRepository: GuardianRemoteRepository,
     val currencyImpl: CurrencyImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
@@ -51,6 +54,12 @@ class DataRepository @Inject constructor(
     suspend fun getFavouritesPrices(cryptosIds: String): Flow<GenericResponse<JsonObject>> {
         return flow {
             emit(coinGeckoRemoteRepository.getFavouritesPrices(cryptosIds, currencyImpl.getCurrency()))
+        }.flowOn(ioDispatcher)
+    }
+
+    suspend fun getLatestNews( content: String, orderBy: String, showFields: String) : Flow<GenericResponse<GuardianResponse>>{
+        return flow {
+            emit(guardianRemoteRepository.getLatestNews(content = content, orderBy, showFields ))
         }.flowOn(ioDispatcher)
     }
 

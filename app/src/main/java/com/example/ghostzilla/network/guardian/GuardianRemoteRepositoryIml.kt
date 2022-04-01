@@ -17,7 +17,16 @@ class GuardianRemoteRepositoryIml @Inject constructor(
         orderBy: String,
         showFields: String
     ): GenericResponse<GuardianResponse> {
-        TODO("Not yet implemented")
+        return when (val response = networkConnectivity.processCall {
+            (guardianApi::getLatestNews)(
+                content,
+                orderBy,
+                showFields
+            )
+        }) {
+            is GuardianResponse -> GenericResponse.Success(data = response)
+            else -> GenericResponse.DataError(errorCode = response as Int)
+        }
     }
 
 }

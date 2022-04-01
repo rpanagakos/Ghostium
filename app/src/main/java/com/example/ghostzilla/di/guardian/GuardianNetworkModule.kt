@@ -1,7 +1,7 @@
 package com.example.ghostzilla.di.guardian
 
 import com.example.ghostzilla.di.common.TypeEnum
-import com.example.ghostzilla.network.coingecko.CoinGeckoApi
+import com.example.ghostzilla.network.guardian.GuardianApi
 import com.example.ghostzilla.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -78,8 +78,8 @@ object GuardianNetworkModule {
     @GuardianNetwork(TypeEnum.APISERVICE)
     fun provideApiService(
         @GuardianNetwork(TypeEnum.RETROFIT) retrofit: Retrofit
-    ): CoinGeckoApi {
-        return retrofit.create(CoinGeckoApi::class.java)
+    ): GuardianApi {
+        return retrofit.create(GuardianApi::class.java)
     }
 
 }
