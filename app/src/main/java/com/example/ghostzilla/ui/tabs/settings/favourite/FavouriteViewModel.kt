@@ -63,7 +63,6 @@ class FavouriteViewModel @Inject constructor(
     ) {
         this.callbacks = listener
         if (cryptos.value?.isNotEmpty() == true) {
-            favouriteAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
             var cryptosIds = cryptos.value!![0].id
             cryptos.value!!.drop(1).forEach { cryptoItem ->
                 cryptosIds = "$cryptosIds,${cryptoItem.id}"

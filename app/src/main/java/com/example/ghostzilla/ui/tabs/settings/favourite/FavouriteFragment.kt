@@ -30,6 +30,7 @@ class FavouriteFragment :
 
     override fun initLayout() {
         binding.title = args.title
+        viewModel.favouriteAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
         backButtonFavourite.setOnClickListener {
             (requireActivity() as TabsActivity).showMenuBar()
             findNavController().popBackStack()
