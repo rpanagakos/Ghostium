@@ -39,6 +39,7 @@ object GuardianNetworkModule {
                 val originalHttpUrl = original.url
 
                 val url = originalHttpUrl.newBuilder()
+                    .addQueryParameter("api-key", Constants.GUARDIAN_API_KEY)
                     .build()
 
                 val requestBuilder = original.newBuilder().url(url)
