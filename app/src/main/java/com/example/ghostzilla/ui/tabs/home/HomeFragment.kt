@@ -8,6 +8,7 @@ import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentHomeBinding
+import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,6 +22,8 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(R.layo
     override val viewModel: HomeViewModel by viewModels()
 
     override fun initLayout() {
+        binding.articlesRecyclerView.addOnScrollListener(object :
+            BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         viewModel.runOperation() { data: LocalModel -> }
     }
 
