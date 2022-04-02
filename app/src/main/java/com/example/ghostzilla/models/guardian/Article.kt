@@ -3,7 +3,7 @@ package com.example.ghostzilla.models.guardian
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class Article(
     @SerializedName("apiUrl")
     val apiUrl: String,
     @SerializedName("fields")

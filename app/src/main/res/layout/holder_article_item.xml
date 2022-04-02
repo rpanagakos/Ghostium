@@ -7,7 +7,7 @@
 
         <variable
             name="article"
-            type="com.example.ghostzilla.models.guardian.Result" />
+            type="com.example.ghostzilla.models.guardian.Article" />
 
     </data>
 

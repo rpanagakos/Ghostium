@@ -14,7 +14,7 @@ import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.CryptoItemDB
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.guardian.GuardianResponse
-import com.example.ghostzilla.models.guardian.Result
+import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
 import com.example.ghostzilla.utils.*
@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
 
     lateinit var cryptoItem: CryptoItemDB
     var trendingTitle = SingleLiveEvent<GuardianResponse>()
-    private val _cryptoList = MutableLiveData<PagingData<Result>>()
+    private val _cryptoList = MutableLiveData<PagingData<Article>>()
 
     private var callbacks: (
         data: LocalModel
@@ -54,7 +54,7 @@ class HomeViewModel @Inject constructor(
         getLatestNews()
     }
 
-    suspend fun getCryptoList(): LiveData<PagingData<Result>> {
+    suspend fun getCryptoList(): LiveData<PagingData<Article>> {
         val response = guardianRemoteRepository.getLatestNewsDummy().cachedIn(viewModelScope)
         _cryptoList.value = response.value
         return response

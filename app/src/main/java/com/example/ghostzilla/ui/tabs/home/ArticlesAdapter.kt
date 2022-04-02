@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
-import com.example.ghostzilla.models.guardian.Result
+import com.example.ghostzilla.models.guardian.Article
 
-class ArticlesAdapter (private val cryptoClickListener: (article: com.example.ghostzilla.models.guardian.Result) -> Unit) :
-    PagingDataAdapter<Result, ArticlesAdapter.ViewHolder>(DiffUtilCallBack) {
+class ArticlesAdapter (private val cryptoClickListener: (article: com.example.ghostzilla.models.guardian.Article) -> Unit) :
+    PagingDataAdapter<Article, ArticlesAdapter.ViewHolder>(DiffUtilCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = DataBindingUtil.inflate<HolderArticleItemBinding>(
@@ -39,19 +39,19 @@ class ArticlesAdapter (private val cryptoClickListener: (article: com.example.gh
             }
         }
 
-        fun bind(item: Result) {
+        fun bind(item: Article) {
             with(binding) {
                 article = item
             }
         }
     }
 
-    object DiffUtilCallBack : DiffUtil.ItemCallback<Result>() {
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    object DiffUtilCallBack : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         }
     }

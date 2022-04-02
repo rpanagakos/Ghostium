@@ -9,7 +9,7 @@ import com.example.ghostzilla.di.common.TypeEnum
 import com.example.ghostzilla.di.guardian.GuardianNetwork
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.guardian.GuardianResponse
-import com.example.ghostzilla.models.guardian.Result
+import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.utils.NetworkConnectivity
 import javax.inject.Inject
 
@@ -35,7 +35,7 @@ class GuardianRemoteRepositoryIml @Inject constructor(
         }
     }
 
-    override suspend fun getLatestNewsDummy(): LiveData<PagingData<Result>> {
+    override suspend fun getLatestNewsDummy(): LiveData<PagingData<Article>> {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
