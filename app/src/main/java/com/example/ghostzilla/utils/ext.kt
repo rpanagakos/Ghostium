@@ -4,11 +4,13 @@ import android.animation.Animator
 import android.app.Activity
 import android.content.Context
 import android.icu.text.NumberFormat
+import android.icu.text.SimpleDateFormat
 import android.icu.util.Currency
 import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
+import android.text.format.DateUtils
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.RelativeSizeSpan
@@ -30,6 +32,8 @@ import com.github.mikephil.charting.charts.LineChart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
+import java.util.*
+
 
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
@@ -156,14 +160,14 @@ fun TextView.setTextViewLinkHtml(html: String, linkClickCallBack: ((Int, String)
     movementMethod = LinkMovementMethod.getInstance()
 }
 
-fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2) :  SpannableString {
+fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2): SpannableString {
     this.setSpan(
         RelativeSizeSpan(1.1f),
         0,
         this.length - (fractionalDigits + 1),
         Spanned.SPAN_EXCLUSIVE_INCLUSIVE
     )
-    return  this
+    return this
 }
 
 fun getSpannableText(span: SpannableString, originalText: String): SpannableString {
@@ -247,6 +251,21 @@ fun Double.format(currency: Currency, fractionalDigits: Int = 2): String =
             maximumFractionDigits = fractionalDigits
             setCurrency(currency)
         }.format(this)
+
+fun String.convertDateToAgoString(): String {
+    return try {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val date = inputFormat.parse(this)
+        val niceDateStr = DateUtils.getRelativeTimeSpanString(
+            date.time,
+            Calendar.getInstance().getTimeInMillis(),
+            DateUtils.MINUTE_IN_MILLIS
+        )
+        niceDateStr.toString()
+    } catch (e: Exception) {
+        this
+    }
+}
 
 private fun SpannableStringBuilder.makeLinkClickable(
     span: URLSpan,
