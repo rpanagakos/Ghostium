@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
+import com.example.ghostzilla.abstraction.AbstractPagingAdapter
 import com.example.ghostzilla.abstraction.DiffUtilClass
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
@@ -15,8 +16,7 @@ import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder
 import com.example.ghostzilla.ui.tabs.common.TabsViewHolder
 
-class ArticlesAdapter(private val cryptoClickListener: (article: com.example.ghostzilla.models.guardian.Article) -> Unit) :
-    PagingDataAdapter<LocalModel, RecyclerView.ViewHolder>(DiffUtilClass<LocalModel>()) {
+class ArticlesAdapter(private val cryptoClickListener: (article: com.example.ghostzilla.models.guardian.Article) -> Unit) : AbstractPagingAdapter(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
