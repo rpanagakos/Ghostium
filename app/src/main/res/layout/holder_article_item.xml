@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="article"
+            type="com.example.ghostzilla.models.guardian.Result" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/market_ripple"
+        android:background="@color/white">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/articleImage"
+            rectangleImageUrl="@{article.fields.thumbnail}"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:contentDescription="@{article.fields.headline}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/articleTitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/large_spacing"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:text="@{article.fields.headline}"
+            android:textAppearance="@style/caption_bold"
+            app:layout_constraintBottom_toTopOf="@+id/moreImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/articleImage"
+            app:layout_constraintTop_toTopOf="@id/articleImage"
+            tools:text="David Squires on … cryptocurrency and the football metaverse" />
+
+        <TextView
+            android:id="@+id/articleCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_spacing"
+            android:text="@{article.sectionName}"
+            android:textAppearance="@style/tiny_text"
+            android:textColor="@color/twitter_color"
+            app:layout_constraintBottom_toBottomOf="@+id/articleImage"
+            app:layout_constraintStart_toStartOf="@id/articleTitle"
+            tools:text="Technology" />
+
+        <View
+            android:id="@+id/bullet"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:background="@drawable/contract_image_trends"
+            android:backgroundTint="@color/Black3"
+            app:layout_constraintBottom_toBottomOf="@id/articleCategory"
+            app:layout_constraintStart_toEndOf="@id/articleCategory"
+            app:layout_constraintTop_toTopOf="@id/articleCategory" />
+
+        <TextView
+            android:id="@+id/dateArticle"
+            zDate="@{article.webPublicationDate}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:textAppearance="@style/tiny_text"
+            android:textColor="@color/Gray3"
+            app:layout_constraintBottom_toBottomOf="@id/articleCategory"
+            app:layout_constraintEnd_toStartOf="@+id/moreImage"
+            app:layout_constraintStart_toEndOf="@id/bullet"
+            app:layout_constraintTop_toTopOf="@id/articleCategory"
+            tools:text="16h ago" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/moreImage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_ellipsis_vertical"
+            android:layout_marginEnd="@dimen/large_spacing"
+            app:layout_constraintBottom_toBottomOf="@id/articleCategory"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/CoolGray"
+            android:layout_marginTop="@dimen/large_spacing"
+            app:layout_constraintTop_toBottomOf="@id/articleImage"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
