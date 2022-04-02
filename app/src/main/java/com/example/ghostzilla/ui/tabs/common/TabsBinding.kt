@@ -13,9 +13,9 @@ import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.example.ghostzilla.R
 import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.coin.MarketCap
@@ -54,6 +54,12 @@ object TabsBinding {
                 tab?.text = tabsLabel
             }
         }
+    }
+
+    @BindingAdapter("zDate")
+    @JvmStatic
+    fun TextView.convertToAgoString(zDate : String){
+        this.text = zDate.convertDateToAgoString()
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -111,9 +117,8 @@ object TabsBinding {
         if (imageUrl != null) {
             Glide.with(this.context)
                 .load(imageUrl)
-                .centerCrop()
                 .transition(DrawableTransitionOptions.withCrossFade(200))
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(16)))
+                .transform(CenterCrop(),RoundedCorners(24))
                 .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
                 .into(this)
         }
