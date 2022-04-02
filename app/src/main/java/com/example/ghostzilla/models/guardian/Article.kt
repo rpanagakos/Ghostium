@@ -1,6 +1,7 @@
 package com.example.ghostzilla.models.guardian
 
 
+import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
 data class Article(
@@ -28,4 +29,12 @@ data class Article(
     val webTitle: String,
     @SerializedName("webUrl")
     val webUrl: String
-)
+) : LocalModel {
+    override fun equalsContent(obj: LocalModel): Boolean {
+        return when(obj){
+            is Article -> obj.id == id && obj.fields == obj.fields
+            else -> false
+        }
+    }
+
+}

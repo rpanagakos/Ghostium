@@ -1,8 +1,8 @@
 package com.example.ghostzilla.ui.tabs.home
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -12,15 +12,13 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ArticleClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.CryptoItemDB
-import com.example.ghostzilla.models.generic.GenericResponse
-import com.example.ghostzilla.models.guardian.GuardianResponse
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
+import com.example.ghostzilla.ui.tabs.home.recycler.ArticlesAdapter
 import com.example.ghostzilla.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -34,51 +32,23 @@ class HomeViewModel @Inject constructor(
 ) : AbstractViewModel(application), ArticleClickListener {
 
     lateinit var cryptoItem: CryptoItemDB
-    var trendingTitle = SingleLiveEvent<GuardianResponse>()
-    private val _cryptoList = MutableLiveData<PagingData<Article>>()
+    private var callbacks: (data: LocalModel) -> Unit = { _ -> }
 
-    private var callbacks: (
-        data: LocalModel
-    ) -> Unit = { _ -> }
+    val articlesPagingAdapter by lazy {
+        ArticlesAdapter {
+            Toast.makeText(context, "fefefe", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
 
-
-    fun runOperation(
-        listener: (
-            data: LocalModel
-        ) -> Unit
-    ) {
+    fun runOperation(listener: (data: LocalModel) -> Unit) {
         this.callbacks = listener
-        getLatestNews()
     }
 
     suspend fun getCryptoList(): LiveData<PagingData<Article>> {
-        val response = guardianRemoteRepository.getLatestNewsDummy().cachedIn(viewModelScope)
-        _cryptoList.value = response.value
-        return response
-    }
-
-    private fun getLatestNews() {
-        viewModelScope.launch {
-            wrapEspressoIdlingResource {
-                dataRepository.getLatestNews(
-                    Constants.GUARDIAN_CONTENT,
-                    "newest",
-                    Constants.GUARDIAN_FIELDS
-                ).collect { response ->
-                    when (response) {
-                        is GenericResponse.Success -> response.data?.let {
-                            trendingTitle.postValue(it)
-                        } ?: run { showToastMessage(0) }
-                        is GenericResponse.DataError -> response.errorCode?.let { error ->
-                            checkErrorCode(error)
-                        }
-                    }
-                }
-            }
-        }
+        return guardianRemoteRepository.getLatestNewsDummy().cachedIn(viewModelScope)
     }
 
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {
@@ -112,7 +82,6 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun articleOnClick(data: LocalModel) {
-        TODO("Not yet implemented")
     }
 
 }
