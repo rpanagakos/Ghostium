@@ -7,7 +7,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
-import com.example.ghostzilla.databinding.DummyHolderBinding
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
 import com.example.ghostzilla.models.guardian.Result
 
