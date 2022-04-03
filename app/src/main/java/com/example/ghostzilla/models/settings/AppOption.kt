@@ -18,6 +18,8 @@ data class AppOption(
         CURRENCY,
         SHARE_APP,
         CONTACT_US,
-        RATE_APP
+        RATE_APP,
+        SAVE_ARTICLE,
+        SHARE_ARTICLE
     }
 }

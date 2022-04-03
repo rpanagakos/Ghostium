@@ -14,6 +14,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.articles.ArticlesFragment
+import com.example.ghostzilla.ui.tabs.articles.BottomsheetOption
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
 import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment
@@ -60,7 +61,8 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     }
 
     fun openBottomsheetOptions(data : LocalModel){
-
+        val bottomsheetOption = BottomsheetOption()
+        bottomsheetOption.show(supportFragmentManager, bottomsheetOption.tag)
     }
 
     override fun onBackPressed() {
