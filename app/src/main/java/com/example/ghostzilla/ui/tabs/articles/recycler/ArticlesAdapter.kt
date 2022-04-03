@@ -1,17 +1,13 @@
-package com.example.ghostzilla.ui.tabs.home.recycler
+package com.example.ghostzilla.ui.tabs.articles.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractPagingAdapter
-import com.example.ghostzilla.abstraction.DiffUtilClass
-import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderShimmerArticleBinding
-import com.example.ghostzilla.databinding.HolderShimmerCryptosBinding
 import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder

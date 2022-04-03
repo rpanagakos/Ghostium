@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.home
+package com.example.ghostzilla.ui.tabs.articles
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope

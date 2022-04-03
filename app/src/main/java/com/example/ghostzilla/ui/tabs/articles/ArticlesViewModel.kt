@@ -1,7 +1,6 @@
-package com.example.ghostzilla.ui.tabs.home
+package com.example.ghostzilla.ui.tabs.articles
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -16,7 +15,7 @@ import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
-import com.example.ghostzilla.ui.tabs.home.recycler.ArticlesAdapter
+import com.example.ghostzilla.ui.tabs.articles.recycler.ArticlesAdapter
 import com.example.ghostzilla.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

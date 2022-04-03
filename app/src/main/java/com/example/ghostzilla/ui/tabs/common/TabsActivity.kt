@@ -12,7 +12,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.intro.IntroActivity
-import com.example.ghostzilla.ui.tabs.home.ArticlesFragment
+import com.example.ghostzilla.ui.tabs.articles.ArticlesFragment
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
 import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment

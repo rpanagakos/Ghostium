@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_nfts" />
     <fragment
         android:id="@+id/articlesFragment"
-        android:name="com.example.ghostzilla.ui.tabs.home.ArticlesFragment"
+        android:name="com.example.ghostzilla.ui.tabs.articles.ArticlesFragment"
         android:label="fragment_articles"
         tools:layout="@layout/fragment_articles" />
     <fragment

@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.home.recycler
+package com.example.ghostzilla.ui.tabs.articles.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
