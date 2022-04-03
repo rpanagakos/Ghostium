@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:clickable="true"
-        android:foreground="@drawable/market_ripple">
+        android:foreground="@drawable/general_setting_ripple">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/articleImage"
