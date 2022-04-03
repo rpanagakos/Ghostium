@@ -47,7 +47,7 @@ class ArticlesViewModel @Inject constructor(
         this.callbacks = listener
     }
 
-    suspend fun getArticlesList(): LiveData<PagingData<Article>> {
+    suspend fun getArticlesList(): LiveData<PagingData<LocalModel>> {
         return guardianRemoteRepository.getLatestNewsDummy().cachedIn(viewModelScope)
     }
 

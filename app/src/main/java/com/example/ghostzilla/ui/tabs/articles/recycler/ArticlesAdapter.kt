@@ -8,8 +8,10 @@ import com.example.ghostzilla.abstraction.AbstractPagingAdapter
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderShimmerArticleBinding
+import com.example.ghostzilla.databinding.HolderTitleItemBinding
 import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.guardian.Article
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder
 import com.example.ghostzilla.ui.tabs.common.TabsViewHolder
 
@@ -29,6 +31,12 @@ class ArticlesAdapter(private val filledWithShimmer: () -> Unit) : AbstractPagin
                 )
                 ShimmerViewHolder(view)
             }
+            R.layout.holder_title_item -> {
+                val view = HolderTitleItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                TabsViewHolder(view)
+            }
             else -> {
                 val view = HolderEmptyBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
@@ -47,6 +55,9 @@ class ArticlesAdapter(private val filledWithShimmer: () -> Unit) : AbstractPagin
                     filledWithShimmer.invoke()
                 getItem(position)?.let { holder.present(it, false) } ?: Unit
             }
+            is TabsViewHolder -> {
+                getItem(position)?.let { holder.present(it, position == itemCount - 1) } ?: Unit
+            }
             else -> Unit
         }
     }
@@ -54,6 +65,7 @@ class ArticlesAdapter(private val filledWithShimmer: () -> Unit) : AbstractPagin
     override fun getItemViewType(position: Int) = when (getItem(position = position)) {
         is Article -> R.layout.holder_article_item
         is CryptoShimmer -> R.layout.holder_shimmer_article
+        is TitleRecyclerItem -> R.layout.holder_title_item
         else -> R.layout.holder_empty
     }
 
