@@ -36,7 +36,7 @@ class ArticlesViewModel @Inject constructor(
 
     val articlesPagingAdapter by lazy {
         ArticlesAdapter {
-            callbacks.invoke(CryptoShimmer())
+            callbacks.invoke(it)
         }
     }
 

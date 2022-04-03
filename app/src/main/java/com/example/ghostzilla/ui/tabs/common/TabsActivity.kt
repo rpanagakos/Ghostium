@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
+import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.articles.ArticlesFragment
@@ -56,6 +57,10 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     fun showMenuBar() {
         binding.bottomNavigation.visibility = View.VISIBLE
+    }
+
+    fun openBottomsheetOptions(data : LocalModel){
+
     }
 
     override fun onBackPressed() {

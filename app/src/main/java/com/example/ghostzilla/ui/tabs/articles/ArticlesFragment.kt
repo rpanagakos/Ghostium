@@ -9,6 +9,8 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentArticlesBinding
 import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
+import com.example.ghostzilla.models.guardian.Article
+import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -27,7 +29,10 @@ class ArticlesFragment :
         binding.articlesRecyclerView.addOnScrollListener(object :
             BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         viewModel.runOperation() { data: LocalModel ->
-            makeCall()
+            when (data) {
+                is CryptoShimmer -> makeCall()
+                is Article -> (requireActivity() as TabsActivity).openBottomsheetOptions(data)
+            }
         }
         if (viewModel.articlesPagingAdapter.itemCount == 0) {
             viewLifecycleOwner.lifecycleScope.launch {

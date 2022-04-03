@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractPagingAdapter
+import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderShimmerArticleBinding
@@ -15,7 +16,7 @@ import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder
 import com.example.ghostzilla.ui.tabs.common.TabsViewHolder
 
-class ArticlesAdapter(private val filledWithShimmer: () -> Unit) : AbstractPagingAdapter(){
+class ArticlesAdapter(private val generalAction: (data: LocalModel) -> Unit) : AbstractPagingAdapter() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
@@ -48,11 +49,11 @@ class ArticlesAdapter(private val filledWithShimmer: () -> Unit) : AbstractPagin
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         return when (holder) {
             is ArticlesViewHolder -> {
-                holder.present(getItem(position = position) as Article)
+                holder.present(getItem(position = position) as Article, generalAction)
             }
             is ShimmerViewHolder -> {
                 if (position == 1)
-                    filledWithShimmer.invoke()
+                    generalAction.invoke(CryptoShimmer())
                 getItem(position)?.let { holder.present(it, false) } ?: Unit
             }
             is TabsViewHolder -> {
