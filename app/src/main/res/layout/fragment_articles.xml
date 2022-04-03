@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.home.HomeViewModel" />
+            type="com.example.ghostzilla.ui.tabs.home.ArticlesViewModel" />
 
     </data>
 
