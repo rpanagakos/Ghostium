@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/trendsFragment"
         android:icon="@drawable/home_selector"
         android:title="" />
 
     <item
-        android:id="@+id/trendsFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/cryptos_selector"
         android:title="" />
 
