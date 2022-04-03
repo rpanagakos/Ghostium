@@ -48,7 +48,7 @@ class ArticlesViewModel @Inject constructor(
     }
 
     suspend fun getArticlesList(): LiveData<PagingData<LocalModel>> {
-        return guardianRemoteRepository.getLatestNewsDummy().cachedIn(viewModelScope)
+        return guardianRemoteRepository.getLatestNews().cachedIn(viewModelScope)
     }
 
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {

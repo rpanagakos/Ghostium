@@ -57,12 +57,6 @@ class DataRepository @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun getLatestNews( content: String, orderBy: String, showFields: String) : Flow<GenericResponse<GuardianResponse>>{
-        return flow {
-            emit(guardianRemoteRepository.getLatestNews(content = content, orderBy, showFields ))
-        }.flowOn(ioDispatcher)
-    }
-
     suspend fun getAllNfts() : Flow<GenericResponse<Assets>> {
         return flow {
             emit(openSeaRemoteRepository.getAllNfts())

@@ -18,24 +18,7 @@ class GuardianRemoteRepositoryIml @Inject constructor(
     private val networkConnectivity: NetworkConnectivity
 ) : GuardianRemoteRepository {
 
-    override suspend fun getLatestNews(
-        content: String,
-        orderBy: String,
-        showFields: String
-    ): GenericResponse<GuardianResponse> {
-        return when (val response = networkConnectivity.processCall {
-            (guardianApi::getLatestNews)(
-                content,
-                orderBy,
-                showFields
-            )
-        }) {
-            is GuardianResponse -> GenericResponse.Success(data = response)
-            else -> GenericResponse.DataError(errorCode = response as Int)
-        }
-    }
-
-    override suspend fun getLatestNewsDummy(): LiveData<PagingData<LocalModel>> {
+    override suspend fun getLatestNews(): LiveData<PagingData<LocalModel>> {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,

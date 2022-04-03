@@ -9,6 +9,5 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 
 @ActivityRetainedScoped
 interface GuardianRemoteRepository {
-    suspend fun getLatestNews(content : String, orderBy : String, showFields : String) : GenericResponse<GuardianResponse>
-    suspend fun getLatestNewsDummy(): LiveData<PagingData<LocalModel>>
+    suspend fun getLatestNews(): LiveData<PagingData<LocalModel>>
 }

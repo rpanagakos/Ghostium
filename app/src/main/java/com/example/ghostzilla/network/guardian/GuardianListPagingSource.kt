@@ -20,7 +20,7 @@ class GuardianListPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LocalModel> {
         val position = params.key ?: INITIAL_LOAD_SIZE
         return try {
-            val guardianResponse = guardianApi.getLatestNewsDummy(Constants.GUARDIAN_CONTENT, "newest", Constants.GUARDIAN_FIELDS, page = position, pageSize = params.loadSize)
+            val guardianResponse = guardianApi.getLatestNews(Constants.GUARDIAN_CONTENT, "newest", Constants.GUARDIAN_FIELDS, page = position, pageSize = params.loadSize)
             val nextKey = guardianResponse.response.currentPage + 1
             val finalList = listOf(TitleRecyclerItem("News in Brief")).plus(guardianResponse.response.articles)
             LoadResult.Page(

@@ -11,13 +11,6 @@ interface GuardianApi {
     suspend fun getLatestNews(
         @Query("q") content : String,
         @Query("order-by") order : String,
-        @Query("show-fields") showFields : String
-    ) : Response<GuardianResponse>
-
-    @GET("/search?")
-    suspend fun getLatestNewsDummy(
-        @Query("q") content : String,
-        @Query("order-by") order : String,
         @Query("show-fields") showFields : String,
         @Query("page") page : Int,
         @Query("page-size") pageSize : Int
