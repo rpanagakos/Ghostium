@@ -8,6 +8,7 @@ import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentHomeBinding
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,16 +25,24 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(R.layo
     override fun initLayout() {
         binding.articlesRecyclerView.addOnScrollListener(object :
             BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
-        viewModel.runOperation() { data: LocalModel -> }
+        viewModel.runOperation() { data: LocalModel ->
+            makeCall()
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            val list = listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer() )
+            viewModel.articlesPagingAdapter.submitData( PagingData.from(list))
+        }
     }
 
-    override fun observeViewModel() {
+    private fun makeCall(){
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getCryptoList().observe(viewLifecycleOwner, {
+            viewModel.getArticlesList().observe(viewLifecycleOwner, {
                 viewModel.articlesPagingAdapter.submitData(lifecycle, it as PagingData<LocalModel>)
             })
         }
     }
+
+    override fun observeViewModel() {}
 
     override fun stopOperations() {}
 }

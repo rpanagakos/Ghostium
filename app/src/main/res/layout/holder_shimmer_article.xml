@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:clickable="true"
+            android:foreground="@drawable/general_setting_ripple">
+
+            <View
+                android:id="@+id/articleImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="@dimen/large_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/firstLayer"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintEnd_toStartOf="@+id/moreImage"
+                app:layout_constraintStart_toEndOf="@id/articleImage"
+                app:layout_constraintTop_toTopOf="@id/articleImage" />
+
+            <View
+                android:id="@+id/secondLayer"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:layout_marginTop="@dimen/small_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintEnd_toStartOf="@+id/moreImage"
+                app:layout_constraintStart_toEndOf="@id/articleImage"
+                app:layout_constraintTop_toBottomOf="@id/firstLayer" />
+
+            <View
+                android:id="@+id/thirdLayer"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:layout_marginTop="@dimen/small_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintEnd_toStartOf="@+id/moreImage"
+                app:layout_constraintStart_toEndOf="@id/articleImage"
+                app:layout_constraintTop_toBottomOf="@id/secondLayer" />
+
+            <View
+                android:id="@+id/forthLayer"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:layout_marginTop="@dimen/small_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintEnd_toStartOf="@+id/moreImage"
+                app:layout_constraintStart_toEndOf="@id/articleImage"
+                app:layout_constraintTop_toBottomOf="@id/thirdLayer" />
+
+            <View
+                android:id="@+id/categoryLayer"
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:background="@color/CoolGray"
+                app:layout_constraintBottom_toBottomOf="@+id/articleImage"
+                app:layout_constraintStart_toStartOf="@id/firstLayer" />
+
+            <View
+                android:id="@+id/timeLayer"
+                android:layout_width="72dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintBottom_toBottomOf="@id/categoryLayer"
+                app:layout_constraintStart_toEndOf="@id/bullet"
+                app:layout_constraintTop_toTopOf="@id/categoryLayer" />
+
+            <View
+                android:id="@+id/bullet"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginStart="@dimen/medium_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintBottom_toBottomOf="@id/categoryLayer"
+                app:layout_constraintStart_toEndOf="@id/categoryLayer"
+                app:layout_constraintTop_toTopOf="@id/categoryLayer" />
+
+
+            <View
+                android:id="@+id/moreImage"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/large_spacing"
+                android:padding="2dp"
+                app:layout_constraintBottom_toBottomOf="@id/categoryLayer"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/large_spacing"
+                android:background="@color/CoolGray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/articleImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</layout>

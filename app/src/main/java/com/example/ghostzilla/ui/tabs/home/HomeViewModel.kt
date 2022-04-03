@@ -12,6 +12,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ArticleClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.CryptoItemDB
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
@@ -36,7 +37,7 @@ class HomeViewModel @Inject constructor(
 
     val articlesPagingAdapter by lazy {
         ArticlesAdapter {
-            Toast.makeText(context, "fefefe", Toast.LENGTH_SHORT).show()
+            callbacks.invoke(CryptoShimmer())
         }
     }
 
@@ -47,7 +48,7 @@ class HomeViewModel @Inject constructor(
         this.callbacks = listener
     }
 
-    suspend fun getCryptoList(): LiveData<PagingData<Article>> {
+    suspend fun getArticlesList(): LiveData<PagingData<Article>> {
         return guardianRemoteRepository.getLatestNewsDummy().cachedIn(viewModelScope)
     }
 
