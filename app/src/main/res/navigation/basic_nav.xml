@@ -24,10 +24,10 @@
         android:label="fragment_wallet"
         tools:layout="@layout/fragment_nfts" />
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.ghostzilla.ui.tabs.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/articlesFragment"
+        android:name="com.example.ghostzilla.ui.tabs.home.ArticlesFragment"
+        android:label="fragment_articles"
+        tools:layout="@layout/fragment_articles" />
     <fragment
         android:id="@+id/trendsFragment"
         android:name="com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment"

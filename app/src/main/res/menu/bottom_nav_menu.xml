@@ -7,7 +7,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/articlesFragment"
         android:icon="@drawable/cryptos_selector"
         android:title="" />
 

@@ -12,7 +12,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.ui.intro.IntroActivity
-import com.example.ghostzilla.ui.tabs.home.HomeFragment
+import com.example.ghostzilla.ui.tabs.home.ArticlesFragment
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
 import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment
@@ -60,7 +60,7 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     override fun onBackPressed() {
         when (nav_host_fragment_container.childFragmentManager.fragments[0]) {
-            is HomeFragment, is TrendsFragment,
+            is ArticlesFragment, is TrendsFragment,
             is NftsFragment, is SettingsFragment -> finishAffinity()
             else -> {
 

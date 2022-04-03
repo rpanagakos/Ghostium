@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class ArticlesViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
     private val guardianRemoteRepository: GuardianRemoteRepository,
