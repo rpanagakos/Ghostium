@@ -19,7 +19,7 @@
     <string name="back_button">Zurück Button</string>
     <string name="no_description">Es wurde keine Beschreibung bereitgestellt.</string>
     <string name="high_24h">Hoch (24s)</string>
-    <string name="mark_cap">Markt.</string>
+    <string name="mark_cap">Marktkap.</string>
     <string name="low_24h">Niedrig (24s)</string>
     <string name="description">Beschreibung</string>
     <string name="price">Preis:</string>
