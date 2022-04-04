@@ -28,10 +28,12 @@ data class Article(
     @SerializedName("webTitle")
     val webTitle: String,
     @SerializedName("webUrl")
-    val webUrl: String
+    val webUrl: String,
+    @SerializedName("shortUrl")
+    val shortUrl: String
 ) : LocalModel {
     override fun equalsContent(obj: LocalModel): Boolean {
-        return when(obj){
+        return when (obj) {
             is Article -> obj.id == id && obj.fields == obj.fields
             else -> false
         }

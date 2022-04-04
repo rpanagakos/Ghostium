@@ -12,6 +12,7 @@ import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.ActivityMainBinding
+import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.articles.ArticlesFragment
 import com.example.ghostzilla.ui.tabs.articles.BottomsheetOption
@@ -61,8 +62,12 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     }
 
     fun openBottomsheetOptions(data : LocalModel){
-        val bottomsheetOption = BottomsheetOption()
-        bottomsheetOption.show(supportFragmentManager, bottomsheetOption.tag)
+        when(data){
+            is Article -> {
+                val bottomsheetOption = BottomsheetOption(data)
+                bottomsheetOption.show(supportFragmentManager, bottomsheetOption.tag)
+            }
+        }
     }
 
     override fun onBackPressed() {

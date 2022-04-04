@@ -25,7 +25,7 @@
 
         <View
             android:id="@+id/line"
-            android:layout_width="40dp"
+            android:layout_width="24dp"
             android:layout_height="4dp"
             android:layout_marginTop="@dimen/large_spacing"
             android:background="@drawable/ic_bottom_sheet_line"
@@ -35,7 +35,7 @@
 
         <include
             android:id="@+id/firstOption"
-            layout="@layout/holder_options_item"
+            layout="@layout/option_bottomsheet_item"
             option="@{optionOne}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         <include
             android:id="@+id/secondOption"
             isLastOption="@{isLast}"
-            layout="@layout/holder_options_item"
+            layout="@layout/option_bottomsheet_item"
             option="@{optionSecond}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

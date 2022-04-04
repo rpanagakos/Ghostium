@@ -15,9 +15,6 @@
             name="option"
             type="com.example.ghostzilla.models.settings.AppOption" />
 
-        <variable
-            name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
 
     </data>
 
@@ -27,8 +24,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="@drawable/general_setting_ripple"
-        android:onClick="@{()-> clickHandler.onClick(option, optionText, optionText , optionImage)}">
+        android:foreground="@drawable/general_setting_ripple">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/optionImage"
