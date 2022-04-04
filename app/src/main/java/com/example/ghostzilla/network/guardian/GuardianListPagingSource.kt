@@ -11,7 +11,7 @@ private const val INITIAL_LOAD_SIZE = 1
 
 class GuardianListPagingSource(
     private val guardianApi: GuardianApi
-) : PagingSource<Int, LocalModel>(){
+) : PagingSource<Int, LocalModel>() {
 
     override fun getRefreshKey(state: PagingState<Int, LocalModel>): Int? {
         return null
@@ -20,9 +20,16 @@ class GuardianListPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LocalModel> {
         val position = params.key ?: INITIAL_LOAD_SIZE
         return try {
-            val guardianResponse = guardianApi.getLatestNews(Constants.GUARDIAN_CONTENT, "newest", Constants.GUARDIAN_FIELDS, page = position, pageSize = params.loadSize)
+            val guardianResponse = guardianApi.getLatestNews(
+                Constants.GUARDIAN_CONTENT, "newest", Constants.GUARDIAN_FIELDS,
+                page = position, pageSize = params.loadSize
+            )
+            val finalList =
+                if (guardianResponse.response.currentPage == 1)
+                    listOf(TitleRecyclerItem("News in Brief")).plus(guardianResponse.response.articles)
+                else
+                    guardianResponse.response.articles
             val nextKey = guardianResponse.response.currentPage + 1
-            val finalList = listOf(TitleRecyclerItem("News in Brief")).plus(guardianResponse.response.articles)
             LoadResult.Page(
                 data = finalList,
                 prevKey = null, // Only paging forward.
