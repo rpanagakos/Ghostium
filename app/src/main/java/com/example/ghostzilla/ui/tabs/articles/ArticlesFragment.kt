@@ -10,6 +10,7 @@ import com.example.ghostzilla.database.security.DataStoreUtil
 import com.example.ghostzilla.databinding.FragmentArticlesBinding
 import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.guardian.Article
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.ui.tabs.common.TabsActivity
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,7 @@ class ArticlesFragment :
         if (viewModel.articlesPagingAdapter.itemCount == 0) {
             viewLifecycleOwner.lifecycleScope.launch {
                 val list =
-                    listOf(CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer())
+                    listOf(CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer())
                 viewModel.articlesPagingAdapter.submitData(PagingData.from(list))
             }
         }
@@ -45,7 +46,7 @@ class ArticlesFragment :
 
     private fun makeCall() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getArticlesList().observe(viewLifecycleOwner, {
+            viewModel.getArticlesList(TitleRecyclerItem(this@ArticlesFragment.resources.getString(R.string.news_in_brief))).observe(viewLifecycleOwner, {
                 viewModel.articlesPagingAdapter.submitData(lifecycle, it as PagingData<LocalModel>)
             })
         }

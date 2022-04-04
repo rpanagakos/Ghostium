@@ -66,5 +66,6 @@
     <string name="trending_cryptos">Trending Cryptos</string>
     <string name="share_article">Share Article</string>
     <string name="save_article">Save Article</string>
+    <string name="news_in_brief">News in Brief</string>
 
 </resources>

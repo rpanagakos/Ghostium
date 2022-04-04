@@ -10,7 +10,8 @@ const val NETWORK_PAGE_SIZE = 10
 private const val INITIAL_LOAD_SIZE = 1
 
 class GuardianListPagingSource(
-    private val guardianApi: GuardianApi
+    private val guardianApi: GuardianApi,
+    private val title : TitleRecyclerItem
 ) : PagingSource<Int, LocalModel>() {
 
     override fun getRefreshKey(state: PagingState<Int, LocalModel>): Int? {
@@ -26,7 +27,7 @@ class GuardianListPagingSource(
             )
             val finalList =
                 if (guardianResponse.response.currentPage == 1)
-                    listOf(TitleRecyclerItem("News in Brief")).plus(guardianResponse.response.articles)
+                    listOf(title).plus(guardianResponse.response.articles)
                 else
                     guardianResponse.response.articles
             val nextKey = guardianResponse.response.currentPage + 1

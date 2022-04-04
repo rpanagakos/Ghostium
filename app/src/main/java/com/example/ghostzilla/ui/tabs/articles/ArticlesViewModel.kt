@@ -11,8 +11,7 @@ import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.abstraction.listeners.ArticleClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.CryptoItemDB
-import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
-import com.example.ghostzilla.models.guardian.Article
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
 import com.example.ghostzilla.ui.tabs.articles.recycler.ArticlesAdapter
@@ -47,8 +46,8 @@ class ArticlesViewModel @Inject constructor(
         this.callbacks = listener
     }
 
-    suspend fun getArticlesList(): LiveData<PagingData<LocalModel>> {
-        return guardianRemoteRepository.getLatestNews().cachedIn(viewModelScope)
+    suspend fun getArticlesList(title : TitleRecyclerItem): LiveData<PagingData<LocalModel>> {
+        return guardianRemoteRepository.getLatestNews(title = title).cachedIn(viewModelScope)
     }
 
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {

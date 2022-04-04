@@ -48,5 +48,6 @@
     <string name="trending_cryptos">Criptos di Tendenza</string>
     <string name="share_article">Condividi l\'art</string>
     <string name="save_article">Salva l\'art</string>
+    <string name="news_in_brief">Notizie in Breve</string>
 
 </resources>
