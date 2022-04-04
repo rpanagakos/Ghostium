@@ -96,22 +96,22 @@
 
         <include
             android:id="@+id/layoutShimmer"
+            layout="@layout/shimmer_details"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            layout="@layout/shimmer_details"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail"/>
+            app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail" />
 
         <com.example.ghostzilla.utils.customview.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:visibility="gone"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/large_spacing"
-            android:layout_marginEnd="@dimen/large_spacing"
             android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
             android:fillViewport="true"
             android:scrollbars="none"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail">
 
@@ -208,48 +208,47 @@
                     android:textAppearance="@style/medium_gray"
                     app:layout_constraintTop_toBottomOf="@id/titleDescription" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/website"
-                    android:layout_width="@dimen/xxlarge_spacing"
-                    android:layout_height="@dimen/xxlarge_spacing"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_marginTop="@dimen/xxlarge_spacing"
-                    android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.homepage[0])}"
-                    android:src="@drawable/ic_googlechrome"
-                    android:visibility="@{viewModel.cryptoDetails.links.homepage[0] == null ? View.GONE : View.VISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/twitter"
-                    app:layout_constraintHorizontal_bias="0.9"
-                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/descriptionText"
-                    app:layout_constraintVertical_bias="1" />
+                    app:layout_constraintVertical_bias="1">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/twitter"
-                    android:layout_width="@dimen/xxlarge_spacing"
-                    android:layout_height="@dimen/xxlarge_spacing"
-                    android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.twitter)}"
-                    android:src="@drawable/ic_twitter"
-                    android:visibility="@{viewModel.cryptoDetails.links.twitter == null ? View.GONE : View.VISIBLE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/website"
-                    app:tint="@color/twitter_color" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/website"
+                        android:layout_width="@dimen/xxlarge_spacing"
+                        android:layout_height="@dimen/xxlarge_spacing"
+                        android:layout_margin="@dimen/small_spacing"
+                        android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.homepage[0])}"
+                        android:src="@drawable/ic_googlechrome"
+                        android:visibility="@{viewModel.cryptoDetails.links.homepage[0] == null ? View.GONE : View.VISIBLE}" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/reddit"
-                    android:layout_width="@dimen/xxlarge_spacing"
-                    android:layout_height="@dimen/xxlarge_spacing"
-                    android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.subredditUrl)}"
-                    android:src="@drawable/ic_reddit"
-                    android:visibility="@{viewModel.cryptoDetails.links.subredditUrl == null ? View.GONE : View.VISIBLE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toEndOf="@+id/twitter"
-                    app:layout_constraintTop_toTopOf="@id/website"
-                    app:tint="@color/reddit_color" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/twitter"
+                        android:layout_width="@dimen/xxlarge_spacing"
+                        android:layout_height="@dimen/xxlarge_spacing"
+                        android:layout_margin="@dimen/small_spacing"
+                        android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.twitter)}"
+                        android:src="@drawable/ic_twitter"
+                        android:visibility="@{viewModel.cryptoDetails.links.twitter == null ? View.GONE : View.VISIBLE}"
+                        app:tint="@color/twitter_color" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/reddit"
+                        android:layout_width="@dimen/xxlarge_spacing"
+                        android:layout_height="@dimen/xxlarge_spacing"
+                        android:layout_margin="@dimen/small_spacing"
+                        android:onClick="@{()-> viewModel.visitCryptoSite(viewModel.cryptoDetails.links.subredditUrl)}"
+                        android:src="@drawable/ic_reddit"
+                        android:visibility="@{viewModel.cryptoDetails.links.subredditUrl == null ? View.GONE : View.VISIBLE}"
+                        app:tint="@color/reddit_color" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.example.ghostzilla.utils.customview.CustomScrollView>
 
