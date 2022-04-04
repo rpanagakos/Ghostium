@@ -1,44 +1,25 @@
 package com.example.ghostzilla.ui.tabs.articles
 
-import android.app.Dialog
 import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.ghostzilla.R
+import com.example.ghostzilla.abstraction.AbstractBottomSheetDialogFragment
 import com.example.ghostzilla.databinding.OptionsBottomSheetBinding
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.models.settings.AppOption
+import com.example.ghostzilla.ui.tabs.cryptos.TrendsViewModel
 import com.example.ghostzilla.utils.setSafeOnClickListener
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class BottomsheetOption(val article: Article) : BottomSheetDialogFragment() {
+@AndroidEntryPoint
+class BottomsheetOption(val article: Article) :
+    AbstractBottomSheetDialogFragment<OptionsBottomSheetBinding, TrendsViewModel>() {
 
-    private lateinit var binding: OptionsBottomSheetBinding
+    override val viewModel: TrendsViewModel by viewModels()
 
-    override fun getTheme() = R.style.AppBottomSheetDialogTheme
+    override fun getLayoutRes(): Int = R.layout.options_bottom_sheet
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = BottomSheetDialog(requireContext(), theme)
-        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        return dialog
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = OptionsBottomSheetBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = this
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initLayout() {
         binding.isLast = true
         binding.optionSecond = AppOption(
             "Share Article",
@@ -50,6 +31,9 @@ class BottomsheetOption(val article: Article) : BottomSheetDialogFragment() {
             R.drawable.ic_bookmark_light,
             AppOption.SettingType.SAVE_ARTICLE
         )
+    }
+
+    override fun observeViewModel() {
         binding.secondOption.parentOption.setSafeOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -60,5 +44,4 @@ class BottomsheetOption(val article: Article) : BottomSheetDialogFragment() {
             startActivity(shareIntent)
         }
     }
-
 }
