@@ -46,4 +46,6 @@
     <string name="top_fifty">Las Mejores 50 Criptos</string>
     <string name="recently_searches">Búsquedas Recientes</string>
     <string name="trending_cryptos">Criptos de Tendencia</string>
+    <string name="share_article">Comparte el Artículo</string>
+    <string name="save_article">Guardar el Artículo</string>
 </resources>

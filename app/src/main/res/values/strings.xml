@@ -64,5 +64,7 @@
     <string name="top_fifty">Top 50 Cryptos</string>
     <string name="recently_searches">Recent Searches</string>
     <string name="trending_cryptos">Trending Cryptos</string>
+    <string name="share_article">Share Article</string>
+    <string name="save_article">Save Article</string>
 
 </resources>

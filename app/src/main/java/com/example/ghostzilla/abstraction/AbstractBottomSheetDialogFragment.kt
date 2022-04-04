@@ -36,7 +36,7 @@ abstract class AbstractBottomSheetDialogFragment<T : ViewDataBinding, VM : ViewM
     ): View? {
         val bottomsheetBinding = BottomsheetFragmentGenericBinding.inflate(inflater, container, false)
         init(inflater, container)
-        bottomsheetBinding.containerFrame.addView( binding.root)
+        bottomsheetBinding.containerFrame.addView(binding.root)
         return bottomsheetBinding.root
     }
 

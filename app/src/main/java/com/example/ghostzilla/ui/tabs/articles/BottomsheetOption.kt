@@ -22,12 +22,12 @@ class BottomsheetOption(val article: Article) :
     override fun initLayout() {
         binding.isLast = true
         binding.optionSecond = AppOption(
-            "Share Article",
+            this.resources.getString(R.string.share_article),
             R.drawable.ic_share_light,
             AppOption.SettingType.SHARE_ARTICLE
         )
         binding.optionOne = AppOption(
-            "Save Article",
+            this.resources.getString(R.string.save_article),
             R.drawable.ic_bookmark_light,
             AppOption.SettingType.SAVE_ARTICLE
         )

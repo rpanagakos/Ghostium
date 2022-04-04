@@ -46,4 +46,6 @@
     <string name="top_fifty">Top 50 Kryptos</string>
     <string name="recently_searches">Letzte Suchen</string>
     <string name="trending_cryptos">Kryptos im Trend</string>
+    <string name="share_article">Teilen Sie den Artikel</string>
+    <string name="save_article">Speichern Sie den Artikel</string>
 </resources>
