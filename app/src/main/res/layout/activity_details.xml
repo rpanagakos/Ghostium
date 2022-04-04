@@ -111,7 +111,7 @@
             android:layout_marginEnd="@dimen/large_spacing"
             android:fillViewport="true"
             android:scrollbars="none"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail">
 
