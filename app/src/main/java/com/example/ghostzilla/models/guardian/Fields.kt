@@ -1,7 +1,10 @@
 package com.example.ghostzilla.models.guardian
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Fields(
     @SerializedName("byline")
     val byline: String,
@@ -11,4 +14,4 @@ data class Fields(
     val thumbnail: String,
     @SerializedName("trailText")
     val trailText: String
-)
+) : Parcelable

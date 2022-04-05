@@ -1,5 +1,7 @@
 package com.example.ghostzilla.ui.tabs.articles
 
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
@@ -29,10 +31,16 @@ class ArticlesFragment :
     override fun initLayout() {
         binding.articlesRecyclerView.addOnScrollListener(object :
             BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
-        viewModel.runOperation(null) { data: LocalModel ->
+        viewModel.runOperation() { data: LocalModel, title: TextView?, subTitle: TextView?, imageView: ImageView? ->
             when (data) {
                 is CryptoShimmer -> makeCall()
-                is Article -> (requireActivity() as TabsActivity).openBottomsheetOptions(data)
+                is Article ->
+                {
+                    if (title == null)
+                        (requireActivity() as TabsActivity).openBottomsheetOptions(data)
+                    else if (subTitle != null && imageView != null)
+                        navigateToArticlesActivty(data, title, subTitle, imageView)
+                }
             }
         }
         if (viewModel.articlesPagingAdapter.itemCount == 0) {

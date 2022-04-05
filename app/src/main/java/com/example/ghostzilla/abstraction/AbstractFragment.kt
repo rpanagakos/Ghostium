@@ -15,6 +15,8 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.navigation.fragment.findNavController
 import com.example.ghostzilla.R
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.guardian.Article
+import com.example.ghostzilla.ui.tabs.articles.ArticleDetailsActivity
 import com.example.ghostzilla.ui.tabs.cryptos.DetailsActivity
 
 abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayoutId: Int) :
@@ -75,6 +77,26 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
             ),
             Pair.create(
                 image, getString(R.string.transition_coin_image)
+            )
+        )
+        startActivity(intent, options.toBundle())
+        requireActivity().window.exitTransition = null
+    }
+
+    fun navigateToArticlesActivty(data : Article, title : View, subTitle : View, image : ImageView){
+        val intent = Intent(requireActivity(), ArticleDetailsActivity::class.java).apply {
+            putExtra("article", data)
+        }
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            requireActivity(),
+            Pair.create(
+                title, getString(R.string.transition_article_title)
+            ),
+            Pair.create(
+                subTitle, getString(R.string.transition_article_date)
+            ),
+            Pair.create(
+                image, getString(R.string.transition_article_image)
             )
         )
         startActivity(intent, options.toBundle())

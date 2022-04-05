@@ -58,8 +58,9 @@ object TabsBinding {
 
     @BindingAdapter("zDate")
     @JvmStatic
-    fun TextView.convertToAgoString(zDate : String){
-        this.text = zDate.convertDateToAgoString()
+    fun TextView.convertToAgoString(zDate: String?) {
+        if (!zDate.isNullOrEmpty())
+            this.text = zDate.convertDateToAgoString()
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -118,7 +119,7 @@ object TabsBinding {
             Glide.with(this.context)
                 .load(imageUrl)
                 .transition(DrawableTransitionOptions.withCrossFade(200))
-                .transform(CenterCrop(),RoundedCorners(24))
+                .transform(CenterCrop(), RoundedCorners(24))
                 .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
                 .into(this)
         }
@@ -160,11 +161,10 @@ object TabsBinding {
         val dec = DecimalFormat("#,###.####")
         val roundedPrice = dec.format(cryptoPrice)
         if (roundedPrice.equals("0")) {
-            val price =  cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 5)
+            val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 5)
             text = SpannableString(price).getSpannableTextForPrices(5)
-        }
-        else {
-            val price =cryptoPrice.format(Currency.getInstance(currency.getCurrency()))
+        } else {
+            val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()))
             text = SpannableString(price).getSpannableTextForPrices()
         }
 

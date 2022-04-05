@@ -34,6 +34,9 @@
     <string name="transition_coin_image" translatable="false">coinImage</string>
     <string name="transition_coin_name" translatable="false">coinName</string>
     <string name="transition_coin_symbol" translatable="false">coinSymbol</string>
+    <string name="transition_article_image" translatable="false">articleImage</string>
+    <string name="transition_article_title" translatable="false">articleTitle</string>
+    <string name="transition_article_date" translatable="false">articleDate</string>
     <string name="transition_option_image" translatable="false">optionImage</string>
     <string name="transition_option_name" translatable="false">optionName</string>
     <string name="all">All</string>

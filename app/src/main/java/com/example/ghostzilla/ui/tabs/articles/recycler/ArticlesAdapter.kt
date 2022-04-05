@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractPagingAdapter
 import com.example.ghostzilla.abstraction.LocalModel
+import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.databinding.HolderArticleItemBinding
 import com.example.ghostzilla.databinding.HolderEmptyBinding
 import com.example.ghostzilla.databinding.HolderShimmerArticleBinding
@@ -16,7 +17,8 @@ import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.ui.tabs.common.ShimmerViewHolder
 import com.example.ghostzilla.ui.tabs.common.TabsViewHolder
 
-class ArticlesAdapter(private val generalAction: (data: LocalModel) -> Unit) : AbstractPagingAdapter() {
+class ArticlesAdapter(private val listener: ItemOnClickListener,
+                      private val generalAction: (data: LocalModel) -> Unit) : AbstractPagingAdapter() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
@@ -24,7 +26,7 @@ class ArticlesAdapter(private val generalAction: (data: LocalModel) -> Unit) : A
                 val view = HolderArticleItemBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                ArticlesViewHolder(view)
+                ArticlesViewHolder(view, listener)
             }
             R.layout.holder_shimmer_article -> {
                 val view = HolderShimmerArticleBinding.inflate(

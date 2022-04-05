@@ -80,8 +80,8 @@
         <entry key="app/src/main/res/drawable/underline_text_input.xml" value="0.44635416666666666" />
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.125" />
         <entry key="app/src/main/res/font/montserrat.xml" value="0.59375" />
-        <entry key="app/src/main/res/layout/activity_article_details.xml" value="0.35445986078646197" />
-        <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_article_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_general.xml" value="0.4203703703703704" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30177514792899407" />
         <entry key="app/src/main/res/layout/back_button.xml" value="0.39091331317725053" />
@@ -105,7 +105,7 @@
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3618421052631579" />
         <entry key="app/src/main/res/layout/fragment_trends.xml" value="0.32592592592592595" />
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
-        <entry key="app/src/main/res/layout/holder_article_item.xml" value="0.33177083333333335" />
+        <entry key="app/src/main/res/layout/holder_article_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/holder_coin_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/holder_currency_item.xml" value="0.4293785310734463" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />

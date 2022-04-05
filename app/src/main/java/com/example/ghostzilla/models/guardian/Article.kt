@@ -1,12 +1,15 @@
 package com.example.ghostzilla.models.guardian
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "articles_table")
+@Parcelize
 data class Article(
     @SerializedName("apiUrl")
     val apiUrl: String,
@@ -33,7 +36,7 @@ data class Article(
     val webTitle: String,
     @SerializedName("webUrl")
     val webUrl: String
-) : LocalModel {
+) : LocalModel, Parcelable {
     override fun equalsContent(obj: LocalModel): Boolean {
         return when (obj) {
             is Article -> obj.id == id && obj.fields == obj.fields

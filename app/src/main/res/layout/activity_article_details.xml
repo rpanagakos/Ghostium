@@ -78,6 +78,7 @@
             app:layout_constraintTop_toTopOf="@id/backButton" />
 
         <com.example.ghostzilla.utils.customview.CustomScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/large_spacing"
@@ -86,11 +87,12 @@
             app:layout_constraintTop_toBottomOf="@id/articleDate">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerConstraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/headLineArticle"
+                    android:id="@+id/articleTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/large_spacing"
@@ -104,13 +106,13 @@
                     tools:text="The Hoxton hotel arrives in Portland" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageArticle"
+                    android:id="@+id/articleImage"
                     imageURLContract="@{article.fields.thumbnail}"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_marginTop="@dimen/large_spacing"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/headLineArticle"
+                    app:layout_constraintTop_toBottomOf="@id/articleTitle"
                     tools:background="@color/Black3" />
 
                 <TextView
@@ -119,9 +121,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/xlarge_spacing"
                     android:textAppearance="@style/large_text_bold"
-                    app:layout_constraintEnd_toEndOf="@id/headLineArticle"
-                    app:layout_constraintStart_toStartOf="@id/headLineArticle"
-                    app:layout_constraintTop_toBottomOf="@id/imageArticle"
+                    app:layout_constraintEnd_toEndOf="@id/articleTitle"
+                    app:layout_constraintStart_toStartOf="@id/articleTitle"
+                    app:layout_constraintTop_toBottomOf="@id/articleImage"
                     tools:text="Biden to announce plans to strengthen former president’s signature legislative achievement " />
 
                 <TextView
@@ -129,9 +131,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/large_spacing"
+                    android:layout_marginBottom="@dimen/xxlarge_spacing"
                     android:textAppearance="@style/regular_text"
-                    app:layout_constraintEnd_toEndOf="@id/headLineArticle"
-                    app:layout_constraintStart_toStartOf="@id/headLineArticle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/articleTitle"
+                    app:layout_constraintStart_toStartOf="@id/articleTitle"
                     app:layout_constraintTop_toBottomOf="@id/standFirstArticle"
                     tools:text=" Former president Barack Obama will today return to the White House for the first time since leaving it in January 2017, to celebrate the anniversary of the passage of the Affordable Care Act, his signature legislative achievement. Obama will deliver remarks alongside Joe Biden, who was his vice-president at the time and whom Obama has long credited as being instrumental in getting the legislation passed. “Joe Biden,” Obama said in a White House video released last year, “we did this together. We always talked about how if we could get the principle of universal coverage established, we could then build on it.” Vice-President Kamala Harris will also deliver remarks at the event this afternoon, where Biden is expected to announce “additional action to further strengthen the ACA and save families hundreds of dollars a month on their healthcare”. With Biden struggling in the polls in a midterm elections year – when parties which hold the White House often take a shellacking (ask Obama) – Democrats will hope for a boost from the sight of the 44th president promoting a popular policy. More to come" />
             </androidx.constraintlayout.widget.ConstraintLayout>
