@@ -80,6 +80,7 @@
         <entry key="app/src/main/res/drawable/underline_text_input.xml" value="0.44635416666666666" />
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.125" />
         <entry key="app/src/main/res/font/montserrat.xml" value="0.59375" />
+        <entry key="app/src/main/res/layout/activity_article_details.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_general.xml" value="0.4203703703703704" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30177514792899407" />
