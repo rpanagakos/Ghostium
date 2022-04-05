@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.tabs.articles.ArticleDetailsActivity">
 
         <include
@@ -36,7 +36,6 @@
             android:includeFontPadding="false"
             android:text="@{article.fields.byline}"
             android:textAppearance="@style/small_text_bold"
-            android:transitionName="@string/transition_coin_name"
             app:layout_constraintEnd_toStartOf="@+id/bookmarkButton"
             app:layout_constraintStart_toEndOf="@id/backButton"
             app:layout_constraintTop_toTopOf="@id/backButton"
@@ -51,7 +50,7 @@
             android:includeFontPadding="false"
             android:textAppearance="@style/tiny_regular"
             android:textColor="@color/Gray3"
-            android:transitionName="@string/transition_coin_symbol"
+            android:transitionName="@string/transition_article_date"
             app:layout_constraintEnd_toEndOf="@id/authorName"
             app:layout_constraintStart_toStartOf="@id/authorName"
             app:layout_constraintTop_toBottomOf="@id/authorName"
@@ -80,7 +79,7 @@
         <com.example.ghostzilla.utils.customview.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_spacing"
             android:fillViewport="true"
             android:scrollbars="none"
@@ -89,7 +88,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/containerConstraint"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/xxlarge_spacing">
 
                 <TextView
                     android:id="@+id/articleTitle"
@@ -100,6 +100,7 @@
                     android:lineSpacingMultiplier="1.5"
                     android:text="@{article.fields.headline}"
                     android:textAppearance="@style/xlarge_text_black"
+                    android:transitionName="@string/transition_article_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -111,12 +112,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_marginTop="@dimen/large_spacing"
+                    android:transitionName="@string/transition_article_image"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/articleTitle"
                     tools:background="@color/Black3" />
 
                 <TextView
                     android:id="@+id/standFirstArticle"
+                    displayHtmlString="@{article.fields.trailText}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/xlarge_spacing"
@@ -128,10 +131,10 @@
 
                 <TextView
                     android:id="@+id/bodyArticle"
+                    convertToHtmlString="@{article.fields.body}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/large_spacing"
-                    android:layout_marginBottom="@dimen/xxlarge_spacing"
                     android:textAppearance="@style/regular_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/articleTitle"

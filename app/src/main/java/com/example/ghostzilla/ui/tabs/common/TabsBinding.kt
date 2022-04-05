@@ -228,6 +228,15 @@ object TabsBinding {
             this.text = htmlBody
     }
 
+    @BindingAdapter("displayHtmlString")
+    @JvmStatic
+    fun TextView.displayHtmlString(text : String?){
+        if (text.isNullOrEmpty())
+            return
+        val htmlBody = Html.fromHtml(text, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        this.text = htmlBody
+    }
+
     @BindingAdapter("lottieStatus")
     @JvmStatic
     fun LottieAnimationView.playCustomAnimation(result: Int) {

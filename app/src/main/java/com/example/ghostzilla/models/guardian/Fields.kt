@@ -13,5 +13,9 @@ data class Fields(
     @SerializedName("thumbnail")
     val thumbnail: String,
     @SerializedName("trailText")
-    val trailText: String
+    val trailText: String,
+    @SerializedName("body")
+    val body: String,
+    @SerializedName("main")
+    val main: String
 ) : Parcelable
