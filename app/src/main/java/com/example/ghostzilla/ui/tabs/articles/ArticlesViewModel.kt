@@ -24,14 +24,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArticlesViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
-    private val localRepository: LocalRepository,
     private val guardianRemoteRepository: GuardianRemoteRepository,
     application: Application
 ) : AbstractViewModel(application), ArticleClickListener {
 
     private var callbacks: (data: LocalModel) -> Unit = { _ -> }
-    val isSaved = SingleLiveEvent<Boolean>()
 
     val articlesPagingAdapter by lazy {
         ArticlesAdapter { callbacks.invoke(it) }

@@ -67,6 +67,6 @@
     <string name="share_article">Share Article</string>
     <string name="save_article">Save Article</string>
     <string name="news_in_brief">News in Brief</string>
-    <string name="unsave_article">Unsave this article from your list</string>
+    <string name="unsave_article">Unsave Article</string>
 
 </resources>
