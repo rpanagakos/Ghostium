@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".ui.tabs.articles.ArticleDetailsActivity">
 
         <include
@@ -76,20 +76,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/backButton" />
 
-        <com.example.ghostzilla.utils.customview.CustomScrollView
+        <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/large_spacing"
             android:fillViewport="true"
             android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/articleDate">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/containerConstraint"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/xxlarge_spacing">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/articleTitle"
@@ -131,7 +132,7 @@
 
                 <TextView
                     android:id="@+id/bodyArticle"
-                    convertToHtmlString="@{article.fields.body}"
+                    displayHtmlString="@{article.fields.body}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/large_spacing"
@@ -142,7 +143,7 @@
                     app:layout_constraintTop_toBottomOf="@id/standFirstArticle"
                     tools:text=" Former president Barack Obama will today return to the White House for the first time since leaving it in January 2017, to celebrate the anniversary of the passage of the Affordable Care Act, his signature legislative achievement. Obama will deliver remarks alongside Joe Biden, who was his vice-president at the time and whom Obama has long credited as being instrumental in getting the legislation passed. “Joe Biden,” Obama said in a White House video released last year, “we did this together. We always talked about how if we could get the principle of universal coverage established, we could then build on it.” Vice-President Kamala Harris will also deliver remarks at the event this afternoon, where Biden is expected to announce “additional action to further strengthen the ACA and save families hundreds of dollars a month on their healthcare”. With Biden struggling in the polls in a midterm elections year – when parties which hold the White House often take a shellacking (ask Obama) – Democrats will hope for a boost from the sight of the 44th president promoting a popular policy. More to come" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.example.ghostzilla.utils.customview.CustomScrollView>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

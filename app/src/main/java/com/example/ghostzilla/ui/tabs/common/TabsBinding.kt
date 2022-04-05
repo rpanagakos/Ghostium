@@ -5,6 +5,8 @@ import android.graphics.drawable.Drawable
 import android.icu.util.Currency
 import android.text.Html
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,6 +24,7 @@ import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
+import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertToHtmlString
 import com.example.ghostzilla.utils.*
 import com.google.android.material.tabs.TabLayout
 import java.text.DecimalFormat
@@ -233,8 +236,12 @@ object TabsBinding {
     fun TextView.displayHtmlString(text : String?){
         if (text.isNullOrEmpty())
             return
-        val htmlBody = Html.fromHtml(text, HtmlCompat.FROM_HTML_MODE_COMPACT)
-        this.text = htmlBody
+        val newHtml = text.replace("\n", "<br>")
+        val sequence = Html.fromHtml(newHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        val strBuilder = SpannableStringBuilder(sequence)
+        this.text = strBuilder
+        this.linksClickable = true
+        this.movementMethod = LinkMovementMethod.getInstance()
     }
 
     @BindingAdapter("lottieStatus")
