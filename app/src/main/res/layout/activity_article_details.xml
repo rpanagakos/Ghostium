@@ -5,12 +5,137 @@
 
     <data>
 
+        <variable
+            name="article"
+            type="com.example.ghostzilla.models.guardian.Article" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.tabs.articles.ArticleDetailsActivity">
+
+        <include
+            android:id="@+id/backButton"
+            layout="@layout/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/authorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
+            android:fontFamily="@font/montserrat_compose_bold"
+            android:includeFontPadding="false"
+            android:text="@{article.fields.byline}"
+            android:textAppearance="@style/small_text_bold"
+            android:transitionName="@string/transition_coin_name"
+            app:layout_constraintEnd_toStartOf="@+id/bookmarkButton"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="@id/backButton"
+            tools:text="Pierre Georges" />
+
+        <TextView
+            android:id="@+id/articleDate"
+            zDate="@{article.webPublicationDate}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/tiny_regular"
+            android:textColor="@color/Gray3"
+            android:transitionName="@string/transition_coin_symbol"
+            app:layout_constraintEnd_toEndOf="@id/authorName"
+            app:layout_constraintStart_toStartOf="@id/authorName"
+            app:layout_constraintTop_toBottomOf="@id/authorName"
+            tools:text="24 March 2022" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/bookmarkButton"
+            android:layout_width="@dimen/large_container"
+            android:layout_height="@dimen/large_container"
+            android:layout_marginEnd="@dimen/medium_spacing"
+            app:layout_constraintBottom_toBottomOf="@+id/shareButton"
+            app:layout_constraintEnd_toStartOf="@+id/shareButton"
+            app:layout_constraintTop_toTopOf="@+id/shareButton"
+            app:lottie_fileName="bookmark.json" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/shareButton"
+            android:layout_width="@dimen/medium_container"
+            android:layout_height="@dimen/medium_container"
+            android:layout_marginEnd="@dimen/large_spacing"
+            android:padding="@dimen/small_spacing"
+            android:src="@drawable/ic_share_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/backButton" />
+
+        <com.example.ghostzilla.utils.customview.CustomScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/articleDate">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/headLineArticle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_spacing"
+                    android:layout_marginEnd="@dimen/large_spacing"
+                    android:lineSpacingMultiplier="1.5"
+                    android:text="@{article.fields.headline}"
+                    android:textAppearance="@style/xlarge_text_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="The Hoxton hotel arrives in Portland" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageArticle"
+                    imageURLContract="@{article.fields.thumbnail}"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="@dimen/large_spacing"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/headLineArticle"
+                    tools:background="@color/Black3" />
+
+                <TextView
+                    android:id="@+id/standFirstArticle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xlarge_spacing"
+                    android:textAppearance="@style/large_text_bold"
+                    app:layout_constraintEnd_toEndOf="@id/headLineArticle"
+                    app:layout_constraintStart_toStartOf="@id/headLineArticle"
+                    app:layout_constraintTop_toBottomOf="@id/imageArticle"
+                    tools:text="Biden to announce plans to strengthen former president’s signature legislative achievement " />
+
+                <TextView
+                    android:id="@+id/bodyArticle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_spacing"
+                    android:textAppearance="@style/regular_text"
+                    app:layout_constraintEnd_toEndOf="@id/headLineArticle"
+                    app:layout_constraintStart_toStartOf="@id/headLineArticle"
+                    app:layout_constraintTop_toBottomOf="@id/standFirstArticle"
+                    tools:text=" Former president Barack Obama will today return to the White House for the first time since leaving it in January 2017, to celebrate the anniversary of the passage of the Affordable Care Act, his signature legislative achievement. Obama will deliver remarks alongside Joe Biden, who was his vice-president at the time and whom Obama has long credited as being instrumental in getting the legislation passed. “Joe Biden,” Obama said in a White House video released last year, “we did this together. We always talked about how if we could get the principle of universal coverage established, we could then build on it.” Vice-President Kamala Harris will also deliver remarks at the event this afternoon, where Biden is expected to announce “additional action to further strengthen the ACA and save families hundreds of dollars a month on their healthcare”. With Biden struggling in the polls in a midterm elections year – when parties which hold the White House often take a shellacking (ask Obama) – Democrats will hope for a boost from the sight of the 44th president promoting a popular policy. More to come" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.example.ghostzilla.utils.customview.CustomScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
