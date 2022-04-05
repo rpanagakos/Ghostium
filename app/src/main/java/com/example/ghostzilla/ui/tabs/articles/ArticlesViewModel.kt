@@ -41,8 +41,6 @@ class ArticlesViewModel @Inject constructor(
     lateinit var networkConnectivity: NetworkConnectivity
 
     fun runOperation( article: Article?, listener: (data: LocalModel) -> Unit) {
-        if (article != null)
-            isArticleInDB(article.id)
         this.callbacks = listener
     }
 
@@ -50,35 +48,6 @@ class ArticlesViewModel @Inject constructor(
         return guardianRemoteRepository.getLatestNews(title = title).cachedIn(viewModelScope)
     }
 
-    fun isArticleInDB(articleId: String) {
-        viewModelScope.launch(Dispatchers.Default) {
-            kotlin.runCatching {
-                localRepository.isSavedArticle(articleId)
-            }.onSuccess {
-                isSaved.postValue(it)
-            }
-        }
-    }
-
-    fun articleActionOnClick(article : Article){
-        viewModelScope.launch(Dispatchers.Default) {
-            kotlin.runCatching {
-                if (isSaved.value == true)
-                    localRepository.deleteArticle(article)
-                else
-                    localRepository.insertFavouriteArticle(article)
-            }.onSuccess {
-                withContext(Dispatchers.Main) {
-                    callbacks.invoke(article)
-                }
-            }.onFailure {
-                callbacks.invoke(article)
-            }
-        }
-    }
-
-
-    override fun articleOnClick(data: LocalModel) {
-    }
+    override fun articleOnClick(data: LocalModel) {}
 
 }

@@ -23,7 +23,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.articles.ArticlesViewModel" />
+            type="com.example.ghostzilla.ui.tabs.articles.bottomsheet.BottomsheetArticlesViewModel" />
 
     </data>
 

@@ -1,4 +1,4 @@
-package com.example.ghostzilla.ui.tabs.articles
+package com.example.ghostzilla.ui.tabs.articles.bottomsheet
 
 import android.content.Intent
 import androidx.fragment.app.viewModels
@@ -12,18 +12,16 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BottomsheetOption(val article: Article) :
-    AbstractBottomSheetDialogFragment<OptionsBottomSheetBinding, ArticlesViewModel>() {
+    AbstractBottomSheetDialogFragment<OptionsBottomSheetBinding, BottomsheetArticlesViewModel>() {
 
-    override val viewModel: ArticlesViewModel by viewModels()
+    override val viewModel: BottomsheetArticlesViewModel by viewModels()
 
     override fun getLayoutRes(): Int = R.layout.options_bottom_sheet
 
     override fun initLayout() {
         binding.isLast = true
         binding.article = article
-        viewModel.runOperation(article) {
-            dismiss()
-        }
+        viewModel.runOperation(article) { dismiss() }
     }
 
     override fun observeViewModel() {

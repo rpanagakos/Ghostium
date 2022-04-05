@@ -15,7 +15,7 @@ import com.example.ghostzilla.databinding.ActivityMainBinding
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.articles.ArticlesFragment
-import com.example.ghostzilla.ui.tabs.articles.BottomsheetOption
+import com.example.ghostzilla.ui.tabs.articles.bottomsheet.BottomsheetOption
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
 import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment
