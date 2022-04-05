@@ -3,11 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-        <variable
-            name="optionOne"
-            type="com.example.ghostzilla.models.settings.AppOption" />
-
         <variable
             name="isLast"
             type="Boolean"
@@ -34,7 +29,7 @@
         <include
             android:id="@+id/firstOption"
             layout="@layout/option_bottomsheet_item"
-            option="@{optionOne}"
+            option="@{viewModel.saveOption}"
             android:onClick="@{() -> viewModel.articleActionOnClick(article)}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +40,7 @@
             android:id="@+id/secondOption"
             isLastOption="@{isLast}"
             layout="@layout/option_bottomsheet_item"
-            option="@{optionSecond}"
+            option="@{viewModel.shareOption}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
