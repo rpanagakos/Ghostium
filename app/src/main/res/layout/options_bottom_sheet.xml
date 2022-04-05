@@ -17,6 +17,14 @@
             name="optionSecond"
             type="com.example.ghostzilla.models.settings.AppOption" />
 
+        <variable
+            name="article"
+            type="com.example.ghostzilla.models.guardian.Article" />
+
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.ui.tabs.articles.ArticlesViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +35,7 @@
             android:id="@+id/firstOption"
             layout="@layout/option_bottomsheet_item"
             option="@{optionOne}"
+            android:onClick="@{() -> viewModel.articleActionOnClick(article)}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"

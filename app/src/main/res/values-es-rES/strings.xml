@@ -49,4 +49,5 @@
     <string name="share_article">Comparte el Artículo</string>
     <string name="save_article">Guardar el Artículo</string>
     <string name="news_in_brief">Noticias en Breve</string>
+    <string name="unsave_article">Unsave this article from your list</string>
 </resources>

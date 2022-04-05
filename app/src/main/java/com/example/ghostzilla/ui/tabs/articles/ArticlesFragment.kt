@@ -29,7 +29,7 @@ class ArticlesFragment :
     override fun initLayout() {
         binding.articlesRecyclerView.addOnScrollListener(object :
             BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
-        viewModel.runOperation() { data: LocalModel ->
+        viewModel.runOperation(null) { data: LocalModel ->
             when (data) {
                 is CryptoShimmer -> makeCall()
                 is Article -> (requireActivity() as TabsActivity).openBottomsheetOptions(data)
