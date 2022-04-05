@@ -68,5 +68,7 @@
     <string name="save_article">Save Article</string>
     <string name="news_in_brief">News in Brief</string>
     <string name="unsave_article">Unsave Article</string>
+    <string name="unsaved">Unsaved</string>
+    <string name="saved">Saved</string>
 
 </resources>

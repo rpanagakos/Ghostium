@@ -50,5 +50,7 @@
     <string name="save_article">Salva l\'art</string>
     <string name="news_in_brief">Notizie in Breve</string>
     <string name="unsave_article">Annulla salvataggio articolo</string>
+    <string name="unsaved">Non Salvato</string>
+    <string name="saved">Salvato</string>
 
 </resources>

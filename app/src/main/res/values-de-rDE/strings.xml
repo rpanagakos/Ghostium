@@ -50,4 +50,6 @@
     <string name="save_article">Speichern Sie den Artikel</string>
     <string name="news_in_brief">Kurznachrichten</string>
     <string name="unsave_article">Artikel Speichern</string>
+    <string name="unsaved">Ungespeichert</string>
+    <string name="saved">Gerettet</string>
 </resources>

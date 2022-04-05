@@ -50,4 +50,6 @@
     <string name="save_article">Guardar el Artículo</string>
     <string name="news_in_brief">Noticias en Breve</string>
     <string name="unsave_article">Desguardar este Artículo</string>
+    <string name="unsaved">No Guardado</string>
+    <string name="saved">Salvado</string>
 </resources>

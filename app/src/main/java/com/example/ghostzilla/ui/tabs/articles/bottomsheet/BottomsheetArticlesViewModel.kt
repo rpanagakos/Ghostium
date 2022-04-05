@@ -81,7 +81,10 @@ class BottomsheetArticlesViewModel @Inject constructor(
                     callbacks.invoke(article)
                     Toast.makeText(
                         context,
-                        if (isSaved.value == true) "Unsaved" else "Saved",
+                        if (isSaved.value == true)
+                            context.getString(R.string.unsaved)
+                        else
+                            context.getString(R.string.saved),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
