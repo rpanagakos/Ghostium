@@ -1,6 +1,5 @@
 package com.example.ghostzilla.models.guardian
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Fields(
