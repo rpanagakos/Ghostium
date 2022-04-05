@@ -46,4 +46,8 @@ class DataModule {
     @Provides
     fun provideTrendingCryptosDao(database: GhostzillaDatabase) = database.trendingDao()
 
+    @Singleton
+    @Provides
+    fun provideArticlessDao(database: GhostzillaDatabase) = database.articlesDao()
+
 }

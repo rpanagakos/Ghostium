@@ -1,15 +1,19 @@
 package com.example.ghostzilla.models.guardian
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.ghostzilla.abstraction.LocalModel
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "articles_table")
 data class Article(
     @SerializedName("apiUrl")
     val apiUrl: String,
     @SerializedName("fields")
     val fields: Fields,
     @SerializedName("id")
+    @PrimaryKey(autoGenerate = false)
     val id: String,
     @SerializedName("isHosted")
     val isHosted: Boolean,
