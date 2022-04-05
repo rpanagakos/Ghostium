@@ -1,6 +1,7 @@
 package com.example.ghostzilla.ui.tabs.articles.bottomsheet
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
@@ -78,6 +79,11 @@ class BottomsheetArticlesViewModel @Inject constructor(
             }.onSuccess {
                 withContext(Dispatchers.Main) {
                     callbacks.invoke(article)
+                    Toast.makeText(
+                        context,
+                        if (isSaved.value == true) "Unsaved" else "Saved",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }.onFailure {
                 callbacks.invoke(article)
