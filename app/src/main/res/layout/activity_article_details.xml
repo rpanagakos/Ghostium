@@ -9,6 +9,10 @@
             name="article"
             type="com.example.ghostzilla.models.guardian.Article" />
 
+        <variable
+            name="viewModel"
+            type="com.example.ghostzilla.ui.tabs.articles.ArticleDetailsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,6 +65,8 @@
             android:layout_width="@dimen/large_container"
             android:layout_height="@dimen/large_container"
             android:layout_marginEnd="@dimen/medium_spacing"
+            checkProgress="@{viewModel.isBookmarked()}"
+            android:onClick="@{() -> viewModel.bookmarkOnClick(article, bookmarkButton)}"
             app:layout_constraintBottom_toBottomOf="@+id/shareButton"
             app:layout_constraintEnd_toStartOf="@+id/shareButton"
             app:layout_constraintTop_toTopOf="@+id/shareButton"
@@ -72,6 +78,7 @@
             android:layout_height="@dimen/medium_container"
             android:layout_marginEnd="@dimen/large_spacing"
             android:padding="@dimen/small_spacing"
+            android:onSafeClick="@{() -> viewModel.shareClickEvent(article)}"
             android:src="@drawable/ic_share_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/backButton" />

@@ -3,14 +3,14 @@ package com.example.ghostzilla.ui.tabs.articles.bottomsheet
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.viewModelScope
+import com.airbnb.lottie.LottieAnimationView
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.models.settings.AppOption
-import com.example.ghostzilla.utils.NetworkConnectivity
-import com.example.ghostzilla.utils.SingleLiveEvent
+import com.example.ghostzilla.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class BottomsheetArticlesViewModel @Inject constructor(
 ) : AbstractViewModel(application) {
 
     private var callbacks: (data: LocalModel) -> Unit = { _ -> }
-    private val isSaved = SingleLiveEvent<Boolean>()
+    val isSaved = SingleLiveEvent<Boolean>()
     val saveOption = SingleLiveEvent<AppOption>()
     val shareOption = SingleLiveEvent<AppOption>()
 
@@ -90,6 +90,36 @@ class BottomsheetArticlesViewModel @Inject constructor(
                 }
             }.onFailure {
                 callbacks.invoke(article)
+            }
+        }
+    }
+
+    fun favouriteOnClick(article: Article, lottieAnimationView: LottieAnimationView) {
+        lottieAnimationView.disable()
+        if (lottieAnimationView.progress > Constants.LOTTIE_STARTING_STATE) {
+            viewModelScope.launch(Dispatchers.Default) {
+                kotlin.runCatching {
+                    localRepository.deleteArticle(article)
+                }.onSuccess {
+                    withContext(Dispatchers.Main) {
+                        lottieAnimationView.progress = 0f
+                        lottieAnimationView.enable()
+                    }
+                }.onFailure {
+                    lottieAnimationView.enable()
+                }
+            }
+        } else if (lottieAnimationView.progress == Constants.LOTTIE_STARTING_STATE) {
+            viewModelScope.launch(Dispatchers.Default) {
+                kotlin.runCatching {
+                    localRepository.insertFavouriteArticle(article = article)
+                }.onSuccess {
+                    withContext(Dispatchers.Main) {
+                        lottieAnimationView.enableAfterAnimation()
+                    }
+                }.onFailure {
+                    lottieAnimationView.enable()
+                }
             }
         }
     }

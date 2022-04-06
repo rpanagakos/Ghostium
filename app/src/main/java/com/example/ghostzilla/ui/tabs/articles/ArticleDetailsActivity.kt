@@ -1,5 +1,6 @@
 package com.example.ghostzilla.ui.tabs.articles
 
+import android.content.Intent
 import androidx.activity.viewModels
 import com.example.ghostzilla.R
 import com.example.ghostzilla.abstraction.AbstractActivity
@@ -14,14 +15,24 @@ class ArticleDetailsActivity :
     AbstractActivity<ActivityArticleDetailsBinding>(R.layout.activity_article_details) {
 
     private var article: Article? = null
-    private val viewModel: DetailsViewModel by viewModels()
+    private val viewModel: ArticleDetailsViewModel by viewModels()
 
     override fun initLayout() {
         article = intent.getParcelableExtra("article")
         when (article) {
             null -> onBackPressed()
             else -> {
+                binding.viewModel = viewModel
                 binding.article = article
+                viewModel.runOperation(article!!){
+                    val sendIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, it.webUrl)
+                        type = "text/plain"
+                    }
+                    val shareIntent = Intent.createChooser(sendIntent, null)
+                    startActivity(shareIntent)
+                }
             }
         }
     }
