@@ -13,14 +13,10 @@ class BookmarkFragment :
 
     override val viewModel: BookmarkViewModel by viewModels()
 
-    override fun initLayout() {
-    }
+    override fun initLayout() {}
 
-    override fun observeViewModel() {
-    }
+    override fun observeViewModel() {}
 
-    override fun stopOperations() {
-    }
-
+    override fun stopOperations() {}
 
 }
