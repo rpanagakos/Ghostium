@@ -24,7 +24,6 @@ import com.example.ghostzilla.models.coingecko.coin.MarketCap
 import com.example.ghostzilla.models.coingecko.coin.Price24h
 import com.example.ghostzilla.models.errors.mapper.*
 import com.example.ghostzilla.models.settings.CurrencyItem
-import com.example.ghostzilla.ui.tabs.common.TabsBinding.convertToHtmlString
 import com.example.ghostzilla.utils.*
 import com.google.android.material.tabs.TabLayout
 import java.text.DecimalFormat
@@ -237,7 +236,8 @@ object TabsBinding {
         if (text.isNullOrEmpty())
             return
         val newHtml = text.replace("\n", "<br>")
-        val sequence = Html.fromHtml(newHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        val imageGetter = ImageGetter(this.context, resources, this)
+        val sequence = Html.fromHtml(newHtml, HtmlCompat.FROM_HTML_MODE_LEGACY, imageGetter, null)
         val strBuilder = SpannableStringBuilder(sequence)
         this.text = strBuilder
         this.linksClickable = true
@@ -280,6 +280,14 @@ object TabsBinding {
         this.setOnLongClickListener {
             onLongClick.invoke()
             return@setOnLongClickListener true
+        }
+    }
+
+    @BindingAdapter("android:onSafeClick")
+    @JvmStatic
+    fun View.setOnSafeClick(onSafeClick: () -> Unit) {
+        this.setSafeOnClickListener {
+            onSafeClick.invoke()
         }
     }
 }
