@@ -17,6 +17,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/settingsBookmarkAction"
+            app:destination="@id/bookmarkFragment" />
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
@@ -45,4 +48,12 @@
         android:id="@+id/searchFragment"
         android:name="com.example.ghostzilla.ui.tabs.search.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.example.ghostzilla.ui.tabs.settings.bookmark.BookmarkFragment"
+        android:label="BookmarkFragment">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

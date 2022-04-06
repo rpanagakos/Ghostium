@@ -75,9 +75,17 @@ class SettingsFragment :
             when (data) {
                 is AppOption -> {
                     when (data.type) {
-                        SettingType.CRYPTO_FAV, SettingType.NEWS_FAV -> {
+                        SettingType.CRYPTO_FAV -> {
                             findNavController().navigate(
                                 SettingsFragmentDirections.settingsFavouriteAction(
+                                    data.title
+                                )
+                            )
+                            (requireActivity() as TabsActivity).hideMenuBar()
+                        }
+                        SettingType.NEWS_FAV -> {
+                            findNavController().navigate(
+                                SettingsFragmentDirections.settingsBookmarkAction(
                                     data.title
                                 )
                             )
