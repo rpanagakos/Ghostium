@@ -9,7 +9,7 @@ class Constants {
         const val COIN_GECKO_BASE_URL = "https://api.coingecko.com/"
         const val OPEN_SEA_BASE_URL = "https://api.opensea.io/"
         const val GUARDIAN_BASE_URL = "https://content.guardianapis.com/"
-        const val GUARDIAN_FIELDS = "headline,trailText,byline,thumbnail"
+        const val GUARDIAN_FIELDS = "all"
         const val GUARDIAN_CONTENT = "cryptos"
 
         //Room database
