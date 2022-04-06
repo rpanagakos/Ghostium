@@ -33,7 +33,7 @@ class ArticlesViewModel @Inject constructor(
 
     private var callbacks: (
         data: LocalModel, title: TextView?,
-        subTitle: TextView?, circleImageView: ImageView?
+        subTitle: TextView?, imageView: ImageView?
     ) -> Unit = { _, _, _, _ -> }
 
     val articlesPagingAdapter by lazy {
@@ -48,7 +48,7 @@ class ArticlesViewModel @Inject constructor(
             data: LocalModel,
             title: TextView?,
             subTitle: TextView?,
-            circleImageView: ImageView?
+            imageView: ImageView?
         ) -> Unit
     ) {
         this.callbacks = listener
