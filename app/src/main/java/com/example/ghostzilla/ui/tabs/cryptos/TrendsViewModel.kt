@@ -42,10 +42,7 @@ class TrendsViewModel @Inject constructor(
         circleImageView: ImageView
     ) -> Unit = { _, _, _, _ -> }
     val trendsAdapter: TabsAdapter by lazy {
-        TabsAdapter(this, dataRepository.currencyImpl).apply {
-            trendingTitle.postValue(TitleRecyclerItem(context.resources.getString(R.string.trending_cryptos)))
-            topTitle.postValue(TitleRecyclerItem(context.resources.getString(R.string.top_fifty)))
-        }
+        TabsAdapter(this, dataRepository.currencyImpl)
     }
 
     var trendingTitle = MutableLiveData<TitleRecyclerItem>()

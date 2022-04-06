@@ -10,6 +10,7 @@ import com.example.ghostzilla.abstraction.AbstractFragment
 import com.example.ghostzilla.abstraction.LocalModel
 import com.example.ghostzilla.databinding.FragmentSearchBinding
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.utils.changeImageOnEdittext
 import com.example.ghostzilla.utils.removeWhiteSpaces
 import com.example.ghostzilla.utils.searchQuery
@@ -25,6 +26,7 @@ class SearchFragment :
     override val viewModel: SearchViewModel by viewModels()
 
     override fun initLayout() {
+        viewModel.searchTitle.postValue(TitleRecyclerItem(this.resources.getString(R.string.recently_searches)))
         viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
                 is CryptoItem -> {

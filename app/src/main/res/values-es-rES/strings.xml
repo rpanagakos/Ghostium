@@ -52,4 +52,6 @@
     <string name="unsave_article">Desguardar este Artículo</string>
     <string name="unsaved">No Guardado</string>
     <string name="saved">Salvado</string>
+    <string name="no_searched_found">No tienes búsquedas recientes.</string>
+    <string name="no_cryptos_found">Nada en tus Criptos Favoritos.</string>
 </resources>

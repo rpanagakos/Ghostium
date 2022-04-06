@@ -52,5 +52,7 @@
     <string name="unsave_article">Annulla salvataggio articolo</string>
     <string name="unsaved">Non Salvato</string>
     <string name="saved">Salvato</string>
+    <string name="no_searched_found">Non hai ricerche recenti.</string>
+    <string name="no_cryptos_found">Niente nei tuoi Cryptos preferiti.</string>
 
 </resources>

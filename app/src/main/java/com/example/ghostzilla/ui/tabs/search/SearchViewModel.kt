@@ -45,6 +45,7 @@ class SearchViewModel @Inject constructor(
 
     val searches = SingleLiveEvent<MutableList<RecentlyItem>>()
     val searchText = SingleLiveEvent<String?>()
+    val searchTitle = SingleLiveEvent<TitleRecyclerItem>()
 
     val searchAdapter: TabsAdapter =
         TabsAdapter(
@@ -105,7 +106,7 @@ class SearchViewModel @Inject constructor(
                     displayMessage.postValue(true)
                 } else {
                     val list =
-                        mutableListOf<LocalModel>(TitleRecyclerItem(context.getString(R.string.recently_searches)))
+                        mutableListOf<LocalModel>(searchTitle.value ?: TitleRecyclerItem(context.getString(R.string.recently_searches)))
                     searchAdapter.submitList(list.plus(it))
                     displayMessage.value = false
                 }

@@ -52,4 +52,6 @@
     <string name="unsave_article">Artikel Speichern</string>
     <string name="unsaved">Ungespeichert</string>
     <string name="saved">Gerettet</string>
+    <string name="no_searched_found">Sie haben keine kürzlich durchgeführten Suchanfragen.</string>
+    <string name="no_cryptos_found">Nichts in Ihren Lieblings Kryptos.</string>
 </resources>

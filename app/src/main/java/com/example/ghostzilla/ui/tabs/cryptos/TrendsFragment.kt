@@ -11,6 +11,7 @@ import com.example.ghostzilla.databinding.FragmentTrendsBinding
 import com.example.ghostzilla.di.common.CurrencyImpl
 import com.example.ghostzilla.models.coingecko.CryptoItem
 import com.example.ghostzilla.models.coingecko.tredings.Item
+import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -26,6 +27,8 @@ class TrendsFragment :
     lateinit var currencyImpl: CurrencyImpl
 
     override fun initLayout() {
+        viewModel.trendingTitle.postValue(TitleRecyclerItem(this.resources.getString(R.string.trending_cryptos)))
+        viewModel.topTitle.postValue(TitleRecyclerItem(this.resources.getString(R.string.top_fifty)))
         binding.contractsTrendsRecycler.apply {
             setHasFixedSize(true)
             addOnScrollListener(object :

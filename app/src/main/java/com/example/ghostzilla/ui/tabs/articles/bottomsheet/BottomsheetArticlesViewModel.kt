@@ -94,35 +94,4 @@ class BottomsheetArticlesViewModel @Inject constructor(
         }
     }
 
-    fun favouriteOnClick(article: Article, lottieAnimationView: LottieAnimationView) {
-        lottieAnimationView.disable()
-        if (lottieAnimationView.progress > Constants.LOTTIE_STARTING_STATE) {
-            viewModelScope.launch(Dispatchers.Default) {
-                kotlin.runCatching {
-                    localRepository.deleteArticle(article)
-                }.onSuccess {
-                    withContext(Dispatchers.Main) {
-                        lottieAnimationView.progress = 0f
-                        lottieAnimationView.enable()
-                    }
-                }.onFailure {
-                    lottieAnimationView.enable()
-                }
-            }
-        } else if (lottieAnimationView.progress == Constants.LOTTIE_STARTING_STATE) {
-            viewModelScope.launch(Dispatchers.Default) {
-                kotlin.runCatching {
-                    localRepository.insertFavouriteArticle(article = article)
-                }.onSuccess {
-                    withContext(Dispatchers.Main) {
-                        lottieAnimationView.enableAfterAnimation()
-                    }
-                }.onFailure {
-                    lottieAnimationView.enable()
-                }
-            }
-        }
-    }
-
-
 }
