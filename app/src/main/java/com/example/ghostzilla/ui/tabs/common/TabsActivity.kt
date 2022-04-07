@@ -16,9 +16,10 @@ import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.ui.intro.IntroActivity
 import com.example.ghostzilla.ui.tabs.articles.ArticlesFragment
 import com.example.ghostzilla.ui.tabs.articles.bottomsheet.BottomsheetOption
+import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment
+import com.example.ghostzilla.ui.tabs.cryptos.TrendsViewModel
 import com.example.ghostzilla.ui.tabs.nft.NftsFragment
 import com.example.ghostzilla.ui.tabs.settings.SettingsFragment
-import com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment
 import com.example.ghostzilla.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,7 +29,8 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     private lateinit var navController: NavController
     var languageChanged = false
-    val viewModel : TabsViewModel by viewModels()
+    val viewModel: TabsViewModel by viewModels()
+    val viewModel2: TrendsViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +63,8 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
         binding.bottomNavigation.visibility = View.VISIBLE
     }
 
-    fun openBottomsheetOptions(data : LocalModel){
-        when(data){
+    fun openBottomsheetOptions(data: LocalModel) {
+        when (data) {
             is Article -> {
                 val bottomsheetOption = BottomsheetOption(data)
                 bottomsheetOption.show(supportFragmentManager, bottomsheetOption.tag)

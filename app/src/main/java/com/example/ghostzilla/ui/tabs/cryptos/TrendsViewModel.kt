@@ -46,6 +46,7 @@ class TrendsViewModel @Inject constructor(
     }
 
     var trendingTitle = MutableLiveData<TitleRecyclerItem>()
+    var cryptos = MutableLiveData<Cryptos>()
     var topTitle = MutableLiveData<TitleRecyclerItem>()
     var trendingCryptos: LiveData<MutableList<TredingCoins>> =
         localRepository.fetchTrendingCryptos().asLiveData()
@@ -78,6 +79,7 @@ class TrendsViewModel @Inject constructor(
                     dataRepository.requestData().collect { response ->
                         when (response) {
                             is GenericResponse.Success -> response.data?.let {
+                                cryptos.postValue(it)
                                 trendsAdapter.submitList(getCryptoList(it))
                             } ?: run { showToastMessage(0) }
                             is GenericResponse.DataError -> response.errorCode?.let { error ->
