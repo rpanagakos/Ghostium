@@ -63,13 +63,33 @@ class TrendsViewModel @Inject constructor(
     ) {
         this.callbacks = listener
         if (trendsAdapter.currentList.size == 0)
-            trendsAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
-        //if (networkConnectivity.isConnected())
-            getAllCryptos()
-        /*else {
-            checkErrorCode(NO_INTERNET_CONNECTION)
-            displayMessage.value = true
-        }*/
+            if (trendingCryptos.value.isNullOrEmpty())
+                trendsAdapter.submitList(
+                    listOf(
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer()
+                    )
+                )
+            else
+                trendsAdapter.submitList(
+                    listOf(
+                        trendingTitle.value,
+                        trendingCryptos.value?.get(0),
+                        topTitle.value,
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer(),
+                        CryptoShimmer()
+                    )
+                )
+        getAllCryptos()
+        
     }
 
     fun getAllCryptos() {
