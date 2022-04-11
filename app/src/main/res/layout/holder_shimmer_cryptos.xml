@@ -51,7 +51,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="@dimen/xlarge_spacing"
                     android:layout_marginEnd="@dimen/medium_spacing"
-                    android:background="@color/CoolGray"
+                    android:background="@drawable/bg_shimmer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -62,7 +62,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="@dimen/medium_spacing"
                     android:textAllCaps="true"
-                    android:background="@color/CoolGray"
+                    android:background="@drawable/bg_shimmer"
                     app:layout_constraintEnd_toEndOf="@id/contractName"
                     app:layout_constraintStart_toStartOf="@id/contractName"
                     app:layout_constraintTop_toBottomOf="@id/contractName" />

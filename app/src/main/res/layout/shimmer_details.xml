@@ -22,7 +22,7 @@
             android:id="@+id/lowPriceLabel2"
             android:layout_width="60dp"
             android:layout_height="20dp"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintEnd_toStartOf="@id/highPriceLabel2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -33,7 +33,7 @@
             android:id="@+id/highPriceLabel2"
             android:layout_width="60dp"
             android:layout_height="20dp"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintEnd_toEndOf="@id/guideline"
             app:layout_constraintStart_toStartOf="@id/guideline"
             app:layout_constraintTop_toTopOf="@id/lowPriceLabel2" />
@@ -42,7 +42,7 @@
             android:id="@+id/totalVolLabel2"
             android:layout_width="60dp"
             android:layout_height="20dp"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintTop_toTopOf="@id/lowPriceLabel2" />
@@ -52,7 +52,7 @@
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lowPriceLabel2" />
 
@@ -61,7 +61,7 @@
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintStart_toStartOf="@id/highPriceLabel2"
             app:layout_constraintTop_toBottomOf="@id/highPriceLabel2" />
 
@@ -70,7 +70,7 @@
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/totalVolLabel2"
             app:layout_constraintTop_toBottomOf="@id/totalVolLabel2" />
@@ -89,7 +89,7 @@
             android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_marginTop="@dimen/large_spacing"
-            android:background="@color/CoolGray"
+            android:background="@drawable/bg_shimmer"
             app:layout_constraintTop_toBottomOf="@id/statsBoard2"
             app:layout_constraintStart_toStartOf="parent"/>
 

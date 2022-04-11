@@ -41,7 +41,7 @@ class ArticlesFragment :
         if (viewModel.articlesPagingAdapter.itemCount == 0) {
             viewLifecycleOwner.lifecycleScope.launch {
                 val list =
-                    listOf(CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer())
+                    listOf(TitleRecyclerItem(requireContext().resources.getString(R.string.news_in_brief)),CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer(), CryptoShimmer())
                 viewModel.articlesPagingAdapter.submitData(PagingData.from(list))
             }
         }
