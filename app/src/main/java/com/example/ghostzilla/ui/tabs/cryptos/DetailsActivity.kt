@@ -82,7 +82,7 @@ class DetailsActivity :
         })
         viewModel.isLoading.observe(this,{
             if (!it){
-                binding.layoutShimmer.root.visibility = View.GONE
+                binding.layoutShimmer.visibility = View.GONE
                 binding.scrollView.visibility = View.VISIBLE
             }
         })

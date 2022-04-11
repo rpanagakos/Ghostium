@@ -12,13 +12,13 @@ import com.example.ghostzilla.abstraction.listeners.GeneralClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
 import com.example.ghostzilla.models.coingecko.CryptoItem
+import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
 import com.example.ghostzilla.models.errors.mapper.NO_SEARCHES
 import com.example.ghostzilla.models.generic.GenericResponse
 import com.example.ghostzilla.models.settings.RecentlyItem
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
 import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.common.TabsAdapter
-import com.example.ghostzilla.utils.NetworkConnectivity
 import com.example.ghostzilla.utils.SingleLiveEvent
 import com.example.ghostzilla.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -67,6 +67,8 @@ class SearchViewModel @Inject constructor(
     }
 
     fun searchCoin(coinID: String) {
+        displayMessage.postValue(false)
+        searchAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.searchCoin(coinID).collect { response ->
