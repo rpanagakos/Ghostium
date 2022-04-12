@@ -55,6 +55,7 @@
             android:adapter="@{viewModel.articlesPagingAdapter}"
             android:clipToPadding="false"
             android:overScrollMode="never"
+            android:visibility="@{viewModel.isEmpty() ?  View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,5 +73,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/articlesRecyclerView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/articlesImage"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="72dp"
+            android:src="@drawable/ic_vision"
+            android:visibility="@{viewModel.isEmpty() ?  View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleHeader" />
+
+        <TextView
+            android:id="@+id/errorText"
+            errorMessageStatus="@{viewModel.resultNotFound}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/xxlarge_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/xxlarge_spacing"
+            android:gravity="center"
+            android:textAppearance="@style/large_text"
+            android:visibility="@{viewModel.isEmpty() ?  View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/articlesImage" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

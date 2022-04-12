@@ -54,5 +54,6 @@
     <string name="saved">Salvato</string>
     <string name="no_searched_found">Non hai ricerche recenti.</string>
     <string name="no_cryptos_found">Niente nei tuoi Cryptos preferiti.</string>
+    <string name="no_articles_found">Niente negli Articoli Salvati</string>
 
 </resources>

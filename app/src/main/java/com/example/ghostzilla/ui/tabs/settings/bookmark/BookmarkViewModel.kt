@@ -10,20 +10,13 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.abstraction.listeners.FavouriteClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
 import com.example.ghostzilla.database.room.LocalRepository
-import com.example.ghostzilla.di.IoDispatcher
-import com.example.ghostzilla.di.common.CurrencyImpl
-import com.example.ghostzilla.models.CryptoItemDB
-import com.example.ghostzilla.models.coingecko.shimmer.CryptoShimmer
+import com.example.ghostzilla.models.errors.mapper.NO_ARTICLES
 import com.example.ghostzilla.models.guardian.Article
-import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.ui.tabs.articles.recycler.ArticlesAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -59,8 +52,13 @@ class BookmarkViewModel @Inject constructor(
         ) -> Unit
     ) {
         this.callbacks = listener
-        viewModelScope.launch {
-            articlesPagingAdapter.submitData(articleList)
+        if (articles.value?.isNotEmpty() == true) {
+            viewModelScope.launch {
+                articlesPagingAdapter.submitData(articleList)
+            }
+        } else {
+            resultNotFound.postValue(NO_ARTICLES)
+            isEmpty.postValue(true)
         }
     }
 

@@ -13,3 +13,4 @@ const val SEARCH_ERROR = -104
 const val NOT_FOUND = 404
 const val NO_SEARCHES = 1
 const val NO_CRYPTOS = 2
+const val NO_ARTICLES = 3

@@ -9,20 +9,12 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.ghostzilla.abstraction.AbstractViewModel
 import com.example.ghostzilla.abstraction.LocalModel
-import com.example.ghostzilla.abstraction.listeners.ArticleClickListener
 import com.example.ghostzilla.abstraction.listeners.ItemOnClickListener
-import com.example.ghostzilla.database.room.LocalRepository
-import com.example.ghostzilla.models.guardian.Article
 import com.example.ghostzilla.models.settings.TitleRecyclerItem
-import com.example.ghostzilla.network.DataRepository
 import com.example.ghostzilla.network.guardian.GuardianRemoteRepository
 import com.example.ghostzilla.ui.tabs.articles.recycler.ArticlesAdapter
 import com.example.ghostzilla.utils.NetworkConnectivity
-import com.example.ghostzilla.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel

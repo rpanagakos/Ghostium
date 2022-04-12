@@ -269,6 +269,7 @@ object TabsBinding {
             NOT_FOUND -> this.text = resources.getString(R.string.nothing_found)
             NO_SEARCHES -> this.text = resources.getString(R.string.no_searched_found)
             NO_CRYPTOS -> this.text = resources.getString(R.string.no_cryptos_found)
+            NO_ARTICLES -> this.text = resources.getString(R.string.no_articles_found)
             else -> this.text = resources.getString(R.string.no_internet_connection)
         }
     }
