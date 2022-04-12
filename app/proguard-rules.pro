@@ -11,9 +11,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+-keepclassmembernames public class * implements com.bumptech.glide.module.GlideModule
+-keepclassmembernames public class * extends com.bumptech.glide.module.AppGlideModule
+-keepclassmembernames public enum com.bumptech.glide.load.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
 }
@@ -28,27 +28,27 @@
 -keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
 
 -dontwarn com.google.android.material.**
--keep class com.google.android.material.** { *; }
+-keepclassmembernames class com.google.android.material.** { *; }
 
 -dontwarn androidx.**
--keep class androidx.** { *; }
--keep interface androidx.** { *; }
+-keepclassmembernames class androidx.** { *; }
+-keepclassmembernames interface androidx.** { *; }
 
 -dontwarn com.github.PhilJay**
--keep class com.github.PhilJay** { *; }
--keep interface com.github.PhilJay** { *; }
+-keepclassmembernames class com.github.PhilJay** { *; }
+-keepclassmembernames interface com.github.PhilJay** { *; }
 
--keep class com.squareup.** { *; }
--keep interface com.squareup.** { *; }
--keep class retrofit2.** { *; }
--keep interface retrofit2.** { *;}
--keep interface com.squareup.** { *; }
+-keepclassmembernames class com.squareup.** { *; }
+-keepclassmembernames interface com.squareup.** { *; }
+-keepclassmembernames class retrofit2.** { *; }
+-keepclassmembernames interface retrofit2.** { *;}
+-keepclassmembernames interface com.squareup.** { *; }
 
 -keep class org.otwebrtc.** { *; }
 -keep interface org.otwebrtc.** { *; }
 
--keep class com.squareup.okhttp.** { *; }
--keep interface com.squareup.okhttp.** { *; }
+-keepclassmembernames class com.squareup.okhttp.** { *; }
+-keepclassmembernames interface com.squareup.okhttp.** { *; }
 
 -dontwarn com.squareup.okhttp.**
 
