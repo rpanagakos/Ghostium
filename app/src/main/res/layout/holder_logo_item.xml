@@ -16,9 +16,7 @@
             android:id="@+id/profileImage"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@drawable/ic_circle_background"
-            android:padding="4dp"
-            android:src="@drawable/ic_reddit"
+            android:background="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

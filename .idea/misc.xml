@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/drawable/ic_circle_background.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_currencies.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/ic_ghost_logo.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_googlechrome.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_home_filled.xml" value="0.11" />
@@ -137,6 +138,8 @@
         <entry key="app/src/main/res/layout/text_input_layout.xml" value="0.43020833333333336" />
         <entry key="app/src/main/res/layout/triple_labels_and_values.xml" value="0.3538822172994355" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18645833333333334" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.18645833333333334" />
       </map>
     </option>
   </component>
