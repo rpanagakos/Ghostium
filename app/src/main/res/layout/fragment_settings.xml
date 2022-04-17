@@ -13,29 +13,33 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/settingsRecyclerview"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/large_spacing"
-            android:adapter="@{viewModel.optionsAdapter}"
-            android:background="@drawable/card_trends_item"
-            android:clipToPadding="false"
-            android:elevation="2dp"
-            android:overScrollMode="never"
-            android:paddingBottom="@dimen/medium_spacing"
-            android:scrollbars="none"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:itemCount="4"
-            tools:listitem="@layout/holder_options_item" />
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/settingsRecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/large_spacing"
+                android:adapter="@{viewModel.optionsAdapter}"
+                android:background="@drawable/card_trends_item"
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:nestedScrollingEnabled="false"
+                android:paddingBottom="@dimen/medium_spacing"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
+                tools:listitem="@layout/holder_options_item" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

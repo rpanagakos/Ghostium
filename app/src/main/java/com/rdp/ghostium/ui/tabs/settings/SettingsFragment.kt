@@ -5,6 +5,7 @@ import android.net.Uri
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.rdp.ghostium.BuildConfig
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractFragment
 import com.rdp.ghostium.abstraction.LocalModel
@@ -32,7 +33,7 @@ class SettingsFragment :
             requireActivity().recreate()
 
         val settingsList = listOf(
-            LogoOption(),
+            LogoOption(resources.getString(R.string.app_name), BuildConfig.VERSION_NAME),
             AppOption(
                 this.resources.getString(R.string.option_language),
                 R.drawable.ic_earth_europe,

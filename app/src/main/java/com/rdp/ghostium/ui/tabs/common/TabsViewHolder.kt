@@ -11,6 +11,7 @@ import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.opensea.Asset
 import com.rdp.ghostium.models.settings.AppOption
+import com.rdp.ghostium.models.settings.LogoOption
 import com.rdp.ghostium.models.settings.RecentlyItem
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.ui.tabs.cryptos.recycler.TrendingCryptosAdapter
@@ -49,6 +50,9 @@ class TabsViewHolder(
                 val adapter = TrendingCryptosAdapter(listener)
                 binding.setVariable(BR.adapter, adapter)
                 adapter.submitList(data.coins)
+            }
+            is LogoOption -> {
+                binding.setVariable(BR.item, data)
             }
         }
     }
