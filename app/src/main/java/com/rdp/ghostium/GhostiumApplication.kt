@@ -6,7 +6,7 @@ import com.rdp.ghostium.utils.LangContextWrapper
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class GhostzillaApplication : Application() {
+class GhostiumApplication : Application() {
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LangContextWrapper.wrap(newBase))
