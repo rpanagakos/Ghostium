@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "217571747804",
+    "project_id": "ghostium",
+    "storage_bucket": "ghostium.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217571747804:android:86844a3952b3865c31d119",
+        "android_client_info": {
+          "package_name": "com.rdp.ghostium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217571747804-enfv2jrrv79neqcvhnof992hqdmcdskb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rdp.ghostium",
+            "certificate_hash": "4ad21ca500bf33399e872a2299ae425af1ab0c02"
+          }
+        },
+        {
+          "client_id": "217571747804-iik6cnaiub7tlttcuini6icgihk1hhk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0DLTpsXu7yINa5lg1xSwCvUrA0NMXpoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217571747804-iik6cnaiub7tlttcuini6icgihk1hhk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
