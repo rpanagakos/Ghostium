@@ -30,4 +30,6 @@ class IntroActivity : ComponentActivity() {
         }
     }
 
+    override fun onBackPressed() {}
+
 }
