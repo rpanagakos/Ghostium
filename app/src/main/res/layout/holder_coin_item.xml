@@ -7,11 +7,11 @@
 
         <variable
             name="coin"
-            type="com.example.ghostzilla.models.coingecko.tredings.Item" />
+            type="com.rdp.ghostium.models.coingecko.tredings.Item" />
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.ItemOnClickListener" />
 
     </data>
 

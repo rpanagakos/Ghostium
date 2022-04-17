@@ -9,15 +9,15 @@
 
         <variable
             name="currencyIml"
-            type="com.example.ghostzilla.di.common.CurrencyImpl" />
+            type="com.rdp.ghostium.di.common.CurrencyImpl" />
 
         <variable
             name="crypto"
-            type="com.example.ghostzilla.models.coingecko.CryptoItem" />
+            type="com.rdp.ghostium.models.coingecko.CryptoItem" />
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.cryptos.DetailsViewModel" />
+            type="com.rdp.ghostium.ui.tabs.cryptos.DetailsViewModel" />
 
     </data>
 
@@ -102,7 +102,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/coinTickerSymbolDetail" />
 
-        <com.example.ghostzilla.utils.customview.CustomScrollView
+        <com.rdp.ghostium.utils.customview.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -250,7 +250,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.example.ghostzilla.utils.customview.CustomScrollView>
+        </com.rdp.ghostium.utils.customview.CustomScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

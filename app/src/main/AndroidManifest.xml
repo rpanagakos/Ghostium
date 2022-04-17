@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ghostzilla">
+    package="com.rdp.ghostium">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +13,7 @@
         tools:ignore="ScopedStorage" />
 
     <application
-        android:name=".GhostzillaApplication"
+        android:name="com.rdp.ghostium.GhostzillaApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,21 +21,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ghostzilla">
         <activity
-            android:name=".ui.tabs.articles.ArticleDetailsActivity"
+            android:name="com.rdp.ghostium.ui.tabs.articles.ArticleDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tabs.settings.general.GeneralActivity"
+            android:name="com.rdp.ghostium.ui.tabs.settings.general.GeneralActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.intro.IntroActivity"
+            android:name="com.rdp.ghostium.ui.intro.IntroActivity"
             android:exported="false"
             android:theme="@style/Theme.Ghostzilla.NoActionBar"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
-            android:name=".ui.tabs.cryptos.DetailsActivity"
+            android:name="com.rdp.ghostium.ui.tabs.cryptos.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tabs.common.TabsActivity"
+            android:name="com.rdp.ghostium.ui.tabs.common.TabsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

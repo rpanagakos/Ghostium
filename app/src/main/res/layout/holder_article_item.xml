@@ -7,11 +7,11 @@
 
         <variable
             name="article"
-            type="com.example.ghostzilla.models.guardian.Article" />
+            type="com.rdp.ghostium.models.guardian.Article" />
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.ItemOnClickListener" />
 
     </data>
 

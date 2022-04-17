@@ -7,11 +7,11 @@
 
         <variable
             name="onClickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.GeneralClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.GeneralClickListener" />
 
         <variable
             name="recentlyItem"
-            type="com.example.ghostzilla.models.settings.RecentlyItem" />
+            type="com.rdp.ghostium.models.settings.RecentlyItem" />
 
     </data>
 

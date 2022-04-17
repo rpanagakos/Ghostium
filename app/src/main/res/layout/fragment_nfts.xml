@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.nft.NftsViewModel" />
+            type="com.rdp.ghostium.ui.tabs.nft.NftsViewModel" />
 
     </data>
 

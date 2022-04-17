@@ -17,12 +17,12 @@
 
         <variable
             name="item"
-            type="com.example.ghostzilla.models.settings.LanguageItem" />
+            type="com.rdp.ghostium.models.settings.LanguageItem" />
 
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.GeneralClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.GeneralClickListener" />
 
     </data>
 

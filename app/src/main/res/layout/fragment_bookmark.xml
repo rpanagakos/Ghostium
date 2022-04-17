@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.settings.bookmark.BookmarkViewModel" />
+            type="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkViewModel" />
 
     </data>
 

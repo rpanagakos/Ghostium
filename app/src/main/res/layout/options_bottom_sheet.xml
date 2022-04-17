@@ -10,15 +10,15 @@
 
         <variable
             name="optionSecond"
-            type="com.example.ghostzilla.models.settings.AppOption" />
+            type="com.rdp.ghostium.models.settings.AppOption" />
 
         <variable
             name="article"
-            type="com.example.ghostzilla.models.guardian.Article" />
+            type="com.rdp.ghostium.models.guardian.Article" />
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.articles.bottomsheet.BottomsheetArticlesViewModel" />
+            type="com.rdp.ghostium.ui.tabs.articles.bottomsheet.BottomsheetArticlesViewModel" />
 
     </data>
 

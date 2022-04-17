@@ -13,11 +13,11 @@
 
         <variable
             name="option"
-            type="com.example.ghostzilla.models.settings.AppOption" />
+            type="com.rdp.ghostium.models.settings.AppOption" />
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.ItemOnClickListener" />
 
     </data>
 

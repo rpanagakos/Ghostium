@@ -7,11 +7,11 @@
 
         <variable
             name="currencyImpl"
-            type="com.example.ghostzilla.di.common.CurrencyImpl" />
+            type="com.rdp.ghostium.di.common.CurrencyImpl" />
 
         <variable
             name="data"
-            type="com.example.ghostzilla.models.coingecko.coin.MarketData" />
+            type="com.rdp.ghostium.models.coingecko.coin.MarketData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

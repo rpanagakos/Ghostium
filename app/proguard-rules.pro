@@ -15,8 +15,8 @@
 }
 -keepclassmembers enum * { *; }
 
--keep class com.example.ghostzilla.models.** { *; }
--keepclassmembers class com.example.ghostzilla.models.** {
+-keep class com.rdp.ghostium.models.** { *; }
+-keepclassmembers class com.rdp.ghostium.models.** {
     !static !private <fields>;
 }
 

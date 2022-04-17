@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.cryptos.TrendsViewModel" />
+            type="com.rdp.ghostium.ui.tabs.cryptos.TrendsViewModel" />
 
     </data>
 

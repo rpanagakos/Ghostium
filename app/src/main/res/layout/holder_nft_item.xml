@@ -9,11 +9,11 @@
 
         <variable
             name="nft"
-            type="com.example.ghostzilla.models.opensea.Asset" />
+            type="com.rdp.ghostium.models.opensea.Asset" />
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.ItemOnClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.ItemOnClickListener" />
 
     </data>
 

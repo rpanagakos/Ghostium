@@ -18,7 +18,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.settings.general.GeneralSettingsViewModel" />
+            type="com.rdp.ghostium.ui.tabs.settings.general.GeneralSettingsViewModel" />
 
     </data>
 

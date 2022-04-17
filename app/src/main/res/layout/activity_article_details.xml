@@ -7,11 +7,11 @@
 
         <variable
             name="article"
-            type="com.example.ghostzilla.models.guardian.Article" />
+            type="com.rdp.ghostium.models.guardian.Article" />
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.articles.ArticleDetailsViewModel" />
+            type="com.rdp.ghostium.ui.tabs.articles.ArticleDetailsViewModel" />
 
     </data>
 

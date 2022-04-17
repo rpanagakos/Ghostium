@@ -11,7 +11,7 @@
 
         <variable
             name="parentViewModel"
-            type="com.example.ghostzilla.abstraction.AbstractViewModel" />
+            type="com.rdp.ghostium.abstraction.AbstractViewModel" />
 
     </data>
 

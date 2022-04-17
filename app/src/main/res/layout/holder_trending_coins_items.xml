@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="com.example.ghostzilla.ui.tabs.cryptos.recycler.TrendingCryptosAdapter" />
+            type="com.rdp.ghostium.ui.tabs.cryptos.recycler.TrendingCryptosAdapter" />
 
     </data>
 

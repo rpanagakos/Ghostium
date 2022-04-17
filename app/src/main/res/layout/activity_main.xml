@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.common.TabsViewModel" />
+            type="com.rdp.ghostium.ui.tabs.common.TabsViewModel" />
 
     </data>
 

@@ -9,7 +9,7 @@
 
         <variable
             name="currencyIml"
-            type="com.example.ghostzilla.di.common.CurrencyImpl" />
+            type="com.rdp.ghostium.di.common.CurrencyImpl" />
 
         <variable
             name="dataPosition"
@@ -17,16 +17,16 @@
 
         <variable
             name="crypto"
-            type="com.example.ghostzilla.models.CryptoItemDB" />
+            type="com.rdp.ghostium.models.CryptoItemDB" />
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteViewModel" />
+            type="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteViewModel" />
 
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.FavouriteClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.FavouriteClickListener" />
 
     </data>
 

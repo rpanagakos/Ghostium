@@ -13,12 +13,12 @@
 
         <variable
             name="item"
-            type="com.example.ghostzilla.models.settings.CurrencyItem" />
+            type="com.rdp.ghostium.models.settings.CurrencyItem" />
 
 
         <variable
             name="clickHandler"
-            type="com.example.ghostzilla.abstraction.listeners.GeneralClickListener" />
+            type="com.rdp.ghostium.abstraction.listeners.GeneralClickListener" />
 
     </data>
 

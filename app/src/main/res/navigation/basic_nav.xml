@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.ghostzilla.ui.tabs.settings.SettingsFragment"
+        android:name="com.rdp.ghostium.ui.tabs.settings.SettingsFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_settings">
         <action
@@ -27,22 +27,22 @@
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
-        android:name="com.example.ghostzilla.ui.tabs.nft.NftsFragment"
+        android:name="com.rdp.ghostium.ui.tabs.nft.NftsFragment"
         android:label="fragment_wallet"
         tools:layout="@layout/fragment_nfts" />
     <fragment
         android:id="@+id/articlesFragment"
-        android:name="com.example.ghostzilla.ui.tabs.articles.ArticlesFragment"
+        android:name="com.rdp.ghostium.ui.tabs.articles.ArticlesFragment"
         android:label="fragment_articles"
         tools:layout="@layout/fragment_articles" />
     <fragment
         android:id="@+id/trendsFragment"
-        android:name="com.example.ghostzilla.ui.tabs.cryptos.TrendsFragment"
+        android:name="com.rdp.ghostium.ui.tabs.cryptos.TrendsFragment"
         android:label="fragment_trends"
         tools:layout="@layout/fragment_trends" />
     <fragment
         android:id="@+id/favouriteFragment"
-        android:name="com.example.ghostzilla.ui.tabs.settings.favourite.FavouriteFragment"
+        android:name="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteFragment"
         android:label="favouriteFragment">
         <argument
             android:name="title"
@@ -50,11 +50,11 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.ghostzilla.ui.tabs.search.SearchFragment"
+        android:name="com.rdp.ghostium.ui.tabs.search.SearchFragment"
         android:label="SearchFragment" />
     <fragment
         android:id="@+id/bookmarkFragment"
-        android:name="com.example.ghostzilla.ui.tabs.settings.bookmark.BookmarkFragment"
+        android:name="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkFragment"
         android:label="BookmarkFragment">
         <argument
             android:name="title"

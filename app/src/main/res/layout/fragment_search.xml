@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.ghostzilla.ui.tabs.search.SearchViewModel" />
+            type="com.rdp.ghostium.ui.tabs.search.SearchViewModel" />
 
     </data>
 
