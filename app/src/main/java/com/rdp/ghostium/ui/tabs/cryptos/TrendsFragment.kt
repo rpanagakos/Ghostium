@@ -12,6 +12,7 @@ import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.tredings.Item
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
+import com.rdp.ghostium.ui.tabs.common.TabsAdapter
 import com.rdp.ghostium.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -33,6 +34,12 @@ class TrendsFragment :
             setHasFixedSize(true)
             addOnScrollListener(object :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
+        }
+        onBackPressedWithoutPop {
+            when ((binding.contractsTrendsRecycler.adapter as? TabsAdapter)?.currentPosition?.get()) {
+                in 0..5 -> requireActivity().finishAffinity()
+                else -> viewModel.scrollToTopRecycler(binding.contractsTrendsRecycler)
+            }
         }
     }
 

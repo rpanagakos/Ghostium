@@ -63,6 +63,14 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
         })
     }
 
+    protected fun onBackPressedWithoutPop(click :() -> Unit){
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                click.invoke()
+            }
+        })
+    }
+
     fun navigateToDetailsActivty(data : CryptoItem, title : View, subTitle : View, image : ImageView){
         val intent = Intent(requireActivity(), DetailsActivity::class.java).apply {
             putExtra("coin", data)

@@ -14,12 +14,8 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.databinding.ActivityMainBinding
 import com.rdp.ghostium.models.guardian.Article
 import com.rdp.ghostium.ui.intro.IntroActivity
-import com.rdp.ghostium.ui.tabs.articles.ArticlesFragment
 import com.rdp.ghostium.ui.tabs.articles.bottomsheet.BottomsheetOption
-import com.rdp.ghostium.ui.tabs.cryptos.TrendsFragment
-import com.rdp.ghostium.ui.tabs.cryptos.TrendsViewModel
 import com.rdp.ghostium.ui.tabs.nft.NftsFragment
-import com.rdp.ghostium.ui.tabs.settings.SettingsFragment
 import com.rdp.ghostium.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,8 +26,6 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     private lateinit var navController: NavController
     var languageChanged = false
     val viewModel: TabsViewModel by viewModels()
-    val viewModel2: TrendsViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val hasSeenIntro = this.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
@@ -74,10 +68,8 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     override fun onBackPressed() {
         when (nav_host_fragment_container.childFragmentManager.fragments[0]) {
-            is ArticlesFragment, is TrendsFragment,
-            is NftsFragment, is SettingsFragment -> finishAffinity()
+            is NftsFragment -> finishAffinity()
             else -> {
-
                 super.onBackPressed()
             }
         }
