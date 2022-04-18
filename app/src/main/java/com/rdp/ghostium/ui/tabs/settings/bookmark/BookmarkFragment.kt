@@ -4,7 +4,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.paging.PagingData
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractFragment
@@ -22,10 +21,9 @@ class BookmarkFragment :
     AbstractFragment<FragmentBookmarkBinding, BookmarkViewModel>(R.layout.fragment_bookmark) {
 
     override val viewModel: BookmarkViewModel by viewModels()
-    private val args: BookmarkFragmentArgs by navArgs()
 
     override fun initLayout() {
-        binding.title = args.title
+        binding.title = requireContext().resources.getString(R.string.option_articles)
         onBackPressed {
             (requireActivity() as TabsActivity).showMenuBar()
         }

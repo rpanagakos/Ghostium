@@ -159,7 +159,7 @@ class FavouriteViewModel @Inject constructor(
         cryptosChosen.forEachIndexed { index, cryptoItemDB ->
             intentText += "${index + 1}. ${cryptoItemDB.name} \n"
         }
-        intentText += "\n\nThis message has been sent via Ghostzilla"
+        intentText += "\n\nThis message has been sent via Ghostium"
         return intentText
     }
 

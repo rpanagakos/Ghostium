@@ -47,8 +47,8 @@
     <string name="option_currency">Currency</string>
     <string name="option_articles">Saved Articles</string>
     <string name="option_contact">Contact Us</string>
-    <string name="option_share">Share the Ghostzilla App</string>
-    <string name="option_rate">Rate the Ghostzilla App</string>
+    <string name="option_share">Share the Ghostium App</string>
+    <string name="option_rate">Rate the Ghostium App</string>
     <string name="english" translatable="false">English</string>
     <string name="deutsch" translatable="false">Deutsch</string>
     <string name="italiano" translatable="false">Italiano</string>

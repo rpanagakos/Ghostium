@@ -24,12 +24,10 @@ import kotlinx.android.synthetic.main.fragment_favourite.*
 class FavouriteFragment :
     AbstractFragment<FragmentFavouriteBinding, FavouriteViewModel>(R.layout.fragment_favourite) {
 
-    private val args: FavouriteFragmentArgs by navArgs()
-
     override val viewModel: FavouriteViewModel by viewModels()
 
     override fun initLayout() {
-        binding.title = args.title
+        binding.title = requireContext().resources.getString(R.string.option_cryptos)
         viewModel.favouriteAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
         backButtonFavourite.setOnClickListener {
             (requireActivity() as TabsActivity).showMenuBar()

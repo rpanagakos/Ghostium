@@ -34,8 +34,8 @@
     <string name="option_currency">Divisa</string>
     <string name="option_articles">Artículos Guardados</string>
     <string name="option_contact">Contacto con nosotros</string>
-    <string name="option_share">Cuota la Ghostzilla App</string>
-    <string name="option_rate">Califica la Ghostzilla App</string>
+    <string name="option_share">Cuota la Ghostium App</string>
+    <string name="option_rate">Califica la Ghostium App</string>
     <string name="language_hint_desc">Para una mejor experiencia y resultados, la opción de idioma afecta solo a los textos dentro de la aplicación.</string>
     <string name="hint">Insinuación</string>
     <string name="first_day">1d</string>

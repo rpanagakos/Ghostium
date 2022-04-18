@@ -78,17 +78,12 @@ class SettingsFragment :
                     when (data.type) {
                         SettingType.CRYPTO_FAV -> {
                             findNavController().navigate(
-                                SettingsFragmentDirections.settingsFavouriteAction(
-                                    data.title
-                                )
+                                SettingsFragmentDirections.settingsFavouriteAction()
                             )
-                            (requireActivity() as TabsActivity).hideMenuBar()
                         }
                         SettingType.NEWS_FAV -> {
                             findNavController().navigate(
-                                SettingsFragmentDirections.settingsBookmarkAction(
-                                    data.title
-                                )
+                                SettingsFragmentDirections.settingsBookmarkAction()
                             )
                             (requireActivity() as TabsActivity).hideMenuBar()
                         }

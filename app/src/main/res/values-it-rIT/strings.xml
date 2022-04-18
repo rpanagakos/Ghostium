@@ -34,8 +34,8 @@
     <string name="option_currency">La Moneta</string>
     <string name="option_articles">Articoli Salvati</string>
     <string name="option_contact">Contattaci</string>
-    <string name="option_share">Condividi l Ghostzilla App</string>
-    <string name="option_rate">Valuta l Ghostzilla App</string>
+    <string name="option_share">Condividi l Ghostium App</string>
+    <string name="option_rate">Valuta l Ghostium App</string>
     <string name="language_hint_desc">Per una migliore esperienza e risultati, l opzione della lingua interessa solo i testi all interno dell app.</string>
     <string name="hint">Suggerimento</string>
     <string name="first_day">1g</string>
