@@ -30,13 +30,14 @@
             android:name="com.rdp.ghostium.ui.intro.IntroActivity"
             android:exported="false"
             android:theme="@style/Theme.Ghostzilla.NoActionBar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.rdp.ghostium.ui.tabs.cryptos.DetailsActivity"
             android:exported="false" />
         <activity
             android:name="com.rdp.ghostium.ui.tabs.common.TabsActivity"
             android:exported="true"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,6 +47,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <meta-data

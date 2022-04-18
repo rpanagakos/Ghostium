@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="25">
+
+    <shortcut
+        android:shortcutId="cryptos"
+        android:enabled="true"
+        android:icon="@mipmap/ic_favourite_nav"
+        android:shortcutShortLabel="@string/option_cryptos"
+        android:shortcutLongLabel="@string/option_cryptos"
+        android:shortcutDisabledMessage="@string/something_went_wrong">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.rdp.ghostium"
+            android:targetClass="com.rdp.ghostium.ui.tabs.common.TabsActivity"
+            android:data="ghostium://favouriteFragment">
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="articles"
+        android:enabled="true"
+        android:icon="@mipmap/ic_articles_nav"
+        android:shortcutShortLabel="@string/option_articles"
+        android:shortcutLongLabel="@string/option_articles"
+        android:shortcutDisabledMessage="@string/something_went_wrong">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.rdp.ghostium"
+            android:targetClass="com.rdp.ghostium.ui.tabs.common.TabsActivity"
+            android:data="ghostium://bookmarkFragment">
+        </intent>
+    </shortcut>
+</shortcuts>

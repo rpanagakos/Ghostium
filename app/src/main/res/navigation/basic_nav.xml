@@ -39,25 +39,28 @@
         android:id="@+id/trendsFragment"
         android:name="com.rdp.ghostium.ui.tabs.cryptos.TrendsFragment"
         android:label="fragment_trends"
-        tools:layout="@layout/fragment_trends" />
+        tools:layout="@layout/fragment_trends" >
+        <action
+            android:id="@+id/action_trendsFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+        <action
+            android:id="@+id/action_trendsFragment_to_bookmarkFragment"
+            app:destination="@id/bookmarkFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteFragment"
         android:label="favouriteFragment">
-        <argument
-            android:name="title"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.rdp.ghostium.ui.tabs.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+        <deepLink app:uri="ghostium://searchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkFragment"
         android:label="BookmarkFragment">
-        <argument
-            android:name="title"
-            app:argType="string" />
     </fragment>
 </navigation>

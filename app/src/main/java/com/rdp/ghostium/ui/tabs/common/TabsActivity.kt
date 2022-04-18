@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractActivity
@@ -33,6 +34,16 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
         if (!hasSeenIntro)
             startActivity(Intent(this, IntroActivity::class.java))
         super.onCreate(savedInstanceState)
+        when (intent.data.toString()) {
+            "ghostium://bookmarkFragment" -> {
+                hideMenuBar()
+                findNavController(R.id.nav_host_fragment_container).navigate(R.id.action_trendsFragment_to_bookmarkFragment)
+            }
+            "ghostium://favouriteFragment" -> {
+                hideMenuBar()
+                findNavController(R.id.nav_host_fragment_container).navigate(R.id.action_trendsFragment_to_favouriteFragment)
+            }
+        }
     }
 
     override fun initLayout() {
