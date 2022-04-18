@@ -3,6 +3,7 @@ package com.rdp.ghostium.ui.tabs.cryptos
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractFragment
@@ -36,8 +37,8 @@ class TrendsFragment :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
         }
         onBackPressedWithoutPop {
-            when ((binding.contractsTrendsRecycler.adapter as? TabsAdapter)?.currentPosition?.get()) {
-                in 0..5 -> requireActivity().finishAffinity()
+            when (binding.contractsTrendsRecycler.layoutManager?.findViewByPosition(0)?.isVisible) {
+                true -> requireActivity().finishAffinity()
                 else -> viewModel.scrollToTopRecycler(binding.contractsTrendsRecycler)
             }
         }
