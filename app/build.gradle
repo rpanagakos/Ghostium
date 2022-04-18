@@ -8,6 +8,8 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
 }
+def enableCrashlyticsInDebugBuild = false
+def enableCrashlyticsInReleaseBuild = true
 
 android {
     compileSdk 31
@@ -32,6 +34,7 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [crashlyticsEnabled:"${enableCrashlyticsInReleaseBuild}"]
         }
 
         debug {
@@ -39,6 +42,7 @@ android {
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [crashlyticsEnabled:"${enableCrashlyticsInDebugBuild}"]
         }
     }
     configurations.all {
