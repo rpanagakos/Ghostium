@@ -49,6 +49,7 @@
         <entry key="app/src/main/res/drawable/ic_home_outline.xml" value="0.5703703703703704" />
         <entry key="app/src/main/res/drawable/ic_hot_filled.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_hot_outlined.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/ic_left_arrow.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_outline_clear.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/ic_photo_album.xml" value="0.2984375" />
@@ -115,7 +116,7 @@
         <entry key="app/src/main/res/layout/holder_coin_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/holder_currency_item.xml" value="0.4293785310734463" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
-        <entry key="app/src/main/res/layout/holder_favourite_item.xml" value="0.24103467283595226" />
+        <entry key="app/src/main/res/layout/holder_favourite_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/holder_general_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/holder_logo_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />

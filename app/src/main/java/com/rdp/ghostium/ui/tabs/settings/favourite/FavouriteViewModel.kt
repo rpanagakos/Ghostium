@@ -10,8 +10,8 @@ import com.rdp.ghostium.abstraction.AbstractViewModel
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.FavouriteClickListener
 import com.rdp.ghostium.database.room.LocalRepository
-import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.di.IoDispatcher
+import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.errors.mapper.NO_CRYPTOS
 import com.rdp.ghostium.models.generic.GenericResponse
@@ -95,7 +95,7 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun processFavCrypto(cryptoItemDB: CryptoItemDB, dataLocation: Int) {
+    fun processFavCrypto(cryptoItemDB: CryptoItemDB, dataLocation: Int): Boolean {
         cryptoItemDB.isSelected = !cryptoItemDB.isSelected
         if (cryptoItemDB.isSelected) {
             if (isProcessing.value == false) isProcessing.postValue(true)
@@ -109,6 +109,7 @@ class FavouriteViewModel @Inject constructor(
         }
 
         favouriteAdapter.notifyItemChanged(dataLocation)
+        return true
     }
 
     fun checkState(checkState: Boolean) {

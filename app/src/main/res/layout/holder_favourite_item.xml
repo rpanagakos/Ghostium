@@ -61,8 +61,8 @@
             android:background='@{crypto.isSelected ? @drawable/card_crypto_selected : @drawable/card_trends_item}'
             android:elevation="2dp"
             android:foreground="@drawable/market_ripple"
-            android:onClick="@{()-> clickHandler.onClick(crypto, contractName, contractTickerSumbol, contractImg, dataPosition)}"
             android:onLongClick="@{() -> viewModel.processFavCrypto(crypto, dataPosition)}"
+            android:onSafeClick="@{()-> clickHandler.onClick(crypto, contractName, contractTickerSumbol, contractImg, dataPosition)}"
             android:paddingStart="@dimen/large_spacing"
             android:paddingEnd="@dimen/large_spacing"
             android:paddingBottom="@dimen/ml_spacing"

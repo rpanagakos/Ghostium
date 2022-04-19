@@ -47,7 +47,7 @@
             android:elevation="2dp"
             android:focusable="true"
             android:foreground="@drawable/market_ripple"
-            android:onClick="@{()-> clickHandler.onClick(coin,coinName,symbolName,coinImage)}"
+            android:onSafeClick="@{()-> clickHandler.onClick(coin,coinName,symbolName,coinImage)}"
             android:paddingBottom="@dimen/ml_spacing"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

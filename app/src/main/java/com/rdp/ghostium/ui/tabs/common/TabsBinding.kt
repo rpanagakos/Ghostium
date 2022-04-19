@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.google.android.material.tabs.TabLayout
 import com.rdp.ghostium.R
 import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.coingecko.coin.MarketCap
@@ -25,7 +26,6 @@ import com.rdp.ghostium.models.coingecko.coin.Price24h
 import com.rdp.ghostium.models.errors.mapper.*
 import com.rdp.ghostium.models.settings.CurrencyItem
 import com.rdp.ghostium.utils.*
-import com.google.android.material.tabs.TabLayout
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -165,11 +165,10 @@ object TabsBinding {
         text = if (roundedPrice.equals("0")) {
             val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 5)
             SpannableString(price).getSpannableTextForPrices(5)
-        } else if(roundedPrice.startsWith("0")){
+        } else if (roundedPrice.startsWith("0")) {
             val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 4)
             SpannableString(price).getSpannableTextForPrices(4)
-        }
-        else {
+        } else {
             val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()))
             SpannableString(price).getSpannableTextForPrices()
         }
@@ -236,7 +235,7 @@ object TabsBinding {
 
     @BindingAdapter("displayHtmlString")
     @JvmStatic
-    fun TextView.displayHtmlString(text : String?){
+    fun TextView.displayHtmlString(text: String?) {
         if (text.isNullOrEmpty())
             return
         val newHtml = text.replace("\n", "<br>")
@@ -275,16 +274,6 @@ object TabsBinding {
             NO_CRYPTOS -> this.text = resources.getString(R.string.no_cryptos_found)
             NO_ARTICLES -> this.text = resources.getString(R.string.no_articles_found)
             else -> this.text = resources.getString(R.string.no_internet_connection)
-        }
-    }
-
-
-    @BindingAdapter("android:onLongClick")
-    @JvmStatic
-    fun View.setOnLongClickListener(onLongClick: () -> Unit) {
-        this.setOnLongClickListener {
-            onLongClick.invoke()
-            return@setOnLongClickListener true
         }
     }
 

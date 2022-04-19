@@ -32,7 +32,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="@drawable/general_setting_ripple"
-        android:onClick="@{()-> clickHandler.onClick(item, dataPosition)}">
+        android:onSafeClick="@{()-> clickHandler.onClick(item, dataPosition)}">
 
         <TextView
             android:id="@+id/generalText"
