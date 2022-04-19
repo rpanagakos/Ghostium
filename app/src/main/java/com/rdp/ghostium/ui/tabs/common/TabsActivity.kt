@@ -39,7 +39,10 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     override fun initLayout() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
         binding.viewModel = viewModel
-        binding.bottomNavigation.setupWithNavController(navController)
+        binding.bottomNavigation.apply {
+            setupWithNavController(navController)
+            itemIconTintList = null
+        }
     }
 
     override fun runOperation() {
