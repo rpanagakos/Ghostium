@@ -10,6 +10,7 @@ import com.rdp.ghostium.databinding.ActivityFavouriteBinding
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
+import com.rdp.ghostium.ui.tabs.common.TabsActivity
 import com.rdp.ghostium.utils.BackToTopScrollListener
 import com.rdp.ghostium.utils.appearWithCustomAnimation
 import com.rdp.ghostium.utils.disappearWithCustomAnimation
@@ -83,6 +84,8 @@ class FavouriteActivity : AbstractActivity<ActivityFavouriteBinding>(R.layout.ac
     }
 
     override fun onBackPressed() {
+        if (isTaskRoot)
+            startActivity(Intent(this, TabsActivity::class.java))
         finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }

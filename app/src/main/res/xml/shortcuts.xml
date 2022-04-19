@@ -13,8 +13,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.rdp.ghostium"
-            android:targetClass="com.rdp.ghostium.ui.tabs.common.TabsActivity"
-            android:data="ghostium://favouriteFragment">
+            android:targetClass="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteActivity">
         </intent>
     </shortcut>
 
@@ -28,8 +27,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.rdp.ghostium"
-            android:targetClass="com.rdp.ghostium.ui.tabs.common.TabsActivity"
-            android:data="ghostium://bookmarkFragment">
+            android:targetClass="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkActivity">
         </intent>
     </shortcut>
 </shortcuts>
