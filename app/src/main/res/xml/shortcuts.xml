@@ -4,30 +4,28 @@
     tools:targetApi="25">
 
     <shortcut
-        android:shortcutId="cryptos"
         android:enabled="true"
         android:icon="@mipmap/ic_favourite_nav"
-        android:shortcutShortLabel="@string/option_cryptos"
+        android:shortcutDisabledMessage="@string/something_went_wrong"
+        android:shortcutId="cryptos"
         android:shortcutLongLabel="@string/option_cryptos"
-        android:shortcutDisabledMessage="@string/something_went_wrong">
+        android:shortcutShortLabel="@string/option_cryptos">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.rdp.ghostium"
-            android:targetClass="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteActivity">
-        </intent>
+            android:targetClass="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteActivity"
+            android:targetPackage="com.rdp.ghostium" />
     </shortcut>
 
     <shortcut
-        android:shortcutId="articles"
         android:enabled="true"
         android:icon="@mipmap/ic_articles_nav"
-        android:shortcutShortLabel="@string/option_articles"
+        android:shortcutDisabledMessage="@string/something_went_wrong"
+        android:shortcutId="articles"
         android:shortcutLongLabel="@string/option_articles"
-        android:shortcutDisabledMessage="@string/something_went_wrong">
+        android:shortcutShortLabel="@string/option_articles">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.rdp.ghostium"
-            android:targetClass="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkActivity">
-        </intent>
+            android:targetClass="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkActivity"
+            android:targetPackage="com.rdp.ghostium" />
     </shortcut>
 </shortcuts>

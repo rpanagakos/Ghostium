@@ -7,7 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="searchbutton">Pulsante di Ricerca</string>
     <string name="enter_your_crypto">Cerca la tua cripto</string>
-
+    <string name="search">Ricerca</string>
 
     <string name="no_internet">Per favore controlla la tua connessione Internet</string>
     <string name="network_error">Errore di rete, impossibile ottenere i dati, riprova!</string>
