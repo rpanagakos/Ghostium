@@ -73,6 +73,7 @@
         <entry key="app/src/main/res/drawable/market_ripple.xml" value="0.33958333333333335" />
         <entry key="app/src/main/res/drawable/menu_ripple.xml" value="0.121875" />
         <entry key="app/src/main/res/drawable/options_bottomsheet.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/oval_ripple.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/placeholder_trends_item.xml" value="0.5796875" />
         <entry key="app/src/main/res/drawable/profile_selector.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/ripple_without_radius.xml" value="0.5707692307692308" />
