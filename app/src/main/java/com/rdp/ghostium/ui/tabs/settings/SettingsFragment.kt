@@ -15,6 +15,7 @@ import com.rdp.ghostium.models.settings.AppOption
 import com.rdp.ghostium.models.settings.AppOption.SettingType
 import com.rdp.ghostium.models.settings.LogoOption
 import com.rdp.ghostium.ui.tabs.common.TabsActivity
+import com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkActivity
 import com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteActivity
 import com.rdp.ghostium.ui.tabs.settings.general.GeneralActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -86,10 +87,12 @@ class SettingsFragment :
                             )
                         }
                         SettingType.NEWS_FAV -> {
-                            findNavController().navigate(
-                                SettingsFragmentDirections.settingsBookmarkAction()
+                            val i = Intent(requireContext(), BookmarkActivity::class.java)
+                            startActivity(i)
+                            requireActivity().overridePendingTransition(
+                                R.anim.slide_in_right,
+                                R.anim.slide_out_left
                             )
-                            (requireActivity() as TabsActivity).hideMenuBar()
                         }
                         SettingType.LANGUAGE, SettingType.CURRENCY -> {
                             val i = Intent(requireContext(), GeneralActivity::class.java)

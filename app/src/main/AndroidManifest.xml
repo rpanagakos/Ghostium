@@ -35,6 +35,9 @@
             android:name=".ui.tabs.settings.favourite.FavouriteActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.tabs.settings.bookmark.BookmarkActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.tabs.settings.general.GeneralActivity"
             android:exported="false" />
         <activity

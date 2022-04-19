@@ -34,14 +34,6 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
         if (!hasSeenIntro)
             startActivity(Intent(this, IntroActivity::class.java))
         super.onCreate(savedInstanceState)
-        when (intent.data.toString()) {
-            "ghostium://bookmarkFragment" -> {
-                hideMenuBar()
-                findNavController(R.id.nav_host_fragment_container).navigate(R.id.action_trendsFragment_to_bookmarkFragment)
-            }
-            "ghostium://favouriteFragment" -> {
-            }
-        }
     }
 
     override fun initLayout() {
@@ -64,15 +56,6 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
 
     fun showMenuBar() {
         binding.bottomNavigation.visibility = View.VISIBLE
-    }
-
-    fun openBottomsheetOptions(data: LocalModel) {
-        when (data) {
-            is Article -> {
-                val bottomsheetOption = BottomsheetOption(data)
-                bottomsheetOption.show(supportFragmentManager, bottomsheetOption.tag)
-            }
-        }
     }
 
     override fun onBackPressed() {

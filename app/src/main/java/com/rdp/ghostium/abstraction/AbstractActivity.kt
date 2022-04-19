@@ -13,6 +13,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.rdp.ghostium.R
 import com.rdp.ghostium.models.coingecko.CryptoItem
+import com.rdp.ghostium.models.guardian.Article
+import com.rdp.ghostium.ui.tabs.articles.ArticleDetailsActivity
+import com.rdp.ghostium.ui.tabs.articles.bottomsheet.BottomsheetOption
 import com.rdp.ghostium.ui.tabs.cryptos.DetailsActivity
 import com.rdp.ghostium.utils.LangContextWrapper
 
@@ -91,5 +94,34 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
         )
         startActivity(intent, options.toBundle())
         this.window.exitTransition = null
+    }
+
+    fun navigateToArticlesActivty(data : Article, title : View, subTitle : View, image : ImageView){
+        val intent = Intent(this, ArticleDetailsActivity::class.java).apply {
+            putExtra("article", data)
+        }
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            Pair.create(
+                title, getString(R.string.transition_article_title)
+            ),
+            Pair.create(
+                subTitle, getString(R.string.transition_article_date)
+            ),
+            Pair.create(
+                image, getString(R.string.transition_article_image)
+            )
+        )
+        startActivity(intent, options.toBundle())
+        this.window.exitTransition = null
+    }
+
+    fun openBottomsheetOptions(data: LocalModel) {
+        when (data) {
+            is Article -> {
+                val bottomsheetOption = BottomsheetOption(data)
+                bottomsheetOption.show(supportFragmentManager, bottomsheetOption.tag)
+            }
+        }
     }
 }

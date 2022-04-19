@@ -10,13 +10,6 @@
         android:name="com.rdp.ghostium.ui.tabs.settings.SettingsFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_settings">
-        <action
-            android:id="@+id/settingsBookmarkAction"
-            app:destination="@id/bookmarkFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
@@ -33,9 +26,6 @@
         android:name="com.rdp.ghostium.ui.tabs.cryptos.TrendsFragment"
         android:label="fragment_trends"
         tools:layout="@layout/fragment_trends">
-        <action
-            android:id="@+id/action_trendsFragment_to_bookmarkFragment"
-            app:destination="@id/bookmarkFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -43,8 +33,4 @@
         android:label="SearchFragment">
         <deepLink app:uri="ghostium://searchFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/bookmarkFragment"
-        android:name="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkFragment"
-        android:label="BookmarkFragment"></fragment>
 </navigation>

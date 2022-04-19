@@ -20,7 +20,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tabs.settings.bookmark.BookmarkFragment">
+        android:background="@color/dede"
+        tools:context=".ui.tabs.settings.bookmark.BookmarkActivity">
 
         <include
             android:id="@+id/backButtonFavourite"
