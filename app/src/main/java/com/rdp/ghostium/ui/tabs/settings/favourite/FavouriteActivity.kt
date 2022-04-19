@@ -2,45 +2,45 @@ package com.rdp.ghostium.ui.tabs.settings.favourite
 
 import android.content.Intent
 import android.widget.TextView
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import androidx.activity.viewModels
 import com.rdp.ghostium.R
-import com.rdp.ghostium.abstraction.AbstractFragment
+import com.rdp.ghostium.abstraction.AbstractActivity
 import com.rdp.ghostium.abstraction.LocalModel
-import com.rdp.ghostium.databinding.FragmentFavouriteBinding
+import com.rdp.ghostium.databinding.ActivityFavouriteBinding
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
-import com.rdp.ghostium.ui.tabs.common.TabsActivity
 import com.rdp.ghostium.utils.BackToTopScrollListener
 import com.rdp.ghostium.utils.appearWithCustomAnimation
 import com.rdp.ghostium.utils.disappearWithCustomAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.fragment_favourite.*
 
 @AndroidEntryPoint
-class FavouriteFragment :
-    AbstractFragment<FragmentFavouriteBinding, FavouriteViewModel>(R.layout.fragment_favourite) {
+class FavouriteActivity : AbstractActivity<ActivityFavouriteBinding>(R.layout.activity_favourite) {
 
-    override val viewModel: FavouriteViewModel by viewModels()
+    val viewModel: FavouriteViewModel by viewModels()
 
     override fun initLayout() {
-        binding.title = requireContext().resources.getString(R.string.option_cryptos)
-        viewModel.favouriteAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
-        backButtonFavourite.setOnClickListener {
-            (requireActivity() as TabsActivity).showMenuBar()
-            findNavController().popBackStack()
-        }
-
-        onBackPressed {
-            (requireActivity() as TabsActivity).showMenuBar()
+        observeViewModel()
+        binding.title = this.resources.getString(R.string.option_cryptos)
+        binding.viewModel = viewModel
+        viewModel.favouriteAdapter.submitList(
+            listOf(
+                CryptoShimmer(),
+                CryptoShimmer(),
+                CryptoShimmer(),
+                CryptoShimmer(),
+                CryptoShimmer()
+            )
+        )
+        binding.backButtonFavourite.setOnClickListener {
+            onBackPressed()
         }
         binding.favCryptosRecycler.apply {
             setHasFixedSize(true)
             addOnScrollListener(object :
-                BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
+                BackToTopScrollListener(binding.backToTopImg.backToTopImg, context) {})
         }
 
         binding.share.optionConstraint.setOnClickListener {
@@ -55,7 +55,7 @@ class FavouriteFragment :
         }
     }
 
-    override fun observeViewModel() {
+    private fun observeViewModel() {
         viewModel.cryptos.observe(this, {
             viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
                 when (data) {
@@ -74,15 +74,21 @@ class FavouriteFragment :
         })
         viewModel.isProcessing.observe(this, { isProcessing ->
             if (isProcessing) {
-                binding.menuLayout.appearWithCustomAnimation(R.anim.slide_up, requireContext())
+                binding.menuLayout.appearWithCustomAnimation(R.anim.slide_up, this)
             } else {
                 binding.checkbox.isChecked = false
-                binding.menuLayout.disappearWithCustomAnimation(R.anim.slide_down, requireContext())
+                binding.menuLayout.disappearWithCustomAnimation(R.anim.slide_down, this)
             }
         })
     }
 
-    override fun stopOperations() {
+    override fun onBackPressed() {
+        finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
+
+    override fun runOperation() {}
+
+    override fun stopOperation() {}
 
 }

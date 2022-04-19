@@ -13,7 +13,6 @@ import com.rdp.ghostium.models.guardian.Article
 import com.rdp.ghostium.ui.tabs.common.TabsActivity
 import com.rdp.ghostium.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_favourite.*
 
 
 @AndroidEntryPoint
@@ -27,7 +26,7 @@ class BookmarkFragment :
         onBackPressed {
             (requireActivity() as TabsActivity).showMenuBar()
         }
-        backButtonFavourite.setOnClickListener {
+        binding.backButtonFavourite.setOnClickListener {
             (requireActivity() as TabsActivity).showMenuBar()
             findNavController().popBackStack()
         }

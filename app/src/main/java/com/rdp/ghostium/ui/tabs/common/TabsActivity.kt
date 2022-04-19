@@ -40,8 +40,6 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
                 findNavController(R.id.nav_host_fragment_container).navigate(R.id.action_trendsFragment_to_bookmarkFragment)
             }
             "ghostium://favouriteFragment" -> {
-                hideMenuBar()
-                findNavController(R.id.nav_host_fragment_container).navigate(R.id.action_trendsFragment_to_favouriteFragment)
             }
         }
     }

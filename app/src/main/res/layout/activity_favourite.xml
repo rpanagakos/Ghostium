@@ -20,7 +20,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tabs.settings.favourite.FavouriteFragment">
+        android:background="@color/dede"
+        tools:context=".ui.tabs.settings.favourite.FavouriteActivity">
 
         <include
             android:id="@+id/backButtonFavourite"

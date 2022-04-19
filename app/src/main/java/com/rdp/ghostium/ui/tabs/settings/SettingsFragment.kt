@@ -15,6 +15,7 @@ import com.rdp.ghostium.models.settings.AppOption
 import com.rdp.ghostium.models.settings.AppOption.SettingType
 import com.rdp.ghostium.models.settings.LogoOption
 import com.rdp.ghostium.ui.tabs.common.TabsActivity
+import com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteActivity
 import com.rdp.ghostium.ui.tabs.settings.general.GeneralActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -77,8 +78,11 @@ class SettingsFragment :
                 is AppOption -> {
                     when (data.type) {
                         SettingType.CRYPTO_FAV -> {
-                            findNavController().navigate(
-                                SettingsFragmentDirections.settingsFavouriteAction()
+                            val i = Intent(requireContext(), FavouriteActivity::class.java)
+                            startActivity(i)
+                            requireActivity().overridePendingTransition(
+                                R.anim.slide_in_right,
+                                R.anim.slide_out_left
                             )
                         }
                         SettingType.NEWS_FAV -> {

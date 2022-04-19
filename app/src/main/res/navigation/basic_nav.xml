@@ -11,19 +11,12 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_settings">
         <action
-            android:id="@+id/settingsFavouriteAction"
-            app:destination="@id/favouriteFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
             android:id="@+id/settingsBookmarkAction"
             app:destination="@id/bookmarkFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
@@ -39,28 +32,19 @@
         android:id="@+id/trendsFragment"
         android:name="com.rdp.ghostium.ui.tabs.cryptos.TrendsFragment"
         android:label="fragment_trends"
-        tools:layout="@layout/fragment_trends" >
-        <action
-            android:id="@+id/action_trendsFragment_to_favouriteFragment"
-            app:destination="@id/favouriteFragment" />
+        tools:layout="@layout/fragment_trends">
         <action
             android:id="@+id/action_trendsFragment_to_bookmarkFragment"
             app:destination="@id/bookmarkFragment" />
     </fragment>
     <fragment
-        android:id="@+id/favouriteFragment"
-        android:name="com.rdp.ghostium.ui.tabs.settings.favourite.FavouriteFragment"
-        android:label="favouriteFragment">
-    </fragment>
-    <fragment
         android:id="@+id/searchFragment"
         android:name="com.rdp.ghostium.ui.tabs.search.SearchFragment"
-        android:label="SearchFragment" >
+        android:label="SearchFragment">
         <deepLink app:uri="ghostium://searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="com.rdp.ghostium.ui.tabs.settings.bookmark.BookmarkFragment"
-        android:label="BookmarkFragment">
-    </fragment>
+        android:label="BookmarkFragment"></fragment>
 </navigation>
