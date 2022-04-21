@@ -1,10 +1,14 @@
 package com.rdp.ghostium.di.common
 
+import android.app.Application
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
+import com.rdp.ghostium.connectivity.ConnectivityObserver
+import com.rdp.ghostium.connectivity.ConnectivityObserverImpl
+import com.rdp.ghostium.connectivity.connectivityManager
 import com.rdp.ghostium.database.room.GhostzillaDatabase
 import com.rdp.ghostium.utils.Constants.Companion.GHOSTZILLA_NAME
 import dagger.Module
@@ -49,5 +53,11 @@ class DataModule {
     @Singleton
     @Provides
     fun provideArticlessDao(database: GhostzillaDatabase) = database.articlesDao()
+
+    @Singleton
+    @Provides
+    fun provideConnectivityObserver(application: Application): ConnectivityObserver {
+        return ConnectivityObserverImpl(application.connectivityManager)
+    }
 
 }

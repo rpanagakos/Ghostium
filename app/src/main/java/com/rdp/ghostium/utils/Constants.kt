@@ -19,7 +19,7 @@ class Constants {
         const val LOTTIE_FULL_STATE = 1f
         const val LOTTIE_STARTING_STATE = 0f
 
-        const val SHARED_PREF = "ghostzilla"
+        const val SHARED_PREF = "ghostium"
     }
 
     object DataStore {

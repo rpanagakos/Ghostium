@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
 import com.rdp.ghostium.R
 import com.rdp.ghostium.models.errors.ErrorManager
 import com.rdp.ghostium.models.errors.mapper.NETWORK_ERROR
@@ -13,7 +14,6 @@ import com.rdp.ghostium.models.errors.mapper.NO_INTERNET_CONNECTION
 import com.rdp.ghostium.ui.tabs.common.TabsAdapter
 import com.rdp.ghostium.utils.SingleLiveEvent
 import com.rdp.ghostium.utils.showKeyboard
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
