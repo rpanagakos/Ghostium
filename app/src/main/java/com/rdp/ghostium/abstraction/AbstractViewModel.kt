@@ -4,9 +4,12 @@ import android.app.Application
 import android.widget.ImageView
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 import com.rdp.ghostium.R
+import com.rdp.ghostium.connectivity.ConnectionState
+import com.rdp.ghostium.connectivity.ConnectivityObserver
 import com.rdp.ghostium.models.errors.ErrorManager
 import com.rdp.ghostium.models.errors.mapper.NETWORK_ERROR
 import com.rdp.ghostium.models.errors.mapper.NOT_FOUND
@@ -17,15 +20,23 @@ import com.rdp.ghostium.utils.showKeyboard
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.isActive
 import javax.inject.Inject
 
-abstract class AbstractViewModel(application: Application) : AndroidViewModel(application) {
+abstract class AbstractViewModel(
+    application: Application,
+    private val connectivityObserver: ConnectivityObserver? = null
+) : AndroidViewModel(application) {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val showToastPrivate = SingleLiveEvent<Any>()
     val showToast: SingleLiveEvent<Any> get() = showToastPrivate
     val resultNotFound: SingleLiveEvent<Int> get() = resultNotFoundPrivate
+    val isConnected = SingleLiveEvent<Boolean>()
     protected val context
         get() = getApplication<Application>()
 
@@ -80,6 +91,16 @@ abstract class AbstractViewModel(application: Application) : AndroidViewModel(ap
         while (isActive) {
             action()
             delay(repeatMillis)
+        }
+    }
+
+    protected fun observeConnectivity() {
+        connectivityObserver?.let {
+            it.connectionState
+                .distinctUntilChanged()
+                .map { it == ConnectionState.Available }
+                .onEach { isConnected.postValue(it) }
+                .launchIn(viewModelScope)
         }
     }
 }

@@ -22,14 +22,13 @@ import javax.inject.Inject
 class TabsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
-    private val connectivityObserver: ConnectivityObserver,
+    connectivityObserver: ConnectivityObserver,
     application: Application
-) : AbstractViewModel(application) {
+) : AbstractViewModel(application, connectivityObserver) {
 
     var trendingCryptos: LiveData<MutableList<TredingCoins>> =
         localRepository.fetchTrendingCryptos().asLiveData()
     private val time24h = 48200
-    val isConnected = SingleLiveEvent<Boolean>()
 
     init {
         observeConnectivity()
@@ -53,14 +52,6 @@ class TabsViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun observeConnectivity() {
-        connectivityObserver.connectionState
-            .distinctUntilChanged()
-            .map { it == ConnectionState.Available }
-            .onEach { isConnected.postValue(it) }
-            .launchIn(viewModelScope)
     }
 
 }
