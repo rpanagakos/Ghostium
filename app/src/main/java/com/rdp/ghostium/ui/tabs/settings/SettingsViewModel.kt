@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.rdp.ghostium.abstraction.AbstractViewModel
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
-import com.rdp.ghostium.ui.tabs.common.TabsAdapter
+import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.NetworkConnectivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.rdp.ghostium.ui.tabs.common
+package com.rdp.ghostium.ui.tabs.common.recycler
 
 import androidx.databinding.ViewDataBinding
 import com.rdp.ghostium.abstraction.AbstractBindingViewHolder

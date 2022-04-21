@@ -1,4 +1,4 @@
-package com.rdp.ghostium.ui.tabs.common
+package com.rdp.ghostium.ui.tabs.common.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -12,7 +12,7 @@ import com.rdp.ghostium.databinding.HolderShimmerCryptosBinding
 import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
-import com.rdp.ghostium.ui.tabs.common.ShimmerViewHolder
+import com.rdp.ghostium.ui.tabs.common.recycler.ShimmerViewHolder
 import java.util.concurrent.atomic.AtomicInteger
 
 class FavouriteAdapter(

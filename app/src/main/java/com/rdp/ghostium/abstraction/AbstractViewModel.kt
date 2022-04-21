@@ -14,7 +14,7 @@ import com.rdp.ghostium.models.errors.ErrorManager
 import com.rdp.ghostium.models.errors.mapper.NETWORK_ERROR
 import com.rdp.ghostium.models.errors.mapper.NOT_FOUND
 import com.rdp.ghostium.models.errors.mapper.NO_INTERNET_CONNECTION
-import com.rdp.ghostium.ui.tabs.common.TabsAdapter
+import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.SingleLiveEvent
 import com.rdp.ghostium.utils.showKeyboard
 import kotlinx.coroutines.CoroutineScope

@@ -18,7 +18,7 @@ import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.settings.RecentlyItem
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.network.DataRepository
-import com.rdp.ghostium.ui.tabs.common.TabsAdapter
+import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.SingleLiveEvent
 import com.rdp.ghostium.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -11,7 +11,7 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.opensea.Assets
 import com.rdp.ghostium.network.DataRepository
-import com.rdp.ghostium.ui.tabs.common.TabsAdapter
+import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.NetworkConnectivity
 import com.rdp.ghostium.utils.SingleLiveEvent
 import com.rdp.ghostium.utils.wrapEspressoIdlingResource

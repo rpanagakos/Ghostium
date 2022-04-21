@@ -13,7 +13,6 @@ import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.tredings.Item
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
-import com.rdp.ghostium.ui.tabs.common.TabsAdapter
 import com.rdp.ghostium.utils.BackToTopScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

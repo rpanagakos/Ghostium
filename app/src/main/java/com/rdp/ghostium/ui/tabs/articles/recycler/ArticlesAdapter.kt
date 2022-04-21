@@ -14,8 +14,8 @@ import com.rdp.ghostium.databinding.HolderTitleItemBinding
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
 import com.rdp.ghostium.models.guardian.Article
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
-import com.rdp.ghostium.ui.tabs.common.ShimmerViewHolder
-import com.rdp.ghostium.ui.tabs.common.TabsViewHolder
+import com.rdp.ghostium.ui.tabs.common.recycler.ShimmerViewHolder
+import com.rdp.ghostium.ui.tabs.common.recycler.TabsViewHolder
 
 class ArticlesAdapter(private val listener: ItemOnClickListener,
                       private val generalAction: (data: LocalModel) -> Unit) : AbstractPagingAdapter() {
