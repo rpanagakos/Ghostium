@@ -233,14 +233,14 @@ fun LottieAnimationView.enableAfterAnimation() {
 fun View.appearWithCustomAnimation(animationFile: Int, context: Context) {
     this.apply {
         startAnimation(AnimationUtils.loadAnimation(context, animationFile))
-        visibility = View.VISIBLE
+        show()
     }
 }
 
 fun View.disappearWithCustomAnimation(animationFile: Int, context: Context) {
     this.apply {
+        hide()
         startAnimation(AnimationUtils.loadAnimation(context, animationFile))
-        visibility = View.GONE
     }
 }
 
@@ -285,4 +285,13 @@ private fun SpannableStringBuilder.makeLinkClickable(
     }
     setSpan(clickable, start, end, flags)
     removeSpan(span)
+}
+
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    visibility = View.GONE
 }

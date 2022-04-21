@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,19 +16,34 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:background="@color/dede">
 
-        <TextView
-            android:id="@+id/internetTextView"
+        <LinearLayout
+            android:id="@+id/networkStatusLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#DB324D"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="@dimen/medium_spacing"
-            android:text="No Internet Connection"
-            android:textAppearance="@style/regular_text"
-            android:textColor="@color/reddit_color"
-            displaySliding="@{viewModel.displayInternetMessage}"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textNetworkStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/large_spacing"
+                android:gravity="center_vertical"
+                android:text="No Internet!"
+                android:textAppearance="@style/medium_gray"
+                android:textColor="@color/white"
+                app:drawableStartCompat="@drawable/ic_cloud_slash_solid" />
+        </LinearLayout>
 
         <fragment
             android:id="@+id/nav_host_fragment_container"
@@ -38,7 +54,7 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/internetTextView"
+            app:layout_constraintTop_toBottomOf="@id/networkStatusLayout"
             app:navGraph="@navigation/basic_nav" />
 
 

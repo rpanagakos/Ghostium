@@ -3,19 +3,15 @@ package com.rdp.ghostium.ui.tabs.common
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractActivity
-import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.databinding.ActivityMainBinding
-import com.rdp.ghostium.models.guardian.Article
 import com.rdp.ghostium.ui.intro.IntroActivity
-import com.rdp.ghostium.ui.tabs.articles.bottomsheet.BottomsheetOption
+import com.rdp.ghostium.ui.tabs.common.TabsBinding.slideAnimation
 import com.rdp.ghostium.ui.tabs.nft.NftsFragment
 import com.rdp.ghostium.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,6 +39,10 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
             setupWithNavController(navController)
             itemIconTintList = null
         }
+
+        viewModel.isConnected.observe(this, {
+            binding.networkStatusLayout.slideAnimation(!it)
+        })
     }
 
     override fun runOperation() {
@@ -52,14 +52,6 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
     }
 
     override fun stopOperation() {}
-
-    fun hideMenuBar() {
-        binding.bottomNavigation.visibility = View.GONE
-    }
-
-    fun showMenuBar() {
-        binding.bottomNavigation.visibility = View.VISIBLE
-    }
 
     override fun onBackPressed() {
         when (nav_host_fragment_container.childFragmentManager.fragments[0]) {
