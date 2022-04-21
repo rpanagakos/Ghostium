@@ -19,6 +19,7 @@ class IntroActivity : ComponentActivity() {
     private lateinit var navHostController: NavHostController
 
     @ExperimentalPagerApi
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
