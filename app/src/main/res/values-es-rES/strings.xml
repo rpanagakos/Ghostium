@@ -55,5 +55,6 @@
     <string name="no_searched_found">No tienes búsquedas recientes.</string>
     <string name="no_cryptos_found">Nada en tus Criptos Favoritos.</string>
     <string name="no_articles_found">Nada en los Artículos Guardados</string>
+    <string name="web_broswer">Web Broswer</string>
 
 </resources>

@@ -17,8 +17,7 @@ import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsActivity :
-    AbstractActivity<ActivityDetailsBinding>(R.layout.activity_details) {
+class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activity_details) {
 
     @Inject
     lateinit var sparkLineStyle: SparkLineStyle
@@ -80,8 +79,8 @@ class DetailsActivity :
             binding.chartLine.data = LineData(it)
             binding.chartLine.invalidate()
         })
-        viewModel.isLoading.observe(this,{
-            if (!it){
+        viewModel.isLoading.observe(this, {
+            if (!it) {
                 binding.layoutShimmer.visibility = View.GONE
                 binding.scrollView.visibility = View.VISIBLE
             }

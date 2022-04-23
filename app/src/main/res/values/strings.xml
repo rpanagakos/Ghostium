@@ -77,5 +77,6 @@
     <string name="no_searched_found">You don\'t have recent searches.</string>
     <string name="no_cryptos_found">Nothing in your Favourite Cryptos</string>
     <string name="no_articles_found">Nothing in Saved Articles</string>
+    <string name="web_broswer">Web Broswer</string>
 
 </resources>

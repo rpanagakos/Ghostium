@@ -3,6 +3,7 @@ package com.rdp.ghostium.utils
 import android.animation.Animator
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.icu.text.NumberFormat
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Currency
@@ -11,10 +12,7 @@ import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.format.DateUtils
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.text.style.RelativeSizeSpan
-import android.text.style.URLSpan
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationUtils
@@ -23,15 +21,17 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
-import androidx.core.text.getSpans
 import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.github.mikephil.charting.charts.LineChart
+import com.rdp.ghostium.ui.tabs.common.TabsBinding.displayHtmlString
+import com.rdp.ghostium.ui.tabs.common.WebviewActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
+import java.lang.StringBuilder
 import java.util.*
 
 
@@ -143,21 +143,33 @@ fun getMyLongValue(vararg any: Any): Float {
     }
 }
 
-fun TextView.setTextViewLinkHtml(html: String, linkClickCallBack: ((Int, String) -> Unit)? = null) {
-    val newHtml = html.replace("\n", "<br>")
-    val sequence = Html.fromHtml(newHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-    val strBuilder = SpannableStringBuilder(sequence)
-    val urls = strBuilder.getSpans<URLSpan>(0, sequence.length)
+fun View.convertToSpannableStringBuilder(text : String, imageGetter: ImageGetter?) : SpannableStringBuilder{
+    val newHtml = text.replace("\n", "<br>")
+    val sequence = Html.fromHtml(newHtml, HtmlCompat.FROM_HTML_MODE_LEGACY, imageGetter, null)
+    return SpannableStringBuilder(sequence)
+}
 
-    urls.forEach {
-        if (linkClickCallBack != null) {
-            strBuilder.makeLinkClickable(it, urls.indexOf(it), linkClickCallBack)
-        }
-    }
-
+fun TextView.setTextViewLinkHtml(
+    strBuilder: SpannableStringBuilder,
+    linkClickCallBack: ((String) -> Unit)? = null
+) {
     text = strBuilder
     linksClickable = true
-    movementMethod = LinkMovementMethod.getInstance()
+    movementMethod = object : CustomLinkMovementMethod() {
+        override fun onLinkClicked(url: String) {
+            when (url) {
+                "showMore" -> {
+                    linkClickCallBack?.invoke(url)
+                }
+                else -> {
+                    val intent =
+                        Intent(this@setTextViewLinkHtml.context, WebviewActivity::class.java)
+                    intent.putExtra("url", url)
+                    this@setTextViewLinkHtml.context.startActivity(intent)
+                }
+            }
+        }
+    }
 }
 
 fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2): SpannableString {
@@ -266,27 +278,6 @@ fun String.convertDateToAgoString(): String {
         this
     }
 }
-
-private fun SpannableStringBuilder.makeLinkClickable(
-    span: URLSpan,
-    index: Int,
-    linkClickCallBack: ((Int, String) -> Unit)? = null
-) {
-    val start = getSpanStart(span)
-
-    val end =
-        getSpanEnd(span)
-
-    val flags = getSpanFlags(span)
-    val clickable = object : ClickableSpan() {
-        override fun onClick(widget: View) {
-            linkClickCallBack?.invoke(index, span.url)
-        }
-    }
-    setSpan(clickable, start, end, flags)
-    removeSpan(span)
-}
-
 
 fun View.show() {
     visibility = View.VISIBLE
