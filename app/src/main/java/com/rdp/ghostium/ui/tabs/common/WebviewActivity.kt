@@ -1,6 +1,7 @@
 package com.rdp.ghostium.ui.tabs.common
 
 import android.annotation.SuppressLint
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.rdp.ghostium.R
@@ -10,14 +11,17 @@ import com.rdp.ghostium.utils.setSafeOnClickListener
 
 class WebviewActivity : AbstractActivity<ActivityWebviewBinding>(R.layout.activity_webview) {
 
+    var url: String? = "www.google.com"
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun initLayout() {
+        binding.isLoading = true
         binding.backButton.setSafeOnClickListener { onBackPressed() }
         intent.extras?.let {
             binding.webview.apply {
                 settings.javaScriptEnabled = true
                 settings.domStorageEnabled = true
-                settings.databaseEnabled = true
+                webChromeClient = WebChromeClient()
                 webViewClient = object : WebViewClient() {
                     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                         if (url != null) {
@@ -27,12 +31,14 @@ class WebviewActivity : AbstractActivity<ActivityWebviewBinding>(R.layout.activi
                     }
 
                     override fun onPageFinished(view: WebView?, url: String?) {
+                        binding.isLoading = false
                         super.onPageFinished(view, url)
                     }
                 }
-                loadUrl(it.getString("url", "www.google.com"))
             }
+            url = it.getString("url")
         }
+        binding.webview.loadUrl(url.toString())
     }
 
     override fun runOperation() {}
