@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/large_spacing"
                 android:gravity="center_vertical"
-                android:text="You 're currently offline."
+                android:text="@string/you_re_currently_offline"
                 android:textAppearance="@style/medium_gray"
                 android:textColor="@color/white"
                 app:drawableStartCompat="@drawable/ic_cloud_slash_solid" />

@@ -56,5 +56,6 @@
     <string name="no_cryptos_found">Niente nei tuoi Cryptos preferiti.</string>
     <string name="no_articles_found">Niente negli Articoli Salvati</string>
     <string name="web_broswer">Broswer Web</string>
+    <string name="you_re_currently_offline">Sei attualmente offline.</string>
 
 </resources>
