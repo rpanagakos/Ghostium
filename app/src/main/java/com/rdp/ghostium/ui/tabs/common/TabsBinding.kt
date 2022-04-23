@@ -38,9 +38,9 @@ object TabsBinding {
     @JvmStatic
     fun View.slideAnimation(displaySliding: Boolean) {
         if (displaySliding)
-            this.appearWithCustomAnimation(R.anim.slide_from_top, this.context)
+            this.appearWithCustomAnimation(R.anim.slide_up, this.context)
         else
-            this.disappearWithCustomAnimation(R.anim.slide_to_top, this.context)
+            this.disappearWithCustomAnimation(R.anim.slide_down, this.context)
     }
 
     @BindingAdapter("addTabs")

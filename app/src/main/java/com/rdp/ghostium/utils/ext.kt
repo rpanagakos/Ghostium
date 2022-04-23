@@ -13,6 +13,8 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.format.DateUtils
 import android.text.style.RelativeSizeSpan
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationUtils
@@ -20,12 +22,14 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.core.view.postDelayed
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.github.mikephil.charting.charts.LineChart
+import com.rdp.ghostium.R
 import com.rdp.ghostium.ui.tabs.common.TabsBinding.displayHtmlString
 import com.rdp.ghostium.ui.tabs.common.WebviewActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -63,6 +67,10 @@ fun EditText.clearTextAndFocus(context: Context) {
         context.hideKeyboard(this)
     }
 }
+
+fun Int.dpToPixelsInt(context: Context):Int = TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+).toInt()
 
 fun ImageView.changeImageOnEdittext(editText: EditText, emptyImage: Int, nonEmpty: Int) {
     if (editText.text.toString().isEmpty())

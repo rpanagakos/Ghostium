@@ -67,7 +67,7 @@
             android:layout_height="6dp"
             android:layout_marginStart="@dimen/medium_spacing"
             android:background="@drawable/contract_image_trends"
-            android:backgroundTint="@color/Black3"
+            android:backgroundTint="@color/EerieBlack"
             app:layout_constraintBottom_toBottomOf="@id/articleCategory"
             app:layout_constraintStart_toEndOf="@id/articleCategory"
             app:layout_constraintTop_toTopOf="@id/articleCategory" />
@@ -81,7 +81,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/tiny_text"
-            android:textColor="@color/Gray3"
+            android:textColor="@color/SpanishGray"
             app:layout_constraintBottom_toBottomOf="@id/articleCategory"
             app:layout_constraintEnd_toStartOf="@+id/moreImage"
             app:layout_constraintStart_toEndOf="@id/bullet"
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="@dimen/large_spacing"
-            android:background="@color/CoolGray"
+            android:background="@color/Cultured"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/articleImage" />
 

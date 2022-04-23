@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -16,6 +17,8 @@ import com.rdp.ghostium.ui.tabs.nft.NftsFragment
 import com.rdp.ghostium.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -41,7 +44,14 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
         }
 
         viewModel.isConnected.observe(this, {
-            binding.networkStatusLayout.slideAnimation(!it)
+            if (!it)
+                lifecycleScope.launch {
+                    binding.networkStatusLayout.slideAnimation(!it)
+                    delay(8000)
+                    binding.networkStatusLayout.slideAnimation(it)
+                }
+            else
+                binding.networkStatusLayout.slideAnimation(it)
         })
     }
 

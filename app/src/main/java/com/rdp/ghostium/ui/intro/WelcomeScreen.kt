@@ -64,8 +64,8 @@ fun WelcomeScreen(
                 .weight(1f)
                 .align(Alignment.CenterHorizontally),
             pagerState = pagerState,
-            activeColor = colorResource(id = R.color.Black3),
-            inactiveColor = colorResource(id = R.color.CoolGray),
+            activeColor = colorResource(id = R.color.EerieBlack),
+            inactiveColor = colorResource(id = R.color.Cultured),
             indicatorWidth = 16.dp,
             spacing = 8.dp
         )

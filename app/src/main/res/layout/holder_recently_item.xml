@@ -43,7 +43,7 @@
             android:onClick="@{() -> onClickHandler.onClick(recentlyItem, 0)}"
             android:padding="@dimen/small_spacing"
             android:src="@drawable/ic_cancel"
-            android:tint="@color/Black3"
+            android:tint="@color/EerieBlack"
             app:layout_constraintBottom_toBottomOf="@id/recentlyText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/recentlyText" />

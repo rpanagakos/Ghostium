@@ -23,8 +23,6 @@
     <color name="lang_hint">#8A425B</color>
     <color name="support_card_color">#B47E00</color>
     <color name="invite_card_color">#066F68</color>
-
-
     
     <color name="dark_sienna">#481620</color>
     <color name="midnight_blue">#07004D</color>
@@ -35,19 +33,13 @@
     <color name="russian_green">#8BB174</color>
 
     <color name="Black">#000000</color>
-    <color name="Black2">#121212</color>
-    <color name="Black3">#242424</color>
+    <color name="EerieBlack">#242424</color>
     <color name="BlackTransparent">#AD242424</color>
-    <color name="Gray2">#DBDBDB</color>
-    <color name="Gray2_transparent">#BFDBDBDB</color>
-    <color name="Gray3">#949494</color>
-    <color name="CoolGray">#EDEDED</color>
-
-    <color name="Cyan">#3AD3B7</color>
-    <color name="SoftCyan">#84DCC6</color>
-    <color name="LightCyan">#66DFBB</color>
-    <color name="ExtraLightCyan">#AEE3D6</color>
-    <color name="ExtraLighterCyan">#B3EFDD</color>
+    <color name="Gainsboro">#DBDBDB</color>
+    <color name="Gainsboro_transparent">#BFDBDBDB</color>
+    <color name="SpanishGray">#949494</color>
+    <color name="battleship_grey">#858786</color>
+    <color name="Cultured">#EDEDED</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black_overlay">#66000000</color>

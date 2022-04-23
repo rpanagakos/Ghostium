@@ -19,32 +19,6 @@
         android:animateLayoutChanges="true"
         android:background="@color/dede">
 
-        <LinearLayout
-            android:id="@+id/networkStatusLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#DB324D"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/medium_spacing"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible">
-
-            <TextView
-                android:id="@+id/textNetworkStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/large_spacing"
-                android:gravity="center_vertical"
-                android:text="No Internet!"
-                android:textAppearance="@style/medium_gray"
-                android:textColor="@color/white"
-                app:drawableStartCompat="@drawable/ic_cloud_slash_solid" />
-        </LinearLayout>
-
         <fragment
             android:id="@+id/nav_host_fragment_container"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -54,8 +28,36 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/networkStatusLayout"
+            app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/basic_nav" />
+
+        <LinearLayout
+            android:id="@+id/networkStatusLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/large_spacing"
+            android:layout_marginBottom="@dimen/large_spacing"
+            android:background="@drawable/bg_toast_message"
+            android:orientation="horizontal"
+            android:padding="@dimen/large_spacing"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textNetworkStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/large_spacing"
+                android:gravity="center_vertical"
+                android:text="You 're currently offline."
+                android:textAppearance="@style/medium_gray"
+                android:textColor="@color/white"
+                app:drawableStartCompat="@drawable/ic_cloud_slash_solid" />
+        </LinearLayout>
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

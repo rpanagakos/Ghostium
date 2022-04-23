@@ -80,7 +80,7 @@
                 android:gravity="center"
                 android:text="@{coin.symbol}"
                 android:textAppearance="@style/small_regular_gray"
-                android:textColor="@color/Gray3"
+                android:textColor="@color/SpanishGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/coinName"

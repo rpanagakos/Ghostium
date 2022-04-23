@@ -53,7 +53,7 @@
             android:layout_marginTop="2dp"
             android:includeFontPadding="false"
             android:textAppearance="@style/tiny_regular"
-            android:textColor="@color/Gray3"
+            android:textColor="@color/SpanishGray"
             android:transitionName="@string/transition_article_date"
             app:layout_constraintEnd_toEndOf="@id/authorName"
             app:layout_constraintStart_toStartOf="@id/authorName"
@@ -123,7 +123,7 @@
                     android:transitionName="@string/transition_article_image"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/articleTitle"
-                    tools:background="@color/Black3" />
+                    tools:background="@color/EerieBlack" />
 
                 <TextView
                     android:id="@+id/standFirstArticle"

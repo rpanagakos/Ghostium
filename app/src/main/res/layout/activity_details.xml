@@ -74,7 +74,7 @@
             android:text="@{crypto.symbol}"
             android:textAllCaps="true"
             android:textAppearance="@style/tiny_regular"
-            android:textColor="@color/Gray3"
+            android:textColor="@color/SpanishGray"
             android:transitionName="@string/transition_coin_symbol"
             app:layout_constraintBottom_toBottomOf="@id/coinImageDetails"
             app:layout_constraintEnd_toEndOf="@id/coinNameDetail"
@@ -184,11 +184,11 @@
                     app:layout_constraintEnd_toEndOf="@id/chartLine"
                     app:layout_constraintStart_toStartOf="@id/chartLine"
                     app:tabIndicator="@drawable/custom_tab_indicator"
-                    app:tabIndicatorColor="@color/Gray3"
+                    app:tabIndicatorColor="@color/SpanishGray"
                     app:tabIndicatorGravity="stretch"
                     app:tabSelectedTextColor="@color/white"
                     app:tabTextAppearance="@style/TabCustomAppearance"
-                    app:tabTextColor="@color/CoolGray" />
+                    app:tabTextColor="@color/Cultured" />
 
                 <TextView
                     android:id="@+id/titleDescription"

@@ -10,7 +10,7 @@
         style="@style/small_text_bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/Gray3"
+        android:textColor="@color/SpanishGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -26,14 +26,14 @@
         <item name="fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Gray3</item>
+        <item name="android:textColor">@color/SpanishGray</item>
     </style>
 
     <style name="tiny_text_bold">
         <item name="fontFamily">@font/montserrat_compose_bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="TabCustomAppearance" parent="TextAppearance.Design.Tab">
@@ -48,42 +48,42 @@
         <item name="fontFamily">@font/montserrat_compose_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="regular_text">
         <item name="fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="large_text">
         <item name="fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="large_text_bold">
         <item name="fontFamily">@font/montserrat_compose_bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="large_xlarge_text">
         <item name="fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">20sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="large_xlarge_text_bold">
         <item name="fontFamily">@font/montserrat_compose_bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="xlarge_text_bold_white">
@@ -97,7 +97,7 @@
         <item name="fontFamily">@font/montserrat_compose_bold</item>
         <item name="android:textSize">22sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Black3</item>
+        <item name="android:textColor">@color/EerieBlack</item>
     </style>
 
     <style name="small_regular">
@@ -111,7 +111,7 @@
         <item name="android:fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight" tools:targetApi="p">22sp</item>
-        <item name="android:textColor">@color/Gray3</item>
+        <item name="android:textColor">@color/SpanishGray</item>
     </style>
 
     <style name="tiny_regular">
@@ -131,14 +131,14 @@
     <style name="medium_gray">
         <item name="fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/Gray3</item>
+        <item name="android:textColor">@color/SpanishGray</item>
         <item name="android:lineHeight" tools:targetApi="p">26sp</item>
     </style>
 
     <style name="large_gray">
         <item name="fontFamily">@font/montserrat_compose</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/Gray3</item>
+        <item name="android:textColor">@color/SpanishGray</item>
         <item name="android:lineHeight" tools:targetApi="p">26sp</item>
     </style>
 
@@ -159,7 +159,7 @@
         <item name="android:paddingBottom">14dp</item>
         <item name="android:textAlignment">center</item>
         <item name="textAllCaps">false</item>
-        <item name="android:textColor">@color/CoolGray</item>
+        <item name="android:textColor">@color/Cultured</item>
     </style>
 
     <style name="CustomCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
