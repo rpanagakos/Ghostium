@@ -10,6 +10,7 @@ import androidx.paging.cachedIn
 import com.rdp.ghostium.abstraction.AbstractViewModel
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
+import com.rdp.ghostium.connectivity.ConnectivityObserver
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.network.guardian.GuardianRemoteRepository
 import com.rdp.ghostium.ui.tabs.articles.recycler.ArticlesAdapter
@@ -20,8 +21,9 @@ import javax.inject.Inject
 @HiltViewModel
 class ArticlesViewModel @Inject constructor(
     private val guardianRemoteRepository: GuardianRemoteRepository,
+    connectivityObserver: ConnectivityObserver,
     application: Application
-) : AbstractViewModel(application), ItemOnClickListener {
+) : AbstractViewModel(application, connectivityObserver), ItemOnClickListener {
 
     private var callbacks: (
         data: LocalModel, title: TextView?,
@@ -34,6 +36,8 @@ class ArticlesViewModel @Inject constructor(
 
     @Inject
     lateinit var networkConnectivity: NetworkConnectivity
+
+    init { observeConnectivity() }
 
     fun runOperation(
         listener: (

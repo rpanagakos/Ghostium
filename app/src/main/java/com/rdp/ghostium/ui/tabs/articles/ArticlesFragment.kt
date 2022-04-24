@@ -59,7 +59,19 @@ class ArticlesFragment :
         }
     }
 
-    override fun observeViewModel() {}
+    override fun observeViewModel() {
+        viewModel.isConnected.observe(this, {
+            if(it && containsShimmerData())
+                viewModel.articlesPagingAdapter.retry()
+        })
+    }
 
     override fun stopOperations() {}
+
+    private fun containsShimmerData() : Boolean {
+        return if (viewModel.articlesPagingAdapter.itemCount > 0)
+            viewModel.articlesPagingAdapter.getItemViewType(1) == R.layout.holder_shimmer_article
+        else
+            false
+    }
 }
