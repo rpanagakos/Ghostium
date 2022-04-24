@@ -65,12 +65,7 @@ class SettingsFragment :
                 this.resources.getString(R.string.option_rate),
                 R.drawable.ic_rate,
                 AppOption.SettingType.RATE_APP
-            ),
-            AppOption(
-                this.resources.getString(R.string.option_contact),
-                R.drawable.ic_contact_us,
-                AppOption.SettingType.CONTACT_US
-            ),
+            )
         )
 
         viewModel.runOperation(settingsList) { data: LocalModel,
@@ -120,9 +115,7 @@ class SettingsFragment :
         currencyImpl.updateChosenCurrency()
     }
 
-    override fun observeViewModel() {
-    }
+    override fun observeViewModel() {}
 
-    override fun stopOperations() {
-    }
+    override fun stopOperations() {}
 }
