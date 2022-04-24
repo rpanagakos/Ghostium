@@ -50,8 +50,6 @@ class TabsActivity : AbstractActivity<ActivityMainBinding>(R.layout.activity_mai
                     delay(8000)
                     binding.networkStatusLayout.slideAnimation(it)
                 }
-            else
-                binding.networkStatusLayout.slideAnimation(it)
         })
     }
 
