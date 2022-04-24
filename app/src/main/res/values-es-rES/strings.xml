@@ -57,5 +57,7 @@
     <string name="no_articles_found">Nada en los Artículos Guardados</string>
     <string name="web_broswer">Navegador web</string>
     <string name="you_re_currently_offline">Estás actualmente fuera de línea.</string>
+    <string name="retry">Rever</string>
+    <string name="something_went_wrong_n_please_try_again">Algo salió mal.\n Inténtalo de nuevo</string>
 
 </resources>

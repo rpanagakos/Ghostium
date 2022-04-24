@@ -79,5 +79,7 @@
     <string name="no_articles_found">Nothing in Saved Articles</string>
     <string name="web_broswer">Web Broswer</string>
     <string name="you_re_currently_offline">You \'re currently offline.</string>
+    <string name="retry">Retry</string>
+    <string name="something_went_wrong_n_please_try_again">Something went wrong. \n Please try again</string>
 
 </resources>

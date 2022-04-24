@@ -57,5 +57,7 @@
     <string name="no_articles_found">Niente negli Articoli Salvati</string>
     <string name="web_broswer">Broswer Web</string>
     <string name="you_re_currently_offline">Sei attualmente offline.</string>
+    <string name="retry">Riprova</string>
+    <string name="something_went_wrong_n_please_try_again">Qualcosa è andato storto.\n Per favore riprova</string>
 
 </resources>
