@@ -107,7 +107,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$room"
 
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "com.airbnb.android:lottie-compose:5.0.3"
+    implementation "com.airbnb.android:lottie-compose:4.0.0"
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2"
 
@@ -156,7 +156,7 @@ dependencies {
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    implementation 'com.airbnb.android:lottie:5.0.0'
+    implementation 'com.airbnb.android:lottie:4.0.0'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 

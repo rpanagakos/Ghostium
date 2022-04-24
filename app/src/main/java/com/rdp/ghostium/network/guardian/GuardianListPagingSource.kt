@@ -1,5 +1,6 @@
 package com.rdp.ghostium.network.guardian
 
+import androidx.paging.LoadState
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.rdp.ghostium.abstraction.LocalModel
@@ -11,7 +12,7 @@ private const val INITIAL_LOAD_SIZE = 1
 
 class GuardianListPagingSource(
     private val guardianApi: GuardianApi,
-    private val title : TitleRecyclerItem
+    private val title: TitleRecyclerItem
 ) : PagingSource<Int, LocalModel>() {
 
     override fun getRefreshKey(state: PagingState<Int, LocalModel>): Int? {
@@ -30,7 +31,11 @@ class GuardianListPagingSource(
                     listOf(title).plus(guardianResponse.response.articles)
                 else
                     guardianResponse.response.articles
-            val nextKey = guardianResponse.response.currentPage + 1
+            val nextKey =
+                if (guardianResponse.response.currentPage == guardianResponse.response.pages)
+                    null
+                else
+                    guardianResponse.response.currentPage + 1
             LoadResult.Page(
                 data = finalList,
                 prevKey = null, // Only paging forward.

@@ -17,8 +17,10 @@ import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.ui.tabs.common.recycler.ShimmerViewHolder
 import com.rdp.ghostium.ui.tabs.common.recycler.TabsViewHolder
 
-class ArticlesAdapter(private val listener: ItemOnClickListener,
-                      private val generalAction: (data: LocalModel) -> Unit) : AbstractPagingAdapter() {
+class ArticlesAdapter(
+    private val listener: ItemOnClickListener,
+    private val generalAction: (data: LocalModel) -> Unit
+) : AbstractPagingAdapter() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {

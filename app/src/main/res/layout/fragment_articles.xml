@@ -18,11 +18,10 @@
             android:id="@+id/articlesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adapter="@{viewModel.articlesPagingAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/holder_article_item"/>
+            tools:listitem="@layout/holder_article_item" />
 
         <include
             android:id="@+id/backToTopImg"

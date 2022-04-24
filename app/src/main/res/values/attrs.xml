@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="statusBarBackground" format="color" />
+    <attr name="cryptosBackground" format="color" />
+    <attr name="titleTextColor" format="color"/>
+    <attr name="subTextColor" format="color"/>
+    <attr name="bulletColor" format="color"/>
+    <attr name="backButtonColor" format="color"/>
+    <attr name="backButtonBackground" format="color"/>
+</resources>

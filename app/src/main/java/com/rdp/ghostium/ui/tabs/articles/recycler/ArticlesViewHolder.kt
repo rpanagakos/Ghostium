@@ -10,8 +10,7 @@ import com.rdp.ghostium.utils.setSafeOnClickListener
 class ArticlesViewHolder(
     private val binding: HolderArticleItemBinding,
     private val itemListener: ItemOnClickListener
-) :
-    RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun present(item: Article, optionsClicked: (data: LocalModel) -> Unit) {
         with(binding) {
