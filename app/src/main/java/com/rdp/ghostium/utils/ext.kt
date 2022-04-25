@@ -181,10 +181,11 @@ fun TextView.setTextViewLinkHtml(
 }
 
 fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2): SpannableString {
+    val end = this.length - (fractionalDigits + 1)
     this.setSpan(
         RelativeSizeSpan(1.1f),
         0,
-        this.length - (fractionalDigits + 1),
+        if (end >= 0) end else 0,
         Spanned.SPAN_EXCLUSIVE_INCLUSIVE
     )
     return this
