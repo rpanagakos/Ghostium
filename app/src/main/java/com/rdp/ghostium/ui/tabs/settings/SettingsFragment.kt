@@ -1,5 +1,6 @@
 package com.rdp.ghostium.ui.tabs.settings
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
@@ -97,6 +98,35 @@ class SettingsFragment :
                                 R.anim.slide_in_right,
                                 R.anim.slide_out_left
                             )
+                        }
+                        SettingType.SHARE_APP -> {
+                            val sendIntent: Intent = Intent().apply {
+                                action = Intent.ACTION_SEND
+                                putExtra(
+                                    Intent.EXTRA_TEXT,
+                                    "Join the simpliest world of cryptos.\nGhostium is one click away...\nhttps://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
+                                )
+                                type = "text/plain"
+                            }
+                            val shareIntent = Intent.createChooser(sendIntent, null)
+                            startActivity(shareIntent)
+                        }
+                        SettingType.RATE_APP -> {
+                            try {
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("market://details?id=${BuildConfig.APPLICATION_ID}")
+                                    )
+                                )
+                            } catch (e: ActivityNotFoundException) {
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
+                                    )
+                                )
+                            }
                         }
                         SettingType.CONTACT_US -> {
                             val intent = Intent(Intent.ACTION_SENDTO)
