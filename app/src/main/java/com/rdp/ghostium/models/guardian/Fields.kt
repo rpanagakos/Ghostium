@@ -7,15 +7,35 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Fields(
     @SerializedName("byline")
-    val byline: String,
+    private val _byline: String? = "",
     @SerializedName("headline")
-    val headline: String,
+    private val _headline: String? = "",
     @SerializedName("thumbnail")
-    val thumbnail: String,
+    private val _thumbnail: String? = "",
     @SerializedName("trailText")
-    val trailText: String,
+    private val _trailText: String? = "",
     @SerializedName("body")
-    val body: String,
+    private val _body: String? = "",
     @SerializedName("main")
-    val main: String
-) : Parcelable
+    private val _main: String? = ""
+) : Parcelable {
+
+    val thumbnail
+        get() = _thumbnail ?: ""
+
+    val byline
+        get() = _byline ?: ""
+
+    val headline
+        get() = _headline ?: ""
+
+    val trailText
+        get() = _trailText ?: ""
+
+    val body
+        get() = _body ?: ""
+
+    val main
+        get() = _main ?: ""
+
+}
