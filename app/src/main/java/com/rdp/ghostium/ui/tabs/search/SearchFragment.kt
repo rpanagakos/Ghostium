@@ -43,7 +43,7 @@ class SearchFragment :
                         R.drawable.ic_search,
                         R.drawable.ic_outline_clear
                     )
-                    if (!this.text.isNullOrEmpty())
+                    if (!this.text.isNullOrEmpty() && !checkIfContainsInvalidString())
                         viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
                     else if (binding.searchLayout.searchEditText.hasFocus()) {
                         binding.generalRecycler.removeAllViewsInLayout()
@@ -53,7 +53,8 @@ class SearchFragment :
                 .launchIn(lifecycleScope)
             this.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_GO) {
-                    viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
+                    if (!checkIfContainsInvalidString())
+                        viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
                 }
                 true
             }
@@ -62,8 +63,13 @@ class SearchFragment :
 
     override fun observeViewModel() {}
 
-    override fun stopOperations() {
+    override fun stopOperations() {}
 
+    private fun checkIfContainsInvalidString() : Boolean{
+        binding.searchLayout.searchEditText.text?.let {
+            if ((it.length == 1 && it.contains(".")) || (it.length == 2 && it.contains("..")))
+                return true
+        }
+        return false
     }
-
 }
