@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.icu.util.Currency
 import android.text.Html
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView

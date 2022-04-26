@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rdp.ghostium.R
 
-abstract class BackToTopScrollListener(val view: View, val requiredContext: Context) :
+abstract class BackToTopScrollListener(val view: View, private val requiredContext: Context) :
     RecyclerView.OnScrollListener() {
 
     private var animationStarted = false

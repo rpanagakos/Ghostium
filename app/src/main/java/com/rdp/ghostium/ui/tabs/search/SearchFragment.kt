@@ -27,7 +27,7 @@ class SearchFragment :
 
     override fun initLayout() {
         viewModel.searchTitle.postValue(TitleRecyclerItem(this.resources.getString(R.string.recently_searches)))
-        viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
+        viewModel.runOperation { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
                 is CryptoItem -> {
                     navigateToDetailsActivty(data, title, subTitle!!, circleImageView)

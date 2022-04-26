@@ -46,15 +46,6 @@ class CurrencyImpl @Inject constructor(
         return currency
     }
 
-    fun getCurrencyImg() : Int {
-        return when (getCurrency()) {
-            CurrencyItem.CurrencyID.EURO.value -> R.drawable.ic_euro
-            CurrencyItem.CurrencyID.DOLLAR.value, CurrencyItem.CurrencyID.ADOLLAR.value -> R.drawable.ic_dollar
-            CurrencyItem.CurrencyID.POUNDS.value -> R.drawable.ic_sterling_sign_light
-            else -> R.drawable.ic_euro
-        }
-    }
-
     private fun getCurrencySymbol(){
         val currencyLoc = Currency.getInstance(currency)
         currencySymbol = currencyLoc.symbol

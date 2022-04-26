@@ -72,10 +72,6 @@ abstract class AbstractActivity<T : ViewDataBinding>(private val contentLayoutId
 
     abstract fun stopOperation()
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     fun navigateToDetailsActivty(data: CryptoItem, title: View, subTitle: View, image: ImageView) {
         val intent = Intent(this, DetailsActivity::class.java).apply {
             putExtra("coin", data)

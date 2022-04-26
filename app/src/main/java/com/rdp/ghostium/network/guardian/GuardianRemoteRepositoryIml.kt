@@ -9,12 +9,10 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.di.common.TypeEnum
 import com.rdp.ghostium.di.guardian.GuardianNetwork
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
-import com.rdp.ghostium.utils.NetworkConnectivity
 import javax.inject.Inject
 
 class GuardianRemoteRepositoryIml @Inject constructor(
-    @GuardianNetwork(TypeEnum.APISERVICE) private val guardianApi: GuardianApi,
-    private val networkConnectivity: NetworkConnectivity
+    @GuardianNetwork(TypeEnum.APISERVICE) private val guardianApi: GuardianApi
 ) : GuardianRemoteRepository {
 
     override suspend fun getLatestNews(title : TitleRecyclerItem): LiveData<PagingData<LocalModel>> {

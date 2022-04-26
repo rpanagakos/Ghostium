@@ -11,14 +11,14 @@ import android.widget.ScrollView
 class CustomScrollView : ScrollView {
     private var enableScrolling = true
 
-    constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
-            super(context, attrs, defStyleAttr) {}
+            super(context, attrs, defStyleAttr)
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int)
-            : super(context, attrs, defStyleAttr, defStyleRes) {}
+            : super(context, attrs, defStyleAttr, defStyleRes)
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
         return if (scrollingEnabled()) {

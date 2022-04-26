@@ -30,7 +30,7 @@ class ArticlesFragment :
                 BackToTopScrollListener(binding.backToTopImg.backToTopImg, requireContext()) {})
             adapter = viewModel.articlesPagingAdapter.withLoadStateFooter( LoaderStateAdapter { viewModel.articlesPagingAdapter.retry()})
         }
-        viewModel.runOperation() { data: LocalModel, title: TextView?, subTitle: TextView?, imageView: ImageView? ->
+        viewModel.runOperation { data: LocalModel, title: TextView?, subTitle: TextView?, imageView: ImageView? ->
             when (data) {
                 is CryptoShimmer -> makeCall()
                 is Article ->

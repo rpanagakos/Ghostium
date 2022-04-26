@@ -45,7 +45,7 @@ fun WelcomeScreen(
     val pagerState = rememberPagerState()
 
     Column(
-        modifier = androidx.compose.ui.Modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.white))
     ) {

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.rdp.ghostium.BuildConfig
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractFragment
@@ -40,32 +39,32 @@ class SettingsFragment :
             AppOption(
                 this.resources.getString(R.string.option_language),
                 R.drawable.ic_earth_europe,
-                AppOption.SettingType.LANGUAGE
+                SettingType.LANGUAGE
             ),
             AppOption(
                 this.resources.getString(R.string.option_currency),
                 R.drawable.ic_currencies,
-                AppOption.SettingType.CURRENCY
+                SettingType.CURRENCY
             ),
             AppOption(
                 this.resources.getString(R.string.option_cryptos),
                 R.drawable.ic_saved_cryptos,
-                AppOption.SettingType.CRYPTO_FAV
+                SettingType.CRYPTO_FAV
             ),
             AppOption(
                 this.resources.getString(R.string.option_articles),
                 R.drawable.ic_newspaper,
-                AppOption.SettingType.NEWS_FAV
+                SettingType.NEWS_FAV
             ),
             AppOption(
                 this.resources.getString(R.string.option_share),
                 R.drawable.ic_share,
-                AppOption.SettingType.SHARE_APP
+                SettingType.SHARE_APP
             ),
             AppOption(
                 this.resources.getString(R.string.option_rate),
                 R.drawable.ic_rate,
-                AppOption.SettingType.RATE_APP
+                SettingType.RATE_APP
             )
         )
 

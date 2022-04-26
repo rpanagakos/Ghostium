@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
-    private val localRepository: LocalRepository,
+    localRepository: LocalRepository,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 

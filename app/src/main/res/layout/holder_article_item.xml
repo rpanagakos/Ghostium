@@ -93,7 +93,6 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="@dimen/large_spacing"
-            android:clickable="true"
             android:foreground="@drawable/market_ripple"
             android:padding="2dp"
             android:src="@drawable/ic_ellipsis_vertical"

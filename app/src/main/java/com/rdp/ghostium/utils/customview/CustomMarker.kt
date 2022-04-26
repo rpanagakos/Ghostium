@@ -20,7 +20,7 @@ class CustomMarker(context: Context, var price : TextView, var date: TextView, v
         date.convertLongToDate(entry.x.toLong(), context.resources.configuration.locale)
     }
 
-    override fun getOffset(): MPPointF? {
+    override fun getOffset(): MPPointF {
         return MPPointF(
             (-(width / 2)).toFloat(),
             (-height / 2).toFloat()

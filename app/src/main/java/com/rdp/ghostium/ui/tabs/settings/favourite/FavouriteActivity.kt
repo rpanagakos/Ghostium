@@ -58,7 +58,7 @@ class FavouriteActivity : AbstractActivity<ActivityFavouriteBinding>(R.layout.ac
 
     private fun observeViewModel() {
         viewModel.cryptos.observe(this, {
-            viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
+            viewModel.runOperation { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: CircleImageView ->
                 when (data) {
                     is CryptoItemDB -> {
                         navigateToDetailsActivty(

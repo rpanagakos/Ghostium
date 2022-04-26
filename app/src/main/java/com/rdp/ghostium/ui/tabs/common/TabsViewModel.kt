@@ -5,16 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.rdp.ghostium.abstraction.AbstractViewModel
-import com.rdp.ghostium.connectivity.ConnectionState
 import com.rdp.ghostium.connectivity.ConnectivityObserver
 import com.rdp.ghostium.database.room.LocalRepository
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.network.DataRepository
-import com.rdp.ghostium.utils.SingleLiveEvent
 import com.rdp.ghostium.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

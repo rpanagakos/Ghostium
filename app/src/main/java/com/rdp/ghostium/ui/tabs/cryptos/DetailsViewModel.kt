@@ -129,10 +129,6 @@ class DetailsViewModel @Inject constructor(
         startActivity(context, i, null)
     }
 
-    fun displayInternetMessageWhenOffline() {
-        showToastMessage(NO_INTERNET_CONNECTION)
-    }
-
     fun favouriteOnClick(lottieAnimationView: LottieAnimationView) {
         lottieAnimationView.disable()
         if (lottieAnimationView.progress > LOTTIE_STARTING_STATE) {

@@ -68,16 +68,8 @@ class LocalRepository @Inject constructor(
         return articlesDao.getAllArticles()
     }
 
-    suspend fun deleteAllArticles() {
-        articlesDao.deleteAllArticles()
-    }
-
     suspend fun insertFavouriteArticle(article: Article) {
         articlesDao.addArticle(article)
-    }
-
-    suspend fun deleteSpecificArticles(list: List<String>) {
-        articlesDao.deleteListOfArticles(list)
     }
 
     suspend fun deleteArticle(article: Article) {

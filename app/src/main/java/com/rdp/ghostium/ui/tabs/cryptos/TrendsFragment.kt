@@ -49,7 +49,7 @@ class TrendsFragment :
         })
 
         viewModel.trendingCryptos.observe(this, {
-            viewModel.runOperation() { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
+            viewModel.runOperation { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
                 when (data) {
                     is CryptoItem -> {
                         navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
