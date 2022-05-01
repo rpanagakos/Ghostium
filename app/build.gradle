@@ -18,14 +18,24 @@ android {
         applicationId "com.rdp.ghostium"
         minSdk 24
         targetSdk 31
-        versionCode 7
-        versionName "1.0.6"
+        versionCode 8
+        versionName "1.0.7"
         multiDexEnabled true
         testInstrumentationRunner "com.task.CustomTestRunner"
     }
     buildFeatures {
         dataBinding true
         compose true
+    }
+
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
     }
 
     buildTypes {
