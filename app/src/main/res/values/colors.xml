@@ -23,7 +23,7 @@
     <color name="lang_hint">#8A425B</color>
     <color name="support_card_color">#B47E00</color>
     <color name="invite_card_color">#066F68</color>
-    
+
     <color name="dark_sienna">#481620</color>
     <color name="midnight_blue">#07004D</color>
     <color name="gunmetal">#143642</color>
@@ -44,5 +44,9 @@
     <color name="white">#FFFFFF</color>
     <color name="black_overlay">#66000000</color>
     <color name="transparent">#0000</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 
 </resources>
