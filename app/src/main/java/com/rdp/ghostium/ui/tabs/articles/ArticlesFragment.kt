@@ -2,8 +2,10 @@ package com.rdp.ghostium.ui.tabs.articles
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import com.rdp.ghostium.R
 import com.rdp.ghostium.abstraction.AbstractFragment
@@ -49,21 +51,28 @@ class ArticlesFragment :
                 viewModel.articlesPagingAdapter.submitData(PagingData.from(list))
             }
         }
+
+        onBackPressedWithoutPop {
+            when (binding.articlesRecyclerView.layoutManager?.findViewByPosition(0)?.isVisible) {
+                true -> findNavController().popBackStack()
+                else -> viewModel.scrollToTopRecycler(binding.articlesRecyclerView)
+            }
+        }
     }
 
     private fun makeCall() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getArticlesList(TitleRecyclerItem(this@ArticlesFragment.resources.getString(R.string.news_in_brief))).observe(viewLifecycleOwner, {
+            viewModel.getArticlesList(TitleRecyclerItem(this@ArticlesFragment.resources.getString(R.string.news_in_brief))).observe(viewLifecycleOwner) {
                 viewModel.articlesPagingAdapter.submitData(lifecycle, it as PagingData<LocalModel>)
-            })
+            }
         }
     }
 
     override fun observeViewModel() {
-        viewModel.isConnected.observe(this, {
-            if(it && containsShimmerData())
+        viewModel.isConnected.observe(this) {
+            if (it && containsShimmerData())
                 viewModel.articlesPagingAdapter.retry()
-        })
+        }
     }
 
     override fun stopOperations() {}

@@ -9,10 +9,9 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.databinding.library.baseAdapters.BR
-import androidx.navigation.fragment.findNavController
 import com.rdp.ghostium.R
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.guardian.Article
@@ -53,15 +52,6 @@ abstract class AbstractFragment<T : ViewDataBinding, VM : ViewModel>(contentLayo
     }
 
     abstract fun stopOperations()
-
-    protected fun onBackPressed(click :() -> Unit){
-        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                click.invoke()
-                findNavController().popBackStack()
-            }
-        })
-    }
 
     protected fun onBackPressedWithoutPop(click :() -> Unit){
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {

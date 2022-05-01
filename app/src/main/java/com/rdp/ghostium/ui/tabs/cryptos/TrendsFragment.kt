@@ -44,11 +44,11 @@ class TrendsFragment :
     }
 
     override fun observeViewModel() {
-        viewModel.showToast.observe(viewLifecycleOwner, {
+        viewModel.showToast.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it as String, Toast.LENGTH_SHORT).show()
-        })
+        }
 
-        viewModel.trendingCryptos.observe(this, {
+        viewModel.trendingCryptos.observe(this) {
             viewModel.runOperation { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
                 when (data) {
                     is CryptoItem -> {
@@ -64,7 +64,7 @@ class TrendsFragment :
                     }
                 }
             }
-        })
+        }
     }
 
     override fun stopOperations() {

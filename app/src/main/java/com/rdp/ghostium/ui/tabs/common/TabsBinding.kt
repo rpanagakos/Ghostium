@@ -83,6 +83,17 @@ object TabsBinding {
         }
     }
 
+    @BindingAdapter(value = ["imageURLGuardian"])
+    @JvmStatic
+    fun ImageView.loadImageFromUrlGuardian(imageUrl: String?) {
+        if (imageUrl != null) {
+            Glide.with(this)
+                .load(imageUrl)
+                .error(Glide.with(this).load(R.drawable.ic_theguardian))
+                .into(this)
+        }
+    }
+
 
     @BindingAdapter(value = ["checkProgress"])
     @JvmStatic
@@ -112,6 +123,7 @@ object TabsBinding {
         }
     }
 
+    //need to find a better way just for guardian in case of releasing nfts
     @BindingAdapter(value = ["rectangleImageUrl"])
     @JvmStatic
     fun ImageView.loadRectangleImage(imageUrl: String?) {
@@ -120,7 +132,7 @@ object TabsBinding {
                 .load(imageUrl)
                 .transition(DrawableTransitionOptions.withCrossFade(200))
                 .transform(CenterCrop(), RoundedCorners(24))
-                .error(Glide.with(this).load(R.drawable.ic_launcher_foreground))
+                .error(Glide.with(this).load(R.drawable.ic_theguardian))
                 .into(this)
         }
     }
