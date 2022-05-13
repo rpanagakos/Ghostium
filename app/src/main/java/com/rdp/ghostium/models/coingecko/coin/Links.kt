@@ -13,10 +13,10 @@ data class Links(
     @SerializedName("twitter_screen_name")
     private val twitter_screen_name : String
 ){
-    val twitter :String
+    val twitter :String?
         get() =
             if (twitter_screen_name.isEmpty())
-                ""
+                null
             else
                 "https://twitter.com/$twitter_screen_name"
 

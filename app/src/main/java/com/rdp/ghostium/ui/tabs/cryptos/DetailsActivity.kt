@@ -73,18 +73,18 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
     }
 
     private fun observeViewModel() {
-        viewModel.lineDataSet.observe(this, {
+        viewModel.lineDataSet.observe(this) {
             binding.chartLine.resetChart()
             sparkLineStyle.styleLineDataSet(it)
             binding.chartLine.data = LineData(it)
             binding.chartLine.invalidate()
-        })
-        viewModel.isLoading.observe(this, {
+        }
+        viewModel.isLoading.observe(this) {
             if (!it) {
                 binding.layoutShimmer.visibility = View.GONE
                 binding.scrollView.visibility = View.VISIBLE
             }
-        })
+        }
     }
 
     override fun runOperation() {
