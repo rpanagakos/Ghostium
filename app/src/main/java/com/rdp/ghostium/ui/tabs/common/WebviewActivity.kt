@@ -1,6 +1,7 @@
 package com.rdp.ghostium.ui.tabs.common
 
 import android.annotation.SuppressLint
+import android.webkit.CookieManager
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -19,8 +20,6 @@ class WebviewActivity : AbstractActivity<ActivityWebviewBinding>(R.layout.activi
         binding.backButton.setSafeOnClickListener { onBackPressed() }
         intent.extras?.let {
             binding.webview.apply {
-                settings.javaScriptEnabled = true
-                settings.domStorageEnabled = true
                 webChromeClient = WebChromeClient()
                 webViewClient = object : WebViewClient() {
                     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
