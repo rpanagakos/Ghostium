@@ -42,9 +42,12 @@ class WebviewActivity : AbstractActivity<ActivityWebviewBinding>(R.layout.activi
 
     override fun runOperation() {}
 
-    override fun stopOperation() {
+    override fun stopOperation() {}
+
+    override fun onDestroy() {
         binding.webview.clearCache(true)
         binding.webview.destroy()
+        super.onDestroy()
     }
 
 }
