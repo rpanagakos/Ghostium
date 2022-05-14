@@ -62,17 +62,15 @@ abstract class AbstractViewModel(
     }
 
     fun searchButton(searchButton: ImageView, searchEditText: TextInputEditText) {
-        when (searchEditText.text?.isEmpty()) {
-            true -> {
-                searchEditText.apply {
-                    requestFocus()
-                    showKeyboard()
-                }
+        if (!searchEditText.hasFocus()) {
+            searchEditText.apply {
+                requestFocus()
+                showKeyboard()
             }
-            else -> {
-                searchEditText.setText("")
-                searchButton.setImageResource(R.drawable.ic_search)
-            }
+        }
+        if (searchEditText.text?.isEmpty() == false) {
+            searchEditText.setText("")
+            searchButton.setImageResource(R.drawable.ic_search)
         }
     }
 
