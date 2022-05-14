@@ -172,17 +172,20 @@ object TabsBinding {
     fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
         val dec = DecimalFormat("#,###.####")
         val roundedPrice = dec.format(cryptoPrice)
-        text = if (roundedPrice.equals("0")) {
-            val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 5)
-            SpannableString(price).getSpannableTextForPrices(5)
-        } else if (roundedPrice.startsWith("0")) {
-            val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 4)
-            SpannableString(price).getSpannableTextForPrices(4)
-        } else {
-            val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()))
-            SpannableString(price).getSpannableTextForPrices()
+        text = when {
+            roundedPrice.equals("0") -> {
+                val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 5)
+                SpannableString(price).getSpannableTextForPrices(5, this.context)
+            }
+            roundedPrice.startsWith("0") -> {
+                val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()), 4)
+                SpannableString(price).getSpannableTextForPrices(4, this.context)
+            }
+            else -> {
+                val price = cryptoPrice.format(Currency.getInstance(currency.getCurrency()))
+                    SpannableString(price).getSpannableTextForPrices(context = this.context)
+            }
         }
-
     }
 
     @BindingAdapter("marketCapCrypto", "marketCapCurrency")

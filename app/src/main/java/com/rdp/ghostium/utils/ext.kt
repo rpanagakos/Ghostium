@@ -154,8 +154,11 @@ fun TextView.setTextViewLinkHtml(
     }
 }
 
-fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2): SpannableString {
-    val end = this.length - (fractionalDigits + 1)
+fun SpannableString.getSpannableTextForPrices(fractionalDigits: Int = 2, context: Context): SpannableString {
+    var fractDigits = fractionalDigits + 1
+    if (context.resources.configuration.locale !=  Locale.ENGLISH)
+        fractDigits++
+    val end = this.length - fractDigits
     this.setSpan(
         RelativeSizeSpan(1.1f),
         0,
