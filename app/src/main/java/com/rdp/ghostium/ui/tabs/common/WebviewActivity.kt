@@ -37,6 +37,8 @@ class WebviewActivity : AbstractActivity<ActivityWebviewBinding>(R.layout.activi
             }
             url = it.getString("url")
         }
+        if (!url.toString().contains("theguardian"))
+            binding.webview.settings.javaScriptEnabled = true
         binding.webview.loadUrl(url.toString())
     }
 
