@@ -31,7 +31,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/contractImg"
-            imageURLContract="@{crypto.thumb}"
+            imageURLContract="@{crypto.large}"
             android:layout_width="@dimen/medium_container"
             android:layout_height="@dimen/medium_container"
             android:layout_marginTop="@dimen/ml_spacing"

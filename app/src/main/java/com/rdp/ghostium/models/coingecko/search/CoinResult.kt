@@ -31,6 +31,9 @@ data class CoinResult(
     val thumb
         get() = _thumb ?: ""
 
+    val large
+        get() = _large ?: ""
+
 
     override fun equalsContent(obj: LocalModel): Boolean {
         return true
