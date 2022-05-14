@@ -70,7 +70,7 @@ class SearchViewModel @Inject constructor(
 
     fun searchCoins(coinID: String) {
         displayMessage.postValue(false)
-        searchAdapter.submitList(listOf(CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer()))
+        searchAdapter.submitList(listOf(CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer()))
         viewModelScope.launch {
             wrapEspressoIdlingResource {
                 dataRepository.searchCoins(coinID).collect { response ->

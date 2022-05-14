@@ -26,7 +26,7 @@
         android:clickable="true"
         android:elevation="2dp"
         android:focusable="true"
-        android:foreground="@drawable/market_ripple"
+        android:foreground="@drawable/general_setting_ripple"
         android:onSafeClick="@{()-> clickHandler.onClick(crypto, contractName, contractTickerSumbol, contractImg)}">
 
         <de.hdodenhof.circleimageview.CircleImageView
