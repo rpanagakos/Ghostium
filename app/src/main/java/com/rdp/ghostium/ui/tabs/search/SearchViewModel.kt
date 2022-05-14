@@ -81,7 +81,7 @@ class SearchViewModel @Inject constructor(
                                 displayMessage.postValue(true)
                             } else {
                                 displayMessage.postValue(false)
-                                searchAdapter.submitList(it.coinResults as List<LocalModel>)
+                                searchAdapter.submitList(it.coinResults)
                             }
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
