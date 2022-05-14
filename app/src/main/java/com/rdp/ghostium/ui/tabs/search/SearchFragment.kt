@@ -36,7 +36,7 @@ class SearchFragment :
                             id = data.id,
                             symbol = data.symbol,
                             name = data.name,
-                            image = data.thumb
+                            image = data.large
                         ), title, subTitle!!, circleImageView
                     )
                 }
