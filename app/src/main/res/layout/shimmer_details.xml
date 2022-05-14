@@ -78,7 +78,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/statsBoard2"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="470dp"
             android:layout_marginTop="@dimen/large_spacing"
             app:cardBackgroundColor="@color/Cultured"
             app:cardCornerRadius="12dp"

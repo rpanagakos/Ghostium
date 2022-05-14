@@ -126,7 +126,6 @@
                     data="@{viewModel.cryptoDetails.marketData}"
                     layout="@layout/triple_labels_and_values" />
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/statsBoard"
                     android:layout_width="match_parent"
@@ -264,7 +263,5 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.rdp.ghostium.utils.customview.CustomScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
