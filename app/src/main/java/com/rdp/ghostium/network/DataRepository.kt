@@ -1,17 +1,18 @@
 package com.rdp.ghostium.network
 
+import com.google.gson.JsonObject
 import com.rdp.ghostium.di.IoDispatcher
 import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.coingecko.Cryptos
 import com.rdp.ghostium.models.coingecko.charts.CoinPrices
 import com.rdp.ghostium.models.coingecko.coin.Coin
+import com.rdp.ghostium.models.coingecko.search.CoinsSearched
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.opensea.Assets
 import com.rdp.ghostium.network.coingecko.CoinGeckoRemoteRepository
 import com.rdp.ghostium.network.guardian.GuardianRemoteRepository
 import com.rdp.ghostium.network.opensea.OpenSeaRemoteRepository
-import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -35,6 +36,12 @@ class DataRepository @Inject constructor(
     suspend fun searchCoin(coinID: String): Flow<GenericResponse<Coin>> {
         return flow {
             emit(coinGeckoRemoteRepository.getCoinSearchResult(coinID))
+        }.flowOn(ioDispatcher)
+    }
+
+    suspend fun searchCoins(coinID: String): Flow<GenericResponse<CoinsSearched>> {
+        return flow {
+            emit(coinGeckoRemoteRepository.getCoinSearch(coinID))
         }.flowOn(ioDispatcher)
     }
 

@@ -10,6 +10,8 @@ import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.databinding.*
 import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.coingecko.CryptoItem
+import com.rdp.ghostium.models.coingecko.search.CoinResult
+import com.rdp.ghostium.models.coingecko.shimmer.CoinsSearchShimmer
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.opensea.Asset
@@ -71,8 +73,20 @@ class TabsAdapter(
                 )
                 TabsViewHolder(view, listener)
             }
+            R.layout.holder_searched_item -> {
+                val view = HolderSearchedItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                TabsViewHolder(view, listener)
+            }
             R.layout.holder_shimmer_cryptos -> {
                 val view = HolderShimmerCryptosBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                ShimmerViewHolder(view)
+            }
+            R.layout.holder_shimmer_searched -> {
+                val view = HolderShimmerSearchedBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
                 ShimmerViewHolder(view)
@@ -105,6 +119,8 @@ class TabsAdapter(
         is TitleRecyclerItem -> R.layout.holder_title_item
         is TredingCoins -> R.layout.holder_trending_coins_items
         is CryptoShimmer -> R.layout.holder_shimmer_cryptos
+        is CoinsSearchShimmer -> R.layout.holder_shimmer_searched
+        is CoinResult -> R.layout.holder_searched_item
         else -> R.layout.holder_empty
     }
 

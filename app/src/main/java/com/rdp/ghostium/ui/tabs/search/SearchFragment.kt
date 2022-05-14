@@ -10,6 +10,7 @@ import com.rdp.ghostium.abstraction.AbstractFragment
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.databinding.FragmentSearchBinding
 import com.rdp.ghostium.models.coingecko.CryptoItem
+import com.rdp.ghostium.models.coingecko.search.CoinResult
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.utils.changeImageOnEdittext
 import com.rdp.ghostium.utils.removeWhiteSpaces
@@ -29,8 +30,15 @@ class SearchFragment :
         viewModel.searchTitle.postValue(TitleRecyclerItem(this.resources.getString(R.string.recently_searches)))
         viewModel.runOperation { data: LocalModel, title: TextView, subTitle: TextView?, circleImageView: ImageView ->
             when (data) {
-                is CryptoItem -> {
-                    navigateToDetailsActivty(data, title, subTitle!!, circleImageView)
+                is CoinResult -> {
+                    navigateToDetailsActivty(
+                        CryptoItem(
+                            id = data.id,
+                            symbol = data.symbol,
+                            name = data.name,
+                            image = data.thumb
+                        ), title, subTitle!!, circleImageView
+                    )
                 }
             }
         }
@@ -39,14 +47,11 @@ class SearchFragment :
                 .debounce(400)
                 .onEach {
                     binding.searchLayout.searchButton.changeImageOnEdittext(
-                        binding.searchLayout.searchEditText,
-                        R.drawable.ic_search,
-                        R.drawable.ic_outline_clear
+                        binding.searchLayout.searchEditText, R.drawable.ic_search, R.drawable.ic_outline_clear
                     )
                     if (!this.text.isNullOrEmpty() && !checkIfContainsInvalidString())
-                        viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
+                        viewModel.searchCoins(this.text.toString().lowercase())
                     else if (binding.searchLayout.searchEditText.hasFocus()) {
-                        binding.generalRecycler.removeAllViewsInLayout()
                         viewModel.clearSearch()
                     }
                 }
@@ -54,7 +59,7 @@ class SearchFragment :
             this.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_GO) {
                     if (!checkIfContainsInvalidString())
-                        viewModel.searchCoin(this.text.toString().lowercase().removeWhiteSpaces())
+                        viewModel.searchCoins(this.text.toString().lowercase().removeWhiteSpaces())
                 }
                 true
             }
@@ -65,7 +70,7 @@ class SearchFragment :
 
     override fun stopOperations() {}
 
-    private fun checkIfContainsInvalidString() : Boolean{
+    private fun checkIfContainsInvalidString(): Boolean {
         binding.searchLayout.searchEditText.text?.let {
             if ((it.length == 1 && it.contains(".")) || (it.length == 2 && it.contains("..")))
                 return true

@@ -8,6 +8,7 @@ import com.rdp.ghostium.abstraction.listeners.GeneralClickListener
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.di.common.CurrencyImpl
 import com.rdp.ghostium.models.coingecko.CryptoItem
+import com.rdp.ghostium.models.coingecko.search.CoinResult
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.opensea.Asset
 import com.rdp.ghostium.models.settings.AppOption
@@ -53,6 +54,10 @@ class TabsViewHolder(
             }
             is LogoOption -> {
                 binding.setVariable(BR.item, data)
+            }
+            is CoinResult -> {
+                binding.setVariable(BR.crypto, data)
+                binding.setVariable(BR.clickHandler, listener)
             }
         }
     }

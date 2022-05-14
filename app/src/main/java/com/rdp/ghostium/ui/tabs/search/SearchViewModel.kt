@@ -11,8 +11,9 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.GeneralClickListener
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.database.room.LocalRepository
-import com.rdp.ghostium.models.coingecko.CryptoItem
-import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
+import com.rdp.ghostium.models.coingecko.search.CoinResult
+import com.rdp.ghostium.models.coingecko.shimmer.CoinsSearchShimmer
+import com.rdp.ghostium.models.errors.mapper.NOT_FOUND
 import com.rdp.ghostium.models.errors.mapper.NO_SEARCHES
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.settings.RecentlyItem
@@ -63,38 +64,34 @@ class SearchViewModel @Inject constructor(
         ) -> Unit
     ) {
         this.callbacks = listener
-        getSearches()
+        if (searchAdapter.itemCount == 0)
+            getSearches()
     }
 
-    fun searchCoin(coinID: String) {
+    fun searchCoins(coinID: String) {
         displayMessage.postValue(false)
-        searchAdapter.submitList(listOf(CryptoShimmer(),CryptoShimmer(),CryptoShimmer()))
+        searchAdapter.submitList(listOf(CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer(), CoinsSearchShimmer()))
         viewModelScope.launch {
             wrapEspressoIdlingResource {
-                dataRepository.searchCoin(coinID).collect { response ->
+                dataRepository.searchCoins(coinID).collect { response ->
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
-                            displayMessage.postValue(false)
-                            val cryptoDetails = CryptoItem(
-                                currentPrice = it.marketData.currentPrice.getPrice(dataRepository.currencyImpl.getCurrency()),
-                                id = it.id,
-                                image = it.image.thumb,
-                                name = it.name,
-                                priceChangePercentage24h = it.marketData.priceChangePercentage24h,
-                                symbol = it.symbol
-                            )
-                            searchAdapter.submitList(listOf(cryptoDetails) as List<LocalModel>)
-                            localRepository.insertRecentItem(RecentlyItem(it.id))
+                            if (it.coinResults.isEmpty()) {
+                                resultNotFound.postValue(NOT_FOUND)
+                                displayMessage.postValue(true)
+                            } else {
+                                displayMessage.postValue(false)
+                                searchAdapter.submitList(it.coinResults as List<LocalModel>)
+                            }
                         } ?: run { showToastMessage(0) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
                             checkErrorCode(error)
                             if (displayMessage.value == false)
-                                displayMessage.postValue( true)
+                                displayMessage.postValue(true)
                         }
                     }
                 }
             }
-
         }
     }
 
@@ -108,7 +105,10 @@ class SearchViewModel @Inject constructor(
                     displayMessage.postValue(true)
                 } else {
                     val list =
-                        mutableListOf<LocalModel>(searchTitle.value ?: TitleRecyclerItem(context.getString(R.string.recently_searches)))
+                        mutableListOf<LocalModel>(
+                            searchTitle.value
+                                ?: TitleRecyclerItem(context.getString(R.string.recently_searches))
+                        )
                     searchAdapter.submitList(list.plus(it))
                     displayMessage.value = false
                 }
@@ -117,6 +117,7 @@ class SearchViewModel @Inject constructor(
     }
 
     fun clearSearch() {
+        searchAdapter.submitList(null)
         displayMessage.value = false
         getSearches()
     }
@@ -140,6 +141,11 @@ class SearchViewModel @Inject constructor(
         subTitle: TextView?,
         circleImageView: ImageView
     ) {
+        if (data is CoinResult) {
+            viewModelScope.launch {
+                localRepository.insertRecentItem(RecentlyItem(data.name))
+            }
+        }
         callbacks.invoke(data, title, subTitle, circleImageView)
     }
 }
