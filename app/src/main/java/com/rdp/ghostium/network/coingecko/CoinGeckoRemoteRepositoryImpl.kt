@@ -1,15 +1,16 @@
 package com.rdp.ghostium.network.coingecko
 
+import com.google.gson.JsonObject
 import com.rdp.ghostium.di.coingecko.CoinGeckoNetwork
 import com.rdp.ghostium.di.common.TypeEnum
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.Cryptos
 import com.rdp.ghostium.models.coingecko.charts.CoinPrices
 import com.rdp.ghostium.models.coingecko.coin.Coin
+import com.rdp.ghostium.models.coingecko.search.CoinsSearched
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.utils.NetworkConnectivity
-import com.google.gson.JsonObject
 import javax.inject.Inject
 
 class CoinGeckoRemoteRepositoryImpl @Inject constructor(
@@ -17,11 +18,13 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
     private val networkConnectivity: NetworkConnectivity
 ) : CoinGeckoRemoteRepository {
 
-    override suspend fun getAllCryptos(currency : String): GenericResponse<Cryptos> {
-        return when (val response = networkConnectivity.processCall{(coinGeckoApi::getPriceVolatility)(
-            currency,
-            50
-        )}) {
+    override suspend fun getAllCryptos(currency: String): GenericResponse<Cryptos> {
+        return when (val response = networkConnectivity.processCall {
+            (coinGeckoApi::getPriceVolatility)(
+                currency,
+                50
+            )
+        }) {
             is List<*> -> GenericResponse.Success(data = Cryptos(response as ArrayList<CryptoItem>))
             else -> GenericResponse.DataError(errorCode = response as Int)
         }
@@ -37,6 +40,17 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
             )
         }) {
             is Coin -> GenericResponse.Success(data = response)
+            else -> GenericResponse.DataError(errorCode = response as Int)
+        }
+    }
+
+    override suspend fun getCoinSearch(coinID: String): GenericResponse<CoinsSearched> {
+        return when (val response = networkConnectivity.processCall {
+            (coinGeckoApi::getCoinSearch)(
+                coinID
+            )
+        }) {
+            is CoinsSearched -> GenericResponse.Success(data = response)
             else -> GenericResponse.DataError(errorCode = response as Int)
         }
     }
@@ -66,7 +80,8 @@ class CoinGeckoRemoteRepositoryImpl @Inject constructor(
         return when (val response = networkConnectivity.processCall {
             (coinGeckoApi::getFavouritesPrices)(
                 ids,
-            currency)
+                currency
+            )
         }) {
             is JsonObject -> GenericResponse.Success(data = response)
             else -> GenericResponse.DataError(errorCode = response as Int)
