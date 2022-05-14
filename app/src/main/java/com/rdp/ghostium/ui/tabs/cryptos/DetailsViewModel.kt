@@ -22,6 +22,7 @@ import com.rdp.ghostium.utils.*
 import com.rdp.ghostium.utils.Constants.Companion.LOTTIE_STARTING_STATE
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
+import com.rdp.ghostium.di.common.CurrencyImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -33,6 +34,7 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val localRepository: LocalRepository,
+    private val currencyImpl: CurrencyImpl,
     application: Application
 ) : AbstractViewModel(application) {
 
@@ -40,6 +42,7 @@ class DetailsViewModel @Inject constructor(
     lateinit var networkConnectivity: NetworkConnectivity
     val isFavourite = SingleLiveEvent<Boolean>()
     val isLoading = SingleLiveEvent<Boolean>()
+    val price = SingleLiveEvent<Double>()
 
     val cryptoDetails = SingleLiveEvent<Coin>()
     private val _priceData = mutableListOf<Entry>()
@@ -76,6 +79,7 @@ class DetailsViewModel @Inject constructor(
                     when (response) {
                         is GenericResponse.Success -> response.data?.let {
                             cryptoDetails.postValue(it)
+                            price.postValue(it.marketData.currentPrice.getPrice(currencyImpl.getCurrency()))
                             isLoading.postValue(false)
                         } ?: run { showToastMessage(SEARCH_ERROR) }
                         is GenericResponse.DataError -> response.errorCode?.let { error ->
@@ -114,11 +118,7 @@ class DetailsViewModel @Inject constructor(
         }
     }
 
-    fun selectedTab(
-        priceIndicator: View, dateIndicator: View, tabName: String, cryptoItem: CryptoItem
-    ) {
-        priceIndicator.dummyFadeOut()
-        dateIndicator.dummyFadeOut()
+    fun selectedTab(tabName: String, cryptoItem: CryptoItem) {
         getChartsData(cryptoItem.id, convertMonthsToDays(tabName))
     }
 

@@ -5,13 +5,13 @@ import android.content.Context
 import android.view.MotionEvent
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.rdp.ghostium.R
-import com.rdp.ghostium.utils.customview.CustomScrollView
-import com.rdp.ghostium.utils.customview.CustomMarker
-import com.rdp.ghostium.utils.fadeIn
-import com.rdp.ghostium.utils.fadeOut
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.LineDataSet
+import com.rdp.ghostium.R
+import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertLongToDate
+import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertPrice
+import com.rdp.ghostium.utils.customview.CustomMarker
+import com.rdp.ghostium.utils.customview.CustomScrollView
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ class SparkLineStyle @Inject constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     fun styleChart(
-        lineChart: LineChart, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView, currencyImpl: CurrencyImpl
+        lineChart: LineChart, timetamps : Long, currenctPrice : Double, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView, currencyImpl: CurrencyImpl
     ) = lineChart.apply {
         axisLeft.isEnabled = false
         axisRight.isEnabled = false
@@ -37,12 +37,11 @@ class SparkLineStyle @Inject constructor(
             when (motionEvent?.action) {
                 MotionEvent.ACTION_DOWN -> {
                     scrollView.setScrolling(false)
-                    priceIndicator.fadeIn()
-                    dateIndicator.fadeIn()
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_SCROLL -> {
-                    priceIndicator.fadeOut(600)
-                    dateIndicator.fadeOut(600)
+                    lineChart.highlightValue(null)
+                    priceIndicator.convertPrice(currenctPrice, currencyImpl)
+                    dateIndicator.convertLongToDate(timetamps, context.resources.configuration.locale)
                     scrollView.setScrolling(true)
                 }
             }

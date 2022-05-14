@@ -11,6 +11,8 @@ import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.github.mikephil.charting.data.LineData
 import com.google.android.material.tabs.TabLayout
+import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertLongToDate
+import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertPrice
 import com.rdp.ghostium.utils.resetChart
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
@@ -32,11 +34,8 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
         viewModel.isLoading.value = true
         cryptoItem = intent.getParcelableExtra("coin")
         viewModel.cryptoItem = CryptoItemDB(
-            cryptoItem!!.id,
-            image = cryptoItem!!.image,
-            name = cryptoItem!!.name,
-            symbol = cryptoItem!!.symbol,
-            currentPrice = cryptoItem!!.currentPrice
+            cryptoItem!!.id, image = cryptoItem!!.image, name = cryptoItem!!.name,
+            symbol = cryptoItem!!.symbol, currentPrice = cryptoItem!!.currentPrice
         )
         binding.currencyIml = currencyImpl
         when (cryptoItem) {
@@ -51,10 +50,7 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
         binding.daysTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.let {
-                    viewModel.selectedTab(
-                        binding.priceIndicator, binding.dateIndicator,
-                        tab.text.toString(), cryptoItem!!
-                    )
+                    viewModel.selectedTab(tab.text.toString(), cryptoItem!!)
                 }
             }
 
@@ -62,17 +58,18 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        sparkLineStyle.styleChart(
-            binding.chartLine,
-            binding.priceIndicator,
-            binding.dateIndicator,
-            binding.scrollView,
-            currencyImpl
-        )
         observeViewModel()
     }
 
     private fun observeViewModel() {
+        viewModel.price.observe(this){
+            binding.priceIndicator.convertPrice(it, currencyImpl)
+            dateIndicator.convertLongToDate(System.currentTimeMillis(), resources.configuration.locale)
+            sparkLineStyle.styleChart(
+                binding.chartLine, System.currentTimeMillis(), it,
+                binding.priceIndicator, binding.dateIndicator, binding.scrollView, currencyImpl
+            )
+        }
         viewModel.lineDataSet.observe(this) {
             binding.chartLine.resetChart()
             sparkLineStyle.styleLineDataSet(it)

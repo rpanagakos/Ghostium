@@ -91,7 +91,7 @@
         <entry key="app/src/main/res/drawable/wallet_selector.xml" value="0.125" />
         <entry key="app/src/main/res/font/montserrat.xml" value="0.59375" />
         <entry key="app/src/main/res/layout/activity_article_details.xml" value="0.258558463045362" />
-        <entry key="app/src/main/res/layout/activity_details.xml" value="0.36101132946492637" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_favourite.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/activity_general.xml" value="0.4203703703703704" />
