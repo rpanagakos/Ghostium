@@ -18,7 +18,7 @@ android {
         applicationId "com.rdp.ghostium"
         minSdk 24
         targetSdk 31
-        versionCode 9
+        versionCode 10
         versionName "1.0.8"
         multiDexEnabled true
         testInstrumentationRunner "com.task.CustomTestRunner"
