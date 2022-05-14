@@ -122,6 +122,7 @@
         <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.43072916666666666" />
         <entry key="app/src/main/res/layout/holder_article_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/holder_coin_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/holder_coins_searched_item.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_currency_item.xml" value="0.4293785310734463" />
         <entry key="app/src/main/res/layout/holder_empty.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_favourite_item.xml" value="0.1" />
@@ -131,9 +132,12 @@
         <entry key="app/src/main/res/layout/holder_nft_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/holder_options_item.xml" value="0.31563845050215206" />
         <entry key="app/src/main/res/layout/holder_recently_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/holder_searched_coins_item.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/layout/holder_searched_item.xml" value="0.5374653098982424" />
         <entry key="app/src/main/res/layout/holder_shimmer_article.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/holder_shimmer_cryptos.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_shimmer_news.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/layout/holder_shimmer_searched.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_shimmer_topcrypto.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/holder_title_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/holder_topcrypto_item.xml" value="0.28229166666666666" />
