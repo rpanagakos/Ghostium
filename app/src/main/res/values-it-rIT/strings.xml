@@ -59,5 +59,6 @@
     <string name="you_re_currently_offline">Sei attualmente offline.</string>
     <string name="retry">Riprova</string>
     <string name="something_went_wrong_n_please_try_again">Qualcosa è andato storto.\n Per favore riprova</string>
+    <string name="data_description">I dati visualizzati sopra sono puramente indicativi. Il prezzo di esecuzione effettivo può variare. La performance passata non è un indicatore della performance futura.</string>
 
 </resources>

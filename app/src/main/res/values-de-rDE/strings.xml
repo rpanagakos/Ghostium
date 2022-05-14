@@ -59,5 +59,6 @@
     <string name="you_re_currently_offline">Sie sind derzeit offline.</string>
     <string name="retry">Wiederholen</string>
     <string name="something_went_wrong_n_please_try_again">Etwas ist schief gelaufen.\n Bitte versuche es erneut</string>
+    <string name="data_description">Die oben angezeigten Daten sind nur Richtwerte. Der tatsächliche Ausführungspreis kann variieren. Die Wertentwicklung in der Vergangenheit ist kein Indikator für die zukünftige Wertentwicklung.</string>
 
 </resources>

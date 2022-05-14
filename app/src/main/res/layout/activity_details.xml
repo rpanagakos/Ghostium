@@ -126,85 +126,81 @@
                     data="@{viewModel.cryptoDetails.marketData}"
                     layout="@layout/triple_labels_and_values" />
 
-                <androidx.cardview.widget.CardView
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/statsBoard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/large_spacing"
-                    app:cardBackgroundColor="@color/Black"
-                    app:cardCornerRadius="12dp"
+                    android:background="@drawable/bg_chart"
+                    android:paddingTop="@dimen/large_spacing"
+                    android:paddingBottom="@dimen/large_spacing"
                     app:layout_constraintTop_toBottomOf="@id/tripleValue">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/priceIndicator"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/large_spacing"
+                        android:elevation="2dp"
+                        android:includeFontPadding="false"
+                        android:textAppearance="@style/xlarge_text_bold_white"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="4,000$" />
+
+                    <TextView
+                        android:id="@+id/dateIndicator"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_spacing"
+                        android:elevation="2dp"
+                        android:includeFontPadding="false"
+                        android:textAppearance="@style/tiny_text"
+                        app:layout_constraintStart_toStartOf="@id/priceIndicator"
+                        app:layout_constraintTop_toBottomOf="@id/priceIndicator"
+                        tools:text="Jan 14, 17:40" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chartLine"
+                        android:layout_width="0dp"
+                        android:layout_height="280dp"
+                        android:elevation="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dateIndicator" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/daysTab"
+                        addTabs="@{viewModel.tabs}"
+                        android:layout_width="250dp"
+                        android:layout_height="36dp"
+                        android:layout_marginBottom="@dimen/large_spacing"
+                        android:background="@drawable/bg_days_tab"
+                        android:elevation="3dp"
+                        app:layout_constraintEnd_toEndOf="@id/chartLine"
+                        app:layout_constraintStart_toStartOf="@id/chartLine"
+                        app:layout_constraintTop_toBottomOf="@id/chartLine"
+                        app:tabIndicator="@drawable/custom_tab_indicator"
+                        app:tabIndicatorColor="@color/SpanishGray"
+                        app:tabIndicatorGravity="stretch"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextAppearance="@style/TabCustomAppearance"
+                        app:tabTextColor="@color/Cultured" />
+
+                    <TextView
+                        android:id="@+id/lineDescriptionText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/large_spacing"
-                        android:paddingBottom="@dimen/large_spacing">
-
-                        <TextView
-                            android:id="@+id/priceIndicator"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/large_spacing"
-                            android:elevation="2dp"
-                            android:includeFontPadding="false"
-                            android:textAppearance="@style/xlarge_text_bold_white"
-                            android:textColor="@color/white"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="4,000$" />
-
-                        <TextView
-                            android:id="@+id/dateIndicator"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/small_spacing"
-                            android:elevation="2dp"
-                            android:includeFontPadding="false"
-                            android:textAppearance="@style/tiny_text"
-                            app:layout_constraintStart_toStartOf="@id/priceIndicator"
-                            app:layout_constraintTop_toBottomOf="@id/priceIndicator"
-                            tools:text="Jan 14, 17:40" />
-
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/chartLine"
-                            android:layout_width="0dp"
-                            android:layout_height="280dp"
-                            android:elevation="2dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/dateIndicator" />
-
-                        <com.google.android.material.tabs.TabLayout
-                            android:id="@+id/daysTab"
-                            addTabs="@{viewModel.tabs}"
-                            android:layout_width="250dp"
-                            android:layout_height="36dp"
-                            android:layout_marginBottom="@dimen/large_spacing"
-                            android:background="@drawable/bg_days_tab"
-                            android:elevation="3dp"
-                            app:layout_constraintEnd_toEndOf="@id/chartLine"
-                            app:layout_constraintStart_toStartOf="@id/chartLine"
-                            app:layout_constraintTop_toBottomOf="@id/chartLine"
-                            app:tabIndicator="@drawable/custom_tab_indicator"
-                            app:tabIndicatorColor="@color/SpanishGray"
-                            app:tabIndicatorGravity="stretch"
-                            app:tabSelectedTextColor="@color/white"
-                            app:tabTextAppearance="@style/TabCustomAppearance"
-                            app:tabTextColor="@color/Cultured" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/large_spacing"
-                            android:layout_marginTop="@dimen/large_spacing"
-                            android:layout_marginEnd="@dimen/large_spacing"
-                            android:gravity="center"
-                            android:text="Data displayed above is indicative only. Actual execution price may vary. Past performance is not an indicator of future performance."
-                            android:textAppearance="@style/small_regular_gray"
-                            app:layout_constraintTop_toBottomOf="@id/daysTab" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+                        android:layout_marginStart="@dimen/large_spacing"
+                        android:layout_marginTop="@dimen/large_spacing"
+                        android:layout_marginEnd="@dimen/large_spacing"
+                        android:gravity="center"
+                        android:text="@string/data_description"
+                        android:textAppearance="@style/tiny_text"
+                        app:layout_constraintTop_toBottomOf="@id/daysTab" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/titleDescription"
