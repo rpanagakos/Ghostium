@@ -64,7 +64,7 @@ class SearchViewModel @Inject constructor(
         ) -> Unit
     ) {
         this.callbacks = listener
-        if (searchAdapter.itemCount == 0)
+        if (searchAdapter.itemCount == 0 || searchAdapter.currentList[0] is TitleRecyclerItem)
             getSearches()
     }
 
