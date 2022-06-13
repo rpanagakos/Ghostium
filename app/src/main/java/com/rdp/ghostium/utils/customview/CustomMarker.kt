@@ -8,11 +8,12 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 import com.rdp.ghostium.R
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertLongToDate
 import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertPrice
 
 
-class CustomMarker(context: Context, var price : TextView, var date: TextView, val currencyImpl: CurrencyImpl) : MarkerView(context, R.layout.custom_marker) {
+class CustomMarker(context: Context, var price : TextView, var date: TextView, val currencyImpl: CurrencySource) : MarkerView(context, R.layout.custom_marker) {
 
     override fun refreshContent(entry: Entry, highlight: Highlight) {
         super.refreshContent(entry, highlight)

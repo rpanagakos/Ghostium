@@ -11,6 +11,7 @@ import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.github.mikephil.charting.data.LineData
 import com.google.android.material.tabs.TabLayout
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertLongToDate
 import com.rdp.ghostium.ui.tabs.common.TabsBinding.convertPrice
 import com.rdp.ghostium.utils.resetChart
@@ -25,7 +26,7 @@ class DetailsActivity : AbstractActivity<ActivityDetailsBinding>(R.layout.activi
     lateinit var sparkLineStyle: SparkLineStyle
 
     @Inject
-    lateinit var currencyImpl: CurrencyImpl
+    lateinit var currencyImpl: CurrencySource
 
     private var cryptoItem: CryptoItem? = null
     private val viewModel: DetailsViewModel by viewModels()

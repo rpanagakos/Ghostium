@@ -11,6 +11,7 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.opensea.Assets
 import com.rdp.ghostium.network.DataRepository
+import com.rdp.ghostium.network.DataRepositorySource
 import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.NetworkConnectivity
 import com.rdp.ghostium.utils.SingleLiveEvent
@@ -22,7 +23,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NftsViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val dataRepository: DataRepositorySource,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 

@@ -20,7 +20,7 @@ class SparkLineStyle @Inject constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     fun styleChart(
-        lineChart: LineChart, timetamps : Long, currenctPrice : Double, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView, currencyImpl: CurrencyImpl
+        lineChart: LineChart, timetamps : Long, currenctPrice : Double, priceIndicator: TextView, dateIndicator: TextView, scrollView: CustomScrollView, currencyImpl: CurrencySource
     ) = lineChart.apply {
         axisLeft.isEnabled = false
         axisRight.isEnabled = false

@@ -23,6 +23,8 @@ import com.rdp.ghostium.utils.Constants.Companion.LOTTIE_STARTING_STATE
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
+import com.rdp.ghostium.network.DataRepositorySource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -32,9 +34,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val dataRepository: DataRepositorySource,
     private val localRepository: LocalRepository,
-    private val currencyImpl: CurrencyImpl,
+    private val currencyImpl: CurrencySource,
     application: Application
 ) : AbstractViewModel(application) {
 

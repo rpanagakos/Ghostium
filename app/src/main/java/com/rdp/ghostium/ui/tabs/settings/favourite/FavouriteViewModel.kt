@@ -12,10 +12,12 @@ import com.rdp.ghostium.abstraction.listeners.FavouriteClickListener
 import com.rdp.ghostium.database.room.LocalRepository
 import com.rdp.ghostium.di.IoDispatcher
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.errors.mapper.NO_CRYPTOS
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.network.DataRepository
+import com.rdp.ghostium.network.DataRepositorySource
 import com.rdp.ghostium.utils.NetworkConnectivity
 import com.rdp.ghostium.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,9 +29,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavouriteViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val dataRepository: DataRepositorySource,
     private val localRepository: LocalRepository,
-    private val currencyImpl: CurrencyImpl,
+    private val currencyImpl: CurrencySource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     application: Application
 ) : AbstractViewModel(application), FavouriteClickListener {

@@ -89,6 +89,13 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
 }
 
 dependencies {
@@ -195,6 +202,8 @@ dependencies {
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
     implementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.8'
     androidTestImplementation "androidx.room:room-testing:$room"
     /**-------------------------------------------------------------**/
 

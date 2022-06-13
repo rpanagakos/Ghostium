@@ -6,6 +6,7 @@ import com.rdp.ghostium.abstraction.AbstractViewModel
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.GeneralClickListener
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.settings.CurrencyItem
 import com.rdp.ghostium.models.settings.LanguageItem
 import com.rdp.ghostium.utils.LangContextWrapper
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GeneralSettingsViewModel @Inject constructor(
-    private val currencyImpl: CurrencyImpl,
+    private val currencyImpl: CurrencySource,
     application: Application
 ) : AbstractViewModel(application), GeneralClickListener {
 

@@ -3,6 +3,7 @@ package com.rdp.ghostium.network
 import com.google.gson.JsonObject
 import com.rdp.ghostium.di.IoDispatcher
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.Cryptos
 import com.rdp.ghostium.models.coingecko.charts.CoinPrices
 import com.rdp.ghostium.models.coingecko.coin.Coin
@@ -23,47 +24,47 @@ class DataRepository @Inject constructor(
     private val coinGeckoRemoteRepository: CoinGeckoRemoteRepository,
     private val openSeaRemoteRepository: OpenSeaRemoteRepository,
     private val guardianRemoteRepository: GuardianRemoteRepository,
-    val currencyImpl: CurrencyImpl,
+    val currencyImpl: CurrencySource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
-) {
+) : DataRepositorySource{
 
-    suspend fun requestData(): Flow<GenericResponse<Cryptos>> {
+    override suspend fun requestData(): Flow<GenericResponse<Cryptos>> {
         return flow {
             emit(coinGeckoRemoteRepository.getAllCryptos(currencyImpl.getCurrency()))
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun searchCoin(coinID: String): Flow<GenericResponse<Coin>> {
+    override suspend fun searchCoin(coinID: String): Flow<GenericResponse<Coin>> {
         return flow {
             emit(coinGeckoRemoteRepository.getCoinSearchResult(coinID))
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun searchCoins(coinID: String): Flow<GenericResponse<CoinsSearched>> {
+    override suspend fun searchCoins(coinID: String): Flow<GenericResponse<CoinsSearched>> {
         return flow {
             emit(coinGeckoRemoteRepository.getCoinSearch(coinID))
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun getTredingCryptos(): Flow<GenericResponse<TredingCoins>> {
+    override suspend fun getTredingCryptos(): Flow<GenericResponse<TredingCoins>> {
         return flow {
             emit(coinGeckoRemoteRepository.getTrendingCryptos())
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun getCoinChartDetails(coinID: String, days: Int): Flow<GenericResponse<CoinPrices>> {
+    override suspend fun getCoinChartDetails(coinID: String, days: Int): Flow<GenericResponse<CoinPrices>> {
         return flow {
             emit(coinGeckoRemoteRepository.getCoinChartDetails(coinID, days, currencyImpl.getCurrency()))
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun getFavouritesPrices(cryptosIds: String): Flow<GenericResponse<JsonObject>> {
+    override suspend fun getFavouritesPrices(cryptosIds: String): Flow<GenericResponse<JsonObject>> {
         return flow {
             emit(coinGeckoRemoteRepository.getFavouritesPrices(cryptosIds, currencyImpl.getCurrency()))
         }.flowOn(ioDispatcher)
     }
 
-    suspend fun getAllNfts() : Flow<GenericResponse<Assets>> {
+    override suspend fun getAllNfts() : Flow<GenericResponse<Assets>> {
         return flow {
             emit(openSeaRemoteRepository.getAllNfts())
         }.flowOn(ioDispatcher)

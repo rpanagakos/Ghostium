@@ -10,6 +10,7 @@ import com.rdp.ghostium.abstraction.AbstractFragment
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.databinding.FragmentTrendsBinding
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.tredings.Item
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
@@ -25,7 +26,7 @@ class TrendsFragment :
 
     //remove
     @Inject
-    lateinit var currencyImpl: CurrencyImpl
+    lateinit var currencyImpl: CurrencySource
 
     override fun initLayout() {
         viewModel.trendingTitle.postValue(TitleRecyclerItem(this.resources.getString(R.string.trending_cryptos)))

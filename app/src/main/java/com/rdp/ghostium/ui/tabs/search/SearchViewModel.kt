@@ -11,7 +11,10 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.GeneralClickListener
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.database.room.LocalRepository
+import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.search.CoinResult
+import com.rdp.ghostium.models.coingecko.search.CoinsSearched
 import com.rdp.ghostium.models.coingecko.shimmer.CoinsSearchShimmer
 import com.rdp.ghostium.models.errors.mapper.NOT_FOUND
 import com.rdp.ghostium.models.errors.mapper.NO_SEARCHES
@@ -19,6 +22,7 @@ import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.settings.RecentlyItem
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.network.DataRepository
+import com.rdp.ghostium.network.DataRepositorySource
 import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.SingleLiveEvent
 import com.rdp.ghostium.utils.wrapEspressoIdlingResource
@@ -30,12 +34,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val dataRepository: DataRepositorySource,
     private val localRepository: LocalRepository,
+    currencyImpl: CurrencySource,
     application: Application
 ) : AbstractViewModel(application), GeneralClickListener, ItemOnClickListener {
 
     val displayMessage = MutableLiveData<Boolean>(false)
+    val coinsAnswer = MutableLiveData<CoinsSearched>()
 
     private var callbacks: (
         data: LocalModel,
@@ -51,7 +57,7 @@ class SearchViewModel @Inject constructor(
     val searchAdapter: TabsAdapter =
         TabsAdapter(
             listener = this,
-            currencyImpl = dataRepository.currencyImpl,
+            currencyImpl = currencyImpl,
             generalClickListener = this
         )
 
@@ -80,6 +86,7 @@ class SearchViewModel @Inject constructor(
                                 resultNotFound.postValue(NOT_FOUND)
                                 displayMessage.postValue(true)
                             } else {
+                                coinsAnswer.postValue(it)
                                 displayMessage.postValue(false)
                                 searchAdapter.submitList(it.coinResults)
                             }

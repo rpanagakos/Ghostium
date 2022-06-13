@@ -9,7 +9,7 @@
 
         <variable
             name="currencyIml"
-            type="com.rdp.ghostium.di.common.CurrencyImpl" />
+            type="com.rdp.ghostium.di.common.CurrencySource" />
 
         <variable
             name="crypto"

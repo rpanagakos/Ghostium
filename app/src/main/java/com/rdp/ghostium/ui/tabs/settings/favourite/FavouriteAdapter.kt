@@ -10,6 +10,7 @@ import com.rdp.ghostium.databinding.HolderEmptyBinding
 import com.rdp.ghostium.databinding.HolderFavouriteItemBinding
 import com.rdp.ghostium.databinding.HolderShimmerCryptosBinding
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
 import com.rdp.ghostium.ui.tabs.common.recycler.ShimmerViewHolder
@@ -18,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger
 class FavouriteAdapter(
     private val viewModel: FavouriteViewModel,
     private val listener: FavouriteClickListener,
-    private val currencyImpl: CurrencyImpl
+    private val currencyImpl: CurrencySource
 ) : AbstractAdapter() {
 
     private val currentPosition: AtomicInteger = AtomicInteger(0)

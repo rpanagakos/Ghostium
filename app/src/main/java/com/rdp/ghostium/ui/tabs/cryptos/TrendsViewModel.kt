@@ -11,12 +11,15 @@ import com.rdp.ghostium.abstraction.AbstractViewModel
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.database.room.LocalRepository
+import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.Cryptos
 import com.rdp.ghostium.models.coingecko.shimmer.CryptoShimmer
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
 import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.settings.TitleRecyclerItem
 import com.rdp.ghostium.network.DataRepository
+import com.rdp.ghostium.network.DataRepositorySource
 import com.rdp.ghostium.ui.tabs.common.recycler.TabsAdapter
 import com.rdp.ghostium.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,8 +30,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TrendsViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val dataRepository: DataRepositorySource,
     localRepository: LocalRepository,
+    private val currencyImpl: CurrencySource,
     application: Application
 ) : AbstractViewModel(application), ItemOnClickListener {
 
@@ -39,7 +43,7 @@ class TrendsViewModel @Inject constructor(
         circleImageView: ImageView
     ) -> Unit = { _, _, _, _ -> }
     val trendsAdapter: TabsAdapter by lazy {
-        TabsAdapter(this, dataRepository.currencyImpl)
+        TabsAdapter(this, currencyImpl)
     }
 
     var trendingTitle = MutableLiveData<TitleRecyclerItem>()

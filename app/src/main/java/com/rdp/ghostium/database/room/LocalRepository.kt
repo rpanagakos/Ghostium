@@ -4,12 +4,17 @@ import com.rdp.ghostium.database.room.articles.ArticlesDao
 import com.rdp.ghostium.database.room.cryptos.CryptoDao
 import com.rdp.ghostium.database.room.cryptos.TrendingDao
 import com.rdp.ghostium.database.room.searches.SearchesDao
+import com.rdp.ghostium.di.IoDispatcher
 import com.rdp.ghostium.models.CryptoItemDB
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
+import com.rdp.ghostium.models.generic.GenericResponse
 import com.rdp.ghostium.models.guardian.Article
 import com.rdp.ghostium.models.settings.RecentlyItem
 import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 @ViewModelScoped
@@ -17,7 +22,8 @@ class LocalRepository @Inject constructor(
     private val cryptoDao: CryptoDao,
     private val searchesDao: SearchesDao,
     private val trendingDao: TrendingDao,
-    private val articlesDao: ArticlesDao
+    private val articlesDao: ArticlesDao,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 
     fun fetchFavouriteCryptos(): Flow<MutableList<CryptoItemDB>> {

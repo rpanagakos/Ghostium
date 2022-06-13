@@ -9,11 +9,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ActivityRetainedScoped
+@Singleton
 class CurrencyImpl @Inject constructor(
     @ApplicationContext context: Context
-) {
+) : CurrencySource {
     private lateinit var currency: String
     lateinit var currencySymbol : String
 
@@ -22,7 +23,7 @@ class CurrencyImpl @Inject constructor(
         Context.MODE_PRIVATE
     )
 
-    fun saveCurrency(currencyItem: CurrencyItem) {
+    override fun saveCurrency(currencyItem: CurrencyItem) {
         currency = currencyItem.currencyID.value
         preferences.edit().putString("Currency", currencyItem.currencyID.value).apply()
     }
@@ -31,14 +32,14 @@ class CurrencyImpl @Inject constructor(
         return preferences.getString("Currency", "eur") ?: "eur"
     }
 
-    fun updateChosenCurrency(){
+    override fun updateChosenCurrency(){
         if (this::currency.isInitialized && currency != getCurrencyFromShared())
         {
             currency = getCurrency()
         }
     }
 
-    fun getCurrency(): String {
+    override fun getCurrency(): String {
         if (!this::currency.isInitialized || currency != getCurrencyFromShared()) {
             currency = getCurrencyFromShared()
             getCurrencySymbol()

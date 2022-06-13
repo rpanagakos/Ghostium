@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.tabs.TabLayout
 import com.rdp.ghostium.R
-import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.coin.MarketCap
 import com.rdp.ghostium.models.coingecko.coin.Price24h
 import com.rdp.ghostium.models.errors.mapper.*
@@ -153,7 +153,7 @@ object TabsBinding {
     @JvmStatic
     fun TextView.convertPriceUnspecifiedCurrency(
         cryptoPriceElement: Price24h?,
-        chosenCurrency: CurrencyImpl?
+        chosenCurrency: CurrencySource?
     ) {
         if (cryptoPriceElement != null && chosenCurrency != null) {
             val cryptoPrice = when (chosenCurrency.getCurrency()) {
@@ -169,7 +169,7 @@ object TabsBinding {
 
     @BindingAdapter("cryptoPrice", "currency")
     @JvmStatic
-    fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencyImpl) {
+    fun TextView.convertPrice(cryptoPrice: Double, currency: CurrencySource) {
         val dec = DecimalFormat("#,###.####")
         val roundedPrice = dec.format(cryptoPrice)
         text = when {
@@ -190,7 +190,7 @@ object TabsBinding {
 
     @BindingAdapter("marketCapCrypto", "marketCapCurrency")
     @JvmStatic
-    fun TextView.marketCapFormatter(marketCapCrypto: MarketCap?, marketCapCurrency: CurrencyImpl?) {
+    fun TextView.marketCapFormatter(marketCapCrypto: MarketCap?, marketCapCurrency: CurrencySource?) {
         var marketCap = 0L
         if (marketCapCrypto != null && marketCapCurrency != null) {
             marketCap = when (marketCapCurrency.getCurrency()) {

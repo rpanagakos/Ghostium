@@ -9,6 +9,7 @@ import com.rdp.ghostium.abstraction.listeners.GeneralClickListener
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.databinding.*
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.search.CoinResult
 import com.rdp.ghostium.models.coingecko.shimmer.CoinsSearchShimmer
@@ -23,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class TabsAdapter(
     private val listener: ItemOnClickListener? = null,
-    private val currencyImpl: CurrencyImpl? = null,
+    private val currencyImpl: CurrencySource? = null,
     private val generalClickListener: GeneralClickListener? = null
 ) : AbstractAdapter() {
 

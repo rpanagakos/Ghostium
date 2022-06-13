@@ -7,6 +7,7 @@ import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.abstraction.listeners.GeneralClickListener
 import com.rdp.ghostium.abstraction.listeners.ItemOnClickListener
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.coingecko.CryptoItem
 import com.rdp.ghostium.models.coingecko.search.CoinResult
 import com.rdp.ghostium.models.coingecko.tredings.TredingCoins
@@ -20,7 +21,7 @@ import com.rdp.ghostium.ui.tabs.cryptos.recycler.TrendingCryptosAdapter
 class TabsViewHolder(
     val binding: ViewDataBinding,
     val listener: ItemOnClickListener? = null,
-    val currencyImpl: CurrencyImpl? = null,
+    val currencyImpl: CurrencySource? = null,
     val generalClickListener: GeneralClickListener? = null
 ) :
     AbstractBindingViewHolder(binding) {

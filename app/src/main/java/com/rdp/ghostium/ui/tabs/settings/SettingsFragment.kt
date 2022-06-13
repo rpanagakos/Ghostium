@@ -11,6 +11,7 @@ import com.rdp.ghostium.abstraction.AbstractFragment
 import com.rdp.ghostium.abstraction.LocalModel
 import com.rdp.ghostium.databinding.FragmentSettingsBinding
 import com.rdp.ghostium.di.common.CurrencyImpl
+import com.rdp.ghostium.di.common.CurrencySource
 import com.rdp.ghostium.models.settings.AppOption
 import com.rdp.ghostium.models.settings.AppOption.SettingType
 import com.rdp.ghostium.models.settings.LogoOption
@@ -28,7 +29,7 @@ class SettingsFragment :
     override val viewModel: SettingsViewModel by viewModels()
 
     @Inject
-    lateinit var currencyImpl: CurrencyImpl
+    lateinit var currencyImpl: CurrencySource
 
     override fun initLayout() {
         if ((requireActivity() as TabsActivity).languageChanged)
